@@ -9,6 +9,7 @@
     />
     <link rel="stylesheet" href="./style.css"> 
     <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
     <title>Website Handmake</title>
 </head>
 <body>
@@ -18,36 +19,79 @@
             Nhóm 10
         </div>
         <div class="menu">
-            <li class="nav-item"><a href="#">Trang chủ</a></li>
-            <li class="nav-item"><a href="/project-web/about.html">Giới thiệu</a></li>
+            <li class="nav-item"><a href="./index.html">Trang chủ</a></li>
+            <li class="nav-item"><a href="./about.html">Giới thiệu</a></li>
+            
             <li class="nav-item list-product">
-                <a href="#" class="caret-down a red">Sản phẩm
-                    <div class="dropdown">
-                        <div class="product-items">
-                            <div class="menu-product-item">
-                                <h2>Đồ gốm</h2>
-                                <!-- <div>
-                                    <a href="">Gốm đất nung</a>
-                                    <a href="">Gốm sành</a>
-                                    <a href="">Sứ</a>
-                                </div> -->
-                            </div>
-                            <div class="menu-product-item">Phụ kiện bàn ăn</div>
-                            <div class="menu-product-item">Sứ nghệ thuật</div>
-                            <div class="menu-product-item">Gỗ điêu khắc</div>
-                            <div class="menu-product-item">Đồ gốm</div>
-                            <div class="menu-product-item">Phụ kiện bàn ăn</div>
-                            <div class="menu-product-item">Sứ nghệ thuật</div>
-                            <div class="menu-product-item">Gỗ điêu khắc</div>
-                        </div>
-                        <img width="414" src="public/logo.png">
-                    </div>
+                <a href="./products.html" class="caret-down a">
+                    Sản phẩm
+                    <i class="fa-solid fa-caret-down"></i>
                 </a>
-                <i class="fa-solid fa-caret-down red"></i>
-            </li>
-            <li class="nav-item"><a href="/project-web/news.html">Tin tức</a></li>
-            <li class="nav-item"><a href="#">Cửa hàng</a></li>
-            <li class="nav-item"><a href="#">Liên hệ</a></li>
+                
+                <div class="dropdown">
+                    <div class="product-items">
+                        
+                        <div class="menu-product-item">
+                            <h4><a href="#">Đồ mây tre đan</a></h4>
+                            <ul>
+                                <li><a href="#">Giỏ</a></li>
+                                <li><a href="#">Đèn tre</a></li>
+                                <li><a href="#">Túi cói</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="menu-product-item">
+                            <h4><a href="#">Gốm sứ</a></h4>
+                            <ul>
+                                <li><a href="#">Bình</a></li>
+                                <li><a href="#">Ấm chén</a></li>
+                                <li><a href="#">Tượng gốm</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="menu-product-item">
+                            <h4><a href="#">Đồ gỗ mỹ nghệ</a></h4>
+                            <ul>
+                                <li><a href="#">Tượng</a></li>
+                                <li><a href="#">Hộp</a></li>
+                                <li><a href="#">Khung ảnh</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="menu-product-item">
+                            <h4><a href="#">Dệt thêu & may mặc thủ công</a></h4>
+                            <ul>
+                                <li><a href="#">Khăn</a></li>
+                                <li><a href="#">Túi</a></li>
+                                <li><a href="#">Áo thổ cẩm</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="menu-product-item">
+                            <h4><a href="#">Trang sức & phụ kiện thủ công</a></h4>
+                            <ul>
+                                <li><a href="#">Vòng</a></li>
+                                <li><a href="#">Dây chuyền</a></li>
+                                <li><a href="#">Nhẫn</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="menu-product-item">
+                            <h4><a href="#">Đồ trang trí & quà tặng nghệ thuật</a></h4>
+                            <ul>
+                                <li><a href="#">Nến</a></li>
+                                <li><a href="#">Thiệp 3D</a></li>
+                                <li><a href="#">Tranh giấy</a></li>
+                            </ul>
+                        </div>
+
+                    </div> <div class="dropdown-image">
+                         <img width="300" src="public/img_products.png" alt="Gốm sứ Bát Tràng">
+                    </div>
+                </div> </li>
+            <li class="nav-item"><a href="./news.html">Tin tức</a></li>
+            <li class="nav-item"><a href="./cart.html">Cửa hàng</a></li>
+            <li class="nav-item"><a href="./contact.html">Liên hệ</a></li>
         </div>
         <div class="others">
             <div class="others">
@@ -68,7 +112,6 @@
             </div>
         </div>
     </div>
-    
 </header>
 <main class="component">
     <section class="intro">
@@ -80,7 +123,76 @@
     </section>
     <section class="section_danhmuc">
         <div class="container">
-            
+            <div class="category-list">
+                <div class="category-item">
+                    <a href="#">
+                        <div class="category-image-wrapper">
+                            <img src="public/maytredan.jpg" alt="Mây tre đan">
+                        </div>
+                        <h3>Mây tre đan</h3>
+                        <p>+ 0 sản phẩm</p>
+                    </a>
+                </div>
+                
+                <div class="category-item">
+                    <a href="#">
+                        <div class="category-image-wrapper">
+                            <img src="public/maytredan.jpg" alt="Gốm sứ">
+                        </div>
+                        <h3>Gốm sứ</h3>
+                        <p>+ 30 sản phẩm</p>
+                    </a>
+                </div>
+
+                <div class="category-item">
+                    <a href="#">
+                        <div class="category-image-wrapper">
+                            <img src="public/maytredan.jpg" alt="Đồ gỗ mỹ nghệ">
+                        </div>
+                        <h3>Đồ gỗ mỹ nghệ</h3>
+                        <p>+ 0 sản phẩm</p>
+                    </a>
+                </div>
+
+                <div class="category-item">
+                    <a href="#">
+                        <div class="category-image-wrapper">
+                            <img src="public/maytredan.jpg" alt="Dệt thêu & may mặc thủ công">
+                        </div>
+                        <h3>Dệt thêu & may mặc thủ công</h3>
+                        <p>+ 21 sản phẩm</p>
+                    </a>
+                </div>
+
+                <div class="category-item">
+                    <a href="#">
+                        <div class="category-image-wrapper">
+                            <img src="public/maytredan.jpg" alt="Trang sức & phụ kiện thủ công">
+                        </div>
+                        <h3>Trang sức & phụ kiện thủ công</h3>
+                        <p>+ 0 sản phẩm</p>
+                    </a>
+                </div>
+
+                <div class="category-item">
+                    <a href="#">
+                        <div class="category-image-wrapper">
+                            <img src="public/maytredan.jpg" alt="Đồ trang trí & quà tặng nghệ thuật">
+                        </div>
+                        <h3>Đồ trang trí & quà tặng nghệ thuật</h3>
+                        <p>+ 0 sản phẩm</p>
+                    </a>
+                </div>
+
+            </div> 
+            <div class="featured-images">
+                <div class="featured-item">
+                    <img src="https://placehold.co/600x400/d4a373/white?text=Ảnh+món+ăn+1" alt="Ảnh đặc trưng 1">
+                </div>
+                <div class="featured-item">
+                    <img src="https://placehold.co/600x400/e9c46a/white?text=Ảnh+món+ăn+2" alt="Ảnh đặc trưng 2">
+                </div>
+            </div>
         </div>
     </section>
 </main>
@@ -91,38 +203,51 @@
                 <div class="info_details">
                     <h2>Thông tin</h2>
                     <div>
-                        <!--icon location -->
+                        <i class="fa-solid fa-location-dot"></i>
                         <p>Trường Đại học Nông Lâm Tp.Hcm</p>
                     </div>
                     <div>
-                        <!--icon phone -->
-                        0337429995
-                    </div>
+                        <i class="fa-solid fa-phone"></i>
+                        <p>0337429995</p> </div>
                     <div>
-                        <!--icon email -->
-                        23130240@st.hcmuaf.edu.vn
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>23130240@st.hcmuaf.edu.vn</p> </div>
+                </div>
+
+                <div class="info_media">
+                    <h2>Mạng xã hội</h2>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon zalo" aria-label="Zalo">
+                            <strong>Za</strong>
+                        </a>
+                        <a href="#" class="social-icon fb" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon yt" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-icon gg" aria-label="Google">
+                            <i class="fa-brands fa-google"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="info_media">
-                    <!--icon zalo -->
-                    <!--icon fb -->
-                    <!--icon youtube -->
-                </div>
             </div>
-            <div class="policy guide">
+
+            <div class="policy-guide-wrapper">
                 <div class="component policy">
-                    <li><a href="#" class="hover color">Chính sách bảo mật</a></li>
-                    <li><a href="#" class="hover color">Chính sách vận chuyển</a></li>
-                    <li><a href="#" class="hover color">Chính sách đổi trả</a></li>
-                    <li><a href="#" class="hover color">Quy định sử dụng</a></li>
-                </div>
+                    <h2>Chính sách</h2> <ul> <li><a href="#" class="hover color">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="hover color">Chính sách vận chuyển</a></li>
+                        <li><a href="#" class="hover color">Chính sách đổi trả</a></li>
+                        <li><a href="#" class="hover color">Quy định sử dụng</a></li>
+                    </ul> </div>
                 <div class="component guide">
-                    <li><a href="#" class="hover color">Hướng dẫn mua hàng</a></li>
-                    <li><a href="#" class="hover color">Hướng dẫn thanh toán</a></li>
-                    <li><a href="#" class="hover color">Hướng dẫn giao nhận</a></li>
-                    <li><a href="#" class="hover color">Điều khoản sử dụng</a></li>
-                </div>
+                    <h2>Hướng dẫn</h2> <ul> <li><a href="#" class="hover color">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#" class="hover color">Hướng dẫn thanh toán</a></li>
+                        <li><a href="#" class="hover color">Hướng dẫn giao nhận</a></li>
+                        <li><a href="#" class="hover color">Điều khoản sử dụng</a></li>
+                    </ul> </div>
             </div>
+
             <div class="others">
                 <h2>Đăng ký nhận tin</h2>
                 <p>Đăng ký ngay! Để nhận nhiều ưu đãi</p>
@@ -130,7 +255,7 @@
                     <input type="text" name="Email" id="email" placeholder="Nhập địa chỉ email">
                     <button>Đăng ký</button>
                 </div>
-            </div>
+                </div>
         </div>
     </div>
 </footer>
