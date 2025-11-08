@@ -4,7 +4,8 @@ header {
   background: rgba(255, 255, 255, 0.5);
   display: block;
   height: 70px;    
-  z-index: 100;            
+  z-index: 100;   
+  border-bottom: 1px solid #e0e0e0;         
 }
 * {
     margin: 0;
@@ -50,6 +51,11 @@ header .menu {
   text-transform: uppercase;
   font-weight: 500;
   height: 100%;
+}
+
+#header .menu .nav-item a.active {
+  color: red;
+  font-weight: bold; 
 }
 
 header .menu li {
