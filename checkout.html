@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Thanh toán</title>
+    <link rel="stylesheet" href="css/checkout.css">
 </head>
 <body>
 <main class="checkout-layout">
@@ -87,7 +88,9 @@
                             <input type="radio" id="shipping-note">
                             <span>Giao hàng tận nơi</span>
                         </label>
-                        <span>88.800₫</span>
+                        <div class="shipping-price">
+                            <span>88.800₫</span>
+                        </div>
                     </div>
                 </div>
 
@@ -314,17 +317,17 @@
                 <div class="order-total">
                     <div class="order-total-top">
                         <span>Tạm tính</span>
-                        <span>36.047.000₫</span>
+                        <span class="price">36.047.000₫</span>
                     </div>
                     <div class="order-total-bottom">
                         <span>Phí vận chuyển</span>
-                        <span>-</span>
+                        <span class="price">88.800₫</span>
                     </div>
                 </div>
                 <div class="order-price">
                     <div class="order-price-top">
                         <span>Tổng cộng</span>
-                        <span>36.047.000₫</span>
+                        <span class="price">36.047.000₫</span>
                     </div>
                     <div class="order-price-bottom">
                         <a href="#">
