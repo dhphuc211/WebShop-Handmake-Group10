@@ -270,7 +270,7 @@ main {
 #special-promotions-block .action-buttons {
     position: absolute;
     top: 20px; 
-    right: 20px; 
+    right: 0;
     display: flex;
     flex-direction: column;
     gap: 8px; 
