@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <title>Product-Detail</title>
     <link rel="stylesheet" href="css/productdetail.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
+    <link rel="stylesheet" href="css/hero-section.css">
 </head>
 <body>
-<header id="header">
+    <header id="header">
     <div class="container">
         <div class="logo">
             Nhóm 10
@@ -18,16 +22,16 @@
         <div class="menu">
             <li class="nav-item"><a href="./index.html">Trang chủ</a></li>
             <li class="nav-item"><a href="./about.html">Giới thiệu</a></li>
-
+            
             <li class="nav-item list-product">
                 <a href="./products.html" class="caret-down a">
                     Sản phẩm
                     <i class="fa-solid fa-caret-down"></i>
                 </a>
-
+                
                 <div class="dropdown">
                     <div class="product-items">
-
+                        
                         <div class="menu-product-item">
                             <h4><a href="#">Đồ mây tre đan</a></h4>
                             <ul>
@@ -36,7 +40,7 @@
                                 <li><a href="#">Túi cói</a></li>
                             </ul>
                         </div>
-
+                        
                         <div class="menu-product-item">
                             <h4><a href="#">Gốm sứ</a></h4>
                             <ul>
@@ -83,8 +87,8 @@
                         </div>
 
                     </div> <div class="dropdown-image">
-                    <img width="300" src="public/img_products.png" alt="Gốm sứ Bát Tràng">
-                </div>
+                         <img width="300" src="public/img_products.png" alt="Gốm sứ Bát Tràng">
+                    </div>
                 </div> </li>
             <li class="nav-item"><a href="./news.html">Tin tức</a></li>
             <li class="nav-item"><a href="./cart.html">Cửa hàng</a></li>
@@ -110,78 +114,84 @@
         </div>
     </div>
 </header>
-<section class="category">
-    <div class="container">
-        <h1>Chi tiết sản phẩm</h1>
-        <ol class="nameTitle">
-            <li class="home"><a href="#">Trang chủ</a></li>
-            <li class="allProduct"><span>Chi tiết sản phẩm</span></li>
-        </ol>
-        <div class="category-list-wrapper">
-            <ul class="category-list">
-                <button class="scroll-btn">&lt;</button>
-                <li>
-                    <a href="#" class="category-item">
-                        <img src="public/danhmuc_1.webp" alt="Nồi sứ dưỡng sinh">
-                        <span>Nồi sứ dưỡng sinh</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="category-item">
-                        <img src="public/danhmuc_1.webp" alt="Nồi sứ dưỡng sinh">
-                        <span>Nồi sứ dưỡng sinh</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="category-item">
-                        <img src="public/danhmuc_1.webp" alt="Nồi sứ dưỡng sinh">
-                        <span>Nồi sứ dưỡng sinh</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="category-item">
-                        <img src="public/danhmuc_1.webp" alt="Nồi sứ dưỡng sinh">
-                        <span>Nồi sứ dưỡng sinh</span>
-                    </a>
-                </li>
-                <button class="scroll-btn">&gt;</button>
-            </ul>
+<div class="hero-section-container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Bộ khay mứt 31.5cm Thiên Kim</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Trang chủ</a> / <a href="products.html">Sản phẩm</a> / Bộ khay mứt 31.5cm Thiên Kim
+                </div>
+            </div>
+        </section>
+
+        <div class="categories-wrapper">
+            <button id="prevButton" class="nav-button prev-button">&#8249;</button>
+            <div class="categories" id="categoriesContainer">
+                <div class="category-item">
+                    <div class="category-circle">
+                        <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_1.jpg?1758008990171"
+                            alt="Category">
+                    </div>
+                    <div class="category-name">Nồi sứ dinh dưỡng</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-circle">
+                        <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_2.jpg?1758008990171"
+                            alt="Category">
+                    </div>
+                    <div class="category-name">Phòng ăn</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-circle">
+                        <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171"
+                            alt="Category">
+                    </div>
+                    <div class="category-name">Sứ dinh dưỡng</div>
+                </div>
+                <div class="category-item">
+                    <div class="category-circle">
+                        <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_4.jpg?1758008990171"
+                            alt="Category">
+                    </div>
+                    <div class="category-name">Trà - cà phê</div>
+                </div>
+            </div>
+            <button id="nextButton" class="nav-button next-button">&#8250;</button>
         </div>
-    </div>
-</section>
+</div>
 <div class="product-page">
 <section class="product-details">
     <div class="container">
             <div class="product-gallery">
                 <div class="product-img">
                     <a href="#">
-                        <img src="public\botra.png" alt="botra">
+                        <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="botra">
                     </a>
                 </div>
                 <ul class="product-imgs">
                     <li>
                         <a href="#">
-                            <img src="public\botra.png" alt="botra" class="active">
+                            <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="botra" class="active">
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="public\botra.png" alt="botra">
+                            <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="botra">
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="public\botra.png" alt="botra">
+                            <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="botra">
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="public\botra.png" alt="botra">
+                            <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="botra">
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="public\botra.png" alt="botra">
+                            <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="botra">
                         </a>
                     </li>
                 </ul>
@@ -211,56 +221,21 @@
                         <button type="button">Thêm vào giỏ hàng</button>
                     </div>
                 </div>
-                <div class="combo">
-                    <h3>Các sản phẩm thường được mua kèm</h3>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <img src="public\botra.png" alt="botra">
-                            </a>
-                            <div class="price-box">160.600₫</div>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="public\botra.png" alt="botra">
-                            </a>
-                            <div class="price-box">160.600₫</div>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="public\botra.png" alt="botra">
-                            </a>
-                            <div class="price-box">160.600₫</div>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="public\botra.png" alt="botra">
-                            </a>
-                            <div class="price-box">160.600₫</div>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="public\botra.png" alt="botra">
-                            </a>
-                            <div class="price-box">160.600₫</div>
-                        </li>
-                    </ul>
-                </div>
                 <ul>
                     <li>
                         <i class=""></i>
                         <span>Miễn phí giao hàng</span>
                     </li>
                     <li>
-                        <i style=""></i>
+                        <i class=""></i>
                         <span>Đổi trả 7 ngày</span>
                     </li>
                     <li>
-                        <i style=""></i>
+                        <i class=""></i>
                         <span>Cam kết hàng chính hãng 100%</span>
                     </li>
                     <li>
-                        <i style=""></i>
+                        <i class=""></i>
                         <span>Mở hộp kiểm nha nhận hàng</span>
                     </li>
                 </ul>
@@ -293,7 +268,7 @@
                             <a href="#" class="product-link">
                                 <div class="product-imgs">
                                     <span class="sale">Giảm 44%</span>
-                                    <img src="public\bokhay.webp" alt="Bokhay">
+                                    <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
                                 </div>
                                 <div class="product-info">
                                     <h3>Bát sâu trong Silver Spruce</h3>
@@ -306,7 +281,7 @@
                             <a href="#" class="product-link">
                                 <div class="product-imgs">
                                     <span class="sale">Giảm 44%</span>
-                                    <img src="public\bokhay.webp" alt="Bokhay">
+                                    <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
                                 </div>
                                 <div class="product-info">
                                     <h3>Bát sâu trong Silver Spruce</h3>
@@ -319,7 +294,7 @@
                             <a href="#" class="product-link">
                                 <div class="product-imgs">
                                     <span class="sale">Giảm 44%</span>
-                                    <img src="public\bokhay.webp" alt="Bokhay">
+                                    <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
                                 </div>
                                 <div class="product-info">
                                     <h3>Bát sâu trong Silver Spruce</h3>
@@ -332,7 +307,7 @@
                             <a href="#" class="product-link">
                                 <div class="product-imgs">
                                     <span class="sale">Giảm 44%</span>
-                                    <img src="public\bokhay.webp" alt="Bokhay">
+                                    <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
                                 </div>
                                 <div class="product-info">
                                     <h3>Bát sâu trong Silver Spruce</h3>
@@ -367,7 +342,7 @@
                     <a href="#" class="product-link">
                         <div class="product-imgs">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -380,7 +355,7 @@
                     <a href="#" class="product-link">
                         <div class="product-imgs">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -393,7 +368,7 @@
                     <a href="#" class="product-link">
                         <div class="product-imgs">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -406,7 +381,7 @@
                     <a href="#" class="product-link">
                         <div class="product-imgs">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -433,7 +408,7 @@
                 <a href="#" class="product-link">
                     <div class="product-imgs">
                         <span class="sale">Giảm 44%</span>
-                        <img src="public\bokhay.webp" alt="Bokhay">
+                        <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
                     </div>
                     <div class="product-info">
                         <h3>Bát sâu trong Silver Spruce</h3>
@@ -446,7 +421,7 @@
                 <a href="#" class="product-link">
                     <div class="product-imgs">
                         <span class="sale">Giảm 44%</span>
-                        <img src="public\bokhay.webp" alt="Bokhay">
+                        <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
                     </div>
                     <div class="product-info">
                         <h3>Bát sâu trong Silver Spruce</h3>
@@ -499,16 +474,16 @@
             <div class="policy-guide-wrapper">
                 <div class="component policy">
                     <h2>Chính sách</h2> <ul> <li><a href="#" class="hover color">Chính sách bảo mật</a></li>
-                    <li><a href="#" class="hover color">Chính sách vận chuyển</a></li>
-                    <li><a href="#" class="hover color">Chính sách đổi trả</a></li>
-                    <li><a href="#" class="hover color">Quy định sử dụng</a></li>
-                </ul> </div>
+                        <li><a href="#" class="hover color">Chính sách vận chuyển</a></li>
+                        <li><a href="#" class="hover color">Chính sách đổi trả</a></li>
+                        <li><a href="#" class="hover color">Quy định sử dụng</a></li>
+                    </ul> </div>
                 <div class="component guide">
                     <h2>Hướng dẫn</h2> <ul> <li><a href="#" class="hover color">Hướng dẫn mua hàng</a></li>
-                    <li><a href="#" class="hover color">Hướng dẫn thanh toán</a></li>
-                    <li><a href="#" class="hover color">Hướng dẫn giao nhận</a></li>
-                    <li><a href="#" class="hover color">Điều khoản sử dụng</a></li>
-                </ul> </div>
+                        <li><a href="#" class="hover color">Hướng dẫn thanh toán</a></li>
+                        <li><a href="#" class="hover color">Hướng dẫn giao nhận</a></li>
+                        <li><a href="#" class="hover color">Điều khoản sử dụng</a></li>
+                    </ul> </div>
             </div>
 
             <div class="others">
@@ -518,7 +493,7 @@
                     <input type="text" name="Email" id="email" placeholder="Nhập địa chỉ email">
                     <button>Đăng ký</button>
                 </div>
-            </div>
+                </div>
         </div>
     </div>
 </footer>
