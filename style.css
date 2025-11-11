@@ -21,7 +21,7 @@ main {
   z-index: 1;
 }
 
-.intro {
+.section_intro {
   height: 90vh;
   display: flex;
   justify-content: center;
@@ -31,39 +31,31 @@ main {
   position: relative;
   background-size: cover;
   background-position: center;
-  animation: changeBg 8s infinite alternate ease-in-out;
+  background-image: url("https://denmaytre.net/wp-content/uploads/2019/12/may-tre-dan-ninh-so-vuon-minh-ra-bien-lon.jpg");
 }
 
-@keyframes changeBg {
-  0% {
-    background-image: url("public/intro_1.png");
-  }
-  100% {
-    background-image: url("public/intro_2.png");
-  }
-}
-
-.intro-text {
+.section_intro-content {
   display: flex;
   flex-direction: column;
   color: white;
   align-items: center;
   gap: 6px;
   position: relative;
+  
 }
 
-.intro-text h1 {
+.section_intro-content h1 {
   font-size: 60px;
   font-weight: 600;
 }
 
-.intro-text p {
+.section_intro-content p {
   font-size: 14px;
   text-align: center;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
   font-family: 'Allura', cursive;;
 }
-.intro-text .btn {
+.section_intro-content .btn {
     border: none;
     background: #ffffff;
     padding: 12px 24px;
@@ -75,20 +67,9 @@ main {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.intro-text .btn:hover {
+.section_intro-content .btn:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .section_danhmuc {
