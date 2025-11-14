@@ -4,6 +4,7 @@ body {
     box-sizing: border-box;
     font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
     color: #333;
+    background: #f5f1e6;
 }
 
 section.container {
@@ -109,8 +110,7 @@ h3 {
 
 .news-category ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 12px 0;
 }
 
 .news-category li a {

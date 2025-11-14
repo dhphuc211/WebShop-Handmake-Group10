@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sản Phẩm Yêu Thích</title>
     <link rel="stylesheet" href="css/wishlist.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/hero-section.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
@@ -15,18 +17,18 @@
             Nhóm 10
         </div>
         <div class="menu">
-            <li class="nav-item"><a href="./index.html">Trang chủ</a></li>
+            <li class="nav-item"><a href="./index.html" class="active">Trang chủ</a></li>
             <li class="nav-item"><a href="./about.html">Giới thiệu</a></li>
-
+            
             <li class="nav-item list-product">
                 <a href="./products.html" class="caret-down a">
                     Sản phẩm
                     <i class="fa-solid fa-caret-down"></i>
                 </a>
-
+                
                 <div class="dropdown">
                     <div class="product-items">
-
+                        
                         <div class="menu-product-item">
                             <h4><a href="#">Đồ mây tre đan</a></h4>
                             <ul>
@@ -35,7 +37,7 @@
                                 <li><a href="#">Túi cói</a></li>
                             </ul>
                         </div>
-
+                        
                         <div class="menu-product-item">
                             <h4><a href="#">Gốm sứ</a></h4>
                             <ul>
@@ -82,8 +84,8 @@
                         </div>
 
                     </div> <div class="dropdown-image">
-                    <img width="300" src="public/img_products.png" alt="Gốm sứ Bát Tràng">
-                </div>
+                         <img width="300" src="https://madebymaries.com/wp-content/uploads/2021/09/wicker-baskets-6526674_1920.jpg" alt="Gốm sứ Bát Tràng">
+                    </div>
                 </div> </li>
             <li class="nav-item"><a href="./news.html">Tin tức</a></li>
             <li class="nav-item"><a href="./cart.html">Cửa hàng</a></li>
@@ -92,62 +94,70 @@
         <div class="others">
             <div class="others">
                 <div class="icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <label for="search-toggle" class="search-toggle-label">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
                 </div>
-                <div class="icon">
+                <a href="./login.html" class="icon">
                     <i class="fa-regular fa-user"></i>
-                </div>
-                <div class="icon badge" >
+                </a>
+                <a href="./wishlist.html" class="icon badge" >
                     <i class="fa-regular fa-heart"></i>
                     <span>0</span>
-                </div>
-                <div class="icon badge">
+                </a>    
+                <a href="./shopping-cart.html" class="icon badge">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>0</span>
-                </div>
+                </a>
             </div>
         </div>
     </div>
 </header>
-<section class="category">
-    <div class="container">
-        <h1>Sản phẩm yêu thích</h1>
-        <ol class="nameTitle">
-            <li class="home"><a href="#">Trang chủ</a></li>
-            <li class="allProduct"><span>Sản phẩm yêu thích</span></li>
-        </ol>
-        <div class="category-list-wrapper">
-            <ul class="category-list">
-                <button class="scroll-btn">&lt;</button>
-                <li>
-                    <a href="#" class="category-item">
-                        <img src="public/danhmuc_1.webp" alt="Nồi sứ dưỡng sinh">
-                        <span>Nồi sứ dưỡng sinh</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="category-item">
-                        <img src="public/danhmuc_1.webp" alt="Nồi sứ dưỡng sinh">
-                        <span>Nồi sứ dưỡng sinh</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="category-item">
-                        <img src="public/danhmuc_1.webp" alt="Nồi sứ dưỡng sinh">
-                        <span>Nồi sứ dưỡng sinh</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="category-item">
-                        <img src="public/danhmuc_1.webp" alt="Nồi sứ dưỡng sinh">
-                        <span>Nồi sứ dưỡng sinh</span>
-                    </a>
-                </li>
-                <button class="scroll-btn">&gt;</button>
-            </ul>
+<div class="hero-section-container">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Sản phẩm yêu thích</h1>
+            <div class="breadcrumb">
+                <a href="#">Trang chủ</a> / Sản phẩm yêu thích
+            </div>
         </div>
+    </section>
+
+    <div class="categories-wrapper">
+        <button id="prevButton" class="nav-button prev-button">&#8249;</button>
+        <div class="categories" id="categoriesContainer">
+            <div class="category-item">
+                <div class="category-circle">
+                    <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_1.jpg?1758008990171"
+                        alt="Category">
+                </div>
+                <div class="category-name">Nồi sứ dinh dưỡng</div>
+            </div>
+            <div class="category-item">
+                <div class="category-circle">
+                    <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_2.jpg?1758008990171"
+                        alt="Category">
+                </div>
+                <div class="category-name">Phòng ăn</div>
+            </div>
+            <div class="category-item">
+                <div class="category-circle">
+                    <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171"
+                        alt="Category">
+                </div>
+                <div class="category-name">Sứ dinh dưỡng</div>
+            </div>
+            <div class="category-item">
+                <div class="category-circle">
+                    <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_4.jpg?1758008990171"
+                        alt="Category">
+                </div>
+                <div class="category-name">Trà - cà phê</div>
+            </div>
+        </div>
+        <button id="nextButton" class="nav-button next-button">&#8250;</button>
     </div>
-</section>
+</div>
 <div class="products-wrapper">
     <main class="product-list">
         <div class="container">
@@ -156,7 +166,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bộ khay mứt 31.5cm Thiên Kim</h3>
@@ -169,7 +179,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bộ khay mứt 31.5cm Thiên Kim</h3>
@@ -182,7 +192,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -195,7 +205,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -208,7 +218,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -221,7 +231,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -234,7 +244,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -247,7 +257,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -260,7 +270,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -273,7 +283,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -286,7 +296,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -299,7 +309,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -312,7 +322,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -325,7 +335,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -338,7 +348,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -351,7 +361,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -364,7 +374,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -377,7 +387,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -390,7 +400,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -403,7 +413,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -416,7 +426,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -429,7 +439,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -442,7 +452,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -455,7 +465,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -468,7 +478,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -481,7 +491,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -494,7 +504,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -507,7 +517,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -520,7 +530,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -533,7 +543,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -546,7 +556,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -559,7 +569,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -572,7 +582,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -585,7 +595,7 @@
                     <a href="#" class="product-link">
                         <div class="product-img">
                             <span class="sale">Giảm 44%</span>
-                            <img src="public\bokhay.webp" alt="Bokhay">
+                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
                         </div>
                         <div class="product-info">
                             <h3>Bát sâu trong Silver Spruce</h3>
@@ -661,5 +671,79 @@
         </div>
     </div>
 </footer>
+<input type="checkbox" id="search-toggle" class="hidden-checkbox">
+
+<label for="search-toggle" class="search-overlay"></label>
+
+<div id="search-panel">
+    <div class="search-panel-header">
+        <label for="search-toggle" class="close-search-label">
+            <i class="fa-solid fa-xmark"></i>
+        </label>
+    </div>
+    
+    <div class="search-panel-content">
+        <div class="search-form">
+            <input type="text" placeholder="Nhập tên sản phẩm...">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </div>
+        
+        <h3>Sản phẩm được tìm nhiều nhất</h3>
+        
+        <div class="search-results-list">
+            
+            <a href="./search.html" class="search-result-item">
+                <div class="search-item-image">
+                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca tháp">
+                </div>
+                <div class="search-item-info">
+                    <p class="product-name">Ca tháp quai tròn 0.35 L - Jasmine - Trắng</p>
+                    <p class="product-price">93.500đ</p>
+                </div>
+            </a>
+
+            <a href="#" class="search-result-item">
+                <div class="search-item-image">
+                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca thon">
+                </div>
+                <div class="search-item-info">
+                    <p class="product-name">Ca thon quai số 7 0.33 L - Jasmine - Trắng</p>
+                    <p class="product-price">79.200đ</p>
+                </div>
+            </a>
+
+            <a href="#" class="search-result-item">
+                <div class="search-item-image">
+                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca trà">
+                </div>
+                <div class="search-item-info">
+                    <p class="product-name">Ca trà 0.30 L - Mẫu Đơn IFP - Chỉ Vàng</p>
+                    <p class="product-price">176.000đ</p>
+                </div>
+            </a>
+
+            <a href="#" class="search-result-item">
+                <div class="search-item-image">
+                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca trà">
+                </div>
+                <div class="search-item-info">
+                    <p class="product-name">Ca trà 0.30 L - Mẫu Đơn - Trắng</p>
+                    <p class="product-price">108.900đ</p>
+                </div>
+            </a>
+
+            <a href="#" class="search-result-item">
+                <div class="search-item-image">
+                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca bia">
+                </div>
+                <div class="search-item-info">
+                    <p class="product-name">Ca bia 0.36 L - Jasmine - Trắng</p>
+                    <p class="product-price">75.900đ</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>
