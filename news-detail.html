@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết tin tức</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" href="css/header.css">
@@ -93,19 +94,21 @@
         <div class="others">
             <div class="others">
                 <div class="icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <label for="search-toggle" class="search-toggle-label">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
                 </div>
-                <div class="icon">
+                <a href="./login.html" class="icon">
                     <i class="fa-regular fa-user"></i>
-                </div>
-                <div class="icon badge" >
+                </a>
+                <a href="./wishlist.html" class="icon badge" >
                     <i class="fa-regular fa-heart"></i>
                     <span>0</span>
-                </div>
-                <div class="icon badge">
+                </a>    
+                <a href="./shopping-cart.html" class="icon badge">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>0</span>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -155,9 +158,9 @@
         <button id="nextButton" class="nav-button next-button">&#8250;</button>
     </div>
 </div>
-<main class="news-main">
-    <section class="news-detail">
-        <div class="news-layout">
+<section class="container">
+    <div class="news-detail">
+        <main class="news-layout">
             <div class="news-layout-left">
                 <div class="news-text-top">
                     <h2>Mẹo phát hiện ly cốc bát đĩa nhiễm độc và cách phòng tránh</h2>
@@ -264,8 +267,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </main>
+    </div>
     <section class="news-down">
         <div class="news-relate">
             <h2>Tin tức liên quan</h2>
@@ -312,7 +315,7 @@
             </div>
         </div>
     </section>
-</main>
+</section>
 <footer id="footer">
     <div class="container">
         <div class="content">
