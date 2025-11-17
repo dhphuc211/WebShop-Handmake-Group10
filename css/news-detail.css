@@ -6,7 +6,7 @@
 .news-layout{
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 20px;
+    gap: 10px;
 }
 
 h2{
@@ -78,7 +78,7 @@ img {
 .post-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .post-item {
