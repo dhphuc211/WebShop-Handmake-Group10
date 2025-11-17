@@ -12,6 +12,15 @@
 }
 
 .order-image .group{
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #c0392b;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, color 0.3s ease;
+    cursor: pointer;
     text-decoration: none;
 }
 
@@ -19,7 +28,6 @@
     margin-top: 10px;
     text-align: center;
     font-size: 50px;
-    color: #333;
     font-weight: bold;
 
 }
@@ -113,6 +121,7 @@
 }
 
 .order-summary {
+    padding-top: 10px;
     max-height: 300px;
     overflow-y: auto;
     scrollbar-color: #cccccc #f0f0f0;
@@ -221,17 +230,10 @@
     align-items: center;
 }
 
-.order-price-bottom a {
-    color: #3498db;
-    text-decoration: none;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
 
-.order-price-bottom button {
+.order-price-bottom a {
     background-color: #3498db;
+    text-decoration: none;
     color: white;
     font-size: 17px;
     font-weight: 500;
@@ -241,6 +243,6 @@
     cursor: pointer;
 }
 
-.order-price-bottom button:hover {
+.order-price-bottom a:hover {
     background-color: #2378ea;
 }
