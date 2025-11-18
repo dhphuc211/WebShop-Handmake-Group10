@@ -18,9 +18,17 @@ body{
     text-align: center;
 }
 
-.header .logo img {
-    max-width: 180px;
-    height: 90px;
+.header .logo a {
+    text-decoration: none;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #c0392b;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, color 0.3s ease;
+    cursor: pointer;
 }
 
 .container {
@@ -182,6 +190,7 @@ body{
     max-height: 300px;
     overflow-y: auto;
     scrollbar-color: #cccccc #f0f0f0;
+    padding-top: 10px;
 }
 
 .cart-row {
@@ -313,13 +322,17 @@ body{
     align-items: center;
 }
 
-.order-price-bottom a {
-    color: #3498db;
+.order-price-bottom a.btn-order {
+    color: white;
     text-decoration: none;
     font-size: 16px;
     display: flex;
     align-items: center;
     gap: 8px;
+}
+a.back-to-cart {
+    color: #3498db;
+    text-decoration: none;
 }
 
 .order-price-bottom button {

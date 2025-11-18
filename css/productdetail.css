@@ -4,136 +4,12 @@ body{
     margin:0 auto;
     padding:0;
 }
-
-
-.category {
-    background-color: #f7f3f0;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-.category::before {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 250px;
-    height: 100%;
-    background: url('#') no-repeat left bottom;
-}
-
-.category::after {
-    position: absolute;
-    width: 300px;
-    height: 100%;
-    background: url('#') no-repeat right bottom;
-}
-
-.category .container {
-    position: relative;
-}
-h1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #c97a3a;
-    margin: 10px;
-}
-.nameTitle {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto 25px auto;
-    padding: 0;
-    list-style: none;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.nameTitle li:not(:last-child)::after {
-    content: '>';
-    margin: 0 10px;
-    color: #333;
-}
-
-.nameTitle a {
-    color: #777;
+a {
     text-decoration: none;
-}
-.nameTitle a:hover {
-    color: #c97a3a;
-}
-
-.nameTitle .allProduct span {
-    color: #c97a3a;
-    font-weight: 500;
-    font-size: 14px;
-}
-
-.category-list-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-.category-list {
-    display: flex;
-    overflow-x: auto;
-    gap: 30px;
-    padding: 10px 0;
-    margin: 0 auto;
-    list-style: none;
-}
-
-.category-list::-webkit-scrollbar {
-    display: none;
-}
-
-.category-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 180px;
-    text-decoration: none;
-    color: #333;
-}
-
-.category-item img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 3px solid white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-}
-
-.category-item span {
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    color: #333;
-}
-
-.category-item:hover img {
-    transform: scale(1.05);
+    color: #fff;
 }
 .products-wrapper{
     margin: 0 100px 0 100px;
-}
-.scroll-btn {
-    position: relative;
-    margin-top: 80px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: white;
-    border: 1px solid #c97a3a;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
-    cursor: pointer;
-}
-.scroll-btn:hover {
-    background-color: #c97a3a;
-    color: #fff;
 }
 
 .product-page{
@@ -484,4 +360,166 @@ h1{
 }
 .product-watched{
     margin-bottom: 40px;
+}
+
+/* =============================================== */
+/* == CSS CHO MODAL THÊM VÀO GIỎ HÀNG == */
+/* =============================================== */
+
+/* Lớp phủ nền mờ sau lưng modal */
+#cart-modal-overlay {
+    position: fixed; /* Che toàn bộ màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Nền đen mờ 60% */
+    z-index: 999; /* Đảm bảo luôn ở trên cùng */
+    
+    /* Ẩn theo mặc định */
+    display: none; 
+    opacity: 0;
+    
+    /* Dùng flex để căn giữa modal */
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Lớp này sẽ được JS thêm vào để hiện modal */
+#cart-modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+/* Thùng chứa modal chính */
+.cart-modal-container {
+    background-color: #fff;
+    width: 480px; /* Chiều rộng của modal */
+    border-radius: 8px;
+    overflow: hidden; /* Để bo góc header */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    
+    /* Hiệu ứng xuất hiện */
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.2s ease-in-out 0.1s;
+}
+
+#cart-modal-overlay.show .cart-modal-container {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Header modal (màu cam) */
+.cart-modal-header {
+    /* Sử dụng màu cam #c97a3a từ file CSS của bạn */
+    background-color: #c97a3a; 
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.cart-modal-header span {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa icon và chữ */
+    font-size: 16px;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 5px;
+}
+.modal-close-btn:hover {
+    opacity: 0.8;
+}
+
+/* Thân modal (nội dung) */
+.cart-modal-body {
+    padding: 20px;
+}
+
+.modal-product-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.modal-product-info img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.modal-product-info p {
+    margin: 0 0 5px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+}
+
+.modal-product-info strong {
+    color: #c97a3a; /* Màu cam */
+    font-size: 16px;
+}
+
+.modal-cart-status {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    margin: 15px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+/* Các nút hành động */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.modal-actions button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase; /* Viết hoa chữ */
+}
+
+/* Nút "Tiếp tục mua hàng" (màu đen) */
+.btn-continue {
+    background-color: #333; 
+    color: #fff;
+    border: 1px solid #333;
+}
+.btn-continue:hover {
+    background-color: #000;
+}
+
+/* Nút "Thanh toán ngay" (màu cam) */
+.btn-checkout {
+    background-color: #c97a3a; 
+    color: #fff;
+    border: 1px solid #c97a3a;
+}
+.btn-checkout:hover {
+    background-color: #af6a30; /* Sậm hơn khi hover */
 }
