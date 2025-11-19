@@ -1,40 +1,6 @@
 /* ============================================
    ORDERS PAGE - ĐỒ THỦ CÔNG MỸ NGHỆ VIỆT NAM
    ============================================ */
-
-/* Main Container - giống dashboard */
-.dashboard-main {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #fff9f0 0%, #fef5e6 50%, #f5f1e6 100%);
-    padding: 30px 20px;
-    position: relative;
-}
-
-/* Decorative background patterns */
-.dashboard-main::before {
-    content: '';
-    position: absolute;
-    top: -10%;
-    left: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(201, 122, 58, 0.05) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: floatReverse 8s ease-in-out infinite;
-}
-
-.dashboard-main::after {
-    content: '';
-    position: absolute;
-    bottom: -10%;
-    right: -5%;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(192, 57, 43, 0.05) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: float 10s ease-in-out infinite;
-}
-
 @keyframes float {
     0%, 100% {
         transform: translateY(0) translateX(0) scale(1);

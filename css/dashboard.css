@@ -7,6 +7,9 @@ html, body,main{
     margin: 0!important;
     box-sizing: border-box;
 }
+body{
+    background-color: #f5f1e6;
+}
 main{
     padding: 5px!important;
 }
@@ -14,8 +17,10 @@ main{
     overflow-x: hidden;
 }
 .dashboard-main {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
     min-height: 100vh;
-    background: linear-gradient(135deg, #fff9f0 0%, #fef5e6 50%, #f5f1e6 100%);
+    background-color: #f5f1e6;
     padding: 30px 20px;
     position: relative;
 }
