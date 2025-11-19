@@ -30,35 +30,24 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    color: white;
+    background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
 }
 
-.btn-send-email {
-    background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
-}
+
 
 .btn-send-email:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(52, 152, 219, 0.3);
 }
 
-.btn-export-excel {
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
-}
 
 .btn-export-excel:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(39, 174, 96, 0.3);
 }
 
-.btn-export-csv {
-    background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.2);
-}
 
 .btn-export-csv:hover {
     transform: translateY(-2px);
