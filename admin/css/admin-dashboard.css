@@ -3,13 +3,19 @@
    ============================================ */
 
 /* Reset & Base Styles */
-html,
-body {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-
+html,
+body {
+    padding: 0;
+    box-sizing: border-box;
+    margin: auto;
+    background-color: #f5f1e6;
+}
 body {
     font-family: 'Poppins', 'Roboto', sans-serif;
     background: linear-gradient(135deg, #fff9f0 0%, #fef5e6 50%, #f5f1e6 100%);
