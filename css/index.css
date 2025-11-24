@@ -210,7 +210,7 @@ main {
 /* Tạo dấu chấm đỏ giống trong ảnh */
 .section-header h2::before {
     content: "•";
-    color: #d9534f; /* Màu đỏ khuyến mãi */
+    color: #c0392b; /* Màu đỏ khuyến mãi */
     font-size: 30px;
     position: absolute;
     left: 0;
@@ -228,7 +228,7 @@ main {
 }
 
 .section-header .view-all:hover {
-    color: #d9534f;
+    color: #c0392b;
 }
 
 /* --- XỬ LÝ RIÊNG CHO HEADER CÓ TABS (Khối 2) --- */
@@ -268,153 +268,108 @@ main {
     gap: 20px;
 }
 
-/* --- THẺ SẢN PHẨM (Card) --- */
 .product-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #f0f0f0;
-    padding: 16px;
-    text-align: center;
-    position: relative;
-    overflow: hidden; /* Ẩn các phần tử con bị tràn */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(255, 250, 240);
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.4s ease;
+    height: 100%; /* Để các thẻ cao bằng nhau */
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card:hover {
-    transform: translateY(-5px); /* Nhấc card lên khi hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
 }
 
-/* Nhãn giảm giá */
-.discount-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #d9534f;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 600;
-    z-index: 2; /* Nằm trên ảnh */
+/* Link bao trọn thẻ để bấm vào đâu cũng được */
+.product-link {
+    text-decoration: none;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.product-image {
+/* Phần ảnh sản phẩm */
+.product-img {
     position: relative;
+    padding: 10px;
+    width: 100%;
+    aspect-ratio: 1/1; /* Giữ khung ảnh vuông */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Nền trắng cho ảnh nổi bật */
 }
 
-.product-image img {
+.product-img img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    object-fit: contain; /* Đảm bảo ảnh không bị méo */
     transition: transform 0.4s ease;
 }
 
-/* Hiệu ứng zoom ảnh khi hover card */
-.product-card:hover .product-image img {
+/* Hiệu ứng zoom nhẹ khi hover */
+.product-card:hover .product-img img {
     transform: scale(1.05);
 }
 
-/* Nút hành động (giỏ hàng, yêu thích) */
-.action-buttons {
+/* Nhãn giảm giá (thay cho .discount-badge cũ) */
+.sale {
     position: absolute;
-    top: 50%;
-    right: 0;
-    /* Dùng transform để căn giữa tuyệt đối */
-    transform: translate(-50%, -50%); 
-    
+    top: 10px;
+    left: 10px;
+    background-color: #c0392b;
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+/* Phần thông tin bên dưới */
+.product-info {
+    padding: 15px;
+    background-color: rgb(255, 250, 240); /* Màu kem nhạt */
+    flex-grow: 1; /* Đẩy phần này chiếm hết khoảng trống còn lại */
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Khoảng cách giữa các nút tròn */
-    z-index: 3;
-    
-    /* Ẩn đi mặc định */
-    opacity: 0;
-    /* Thêm transition cho mượt */
-    transition: opacity 0.3s ease;
-}
-
-.action-buttons i {
-    background-color: #ffffff;
-    width: 40px;          /* Kích thước vòng tròn */
-    height: 40px;         /* Kích thước vòng tròn */
-    border-radius: 50%; /* Biến thành hình tròn */
-    
-    /* Căn icon (của Font Awesome) vào giữa vòng tròn */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    /* Style cho icon bên trong */
-    color: #333;      /* Màu icon (đen) */
-    font-size: 16px; /* Cỡ icon */
-    
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-/* Hiển thị nút khi hover card */
-.product-card:hover .action-buttons {
-    opacity: 1;
-    transform: translate(-50%, -50%); /* Đảm bảo đúng vị trí */
-}
-
-.action-button {
-    background-color: rgba(255, 255, 255, 0.95);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; /* Nút tròn */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.action-button:hover {
-    background-color: #fff;
-    transform: scale(1.1);
-}
-
-.action-button svg {
-    width: 20px;
-    height: 20px;
-    fill: #333;
+    justify-content: space-between; /* Căn đều tên và giá */
 }
 
 /* Tên sản phẩm */
-.product-name {
+.product-info h3 {
     font-size: 15px;
     font-weight: 500;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
     color: #333;
-    margin: 20px 0 10px 0;
-    /* Ngăn tên quá dài (tùy chọn) */
-    white-space: nowrap;
+    
+    /* Giới hạn tên sản phẩm 2 dòng rồi hiện dấu ... */
+    height: 42px; 
     overflow: hidden;
-    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
-/* Giá sản phẩm */
-.product-price {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    gap: 10px;
-    flex-wrap: wrap; /* Tự xuống hàng nếu giá quá dài */
+/* Giá hiện tại */
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #c0392b;
+    margin-right: 10px;
 }
 
-.sale-price {
-    font-size: 18px;
-    font-weight: 700;
-    color: #d9534f;
-}
-
-.original-price {
+/* Giá gốc (gạch ngang) */
+.compare-price {
     font-size: 14px;
     color: #999;
-    text-decoration: line-through; /* Gạch ngang giá cũ */
+    text-decoration: line-through;
 }
 
 /* --- REPONSIVE (Cho điện thoại) --- */
@@ -510,7 +465,7 @@ main {
     position: absolute;
     top: 15px;
     left: 15px;
-    background-color: #c67a32; /* Màu cam/nâu */
+    background-color: #c0392b; /* Màu cam/nâu */
     color: #ffffff;
     padding: 6px 12px;
     border-radius: 20px; /* Bo tròn (pill shape) */
@@ -535,12 +490,12 @@ main {
 }
 
 .card-content h3 a:hover {
-    color: #c67a32; /* Đổi màu khi hover */
+    color: #c0392b; /* Đổi màu khi hover */
 }
 
 /* Link "Xem thêm" */
 .read-more {
-    color: #b8864a; /* Màu vàng nâu */
+    color: #c0392b;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -552,7 +507,7 @@ main {
 
 .btn-view-all {
     display: inline-block; 
-    background-color: #c67a32; 
+    background-color: #c0392b; 
     color: #ffffff;
     padding: 12px 30px;
     border-radius: 30px; 
