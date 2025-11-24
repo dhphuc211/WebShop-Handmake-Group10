@@ -59,7 +59,7 @@ body{
 .sort-control button{
     height: 30px;
     margin-left: 5px;
-    border: 1px solid #c97a3a;
+    border: 1px solid #c0392b;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -75,14 +75,14 @@ body{
     height: 30px;
     border-radius: 50%;
     background-color: white;
-    border: 1px solid #c97a3a;
+    border: 1px solid #c0392b;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     font-size: 14px;
     cursor: pointer;
 }
 
 .scrolls-btn:hover {
-    background-color: #c97a3a;
+    background-color: #c0392b;
     color: #fff;
 }
 
@@ -128,7 +128,7 @@ body{
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #d9534f;
+    background-color: #c0392b;
     color: white;
     padding: 4px 8px;
     font-size: 14px;
@@ -150,7 +150,7 @@ body{
 .price {
     font-size: 14px;
     font-weight: bold;
-    color: #d9534f;
+    color: #c0392b;
     margin-right: 10px;
 }
 
@@ -189,11 +189,11 @@ body{
 }
 
 .PhanTrang .btn:hover {
-    background-color: #f39c12;
+    background-color: #c0392b;
 }
 
 .PhanTrang .btn.active {
-    background-color: #f39c12;
+    background-color: #c0392b;
     color: white;
-    border-color: #f39c12;
+    border-color: #c0392b;
 }

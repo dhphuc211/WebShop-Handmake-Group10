@@ -1,7 +1,7 @@
 header {
   padding: 0 150px;
   margin: auto;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255);
   display: block;
   height: 70px;    
   z-index: 100;   
@@ -54,7 +54,7 @@ header .menu {
 }
 
 #header .menu .nav-item a.active {
-  color: red;
+  color: #c0392b;
   font-weight: bold; 
 }
 
@@ -69,7 +69,7 @@ header .menu li {
 
 header .nav-item:hover > a,
 header .nav-item:hover > i {
-  color: red;
+  color: #c0392b;
 }
 
 header .nav-item.list-product {
@@ -142,7 +142,7 @@ header .menu-product-item li a {
   cursor: pointer;      
 }
 header .menu-product-item a:hover {
-  color: #c46b1d; 
+  color: #c0392b; 
 }
 
 
@@ -177,7 +177,7 @@ header .others .badge span {
   position: absolute;
   top: -8px;
   right: -10px;
-  background-color: #c46b1d;
+  background-color: #c0392b;
   color: white;
   font-size: 11px;
   font-weight: 600;
@@ -358,6 +358,6 @@ header .others .badge span {
 .search-item-info .product-price {
   font-size: 15px;
   font-weight: 600;
-  color: #c90000; /* Màu đỏ cho giá */
+  color:  #c0392b;
   margin: 0;
 }
