@@ -1,7 +1,7 @@
 header {
   padding: 0 150px;
   margin: auto;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255);
   display: block;
   height: 70px;    
   z-index: 100;   
@@ -54,7 +54,7 @@ header .menu {
 }
 
 #header .menu .nav-item a.active {
-  color: red;
+  color: #c0392b;
   font-weight: bold; 
 }
 
@@ -69,7 +69,7 @@ header .menu li {
 
 header .nav-item:hover > a,
 header .nav-item:hover > i {
-  color: red;
+  color: #c0392b;
 }
 
 header .nav-item.list-product {
@@ -142,7 +142,7 @@ header .menu-product-item li a {
   cursor: pointer;      
 }
 header .menu-product-item a:hover {
-  color: #c46b1d; 
+  color: #c0392b; 
 }
 
 
@@ -177,7 +177,7 @@ header .others .badge span {
   position: absolute;
   top: -8px;
   right: -10px;
-  background-color: #c46b1d;
+  background-color: #c0392b;
   color: white;
   font-size: 11px;
   font-weight: 600;
@@ -358,6 +358,175 @@ header .others .badge span {
 .search-item-info .product-price {
   font-size: 15px;
   font-weight: 600;
-  color: #c90000; /* Màu đỏ cho giá */
+  color:  #c0392b;
   margin: 0;
+}
+
+/* --- Cấu hình chung cho Mobile Menu --- */
+/* Mặc định ẩn nút 3 gạch và lớp phủ trên Desktop */
+.nav-mobile-btn, .nav-overlay {
+    display: none;
+}
+
+/* --- 1. Tablet & Laptop nhỏ (Max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    /* Giảm padding của header */
+    header {
+        padding: 0 40px;
+    }
+    
+    /* Giảm kích thước logo và khoảng cách menu */
+    header .logo {
+        font-size: 26px;
+    }
+    
+    header .menu {
+        gap: 15px;
+        font-size: 14px;
+    }
+}
+
+/* --- 2. Mobile & Tablet dọc (Max-width: 991px) --- */
+@media (max-width: 991px) {
+    /* Hiện nút 3 gạch */
+    .nav-mobile-btn {
+        display: block;
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+        order: -1; /* Đẩy nút menu lên đầu (bên trái logo) */
+        margin-right: 15px; /* Cách logo một chút */
+    }
+
+    /* Ẩn Menu ngang mặc định và chuyển thành dạng ngăn kéo (Drawer) */
+    header .menu {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Giấu sang trái */
+        width: 320px;
+        max-width: 80%;
+        height: 100vh;
+        background-color: #fff;
+        flex-direction: column; /* Xếp dọc */
+        align-items: flex-start;
+        padding: 60px 0 20px 0; /* Padding top để tránh nút đóng */
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        z-index: 999;
+        transition: left 0.3s ease;
+        gap: 0;
+        overflow-y: auto; /* Cho phép cuộn dọc menu */
+    }
+
+    /* Style cho từng mục trong menu mobile */
+    header .menu li {
+        width: 100%;
+        height: auto; /* Bỏ chiều cao cố định */
+        justify-content: space-between; /* Để mũi tên dropdown nằm bên phải */
+        padding: 15px 25px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    header .menu li a {
+        font-size: 16px;
+        display: block;
+        width: 100%;
+    }
+
+    /* Xử lý Dropdown (Mega Menu) trên Mobile */
+    header .dropdown {
+        position: static; /* Không bay lơ lửng nữa */
+        display: none; /* Mặc định ẩn */
+        box-shadow: none;
+        padding: 10px 0 10px 20px; /* Thụt đầu dòng */
+        background-color: #f9f9f9;
+        width: 100%;
+        opacity: 1; /* Reset opacity */
+        visibility: visible;
+        border-radius: 0;
+    }
+
+    /* Hiệu ứng hover trên mobile: Chạm vào là hiện dropdown */
+    header .nav-item.list-product:hover .dropdown {
+        display: block;
+    }
+    
+    /* Chuyển lưới sản phẩm thành 1 cột */
+    header .product-items {
+        grid-template-columns: 1fr; /* 1 cột duy nhất */
+        gap: 20px;
+    }
+    
+    /* Ẩn ảnh trong menu dropdown mobile cho đỡ rối */
+    header .dropdown img {
+        display: none;
+    }
+
+    /* --- Logic đóng/mở Mobile Menu --- */
+    /* Khi checkbox được check -> Menu trượt ra */
+    .nav-input:checked ~ .menu {
+        left: 0;
+    }
+
+    /* Lớp phủ đen mờ (Overlay) */
+    .nav-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.3);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    /* Khi checkbox check -> Hiện overlay */
+    .nav-input:checked ~ .nav-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Xử lý Icon tìm kiếm và Giỏ hàng */
+    header .others {
+        gap: 15px;
+    }
+    
+    header .others .icon {
+        font-size: 20px;
+    }
+}
+
+/* --- 3. Mobile nhỏ (Max-width: 576px) --- */
+@media (max-width: 576px) {
+    header {
+        padding: 0 15px; /* Lề siêu nhỏ cho điện thoại */
+        height: 60px;
+    }
+
+    header .logo {
+        font-size: 20px;
+    }
+    
+    /* Điều chỉnh Search Panel cho mobile nhỏ */
+    #search-panel {
+        width: 100%; /* Full màn hình */
+        max-width: 100%;
+    }
+    
+    /* Form tìm kiếm nhỏ lại chút */
+    .search-form input {
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    .search-result-item {
+        align-items: flex-start;
+    }
+    
+    .search-item-image {
+        width: 50px;
+        height: 50px;
+    }
 }

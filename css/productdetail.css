@@ -64,7 +64,7 @@ a {
 }
 
 .product-gallery .product-imgs a:hover{
-    border: 1px solid #c97a3a;
+    border: 1px solid #c0392b;
 }
 
 .product-detail-info h2 {
@@ -98,7 +98,7 @@ a {
 .product-detail-info .price {
     font-size: 24px;
     font-weight: bold;
-    color: #c97a3a;
+    color: #c0392b;
 }
 
 .product-detail-info .compare-price {
@@ -113,7 +113,7 @@ a {
 }
 
 .product-detail-info .save-amount {
-    color: #d9534f;
+    color: #c0392b;
     font-weight: bold;
 }
 
@@ -134,7 +134,7 @@ a {
     width: 50px;
     height: 37px;
     text-align: center;
-    border: 1px solid #c97a3a;
+    border: 1px solid #c0392b;
     border-radius: 5px;
     font-size: 14px;
 }
@@ -145,15 +145,15 @@ a {
     width: 200px;
     height: 40px;
     background-color: #fff;
-    color: #c97a3a;
-    border: 1px solid #c97a3a;
+    color: #c0392b;
+    border: 1px solid #c0392b;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .product-detail-info .cart button:hover {
-    background-color: #c97a3a;
+    background-color: #c0392b;
     color: #fff;
 }
 
@@ -192,7 +192,7 @@ a {
 
 .product-detail-info .combo .price-box {
     font-size: 14px;
-    color: #d9534f;
+    color: #c0392b;
     font-weight: bold;
     margin-top: 5px;
 }
@@ -214,7 +214,7 @@ a {
 
 .product-detail-info > ul li::before {
     content: '✔';
-    color: #c97a3a;
+    color: #c0392b;
     font-weight: bold;
 }
 
@@ -223,7 +223,7 @@ a {
     border-radius: 5px;
     font-size: 14px;
     font-weight: 500;
-    color: #c97a3a;
+    color: #c0392b;
     text-align: center;
     margin-top: 15px;
 }
@@ -243,7 +243,7 @@ a {
 
 }
 .product-tab > ul li:hover{
-    color: #c97a3a;
+    color: #c0392b;
 }
 .product-content{
     border-bottom: 1px solid #eeeeee;
@@ -262,7 +262,7 @@ a {
     cursor: pointer;
 }
 .product-content .BoTra:hover{
-    color: #c97a3a;
+    color: #c0392b;
 }
 
 .product-grid {
@@ -303,7 +303,7 @@ a {
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #d9534f;
+    background-color: #c0392b;
     color: white;
     padding: 4px 8px;
     font-size: 14px;
@@ -325,7 +325,7 @@ a {
 .price {
     font-size: 14px;
     font-weight: bold;
-    color: #d9534f;
+    color: #c0392b;
     margin-right: 10px;
 }
 
@@ -346,7 +346,7 @@ a {
     cursor: pointer;
 }
 .carousel span:hover{
-    color: #c97a3a;
+    color: #c0392b;
 }
 
 .arrows button{
@@ -356,7 +356,7 @@ a {
     cursor: pointer;
 }
 .arrows button:hover{
-    background-color: #c97a3a;
+    background-color: #c0392b;
 }
 .product-watched{
     margin-bottom: 40px;
