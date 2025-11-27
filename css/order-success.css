@@ -228,21 +228,46 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px; /* Tạo khoảng cách giữa 2 nút */
+    margin-top: 20px;
 }
-
 
 .order-price-bottom a {
-    background-color: #3498db;
     text-decoration: none;
-    color: white;
-    font-size: 17px;
+    font-size: 16px; /* Giảm nhẹ font cho vừa vặn */
     font-weight: 500;
-    padding: 12px 25px;
-    border: none;
+    padding: 12px 15px;
     border-radius: 5px;
     cursor: pointer;
+    flex: 1; /* Quan trọng: Giúp 2 nút chia đều chiều rộng 50-50 */
+    text-align: center; /* Căn giữa chữ trong nút */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    transition: all 0.3s ease;
 }
 
-.order-price-bottom a:hover {
+/* Style cho nút Tiếp tục mua hàng (Màu xanh như cũ) */
+.btn-continue {
+    background-color: #3498db;
+    color: white;
+    border: 1px solid #3498db;
+}
+
+.btn-continue:hover {
     background-color: #2378ea;
+    border-color: #2378ea;
+}
+
+/* Style cho nút Đánh giá (Màu trắng hoặc vàng cam để khác biệt) */
+.btn-review {
+    background-color: #fff;
+    color: #3498db; /* Chữ màu xanh */
+    border: 1px solid #3498db; /* Viền màu xanh */
+    
+}
+
+.btn-review:hover {
+    background-color: #f0f8ff; /* Hover màu xanh rất nhạt */
 }
