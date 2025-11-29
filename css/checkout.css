@@ -4,34 +4,37 @@ body{
     padding: 0;
 }
 
+header .logo {
+    display: flex;      
+    align-items: center; 
+    height: 100%;      
+    padding: 0 15px;     
+    max-width: 300px;    
+}
+header .logo img {
+    height: 70px;        
+    width: auto;         
+    object-fit: contain; 
+    display: block;    
+}
+.checkout-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
 .checkout-layout {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    max-width: 1200px;
-    margin: 0 150px 0 150px;
+    margin: 50px 150px 50px 150px;
     gap: 25px;
     padding: 0;
+    
 }
 
-.header {
-    padding: 10px 0;
-    text-align: center;
-}
 
-.header .logo a {
-    text-decoration: none;
-    font-family: "Poppins", "Segoe UI", sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: #c0392b;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, color 0.3s ease;
-    cursor: pointer;
-}
-
-.container {
+.checkout-layout .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
@@ -47,15 +50,6 @@ body{
     font-size: 20px;
     font-weight: 600;
     margin: 0;
-}
-.login-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: #3498db;
-    font-size: 16px;
-    font-weight: 500;
 }
 
 .form-group {
@@ -139,13 +133,13 @@ body{
     cursor: pointer;
 }
 .shipping-price{
-    color: #c97a3a;
+    color: #c0392b;
 }
 
 .payment-option input[type="radio"] {
     width: 18px;
     height: 18px;
-    accent-color: #3498db;
+    accent-color: #c0392b;
 }
 
 .payment-option span {
@@ -156,7 +150,7 @@ body{
 
 .payment-option i {
     font-size: 20px;
-    color: #3498db;
+    color: #c0392b;
 }
 
 .payment-info {
@@ -229,7 +223,7 @@ body{
     position: absolute;
     top: -8px;
     right: -8px;
-    background-color: #3498db;
+    background-color: #c0392b;
     color: white;
     width: 20px;
     height: 20px;
@@ -248,7 +242,7 @@ body{
 .price-total span {
     font-size: 16px;
     font-weight: 500;
-    color: #c97a3a;
+    color: #c0392b;
 
 }
 
@@ -260,29 +254,6 @@ body{
     gap: 15px;
 }
 
-.order-code input {
-    flex-grow: 1;
-    padding: 15px;
-    border: 2px solid #eeeeee;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.order-code button {
-    padding: 10px 15px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.order-code button:hover {
-    background-color: #2378ea;
-}
-
 .order-total {
     margin-top: 15px;
     border-top: 1px solid #eeeeee;
@@ -290,7 +261,7 @@ body{
 }
 
 .price{
-    color: #c97a3a;
+    color: #c0392b;
 }
 
 .order-total-top, .order-total-bottom {
@@ -331,12 +302,13 @@ body{
     gap: 8px;
 }
 a.back-to-cart {
-    color: #3498db;
+    color: #c0392b;
     text-decoration: none;
+    font-weight: 600;
 }
 
 .order-price-bottom button {
-    background-color: #3498db;
+    background-color: #c0392b;
     color: white;
     font-size: 17px;
     font-weight: 500;
@@ -344,8 +316,4 @@ a.back-to-cart {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.order-price-bottom button:hover {
-    background-color: #2378ea;
 }

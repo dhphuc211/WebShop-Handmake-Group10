@@ -17,7 +17,7 @@ body {
     position: absolute;
     top: -8px;
     right: -8px;
-    background: #d84315;
+    background: #c0392b;
     color: white;
     border-radius: 50%;
     width: 18px;
@@ -47,7 +47,7 @@ body {
 
 .contact-info h2 {
     font-size: 24px;
-    color: #d84315;
+    color: #c0392b;
     margin-bottom: 20px;
 }
 
@@ -63,7 +63,7 @@ body {
 .info-icon {
     width: 40px;
     height: 40px;
-    background: #d84315;
+    background: #c0392b;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -127,7 +127,7 @@ body {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #d84315;
+    border-color: #c0392b;
 }
 
 .form-group textarea {
@@ -136,7 +136,7 @@ body {
 }
 
 .submit-btn {
-    background: #d84315;
+    background: #c0392b;
     color: white;
     padding: 12px 40px;
     border: none;
