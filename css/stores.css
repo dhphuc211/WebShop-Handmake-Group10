@@ -1,14 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-body {
-    margin: auto;
-    background-color: #f5f1e6;
-}
-.container {
+ .container {
      display: flex;
      height: fit-content;
  }
@@ -16,7 +6,7 @@ body {
  /* Sidebar */
  .sidebar {
      width: 380px;
-     background: white;
+     background: #f5f1e6;
      overflow-y: auto;
      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
  }
@@ -25,8 +15,8 @@ body {
      position: sticky;
      top: 0;
      padding: 20px;
-     background: #f9f9f9;
-     border-bottom: 1px solid #e0e0e0;
+     background: #f5f1e6;
+     border-bottom: 1px solid #f5f1e6;
      z-index: 100;
  }
 
@@ -38,8 +28,9 @@ body {
 
  .search-input {
      flex: 1;
+     background: #f5f1e6;
      padding: 14px 20px;
-     border: 2px solid #daa520;
+     border: 2px solid #c0392b;
      border-radius: 8px;
      font-size: 15px;
      outline: none;
@@ -47,7 +38,7 @@ body {
  }
 
  .search-input:focus {
-     border-color: #ff8c00;
+     border-color: #c0392b;
  }
 
  .search-input::placeholder {
@@ -61,8 +52,8 @@ body {
      border: none;
      border-radius: 8px;
      font-size: 15px;
-     background: #ff8c00;
-     color: white;
+     background: #c0392b;
+     color: #f5f1e6;
      cursor: pointer;
      font-weight: 500;
      appearance: none;
@@ -73,11 +64,11 @@ body {
  }
 
  .filter-dropdown:hover {
-     background: #e67e00;
+     background: #c0392b;
  }
 
  .filter-dropdown option {
-     background: white;
+     background: #f5f1e6;
      color: #333;
  }
 
@@ -87,7 +78,8 @@ body {
      border: 2px solid #ddd;
      border-radius: 8px;
      font-size: 15px;
-     background: white;
+     background: #f5f1e6;
+     border-color: #c0392b;
      cursor: pointer;
      appearance: none;
      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
@@ -97,17 +89,45 @@ body {
  }
 
  .district-dropdown:hover {
-     border-color: #ff8c00;
+     border-color: #c0392b;
  }
 
  /* Store List */
  .store-list {
      padding: 15px;
+     overflow-y: auto;
+     max-height: 100vh;
+ }
+
+ /* Custom Scrollbar for Store List */
+ .store-list::-webkit-scrollbar {
+     width: 6px;
+ }
+
+ .store-list::-webkit-scrollbar-track {
+     background: #f0f0f0;
+     border-radius: 10px;
+ }
+
+ .store-list::-webkit-scrollbar-thumb {
+     background: #c0392b;
+     border-radius: 10px;
+     transition: background 300ms ease;
+ }
+
+ .store-list::-webkit-scrollbar-thumb:hover {
+     background: #c0392b;
+ }
+
+ /* Firefox scrollbar */
+ .store-list {
+     scrollbar-width: thin;
+     scrollbar-color: #c0392b #f5f1e6;
  }
 
  .store-card {
-     background: white;
-     border: 2px solid #ff8c00;
+     background: #f5f1e6;
+     border: 2px solid #c0392b;
      border-radius: 10px;
      padding: 18px;
      margin-bottom: 15px;
@@ -121,8 +141,8 @@ body {
  }
 
  .store-card.active {
-     background: #ff8c00;
-     color: white;
+     background: #c0392b;
+     color: #f5f1e6;
  }
 
  .store-card.active .store-header,
@@ -132,7 +152,7 @@ body {
  }
 
  .store-header {
-     color: #ff8c00;
+     color: #c0392b;
      font-weight: bold;
      font-size: 16px;
      margin-bottom: 10px;
@@ -156,7 +176,7 @@ body {
  }
 
  .store-hotline span {
-     color: #ff8c00;
+     color: #c0392b;
      font-weight: bold;
  }
 
@@ -169,6 +189,7 @@ body {
      flex: 1;
      position: relative;
      background: #e5e3df;
+     min-height: 100vh;
  }
 
  #map {
@@ -183,64 +204,6 @@ body {
      border: none;
  }
 
- /* Floating Buttons */
- .float-buttons {
-     position: absolute;
-     bottom: 30px;
-     right: 30px;
-     display: flex;
-     flex-direction: column;
-     gap: 10px;
- }
-
- .float-btn {
-     width: 50px;
-     height: 50px;
-     border-radius: 50%;
-     border: none;
-     cursor: pointer;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     font-size: 20px;
-     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-     transition: all 0.3s;
- }
-
- .float-btn:hover {
-     transform: scale(1.1);
- }
-
- .btn-top {
-     background: #ff8c00;
-     color: white;
- }
-
- .btn-location {
-     background: #ff8c00;
-     color: white;
- }
-
- .btn-messenger {
-     background: #0084ff;
-     color: white;
- }
-
- /* Play Button */
- .play-btn {
-     position: absolute;
-     bottom: 30px;
-     left: 30px;
-     width: 50px;
-     height: 50px;
-     border-radius: 50%;
-     background: #ff8c00;
-     color: white;
-     border: none;
-     cursor: pointer;
-     font-size: 20px;
-     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
- }
 
  /* Responsive */
  @media (max-width: 768px) {

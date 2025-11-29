@@ -12,7 +12,7 @@ header .logo {
     max-width: 300px;    
 }
 header .logo img {
-    height: 70px;        
+    height: 150px;        
     width: auto;         
     object-fit: contain; 
     display: block;    

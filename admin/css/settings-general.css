@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    SETTINGS GENERAL - ADMIN PANEL
    ============================================ */
 
@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     gap: 20px;
 }
 
@@ -17,7 +17,7 @@
 
 .page-header-settings h1 {
     font-size: 32px;
-    color: #4e342e;
+    color: var(--admin-text-main);
     margin-bottom: 8px;
     font-weight: 700;
     display: flex;
@@ -26,13 +26,13 @@
 }
 
 .page-header-settings h1 i {
-    color: #c0392b;
+    color: var(--admin-accent);
     font-size: 28px;
 }
 
 .page-header-settings p {
     font-size: 15px;
-    color: #777;
+    color: var(--admin-text-muted);
 }
 
 .header-actions .btn-save {
@@ -46,14 +46,14 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
+    background: var(--admin-accent);
     color: white;
-    box-shadow: 0 4px 15px rgba(192, 57, 43, 0.2);
+    box-shadow: 0 4px 15px var(--admin-accent-soft);
 }
 
 .header-actions .btn-save:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.35);
+
+    box-shadow: var(--admin-shadow-md);
 }
 
 /* ============================================
@@ -71,7 +71,7 @@
 .settings-section {
     background: white;
     border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(78, 52, 46, 0.08);
+    box-shadow: var(--admin-shadow-sm);
     overflow: hidden;
     transition: all 0.3s ease;
 }
@@ -82,13 +82,13 @@
 
 .section-header {
     padding: 24px 30px;
-    border-bottom: 2px solid #f5f1e6;
-    background: linear-gradient(135deg, rgba(192, 57, 43, 0.03) 0%, rgba(201, 122, 58, 0.03) 100%);
+    border-bottom: 2px solid var(--admin-border-subtle);
+    background: var(--admin-accent-soft);
 }
 
 .section-header h2 {
     font-size: 20px;
-    color: #4e342e;
+    color: var(--admin-text-main);
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -97,13 +97,13 @@
 }
 
 .section-header h2 i {
-    color: #c0392b;
+    color: var(--admin-accent);
     font-size: 20px;
 }
 
 .section-header p {
     font-size: 14px;
-    color: #888;
+    color: var(--admin-text-muted);
     margin: 0;
 }
 
@@ -126,17 +126,17 @@
     display: block;
     font-size: 14px;
     font-weight: 600;
-    color: #4e342e;
+    color: var(--admin-text-main);
     margin-bottom: 10px;
 }
 
 .form-group label i {
     margin-right: 6px;
-    color: #c0392b;
+    color: var(--admin-accent);
 }
 
 .form-group .required {
-    color: #c0392b;
+    color: var(--admin-accent);
     margin-left: 4px;
 }
 
@@ -148,11 +148,11 @@
     width: 100%;
     padding: 12px 16px;
     font-size: 14px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--admin-border-subtle);
     border-radius: 10px;
     transition: all 0.3s ease;
     font-family: inherit;
-    background: #fafafa;
+    background: var(--admin-surface-alt);
 }
 
 .form-group input[type="text"]:focus,
@@ -161,9 +161,9 @@
 .form-group input[type="url"]:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #c0392b;
+    border-color: var(--admin-accent);
     background: white;
-    box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.1);
+    box-shadow: 0 0 0 4px var(--admin-accent-soft);
 }
 
 .form-group textarea {
@@ -174,23 +174,23 @@
 .form-group input[type="file"] {
     padding: 10px 14px;
     font-size: 14px;
-    border: 2px dashed #e5e7eb;
+    border: 2px dashed var(--admin-border-subtle);
     border-radius: 10px;
-    background: #fafafa;
+    background: var(--admin-surface-alt);
     width: 100%;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .form-group input[type="file"]:hover {
-    border-color: #c0392b;
+    border-color: var(--admin-accent);
     background: white;
 }
 
 .form-hint {
     display: block;
     font-size: 12px;
-    color: #999;
+    color: var(--admin-text-soft);
     margin-top: 8px;
     line-height: 1.4;
 }
@@ -213,7 +213,7 @@
 .form-actions {
     background: white;
     border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(78, 52, 46, 0.08);
+    box-shadow: var(--admin-shadow-sm);
     padding: 25px 30px;
     display: flex;
     gap: 15px;
@@ -236,26 +236,26 @@
 }
 
 .btn-save-primary {
-    background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
+    background: var(--admin-accent);
     color: white;
-    box-shadow: 0 4px 15px rgba(192, 57, 43, 0.2);
+    box-shadow: 0 4px 15px var(--admin-accent-soft);
 }
 
 .btn-save-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.35);
+
+    box-shadow: var(--admin-shadow-md);
 }
 
 .btn-reset {
     background: white;
-    color: #555;
-    border: 2px solid #e5e7eb;
+    color: var(--admin-text-main);
+    border: 2px solid var(--admin-border-subtle);
 }
 
 .btn-reset:hover {
-    background: #fafafa;
-    border-color: #999;
-    color: #333;
+    background: var(--admin-surface-alt);
+    border-color: var(--admin-text-soft);
+    color: var(--admin-text-main);
 }
 
 /* ============================================

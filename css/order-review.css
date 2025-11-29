@@ -30,6 +30,18 @@ body {
   margin-top: 30px;
 }
 
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    height: 150px;
+    width: auto;
+    object-fit: contain;
+}
+
 .product-section {
   border-right: 2px solid #e5e7eb;
   padding-right: 40px;
@@ -91,14 +103,14 @@ body {
 
 /* Nút đánh giá - Màu vàng */
 .review-btn {
-  background: #c09b5b;
+  background: #c0392b;
   color: white;
 }
 
 .review-btn:hover {
-  background: #9e7227;
+  background: #c0392b;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+  box-shadow: 0 4px 12px #c0392b;
 }
 
 .product-item:hover {
@@ -142,7 +154,7 @@ body {
 .product-price {
   font-size: 16px;
   font-weight: 700;
-  color: #9e7227;
+  color: #c0392b;
 }
 
 @keyframes fadeIn {
@@ -172,10 +184,10 @@ body {
   justify-content: center;
   margin: 0 auto 20px;
   font-size: 40px;
-  box-shadow: 0 8px 20px rgba(251, 191, 36, 0.4);
+  box-shadow: 0 8px 20px #c0392b;
 }
 h1 {
-  color: #c09b5b;
+  color: #c0392b;
   font-size: 28px;
   margin-bottom: 10px;
 }
@@ -190,7 +202,7 @@ h1 {
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 30px;
-  border-left: 4px solid #fbbf24;
+  border-left: 4px solid #c0392b;
 }
 
 .order-info h3 {
@@ -250,7 +262,7 @@ h1 {
   top: 0;
   left: 0;
   overflow: hidden;
-  color: #fbbf24;
+  color: #c0392b;
   transition: width 0.3s ease;
 }
 
@@ -263,7 +275,7 @@ h1 {
 }
 
 .star-rating:hover span {
-  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+  filter: drop-shadow(0 0 8px #c0392b);
 }
 
 .rating-text {
@@ -300,7 +312,7 @@ h1 {
 
 .review-textarea:focus {
   outline: none;
-  border-color: #fbbf24;
+  border-color: #c0392b;
   box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
 }
 
@@ -333,7 +345,7 @@ h1 {
 }
 
 .upload-area:hover {
-  border-color: #fbbf24;
+  border-color: #c0392b;
   background: #fffbeb;
 }
 
@@ -400,7 +412,7 @@ h1 {
 .submit-btn {
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background: #c0392b;
   color: white;
   border: none;
   border-radius: 12px;
@@ -408,7 +420,6 @@ h1 {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
   text-decoration: none;
   display:flex;
   align-items: center;
