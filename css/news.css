@@ -39,6 +39,11 @@ img {
     height: auto;
     display: block;
 }
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
 .news-layout {
     display: grid;
@@ -106,6 +111,32 @@ img {
 
 .read-more:hover {
     text-decoration: underline;
+}
+.filter-tabs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Cho tabs tự xuống hàng trên mobile */
+    gap: 10px;
+}
+
+.filter-tabs li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 20px; /* Bo tròn */
+    transition: all 0.3s ease;
+}
+
+.filter-tabs li a:hover {
+    background-color: #eee;
+}
+
+.filter-tabs li a.active {
+    background-color: #333;
+    color: white;
 }
 
 .sidebar {
