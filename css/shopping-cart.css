@@ -9,10 +9,12 @@ body{
     margin: 0 100px 0 100px;
 }
 
+.cart-body {
+    padding: 0 10px 0 10px;
+}
 
 .cart-page .container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    display: block;
     margin: 30px 150px 30px 150px;
     gap: 30px;
 }
@@ -30,6 +32,7 @@ body{
 
 .cart-left{
     border: 2px solid #eeeeee;
+    border-radius: 5px;
 }
 
 .cart-row {
@@ -56,11 +59,12 @@ body{
 .cart-info {
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 .cart-item-name {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     color: #333333;
     text-decoration: none;
 }
@@ -87,17 +91,16 @@ body{
 .price span {
     font-size: 14px;
     font-weight: 500;
-    color: #c97a3a;
+    color: #c0392b;
 }
 
 .cart-items-quantity{
     border: 1px solid #333333;
-    border-radius: 3px;
+    width: fit-content;
 }
 
 .cart-items-quantity .quantity {
     display: flex;
-    border-radius: 5px;
     width: 120px;
 }
 
@@ -125,7 +128,7 @@ body{
 .price-total span {
     font-size: 15px;
     font-weight: 500;
-    color: #c97a3a;
+    color: #c0392b;
 }
 
 .cart-footer {
@@ -150,11 +153,12 @@ body{
 
 .total-price span:first-child {
     color: #333333;
+    font-weight: 600;
     margin-right: 15px;
 }
 
 .total-price span:last-child {
-    color: #c97a3a;
+    color: #c0392b;
 }
 
 .btn-checkout {
@@ -165,7 +169,7 @@ body{
     padding: 15px;
     font-size: 15px;
     font-weight: bold;
-    background-color: #000000;
+    background-color: #c0392b;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -177,65 +181,4 @@ body{
 
 .total-btn button:hover {
     background: #c97a3a;
-}
-
-.cart-right h3 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
-.time {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.time select {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-}
-
-.r-bill {
-    margin-top: 30px;
-}
-
-.r-bill label {
-    font-size: 16px;
-    font-weight: 400;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 14px;
-}
-
-.form-group label {
-    font-size: 14px;
-    font-weight: 450;
-    margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.form-group textarea {
-    resize: vertical; /* Chỉ cho phép kéo dọc */
-}
-
-.form-group ::placeholder {
-    color: #aaaaaa;
 }

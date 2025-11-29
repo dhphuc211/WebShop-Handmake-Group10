@@ -28,20 +28,17 @@ header .container {
 }
 
 header .logo {
-  font-family: "Poppins", "Segoe UI", sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: #c0392b;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, color 0.3s ease;
-  cursor: pointer;
+    display: flex;      
+    align-items: center; 
+    height: 100%;      
+    padding: 0 15px;     
+    max-width: 300px;    
 }
-
-header .logo:hover {
-  color: #ff6b4a;
-  transform: scale(1.05);
+header .logo img {
+    height: 70px;        
+    width: auto;         
+    object-fit: contain; 
+    display: block;    
 }
 
 header .menu {
@@ -88,7 +85,7 @@ header .dropdown {
   color: black;
   justify-content: space-between;
   padding: 12px 40px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 3px 3px 3px 3px rgba(128, 114, 114, 0.5);
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   z-index: 10; 
@@ -366,6 +363,42 @@ header .others .badge span {
 /* Mặc định ẩn nút 3 gạch và lớp phủ trên Desktop */
 .nav-mobile-btn, .nav-overlay {
     display: none;
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;             /* Ẩn menu */
+  position: absolute;        /* Định vị tuyệt đối theo div cha */
+  right: -10px;                  /* Canh lề phải thẳng với icon */
+  background-color: #fff;    /* Màu nền */
+  min-width: 150px;          /* Chiều rộng tối thiểu */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Đổ bóng cho đẹp */
+  z-index: 10;                /* Đảm bảo nó nổi lên trên các thành phần khác */
+  border-radius: 5px;        /* Bo tròn góc */
+  overflow: hidden;
+}
+
+/* Style cho các link bên trong menu */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: sans-serif;   /* Hoặc font chữ của web bạn */
+}
+
+/* Hiệu ứng khi rê chuột vào từng mục con */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* 3. QUAN TRỌNG: Hiện menu khi rê chuột vào icon */
+.user-dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /* --- 1. Tablet & Laptop nhỏ (Max-width: 1024px) --- */
