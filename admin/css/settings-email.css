@@ -1,11 +1,11 @@
-/* ============================================
+﻿/* ============================================
    SETTINGS EMAIL - ADMIN PANEL
    ============================================ */
 
 /* Email Template Card */
 .email-template-card {
     background: white;
-    border: 2px solid #f5f1e6;
+    border: 2px solid var(--admin-border-subtle);
     border-radius: 12px;
     margin-bottom: 20px;
     transition: all 0.3s ease;
@@ -13,8 +13,8 @@
 }
 
 .email-template-card:hover {
-    border-color: #c0392b;
-    box-shadow: 0 4px 15px rgba(192, 57, 43, 0.1);
+    border-color: var(--admin-accent);
+    box-shadow: 0 4px 15px var(--admin-accent-soft);
 }
 
 .email-template-card:last-child {
@@ -27,8 +27,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 25px;
-    background: linear-gradient(135deg, rgba(192, 57, 43, 0.03) 0%, rgba(201, 122, 58, 0.03) 100%);
-    border-bottom: 2px solid #f5f1e6;
+    background: var(--admin-accent-soft);
+    border-bottom: 2px solid var(--admin-border-subtle);
 }
 
 .template-info {
@@ -38,7 +38,7 @@
 .template-info h3 {
     font-size: 16px;
     font-weight: 600;
-    color: #4e342e;
+    color: var(--admin-text-main);
     margin-bottom: 5px;
     display: flex;
     align-items: center;
@@ -46,13 +46,13 @@
 }
 
 .template-info h3 i {
-    color: #c0392b;
+    color: var(--admin-accent);
     font-size: 18px;
 }
 
 .template-info p {
     font-size: 13px;
-    color: #777;
+    color: var(--admin-text-muted);
     margin: 0;
 }
 
@@ -70,11 +70,11 @@
 }
 
 /* Select Dropdown */
-select{
+select {
     width: 100%;
     padding: 12px 16px;
     font-size: 14px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--admin-border-subtle);
     border-radius: 10px;
     font-family: inherit;
     cursor: pointer;
@@ -85,28 +85,31 @@ select{
     background-position: right 16px center;
 }
 
-#smtp-port, #mailchimp-api-key, #smtp-password,#sendgrid-api-key{
+#smtp-port,
+#mailchimp-api-key,
+#smtp-password,
+#sendgrid-api-key {
     width: 100%;
     padding: 12px 16px;
     border-radius: 10px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--admin-border-subtle);
 }
 
 select:focus {
     outline: none;
-    border-color: #c0392b;
+    border-color: var(--admin-accent);
     background: white;
-    box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.1);
+    box-shadow: 0 0 0 4px var(--admin-accent-soft);
 }
 
 select:hover {
-    border-color: #c0392b;
+    border-color: var(--admin-accent);
 }
 
 /* Test Email Button */
 .btn-test-email {
     padding: 12px 24px;
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    background: var(--admin-accent);
     color: white;
     border: none;
     border-radius: 10px;
@@ -117,12 +120,12 @@ select:hover {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .btn-test-email:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(52, 152, 219, 0.35);
+
+    box-shadow: var(--admin-shadow-md);
 }
 
 .btn-test-email i {
@@ -134,7 +137,7 @@ select:hover {
     display: block;
     margin-top: 8px;
     font-size: 12px;
-    color: #999;
+    color: var(--admin-text-soft);
 }
 
 /* Textarea for email body */
@@ -146,11 +149,11 @@ select:hover {
 
 /* Email Template Card - Active State */
 .email-template-card.active {
-    border-color: #27ae60;
+    border-color: var(--admin-success);
 }
 
 .email-template-card.active .template-header {
-    background: linear-gradient(135deg, rgba(39, 174, 96, 0.05) 0%, rgba(46, 204, 113, 0.05) 100%);
+    background: var(--admin-success-soft);
 }
 
 /* Marketing Service Icons */
@@ -194,8 +197,8 @@ select:hover {
 .email-preview-badge {
     display: inline-block;
     padding: 4px 12px;
-    background: rgba(52, 152, 219, 0.1);
-    color: #3498db;
+    background: var(--admin-info-soft);
+    color: var(--admin-info);
     border-radius: 6px;
     font-size: 12px;
     font-weight: 600;
@@ -204,8 +207,8 @@ select:hover {
 
 /* Variable tag styling in hints */
 .form-hint code {
-    background: rgba(192, 57, 43, 0.1);
-    color: #c0392b;
+    background: var(--admin-accent-soft);
+    color: var(--admin-accent);
     padding: 2px 6px;
     border-radius: 4px;
     font-family: 'Courier New', monospace;

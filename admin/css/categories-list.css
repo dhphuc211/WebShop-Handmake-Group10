@@ -1,27 +1,14 @@
 /* ============================================
-   CATEGORIES LIST - ADMIN PANEL
+   CATEGORIES LIST - ADMIN PANEL  
    ============================================ */
 
-/* Page Header */
-.page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    gap: 20px;
-}
-
-.header-right {
-    display: flex;
-    gap: 12px;
-}
+/* Page Header styles are now in admin-dashboard.css */
 
 .btn-add-category {
-    padding: 12px 20px;
-    background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
+    padding: 10px 18px;
+    background: var(--admin-accent);
     color: white;
-    border: none;
-    border-radius: 12px;
+    border-radius: var(--admin-radius-sm);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -30,19 +17,19 @@
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.2);
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .btn-add-category:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(192, 57, 43, 0.3);
+    background: #1D4ED8;
+    box-shadow: var(--admin-shadow-md);
 }
 
 /* ============================================
    CATEGORY FORM SECTION
    ============================================ */
 .category-form-section {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
     display: none;
 }
 
@@ -51,16 +38,17 @@
 }
 
 .form-card {
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(78, 52, 46, 0.08);
+    background: var(--admin-surface);
+    border-radius: var(--admin-radius-md);
+    box-shadow: var(--admin-shadow-sm);
+    border: 1px solid var(--admin-border-subtle);
     overflow: hidden;
 }
 
 .form-header {
-    padding: 20px 25px;
-    background: linear-gradient(135deg, rgba(192, 57, 43, 0.05) 0%, rgba(201, 122, 58, 0.05) 100%);
-    border-bottom: 2px solid #f5f1e6;
+    padding: 18px 22px;
+    background: var(--admin-surface-alt);
+    border-bottom: 1px solid var(--admin-border-subtle);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,7 +56,7 @@
 
 .form-header h3 {
     font-size: 18px;
-    color: #4e342e;
+    color: var(--admin-text-main);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -77,35 +65,35 @@
 }
 
 .form-header h3 i {
-    color: #c0392b;
+    color: var(--admin-accent);
     font-size: 20px;
 }
 
 .btn-close-form {
     width: 32px;
     height: 32px;
-    border-radius: 8px;
+    border-radius: var(--admin-radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f5f1e6;
-    color: #4e342e;
+    background: var(--admin-surface-alt);
+    color: var(--admin-text-main);
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .btn-close-form:hover {
-    background: #c0392b;
+    background: var(--admin-danger);
     color: white;
 }
 
 .category-form {
-    padding: 25px;
+    padding: 22px;
 }
 
 /* Form Sections */
 .form-section {
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
 .form-section:last-child {
@@ -114,18 +102,18 @@
 
 .section-title {
     font-size: 16px;
-    font-weight: 700;
-    color: #4e342e;
-    margin: 0 0 20px 0;
-    padding-bottom: 12px;
-    border-bottom: 2px solid #f5f1e6;
+    font-weight: 600;
+    color: var(--admin-text-main);
+    margin: 0 0 18px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--admin-border-subtle);
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 .section-title i {
-    color: #c0392b;
+    color: var(--admin-accent);
     font-size: 18px;
 }
 
@@ -133,13 +121,13 @@
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 16px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .form-group.full-width {
@@ -147,13 +135,13 @@
 }
 
 .form-group label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #4e342e;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--admin-text-main);
 }
 
 .required {
-    color: #c0392b;
+    color: var(--admin-danger);
 }
 
 .form-group input[type="text"],
@@ -161,13 +149,13 @@
 .form-group input[type="file"],
 .form-group select,
 .form-group textarea {
-    padding: 12px 16px;
-    border: 2px solid #e5e7eb;
-    border-radius: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--admin-border-subtle);
+    border-radius: var(--admin-radius-sm);
     font-size: 14px;
     font-family: inherit;
-    color: #555;
-    background: #fafafa;
+    color: var(--admin-text-main);
+    background: var(--admin-surface);
     transition: all 0.3s ease;
 }
 
@@ -176,9 +164,8 @@
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #c0392b;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 1px var(--admin-accent-soft);
 }
 
 .form-group textarea {
@@ -188,7 +175,7 @@
 
 .form-hint {
     font-size: 12px;
-    color: #777;
+    color: var(--admin-text-muted);
     font-style: italic;
 }
 
@@ -196,16 +183,16 @@
 .form-actions {
     display: flex;
     gap: 12px;
-    padding-top: 20px;
-    border-top: 2px solid #f5f1e6;
+    padding-top: 18px;
+    border-top: 1px solid var(--admin-border-subtle);
 }
 
 .btn-submit,
 .btn-reset,
 .btn-cancel {
-    padding: 12px 24px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--admin-radius-sm);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -217,55 +204,56 @@
 }
 
 .btn-submit {
-    background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
+    background: var(--admin-accent);
     color: white;
-    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.2);
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(192, 57, 43, 0.3);
+    background: #1D4ED8;
+    box-shadow: var(--admin-shadow-md);
 }
 
 .btn-reset {
-    background: #f5f1e6;
-    color: #4e342e;
+    background: var(--admin-surface-alt);
+    color: var(--admin-text-main);
 }
 
 .btn-reset:hover {
-    background: #ede7d9;
+    background: var(--admin-border-subtle);
 }
 
 .btn-cancel {
     background: transparent;
-    color: #777;
-    border: 2px solid #e5e7eb;
+    color: var(--admin-text-muted);
+    border: 1px solid var(--admin-border-subtle);
 }
 
 .btn-cancel:hover {
-    background: #fafafa;
-    border-color: #c0392b;
-    color: #c0392b;
+    background: var(--admin-surface-alt);
+    border-color: var(--admin-accent);
+    color: var(--admin-accent);
 }
 
 /* ============================================
    CATEGORIES TREE SECTION
    ============================================ */
 .categories-tree-section {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
 
 .tree-card {
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(78, 52, 46, 0.08);
+    background: var(--admin-surface);
+    border-radius: var(--admin-radius-md);
+    box-shadow: var(--admin-shadow-sm);
+    border: 1px solid var(--admin-border-subtle);
     overflow: hidden;
 }
 
 .tree-header {
-    padding: 20px 25px;
-    background: linear-gradient(135deg, rgba(192, 57, 43, 0.05) 0%, rgba(201, 122, 58, 0.05) 100%);
-    border-bottom: 2px solid #f5f1e6;
+    padding: 18px 22px;
+    background: var(--admin-surface-alt);
+    border-bottom: 1px solid var(--admin-border-subtle);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -273,7 +261,7 @@
 
 .tree-header h3 {
     font-size: 18px;
-    color: #4e342e;
+    color: var(--admin-text-main);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -282,7 +270,7 @@
 }
 
 .tree-header h3 i {
-    color: #c0392b;
+    color: var(--admin-accent);
     font-size: 20px;
 }
 
@@ -293,11 +281,11 @@
 
 .btn-expand-all,
 .btn-collapse-all {
-    padding: 8px 16px;
-    border: 2px solid #e5e7eb;
-    background: white;
-    color: #4e342e;
-    border-radius: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--admin-border-subtle);
+    background: var(--admin-surface);
+    color: var(--admin-text-main);
+    border-radius: var(--admin-radius-sm);
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
@@ -309,13 +297,13 @@
 
 .btn-expand-all:hover,
 .btn-collapse-all:hover {
-    background: #c0392b;
+    background: var(--admin-accent);
     color: white;
-    border-color: #c0392b;
+    border-color: var(--admin-accent);
 }
 
 .tree-body {
-    padding: 25px;
+    padding: 22px;
 }
 
 /* ============================================
@@ -338,19 +326,19 @@
 }
 
 /* Indentation for tree levels */
-.category-item.level-1 > .category-row {
+.category-item.level-1>.category-row {
     padding-left: 0;
 }
 
-.category-item.level-2 > .category-row {
+.category-item.level-2>.category-row {
     padding-left: 40px;
 }
 
-.category-item.level-3 > .category-row {
+.category-item.level-3>.category-row {
     padding-left: 80px;
 }
 
-.category-item.level-4 > .category-row {
+.category-item.level-4>.category-row {
     padding-left: 120px;
 }
 
@@ -358,18 +346,18 @@
 .category-row {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 15px 18px;
-    background: #fafafa;
-    border-radius: 12px;
-    border: 2px solid #f5f1e6;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--admin-surface-alt);
+    border-radius: var(--admin-radius-md);
+    border: 1px solid var(--admin-border-subtle);
     transition: all 0.3s ease;
 }
 
 .category-row:hover {
-    background: white;
-    border-color: rgba(192, 57, 43, 0.2);
-    box-shadow: 0 4px 15px rgba(78, 52, 46, 0.05);
+    background: var(--admin-surface);
+    border-color: var(--admin-accent);
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .category-info {
@@ -383,10 +371,10 @@
 .toggle-btn {
     width: 28px;
     height: 28px;
-    border-radius: 6px;
-    background: white;
-    border: 2px solid #e5e7eb;
-    color: #4e342e;
+    border-radius: var(--admin-radius-sm);
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border-subtle);
+    color: var(--admin-text-main);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -397,17 +385,17 @@
 }
 
 .toggle-btn:hover {
-    background: #c0392b;
+    background: var(--admin-accent);
     color: white;
-    border-color: #c0392b;
+    border-color: var(--admin-accent);
 }
 
 .category-icon {
     width: 36px;
     height: 36px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, rgba(192, 57, 43, 0.1) 0%, rgba(201, 122, 58, 0.1) 100%);
-    color: #c0392b;
+    border-radius: var(--admin-radius-sm);
+    background: var(--admin-accent-soft);
+    color: var(--admin-accent);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -425,7 +413,7 @@
 
 .category-details h4 {
     font-size: 15px;
-    color: #4e342e;
+    color: var(--admin-text-main);
     font-weight: 600;
     margin: 0;
     white-space: nowrap;
@@ -435,7 +423,7 @@
 
 .category-slug {
     font-size: 12px;
-    color: #777;
+    color: var(--admin-text-muted);
     font-family: monospace;
 }
 
@@ -452,32 +440,34 @@
     align-items: center;
     gap: 6px;
     font-size: 13px;
-    color: #555;
+    color: var(--admin-text-main);
     font-weight: 600;
 }
 
 .product-count i {
-    color: #c0392b;
+    color: var(--admin-accent);
 }
 
 /* Status Badges */
 .status-badge {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 999px;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
     white-space: nowrap;
 }
 
 .status-badge.visible {
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
-    color: white;
+    background: var(--admin-success-soft);
+    color: var(--admin-success);
 }
 
 .status-badge.hidden {
-    background: linear-gradient(135deg, #95a5a6 0%, #bdc3c7 100%);
-    color: white;
+    background: var(--admin-surface-alt);
+    color: var(--admin-text-soft);
 }
 
 /* Category Actions */
@@ -491,7 +481,7 @@
 .category-actions a {
     width: 32px;
     height: 32px;
-    border-radius: 8px;
+    border-radius: var(--admin-radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -504,16 +494,15 @@
 
 .btn-move-up,
 .btn-move-down {
-    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(93, 173, 226, 0.1) 100%);
-    color: #3498db;
+    background: var(--admin-info-soft);
+    color: var(--admin-info);
 }
 
 .btn-move-up:hover:not(:disabled),
 .btn-move-down:hover:not(:disabled) {
-    background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
+    background: var(--admin-info);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    box-shadow: var(--admin-shadow-md);
 }
 
 .btn-move-up:disabled,
@@ -523,27 +512,25 @@
 }
 
 .btn-edit {
-    background: linear-gradient(135deg, rgba(243, 156, 18, 0.1) 0%, rgba(241, 196, 15, 0.1) 100%);
-    color: #f39c12;
+    background: var(--admin-warning-soft);
+    color: var(--admin-warning);
 }
 
 .btn-edit:hover {
-    background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
+    background: var(--admin-warning);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+    box-shadow: var(--admin-shadow-md);
 }
 
 .btn-delete {
-    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(192, 57, 43, 0.1) 100%);
-    color: #e74c3c;
+    background: var(--admin-danger-soft);
+    color: var(--admin-danger);
 }
 
 .btn-delete:hover {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    background: var(--admin-danger);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+    box-shadow: var(--admin-shadow-md);
 }
 
 /* ============================================
@@ -596,7 +583,7 @@
     .tree-header {
         flex-direction: column;
         align-items: stretch;
-        gap: 15px;
+        gap: 12px;
     }
 
     .tree-actions {
@@ -609,15 +596,15 @@
         justify-content: center;
     }
 
-    .category-item.level-2 > .category-row {
+    .category-item.level-2>.category-row {
         padding-left: 20px;
     }
 
-    .category-item.level-3 > .category-row {
+    .category-item.level-3>.category-row {
         padding-left: 40px;
     }
 
-    .category-item.level-4 > .category-row {
+    .category-item.level-4>.category-row {
         padding-left: 60px;
     }
 
@@ -635,7 +622,7 @@
 
 @media (max-width: 480px) {
     .category-row {
-        padding: 12px 15px;
+        padding: 10px 12px;
     }
 
     .category-info {
@@ -690,6 +677,6 @@
 .btn-move-down:focus-visible,
 .btn-edit:focus-visible,
 .btn-delete:focus-visible {
-    outline: 2px solid #c0392b;
+    outline: 2px solid var(--admin-accent);
     outline-offset: 2px;
 }

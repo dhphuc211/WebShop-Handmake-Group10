@@ -334,29 +334,19 @@ a {
     color: #777777;
 }
 
-.carousel{
+.carousel, .review-title{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.carousel span{
+.carousel span, .review-title{
     font-size: 19px;
     font-weight: bold;
     margin-top: 20px;
     cursor: pointer;
 }
-.carousel span:hover{
+.carousel span:hover, .review-title:hover{
     color: #c0392b;
-}
-
-.arrows button{
-    margin-top: 20px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.arrows button:hover{
-    background-color: #c0392b;
 }
 .product-watched{
     margin-bottom: 40px;
@@ -522,4 +512,161 @@ a {
 }
 .btn-checkout:hover {
     background-color: #af6a30; /* Sậm hơn khi hover */
+}
+
+
+/* Thông tin chi tiết từ product_attributes */
+.product-attributes-short {
+    margin-top: 16px;
+    padding: 16px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.product-attributes-short h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.product-attributes-short ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-attributes-short li {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+/* Đánh giá sản phẩm */
+.product-review {
+    margin-top: 40px;
+    padding: 32px 0;
+    border-top: 1px solid #eee;
+}
+
+.review-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 16px;
+    border: 1px solid #f1f1f1;
+    border-radius: 4px;
+    background: #fffdf5;
+    align-items: center;
+}
+
+.review-average {
+    text-align: center;
+    min-width: 140px;
+}
+
+.review-average .score {
+    font-size: 32px;
+    font-weight: 700;
+    display: block;
+}
+
+.review-average .stars i {
+    color: #c0392b;
+}
+
+.review-breakdown {
+    flex: 1;
+    min-width: 260px;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.rating-label {
+    width: 16px;
+}
+
+.rating-bar {
+    flex: 1;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.rating-bar span {
+    display: block;
+    height: 100%;
+    background: #c0392b;
+}
+
+.rating-count {
+    white-space: nowrap;
+}
+
+.review-action .btn-review {
+    padding: 8px 16px;
+    border: none;
+    background: #c0392b;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.review-action .btn-review:hover {
+    opacity: 0.9;
+}
+
+.review-list {
+    margin-top: 16px;
+}
+
+.review-item {
+    border: 1px solid #f1f1f1;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    background: #fff;
+}
+
+.review-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.review-item .verified {
+    font-size: 12px;
+    color: #4caf50;
+    margin-left: 4px;
+}
+
+.review-item .stars.small i {
+    font-size: 12px;
+    color: #c0392b;
+}
+
+.review-comment {
+    font-size: 14px;
+    margin: 6px 0;
+}
+
+.review-meta {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .review-summary {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
