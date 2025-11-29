@@ -13,9 +13,9 @@
 <body>
     <header id="header">
     <div class="container">
-        <div class="logo">
-            Nhóm 10
-        </div>
+        <a href="./index.html" class="logo">
+            <img src="https://suncraft.com.vn/suncraft/Suncraft_website_Inf/suncraft_logo/e6e59529-b1df-4676-a5b2-f3757e67957e.png" alt="">
+        </a>
         <div class="menu">
             <li class="nav-item"><a href="../index.html">Trang chủ</a></li>
             <li class="nav-item"><a href="../about.html">Giới thiệu</a></li>
@@ -98,9 +98,16 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </label>
                 </div>
-                <a href="../login.html" class="icon">
-                    <i class="fa-regular fa-user"></i>
-                </a>
+                <div class="user-dropdown">
+                    <a href="#" class="icon">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+
+                    <div class="dropdown-content">
+                        <a href="./account/account-profile.html">Tài khoản</a>
+                        <a href="index.html">Đăng xuất</a>
+                    </div>
+                </div>
                 <a href="../wishlist.html" class="icon badge" >
                     <i class="fa-regular fa-heart"></i>
                     <span>0</span>
@@ -184,19 +191,6 @@
                         </div>
                     </div>
 
-                    <div class="stat-card card-points">
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>850</h3>
-                            <p>Điểm tích lũy</p>
-                        </div>
-                        <div class="stat-decoration">
-                            <i class="fa-solid fa-gem"></i>
-                        </div>
-                    </div>
-
                     <div class="stat-card card-wishlist">
                         <div class="stat-icon">
                             <i class="fa-solid fa-heart"></i>
@@ -207,19 +201,6 @@
                         </div>
                         <div class="stat-decoration">
                             <i class="fa-solid fa-feather"></i>
-                        </div>
-                    </div>
-
-                    <div class="stat-card card-voucher">
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-ticket"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>3</h3>
-                            <p>Mã giảm giá</p>
-                        </div>
-                        <div class="stat-decoration">
-                            <i class="fa-solid fa-crown"></i>
                         </div>
                     </div>
                 </div>

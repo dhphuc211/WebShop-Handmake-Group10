@@ -1,17 +1,17 @@
-/* ============================================
+﻿/* ============================================
    ORDERS DETAIL - ADMIN PANEL
    ============================================ */
 
 /* Page Header Detail */
 .page-header-detail {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
 
 .back-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #777;
+    color: var(--admin-text-muted);
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -20,7 +20,7 @@
 }
 
 .back-link:hover {
-    color: #c0392b;
+    color: var(--admin-accent);
     gap: 12px;
 }
 
@@ -33,14 +33,14 @@
 
 .order-header-info h1 {
     font-size: 28px;
-    color: #4e342e;
+    color: var(--admin-text-main);
     font-weight: 700;
     margin: 0;
 }
 
 .order-date {
     font-size: 14px;
-    color: #777;
+    color: var(--admin-text-muted);
     margin-bottom: 15px;
 }
 
@@ -51,9 +51,9 @@
 }
 
 .btn-action-header {
-    padding: 12px 20px;
+    padding: 10px 18px;
     border: none;
-    border-radius: 12px;
+    border-radius: var(--admin-radius-sm);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -64,25 +64,27 @@
 }
 
 .btn-print {
-    background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
+    background: var(--admin-info);
     color: white;
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+    border-radius: var(--admin-radius-sm);
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .btn-print:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(52, 152, 219, 0.3);
+
+    box-shadow: var(--admin-shadow-md);
 }
 
 .btn-shipping-label {
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    background: var(--admin-success);
     color: white;
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
+    border-radius: var(--admin-radius-sm);
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .btn-shipping-label:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(39, 174, 96, 0.3);
+
+    box-shadow: var(--admin-shadow-md);
 }
 
 /* ============================================
@@ -107,7 +109,7 @@
 .detail-section {
     background: white;
     border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(78, 52, 46, 0.08);
+    box-shadow: var(--admin-shadow-sm);
     overflow: hidden;
 }
 
@@ -116,13 +118,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 25px;
-    border-bottom: 2px solid #f5f1e6;
-    background: linear-gradient(135deg, rgba(192, 57, 43, 0.03) 0%, rgba(201, 122, 58, 0.03) 100%);
+    border-bottom: 2px solid var(--admin-border-subtle);
+    background: var(--admin-accent-soft);
 }
 
 .section-header h2 {
     font-size: 18px;
-    color: #4e342e;
+    color: var(--admin-text-main);
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -131,7 +133,7 @@
 }
 
 .section-header h2 i {
-    color: #c0392b;
+    color: var(--admin-accent);
     font-size: 18px;
 }
 
@@ -153,7 +155,7 @@
 }
 
 .order-items-table thead {
-    background: #fafafa;
+    background: var(--admin-surface-alt);
 }
 
 .order-items-table th {
@@ -161,16 +163,16 @@
     text-align: left;
     font-size: 13px;
     font-weight: 700;
-    color: #4e342e;
+    color: var(--admin-text-main);
     text-transform: uppercase;
-    border-bottom: 2px solid #f5f1e6;
+    border-bottom: 2px solid var(--admin-border-subtle);
 }
 
 .order-items-table td {
     padding: 18px 12px;
     font-size: 14px;
-    color: #555;
-    border-bottom: 1px solid #f5f1e6;
+    color: var(--admin-text-main);
+    border-bottom: 1px solid var(--admin-border-subtle);
     vertical-align: middle;
 }
 
@@ -190,19 +192,19 @@
 
 .product-details h4 {
     font-size: 14px;
-    color: #4e342e;
+    color: var(--admin-text-main);
     font-weight: 600;
     margin-bottom: 5px;
 }
 
 .product-details p {
     font-size: 12px;
-    color: #777;
+    color: var(--admin-text-muted);
 }
 
 /* Order Summary */
 .order-summary {
-    background: #fafafa;
+    background: var(--admin-surface-alt);
     border-radius: 12px;
     padding: 20px;
 }
@@ -213,20 +215,20 @@
     align-items: center;
     padding: 10px 0;
     font-size: 14px;
-    color: #555;
+    color: var(--admin-text-main);
 }
 
 .summary-row.total {
-    border-top: 2px solid #e5e7eb;
+    border-top: 2px solid var(--admin-border-subtle);
     margin-top: 10px;
     padding-top: 15px;
     font-size: 18px;
     font-weight: 700;
-    color: #c0392b;
+    color: var(--admin-accent);
 }
 
 .discount {
-    color: #27ae60;
+    color: var(--admin-success);
     font-weight: 600;
 }
 
@@ -258,7 +260,7 @@
     top: 35px;
     bottom: 0;
     width: 2px;
-    background: #e5e7eb;
+    background: var(--admin-border-subtle);
 }
 
 .timeline-item:last-child::before {
@@ -269,21 +271,21 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #e5e7eb;
+    background: var(--admin-border-subtle);
     border: 4px solid white;
-    box-shadow: 0 0 0 2px #e5e7eb;
+    box-shadow: 0 0 0 2px var(--admin-border-subtle);
     flex-shrink: 0;
     position: relative;
     z-index: 1;
 }
 
 .timeline-item.current .timeline-marker {
-    background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
-    box-shadow: 0 0 0 2px #c0392b, 0 0 0 6px rgba(192, 57, 43, 0.1);
+    background: var(--admin-accent);
+    box-shadow: 0 0 0 2px var(--admin-accent), 0 0 0 6px var(--admin-accent-soft);
 }
 
 .timeline-item.current::before {
-    background: linear-gradient(180deg, #c0392b 0%, #e5e7eb 100%);
+    background: var(--admin-accent);
 }
 
 .timeline-content {
@@ -293,26 +295,26 @@
 
 .timeline-content h4 {
     font-size: 15px;
-    color: #4e342e;
+    color: var(--admin-text-main);
     font-weight: 600;
     margin-bottom: 5px;
 }
 
 .timeline-content p {
     font-size: 13px;
-    color: #777;
+    color: var(--admin-text-muted);
     margin-bottom: 3px;
 }
 
 .timeline-content small {
     font-size: 12px;
-    color: #999;
+    color: var(--admin-text-soft);
     line-height: 1.5;
 }
 
 .timeline-item.pending .timeline-content h4,
 .timeline-item.pending .timeline-content p {
-    color: #999;
+    color: var(--admin-text-soft);
 }
 
 /* ============================================
@@ -320,14 +322,14 @@
    ============================================ */
 .note-box {
     padding: 20px;
-    background: #fafafa;
+    background: var(--admin-surface-alt);
     border-radius: 12px;
-    border-left: 4px solid #c0392b;
+    border-left: 4px solid var(--admin-accent);
 }
 
 .note-box p {
     font-size: 14px;
-    color: #555;
+    color: var(--admin-text-main);
     line-height: 1.6;
     margin: 0;
 }
@@ -342,11 +344,11 @@
 .add-note-form textarea {
     width: 100%;
     padding: 12px 16px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--admin-border-subtle);
     border-radius: 10px;
     font-size: 14px;
-    color: #555;
-    background: #fafafa;
+    color: var(--admin-text-main);
+    background: var(--admin-surface-alt);
     resize: vertical;
     min-height: 80px;
     font-family: inherit;
@@ -355,18 +357,18 @@
 
 .add-note-form textarea:focus {
     outline: none;
-    border-color: #c0392b;
+    border-color: var(--admin-accent);
     background: white;
-    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+    box-shadow: 0 0 0 3px var(--admin-accent-soft);
 }
 
 .btn-add-note {
     align-self: flex-start;
     padding: 10px 20px;
-    background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
+    background: var(--admin-info);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--admin-radius-sm);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -377,8 +379,8 @@
 }
 
 .btn-add-note:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .notes-list {
@@ -389,9 +391,9 @@
 
 .note-item {
     padding: 15px;
-    background: #fafafa;
+    background: var(--admin-surface-alt);
     border-radius: 10px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--admin-border-subtle);
 }
 
 .note-header {
@@ -407,21 +409,21 @@
     gap: 8px;
     font-size: 13px;
     font-weight: 600;
-    color: #4e342e;
+    color: var(--admin-text-main);
 }
 
 .note-author i {
-    color: #c0392b;
+    color: var(--admin-accent);
 }
 
 .note-date {
     font-size: 12px;
-    color: #777;
+    color: var(--admin-text-muted);
 }
 
 .note-content {
     font-size: 14px;
-    color: #555;
+    color: var(--admin-text-main);
     line-height: 1.5;
 }
 
@@ -438,34 +440,34 @@
 .form-group label {
     font-size: 14px;
     font-weight: 600;
-    color: #4e342e;
+    color: var(--admin-text-main);
 }
 
 .form-group select {
     padding: 10px 14px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--admin-border-subtle);
     border-radius: 10px;
     font-size: 14px;
-    color: #555;
-    background: #fafafa;
+    color: var(--admin-text-main);
+    background: var(--admin-surface-alt);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .form-group select:focus {
     outline: none;
-    border-color: #c0392b;
+    border-color: var(--admin-accent);
     background: white;
-    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+    box-shadow: 0 0 0 3px var(--admin-accent-soft);
 }
 
 .btn-update-status {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
+    background: var(--admin-accent);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--admin-radius-sm);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -478,8 +480,8 @@
 }
 
 .btn-update-status:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(192, 57, 43, 0.3);
+
+    box-shadow: 0 6px 18px var(--admin-accent-soft);
 }
 
 .action-buttons {
@@ -492,7 +494,7 @@
     width: 100%;
     padding: 12px;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--admin-radius-sm);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -504,23 +506,24 @@
 }
 
 .btn-email {
-    background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
+    background: var(--admin-info);
     color: white;
+    border-radius: var(--admin-radius-sm);
 }
 
 .btn-email:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .btn-sms {
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    background: var(--admin-success);
     color: white;
 }
 
 .btn-sms:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+
+    box-shadow: var(--admin-shadow-sm);
 }
 
 /* Info Group */
@@ -536,11 +539,11 @@
     gap: 12px;
 }
 
-.info-item > i {
+.info-item>i {
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
+    background: var(--admin-accent);
     color: white;
     display: flex;
     align-items: center;
@@ -555,14 +558,14 @@
 
 .info-details label {
     font-size: 12px;
-    color: #777;
+    color: var(--admin-text-muted);
     display: block;
     margin-bottom: 4px;
 }
 
 .info-details p {
     font-size: 14px;
-    color: #4e342e;
+    color: var(--admin-text-main);
     font-weight: 600;
     margin: 0;
 }
@@ -572,29 +575,18 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #f5f1e6;
+    border-bottom: 1px solid var(--admin-border-subtle);
 }
 
 .info-row:last-child {
     border-bottom: none;
-    padding-bottom: 0;
-}
-
-.info-row label {
-    font-size: 13px;
-    color: #777;
-}
-
-.info-row span,
-.info-row strong {
-    font-size: 14px;
-    color: #4e342e;
+    color: var(--admin-text-main);
 }
 
 /* Shipping Address */
 .shipping-address {
     padding: 15px;
-    background: #fafafa;
+    background: var(--admin-surface-alt);
     border-radius: 10px;
 }
 
@@ -605,13 +597,13 @@
 
 .address-phone {
     font-size: 14px;
-    color: #555;
+    color: var(--admin-text-main);
     margin-bottom: 8px;
 }
 
 .address-text {
     font-size: 14px;
-    color: #777;
+    color: var(--admin-text-muted);
     margin-bottom: 4px;
 }
 
@@ -629,8 +621,8 @@
 }
 
 .payment-badge.cod {
-    background: linear-gradient(135deg, rgba(243, 156, 18, 0.1) 0%, rgba(241, 196, 15, 0.1) 100%);
-    color: #f39c12;
+    background: var(--admin-warning-soft);
+    color: var(--admin-warning);
 }
 
 .payment-status {
@@ -642,24 +634,24 @@
 }
 
 .payment-status.paid {
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    background: var(--admin-success);
     color: white;
 }
 
 .payment-status.unpaid {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    background: var(--admin-danger);
     color: white;
 }
 
 .total-amount {
     font-size: 18px;
-    color: #c0392b;
+    color: var(--admin-accent);
     font-weight: 700;
 }
 
 .tracking-code {
     font-family: 'Courier New', monospace;
-    background: #fafafa;
+    background: var(--admin-surface-alt);
     padding: 4px 8px;
     border-radius: 6px;
     font-weight: 600;
@@ -669,10 +661,10 @@
     width: 100%;
     padding: 10px;
     margin-top: 15px;
-    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    background: var(--admin-info);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--admin-radius-sm);
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
@@ -684,8 +676,8 @@
 }
 
 .btn-track-shipment:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
+
+    box-shadow: var(--admin-shadow-sm);
 }
 
 /* Status Badges */
@@ -699,32 +691,32 @@
 }
 
 .status-badge.status-pending {
-    background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
+    background: var(--admin-warning);
     color: white;
 }
 
 .status-badge.status-confirmed {
-    background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
+    background: var(--admin-info);
     color: white;
 }
 
 .status-badge.status-shipping {
-    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    background: var(--admin-info);
     color: white;
 }
 
 .status-badge.status-completed {
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    background: var(--admin-success);
     color: white;
 }
 
 .status-badge.status-cancelled {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    background: var(--admin-danger);
     color: white;
 }
 
 .status-badge.status-returned {
-    background: linear-gradient(135deg, #95a5a6 0%, #bdc3c7 100%);
+    background: var(--admin-text-soft);
     color: white;
 }
 
@@ -829,6 +821,6 @@
 .btn-add-note:focus-visible,
 .btn-track-shipment:focus-visible,
 .back-link:focus-visible {
-    outline: 2px solid #c0392b;
+    outline: 2px solid var(--admin-accent);
     outline-offset: 2px;
 }

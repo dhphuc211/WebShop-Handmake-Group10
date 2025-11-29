@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    SETTINGS PAYMENT - ADMIN PANEL
    ============================================ */
 
@@ -15,7 +15,7 @@
     background: white;
     padding: 8px;
     border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(78, 52, 46, 0.08);
+    box-shadow: var(--admin-shadow-sm);
 }
 
 .settings-nav-item {
@@ -23,7 +23,7 @@
     padding: 14px 20px;
     text-align: center;
     text-decoration: none;
-    color: #666;
+    color: var(--admin-text-muted);
     font-size: 14px;
     font-weight: 600;
     border-radius: 12px;
@@ -36,13 +36,13 @@
 
 .settings-nav-item:hover {
     background: rgba(192, 57, 43, 0.05);
-    color: #c0392b;
+    color: var(--admin-accent);
 }
 
 .settings-nav-item.active {
-    background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
+    background: var(--admin-accent);
     color: white;
-    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
+    box-shadow: 0 4px 12px var(--admin-accent-soft);
 }
 
 .settings-nav-item i {
@@ -68,7 +68,7 @@
 
 .payment-method-section .header-title p {
     font-size: 13px;
-    color: #888;
+    color: var(--admin-text-muted);
     margin: 0;
 }
 
@@ -95,7 +95,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ddd;
+    background-color: var(--admin-border-strong);
     border-radius: 32px;
     transition: all 0.3s ease;
 }
@@ -113,16 +113,16 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.toggle-switch input:checked + .toggle-slider {
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+.toggle-switch input:checked+.toggle-slider {
+    background: var(--admin-success);
 }
 
-.toggle-switch input:checked + .toggle-slider:before {
+.toggle-switch input:checked+.toggle-slider:before {
     transform: translateX(28px);
 }
 
 .toggle-switch:hover .toggle-slider {
-    box-shadow: 0 0 8px rgba(192, 57, 43, 0.3);
+    box-shadow: 0 0 8px var(--admin-accent-soft);
 }
 
 /* ============================================
@@ -134,14 +134,14 @@
     gap: 10px;
     cursor: pointer;
     font-weight: 500;
-    color: #4e342e;
+    color: var(--admin-text-main);
 }
 
 .checkbox-label input[type="checkbox"] {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: #c0392b;
+    accent-color: var(--admin-accent);
 }
 
 .checkbox-label span {
@@ -155,14 +155,14 @@
     display: flex;
     gap: 12px;
     padding: 16px 18px;
-    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(41, 128, 185, 0.08) 100%);
-    border-left: 4px solid #3498db;
+    background: var(--admin-info-soft);
+    border-left: 4px solid var(--admin-info);
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
 .alert-info i {
-    color: #3498db;
+    color: var(--admin-info);
     font-size: 20px;
     flex-shrink: 0;
     margin-top: 2px;
@@ -171,24 +171,24 @@
 .alert-info div {
     flex: 1;
     font-size: 14px;
-    color: #555;
+    color: var(--admin-text-main);
     line-height: 1.6;
 }
 
 .alert-info strong {
-    color: #2c3e50;
+    color: var(--admin-text-main);
     font-weight: 600;
 }
 
 .alert-info a {
-    color: #3498db;
+    color: var(--admin-info);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .alert-info a:hover {
-    color: #2980b9;
+    color: var(--admin-info);
     text-decoration: underline;
 }
 
@@ -214,7 +214,7 @@ input[type="password"]::placeholder {
 }
 
 .payment-method-section.disabled .section-content {
-    background: #f9f9f9;
+    background: var(--admin-surface-alt);
 }
 
 /* ============================================
@@ -259,16 +259,21 @@ input[type="password"]::placeholder {
 
 /* Highlight enabled payment methods */
 .payment-method-section.enabled {
-    border: 2px solid #27ae60;
+    border: 2px solid var(--admin-success);
 }
 
 .payment-method-section.enabled .section-header {
-    background: linear-gradient(135deg, rgba(39, 174, 96, 0.05) 0%, rgba(46, 204, 113, 0.05) 100%);
+    background: var(--admin-success-soft);
 }
-#cod-fee,#vnpay-hash-secret,#momo-secret-key,#zalopay-key1,#zalopay-key2{
+
+#cod-fee,
+#vnpay-hash-secret,
+#momo-secret-key,
+#zalopay-key1,
+#zalopay-key2 {
     width: 100%;
     padding: 12px 16px;
     border-radius: 10px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--admin-border-subtle);
 
 }

@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Chuyển hướng đến trang product.html với query parameter
             if (category) {
-                window.location.href = `product.html?category=${category}`;
+                window.location.href = `products.html?category=${category}`;
             } else {
                 // Nếu không có category cụ thể, chuyển đến trang product.html chung
-                window.location.href = 'product.html';
+                window.location.href = 'products.html';
             }
         });
 
