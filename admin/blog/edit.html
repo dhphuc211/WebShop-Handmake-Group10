@@ -71,7 +71,7 @@
                 <!-- Page Header -->
                 <div class="page-header-edit">
                     <div class="header-left">
-                        <a href="posts.html" class="back-link">
+                        <a href="post.html" class="back-link">
                             <i class="fa-solid fa-arrow-left"></i>
                             Quay lại danh sách
                         </a>
@@ -112,16 +112,6 @@
                                             </label>
                                             <input type="text" id="post-title" name="post_title" placeholder="VD: Nghệ thuật gốm sứ Bát Tràng" required>
                                             <small class="form-hint">Tiêu đề sẽ hiển thị trên trang blog</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group full-width">
-                                            <label for="post-slug">
-                                                Slug (URL)
-                                            </label>
-                                            <input type="text" id="post-slug" name="slug" placeholder="nghe-thuat-gom-su-bat-trang">
-                                            <small class="form-hint">Tự động tạo từ tiêu đề bài viết</small>
                                         </div>
                                     </div>
 
@@ -266,37 +256,6 @@ Ví dụ:
                                 </div>
                             </div>
 
-                            <!-- SEO Section -->
-                            <div class="form-section">
-                                <div class="section-header">
-                                    <h2>
-                                        <i class="fa-solid fa-search"></i>
-                                        Tối ưu SEO
-                                    </h2>
-                                </div>
-                                <div class="section-content">
-                                    <div class="form-group">
-                                        <label for="meta-title">Meta Title</label>
-                                        <input type="text" id="meta-title" name="meta_title" placeholder="Tiêu đề SEO (tối đa 60 ký tự)">
-                                        <small class="form-hint">0/60 ký tự - Nếu để trống sẽ sử dụng tiêu đề bài viết</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="meta-description">Meta Description</label>
-                                        <textarea id="meta-description" name="meta_description" rows="3" placeholder="Mô tả SEO (tối đa 160 ký tự)"></textarea>
-                                        <small class="form-hint">0/160 ký tự - Nếu để trống sẽ sử dụng tóm tắt ngắn</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="meta-keywords">Meta Keywords</label>
-                                        <input type="text" id="meta-keywords" name="meta_keywords" placeholder="Từ khóa SEO (phân cách bằng dấu phẩy)">
-                                        <small class="form-hint">VD: gốm sứ, Bát Tràng, nghệ thuật</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="focus-keyword">Focus Keyword</label>
-                                        <input type="text" id="focus-keyword" name="focus_keyword" placeholder="Từ khóa chính của bài viết">
-                                        <small class="form-hint">Từ khóa mục tiêu cho SEO</small>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
 
@@ -325,15 +284,6 @@ Ví dụ:
                                         <label for="publish-date">Lên lịch đăng bài</label>
                                         <input type="datetime-local" id="publish-date" name="publish_date">
                                         <small class="form-hint">Để trống để đăng ngay lập tức</small>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="post-author">Tác giả</label>
-                                        <select id="post-author" name="author">
-                                            <option value="1" selected>Admin User</option>
-                                            <option value="2">Nguyễn Văn A</option>
-                                            <option value="3">Trần Thị B</option>
-                                        </select>
                                     </div>
 
                                     <div class="publish-info">
@@ -400,168 +350,6 @@ Ví dụ:
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Tags -->
-                            <div class="form-section">
-                                <div class="section-header">
-                                    <h2>
-                                        <i class="fa-solid fa-tags"></i>
-                                        Tags
-                                    </h2>
-                                </div>
-                                <div class="section-content">
-                                    <div class="form-group">
-                                        <label for="tags">Thêm tags</label>
-                                        <input type="text" id="tags" name="tags" placeholder="Nhập tag và nhấn Enter">
-                                        <small class="form-hint">Phân cách bằng dấu phẩy</small>
-                                    </div>
-                                    <div class="tags-list">
-                                        <span class="tag-item">
-                                            Gốm sứ
-                                            <button type="button" class="tag-remove">×</button>
-                                        </span>
-                                        <span class="tag-item">
-                                            Bát Tràng
-                                            <button type="button" class="tag-remove">×</button>
-                                        </span>
-                                        <span class="tag-item">
-                                            Nghệ thuật
-                                            <button type="button" class="tag-remove">×</button>
-                                        </span>
-                                        <span class="tag-item">
-                                            Văn hóa Việt Nam
-                                            <button type="button" class="tag-remove">×</button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Post Settings -->
-                            <div class="form-section">
-                                <div class="section-header">
-                                    <h2>
-                                        <i class="fa-solid fa-sliders"></i>
-                                        Cài đặt
-                                    </h2>
-                                </div>
-                                <div class="section-content">
-                                    <div class="checkbox-group">
-                                        <label class="checkbox-label">
-                                            <input type="checkbox" name="featured" value="1">
-                                            <span class="checkbox-custom"></span>
-                                            <span class="checkbox-text">
-                                                <i class="fa-solid fa-star"></i>
-                                                Bài viết nổi bật
-                                            </span>
-                                        </label>
-                                        <label class="checkbox-label">
-                                            <input type="checkbox" name="allow_comments" value="1" checked>
-                                            <span class="checkbox-custom"></span>
-                                            <span class="checkbox-text">
-                                                <i class="fa-solid fa-comments"></i>
-                                                Cho phép bình luận
-                                            </span>
-                                        </label>
-                                        <label class="checkbox-label">
-                                            <input type="checkbox" name="show_on_homepage" value="1">
-                                            <span class="checkbox-custom"></span>
-                                            <span class="checkbox-text">
-                                                <i class="fa-solid fa-home"></i>
-                                                Hiển thị trang chủ
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Related Posts -->
-                            <div class="form-section">
-                                <div class="section-header">
-                                    <h2>
-                                        <i class="fa-solid fa-link"></i>
-                                        Bài viết liên quan
-                                    </h2>
-                                </div>
-                                <div class="section-content">
-                                    <div class="form-group">
-                                        <label for="related-posts">Tìm kiếm bài viết</label>
-                                        <input type="text" id="related-posts" placeholder="Nhập tiêu đề bài viết...">
-                                    </div>
-                                    <div class="related-posts-list">
-                                        <div class="related-post-item">
-                                            <img src="../../images/blog/post2.jpg" alt="Post">
-                                            <div class="related-post-info">
-                                                <h5>Hướng dẫn chọn bộ ấm chén</h5>
-                                                <p><i class="fa-solid fa-eye"></i> 1,234 lượt xem</p>
-                                            </div>
-                                            <button type="button" class="btn-remove-related">
-                                                <i class="fa-solid fa-times"></i>
-                                            </button>
-                                        </div>
-                                        <div class="related-post-item">
-                                            <img src="../../images/blog/post3.jpg" alt="Post">
-                                            <div class="related-post-info">
-                                                <h5>Top 10 sản phẩm gốm sứ</h5>
-                                                <p><i class="fa-solid fa-eye"></i> 2,567 lượt xem</p>
-                                            </div>
-                                            <button type="button" class="btn-remove-related">
-                                                <i class="fa-solid fa-times"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Post Statistics -->
-                            <div class="form-section">
-                                <div class="section-header">
-                                    <h2>
-                                        <i class="fa-solid fa-chart-simple"></i>
-                                        Thống kê
-                                    </h2>
-                                </div>
-                                <div class="section-content">
-                                    <div class="stats-grid">
-                                        <div class="stat-item">
-                                            <div class="stat-icon">
-                                                <i class="fa-solid fa-eye"></i>
-                                            </div>
-                                            <div class="stat-info">
-                                                <span class="stat-value">0</span>
-                                                <span class="stat-label">Lượt xem</span>
-                                            </div>
-                                        </div>
-                                        <div class="stat-item">
-                                            <div class="stat-icon">
-                                                <i class="fa-solid fa-comments"></i>
-                                            </div>
-                                            <div class="stat-info">
-                                                <span class="stat-value">0</span>
-                                                <span class="stat-label">Bình luận</span>
-                                            </div>
-                                        </div>
-                                        <div class="stat-item">
-                                            <div class="stat-icon">
-                                                <i class="fa-solid fa-share"></i>
-                                            </div>
-                                            <div class="stat-info">
-                                                <span class="stat-value">0</span>
-                                                <span class="stat-label">Chia sẻ</span>
-                                            </div>
-                                        </div>
-                                        <div class="stat-item">
-                                            <div class="stat-icon">
-                                                <i class="fa-solid fa-heart"></i>
-                                            </div>
-                                            <div class="stat-info">
-                                                <span class="stat-value">0</span>
-                                                <span class="stat-label">Yêu thích</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
 

@@ -422,19 +422,20 @@
 
 /* --- Export Button (Header) --- */
 .btn-export {
-    height: 36px;
-    padding: 0 16px;
+    padding: 10px 20px;
+    background: var(--admin-accent);
+    color: white;
     border-radius: var(--admin-radius-sm);
-    font-weight: 500;
-    font-size: 13px;
-    cursor: pointer;
-    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    border: 1px solid var(--admin-border-subtle);
-    background: white;
-    color: var(--admin-text-main);
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: var(--admin-shadow-sm);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .btn-export:hover {
@@ -443,9 +444,9 @@
 }
 
 .btn-export.pdf {
-    color: var(--admin-danger);
     border-color: var(--admin-danger-soft);
-    background: var(--admin-danger-soft);
+    background: var(--admin-accent);
+    color: white;
 }
 
 .btn-export.pdf:hover {
