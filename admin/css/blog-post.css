@@ -18,6 +18,7 @@
     box-shadow: var(--admin-shadow-sm);
     border: none;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .btn-create-post:hover {

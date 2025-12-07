@@ -100,18 +100,6 @@
                         <span class="tab-label">Tất cả</span>
                         <span class="tab-count">1,247</span>
                     </a>
-                    <a href="#" class="tab-item vip">
-                        <span class="tab-label">VIP</span>
-                        <span class="tab-count">156</span>
-                    </a>
-                    <a href="#" class="tab-item regular">
-                        <span class="tab-label">Thường</span>
-                        <span class="tab-count">845</span>
-                    </a>
-                    <a href="#" class="tab-item new">
-                        <span class="tab-label">Mới</span>
-                        <span class="tab-count">246</span>
-                    </a>
                     <a href="#" class="tab-item active-status">
                         <span class="tab-label">Đang hoạt động</span>
                         <span class="tab-count">1,189</span>
@@ -148,20 +136,6 @@
                                     Đến ngày
                                 </label>
                                 <input type="date" id="date-to" name="date_to">
-                            </div>
-
-                            <!-- Customer Group Filter -->
-                            <div class="filter-group">
-                                <label for="customer-group">
-                                    <i class="fa-solid fa-user-tag"></i>
-                                    Nhóm khách hàng
-                                </label>
-                                <select name="customer_group" id="customer-group">
-                                    <option value="">Tất cả</option>
-                                    <option value="vip">VIP</option>
-                                    <option value="regular">Thường</option>
-                                    <option value="new">Mới</option>
-                                </select>
                             </div>
 
                             <!-- Account Status Filter -->
@@ -248,13 +222,11 @@
                                 <th class="col-register-date">Ngày đăng ký</th>
                                 <th class="col-total-orders">Tổng đơn hàng</th>
                                 <th class="col-total-spent">Tổng chi tiêu</th>
-                                <th class="col-customer-type">Nhóm</th>
                                 <th class="col-status">Trạng thái</th>
                                 <th class="col-actions">Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Customer Row 1 - VIP -->
                             <tr class="customer-row">
                                 <td class="col-checkbox">
                                     <input type="checkbox" name="customer_select[]" value="1">
@@ -294,12 +266,7 @@
                                 <td class="col-total-spent">
                                     <span class="spent-amount">45.250.000đ</span>
                                 </td>
-                                <td class="col-customer-type">
-                                    <span class="customer-badge vip">
-                                        <i class="fa-solid fa-crown"></i>
-                                        VIP
-                                    </span>
-                                </td>
+                                
                                 <td class="col-status">
                                     <span class="status-badge active">Hoạt động</span>
                                 </td>
@@ -358,12 +325,7 @@
                                 <td class="col-total-spent">
                                     <span class="spent-amount">12.800.000đ</span>
                                 </td>
-                                <td class="col-customer-type">
-                                    <span class="customer-badge regular">
-                                        <i class="fa-solid fa-user"></i>
-                                        Thường
-                                    </span>
-                                </td>
+                                
                                 <td class="col-status">
                                     <span class="status-badge active">Hoạt động</span>
                                 </td>
@@ -422,12 +384,7 @@
                                 <td class="col-total-spent">
                                     <span class="spent-amount">1.450.000đ</span>
                                 </td>
-                                <td class="col-customer-type">
-                                    <span class="customer-badge new">
-                                        <i class="fa-solid fa-user-plus"></i>
-                                        Mới
-                                    </span>
-                                </td>
+                                
                                 <td class="col-status">
                                     <span class="status-badge active">Hoạt động</span>
                                 </td>
@@ -486,12 +443,7 @@
                                 <td class="col-total-spent">
                                     <span class="spent-amount">68.900.000đ</span>
                                 </td>
-                                <td class="col-customer-type">
-                                    <span class="customer-badge vip">
-                                        <i class="fa-solid fa-crown"></i>
-                                        VIP
-                                    </span>
-                                </td>
+                                 
                                 <td class="col-status">
                                     <span class="status-badge active">Hoạt động</span>
                                 </td>
@@ -550,12 +502,7 @@
                                 <td class="col-total-spent">
                                     <span class="spent-amount">2.350.000đ</span>
                                 </td>
-                                <td class="col-customer-type">
-                                    <span class="customer-badge regular">
-                                        <i class="fa-solid fa-user"></i>
-                                        Thường
-                                    </span>
-                                </td>
+                                
                                 <td class="col-status">
                                     <span class="status-badge inactive">Vô hiệu hóa</span>
                                 </td>
@@ -613,12 +560,6 @@
                                 </td>
                                 <td class="col-total-spent">
                                     <span class="spent-amount">8.650.000đ</span>
-                                </td>
-                                <td class="col-customer-type">
-                                    <span class="customer-badge regular">
-                                        <i class="fa-solid fa-user"></i>
-                                        Thường
-                                    </span>
                                 </td>
                                 <td class="col-status">
                                     <span class="status-badge active">Hoạt động</span>
@@ -678,12 +619,7 @@
                                 <td class="col-total-spent">
                                     <span class="spent-amount">780.000đ</span>
                                 </td>
-                                <td class="col-customer-type">
-                                    <span class="customer-badge new">
-                                        <i class="fa-solid fa-user-plus"></i>
-                                        Mới
-                                    </span>
-                                </td>
+                            
                                 <td class="col-status">
                                     <span class="status-badge active">Hoạt động</span>
                                 </td>
@@ -742,12 +678,7 @@
                                 <td class="col-total-spent">
                                     <span class="spent-amount">52.700.000đ</span>
                                 </td>
-                                <td class="col-customer-type">
-                                    <span class="customer-badge vip">
-                                        <i class="fa-solid fa-crown"></i>
-                                        VIP
-                                    </span>
-                                </td>
+                                 
                                 <td class="col-status">
                                     <span class="status-badge active">Hoạt động</span>
                                 </td>
