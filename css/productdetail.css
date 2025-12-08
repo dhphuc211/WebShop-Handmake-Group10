@@ -157,6 +157,24 @@ a {
     color: #fff;
 }
 
+.product-detail-info .wishlist button {
+    font-size: 16px;
+    font-weight: bold;
+    width: 200px;
+    height: 40px;
+    background-color: #fff;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product-detail-info .wishlist button:hover {
+    background-color: #c0392b;
+    color: #fff;
+}
+
 .product-detail-info .combo {
     background-color: transparent;
     border: 2px solid #eeeeee;
