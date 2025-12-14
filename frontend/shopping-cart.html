@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sản Phẩm Yêu Thích</title>
-    <link rel="stylesheet" href="css/wishlist.css">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="css/shopping-cart.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/hero-section.css">
@@ -17,7 +17,7 @@
             <img src="https://suncraft.com.vn/suncraft/Suncraft_website_Inf/suncraft_logo/e6e59529-b1df-4676-a5b2-f3757e67957e.png" alt="">
         </a>
         <div class="menu">
-            <li class="nav-item"><a href="./index.html" class="active">Trang chủ</a></li>
+            <li class="nav-item"><a href="./index.html">Trang chủ</a></li>
             <li class="nav-item"><a href="./about.html">Giới thiệu</a></li>
             
             <li class="nav-item list-product">
@@ -101,7 +101,7 @@
                 <a href="./login.html" class="icon">
                     <i class="fa-regular fa-user"></i>
                 </a>
-                <a href="./wishlist.html" class="icon badge" >
+                <a href="wishlist.html" class="icon badge" >
                     <i class="fa-regular fa-heart"></i>
                     <span>0</span>
                 </a>    
@@ -116,9 +116,9 @@
 <div class="hero-section-container">
             <section class="hero">
                 <div class="hero-content">
-                    <h1>Yêu thích</h1>
+                    <h1>Giỏ hàng</h1>
                     <div class="breadcrumb">
-                        <a href="#">Trang chủ</a> / Yêu thích
+                        <a href="./index.html">Trang chủ</a> / Giỏ hàng
                     </div>
                 </div>
             </section>
@@ -180,170 +180,272 @@
                 <button id="nextButton" class="nav-button next-button">&#8250;</button>
             </div>
         </div>
-<div class="products-wrapper">
-    <main class="product-list">
-        <div class="container">
-            <div class="product-grid">
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bộ khay mứt 31.5cm Thiên Kim</h3>
-                            <span class="price">1.590.000₫</span>
-                            <del class="compare-price">2.000.000₫</del>
-                        </div>
-                    </a>
+<section class="cart-page">
+    <div class="container">
+        <div class="cart-layout">
+            <div class="cart-left">
+                <div class="cart-header">
+                    <span>Thông tin sản phẩm</span>
+                    <span>Đơn giá</span>
+                    <span>Số lượng</span>
+                    <span>Thành tiền</span>
                 </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
+                <div class="cart-body">
+                    <div class="cart-row">
+                        <div class="cart-items">
+                            <a href="#" class="cart-item">
+                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
+                            </a>
+                            <div class="cart-info">
+                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                <button class="cart-item-delete" type="button">Xóa</button>
+                            </div>
                         </div>
-                        <div class="product-info">
-                            <h3>Bộ khay mứt 31.5cm Thiên Kim</h3>
-                            <span class="price">1.590.000₫</span>
-                            <del class="compare-price">2.000.000₫</del>
+                        <div class="price">
+                            <span>1.688.800₫</span>
                         </div>
-                    </a>
+                        <div class="cart-items-quantity">
+                            <div class="quantity">
+                                <button type="button">-</button>
+                                <input type="text" value="1">
+                                <button type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="price-total">
+                            <span>1.688.800₫</span>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class="cart-items">
+                            <a href="#" class="cart-item">
+                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
+                            </a>
+                            <div class="cart-info">
+                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                <button class="cart-item-delete" type="button">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>1.688.800₫</span>
+                        </div>
+                        <div class="cart-items-quantity">
+                            <div class="quantity">
+                                <button type="button">-</button>
+                                <input type="text" value="1">
+                                <button type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="price-total">
+                            <span>1.688.800₫</span>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class="cart-items">
+                            <a href="#" class="cart-item">
+                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
+                            </a>
+                            <div class="cart-info">
+                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                <button class="cart-item-delete" type="button">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>1.688.800₫</span>
+                        </div>
+                        <div class="cart-items-quantity">
+                            <div class="quantity">
+                                <button type="button">-</button>
+                                <input type="text" value="1">
+                                <button type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="price-total">
+                            <span>1.688.800₫</span>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class="cart-items">
+                            <a href="#" class="cart-item">
+                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
+                            </a>
+                            <div class="cart-info">
+                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                <button class="cart-item-delete" type="button">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>1.688.800₫</span>
+                        </div>
+                        <div class="cart-items-quantity">
+                            <div class="quantity">
+                                <button type="button">-</button>
+                                <input type="text" value="1">
+                                <button type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="price-total">
+                            <span>1.688.800₫</span>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class="cart-items">
+                            <a href="#" class="cart-item">
+                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
+                            </a>
+                            <div class="cart-info">
+                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                <button class="cart-item-delete" type="button">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>1.688.800₫</span>
+                        </div>
+                        <div class="cart-items-quantity">
+                            <div class="quantity">
+                                <button type="button">-</button>
+                                <input type="text" value="1">
+                                <button type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="price-total">
+                            <span>1.688.800₫</span>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class="cart-items">
+                            <a href="#" class="cart-item">
+                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
+                            </a>
+                            <div class="cart-info">
+                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                <button class="cart-item-delete" type="button">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>1.688.800₫</span>
+                        </div>
+                        <div class="cart-items-quantity">
+                            <div class="quantity">
+                                <button type="button">-</button>
+                                <input type="text" value="1">
+                                <button type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="price-total">
+                            <span>1.688.800₫</span>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class="cart-items">
+                            <a href="#" class="cart-item">
+                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
+                            </a>
+                            <div class="cart-info">
+                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                <button class="cart-item-delete" type="button">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>1.688.800₫</span>
+                        </div>
+                        <div class="cart-items-quantity">
+                            <div class="quantity">
+                                <button type="button">-</button>
+                                <input type="text" value="1">
+                                <button type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="price-total">
+                            <span>1.688.800₫</span>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class="cart-items">
+                            <a href="#" class="cart-item">
+                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
+                            </a>
+                            <div class="cart-info">
+                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                <button class="cart-item-delete" type="button">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>1.688.800₫</span>
+                        </div>
+                        <div class="cart-items-quantity">
+                            <div class="quantity">
+                                <button type="button">-</button>
+                                <input type="text" value="1">
+                                <button type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="price-total">
+                            <span>1.688.800₫</span>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class="cart-items">
+                            <a href="#" class="cart-item">
+                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
+                            </a>
+                            <div class="cart-info">
+                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                <button class="cart-item-delete" type="button">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>1.688.800₫</span>
+                        </div>
+                        <div class="cart-items-quantity">
+                            <div class="quantity">
+                                <button type="button">-</button>
+                                <input type="text" value="1">
+                                <button type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="price-total">
+                            <span>1.688.800₫</span>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                        <div class="cart-items">
+                            <a href="#" class="cart-item">
+                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
+                            </a>
+                            <div class="cart-info">
+                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                <button class="cart-item-delete" type="button">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <span>1.688.800₫</span>
+                        </div>
+                        <div class="cart-items-quantity">
+                            <div class="quantity">
+                                <button type="button">-</button>
+                                <input type="text" value="1">
+                                <button type="button">+</button>
+                            </div>
+                        </div>
+                        <div class="price-total">
+                            <span>1.688.800₫</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bát sâu trong Silver Spruce</h3>
-                            <span class="price">1.590.000đ</span>
-                            <del class="compare-price">1.790.000đ</del>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bát sâu trong Silver Spruce</h3>
-                            <span class="price">1.590.000đ</span>
-                            <del class="compare-price">1.790.000đ</del>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bát sâu trong Silver Spruce</h3>
-                            <span class="price">1.590.000đ</span>
-                            <del class="compare-price">1.790.000đ</del>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bát sâu trong Silver Spruce</h3>
-                            <span class="price">1.590.000đ</span>
-                            <del class="compare-price">1.790.000đ</del>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bát sâu trong Silver Spruce</h3>
-                            <span class="price">1.590.000đ</span>
-                            <del class="compare-price">1.790.000đ</del>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bát sâu trong Silver Spruce</h3>
-                            <span class="price">1.590.000đ</span>
-                            <del class="compare-price">1.790.000đ</del>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bát sâu trong Silver Spruce</h3>
-                            <span class="price">1.590.000đ</span>
-                            <del class="compare-price">1.790.000đ</del>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bát sâu trong Silver Spruce</h3>
-                            <span class="price">1.590.000đ</span>
-                            <del class="compare-price">1.790.000đ</del>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bát sâu trong Silver Spruce</h3>
-                            <span class="price">1.590.000đ</span>
-                            <del class="compare-price">1.790.000đ</del>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card">
-                    <a href="#" class="product-link">
-                        <div class="product-img">
-                            <span class="sale">Giảm 44%</span>
-                            <img src="https://bizweb.dktcdn.net/thumb/large/100/485/241/products/untitled-2-03162065-80a1-4a78-b15c-1902bac875e1.png?v=1686285555017" alt="Bokhay">
-                        </div>
-                        <div class="product-info">
-                            <h3>Bát sâu trong Silver Spruce</h3>
-                            <span class="price">1.590.000đ</span>
-                            <del class="compare-price">1.790.000đ</del>
-                        </div>
-                    </a>
+            </div>
+            <div class="cart-footer">
+                <div class="total-summary">
+                    <div class="total-price">
+                        <span>Tổng tiền: </span>
+                        <span>12.025.800₫</span>
+                    </div>
+                        <a href="checkout.html" class="btn-checkout">Thanh toán</a>
                 </div>
             </div>
         </div>
-    </main>
-</div>
+        
+    </div>
+</section>
 <footer id="footer">
     <div class="container">
         <div class="content">
@@ -400,7 +502,7 @@
                 <h2>Đăng ký nhận tin</h2>
                 <p>Đăng ký ngay! Để nhận nhiều ưu đãi</p>
                 <div class="input">
-                    <input type="text" name="Email" id="email" placeholder="Nhập địa chỉ email">
+                    <input type="text" name="Email" id="address" placeholder="Nhập địa chỉ email">
                     <button>Đăng ký</button>
                 </div>
             </div>

@@ -1,0 +1,203 @@
+* {
+    font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.hero-section-container {
+    text-align: center;
+    color: white;
+    background-color: #f0f0f0;
+    background-image: url('https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/breadcrumb.jpg?1758008990171');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding-bottom: 50px; /* Tạo khoảng trống cho phần categories đè lên */
+}
+
+.hero {
+    background: transparent;
+    padding: 40px 20px 40px;
+}
+
+.hero-content {
+    background: transparent;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 42px;
+    color: #c0392b;
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.breadcrumb {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #c0392b;
+    text-decoration: none;
+}
+
+/* --- CAROUSEL WRAPPER --- */
+.categories-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 50px; /* Padding 2 bên để chừa chỗ cho nút bấm */
+    position: relative;
+    top: 10px; /* Đẩy xuống một chút để tạo hiệu ứng nổi */
+}
+
+.categories {
+    display: flex;
+    gap: 30px; /* Khoảng cách giữa các item */
+    overflow-x: hidden; /* Ẩn thanh cuộn */
+    scroll-behavior: smooth; /* Cuộn mượt */
+    justify-content: flex-start; /* Căn trái để tính toán scroll dễ hơn */
+    padding: 10px 5px; /* Padding để bóng đổ không bị cắt */
+}
+
+.category-item {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-out;
+    /* TÍNH TOÁN CHIỀU RỘNG:
+       Muốn hiện 4 item. 
+       Khoảng cách (gap) là 20px. Có 3 khoảng trống giữa 4 item.
+       Tổng gap = 20px * 3 = 60px.
+       Chiều rộng mỗi item = (100% - 60px) / 4
+    */
+    flex: 0 0 calc((100% - 90px) / 4);
+    max-width: calc((100% - 90px) / 4);
+}
+
+.category-item:hover {
+    transform: translateY(-5px); 
+}
+
+.category-circle {
+    width: 100%;
+    /* Giữ tỷ lệ khung hình vuông hoặc hình tròn đẹp mắt */
+    aspect-ratio: 1 / 1; 
+    max-width: 160px; /* Giới hạn kích thước tối đa */
+    margin: 0 auto 15px; /* Canh giữa */
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-out, border-color 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.category-item:hover .category-circle {
+    box-shadow: 0 8px 20px rgba(216, 67, 21, 0.2);
+    border-color: #d84315;
+}
+
+.category-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.category-item:hover .category-circle img {
+    transform: scale(1.1);
+}
+
+.category-name {
+    font-size: 15px;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s ease-out;
+}
+
+.category-item:hover .category-name {
+    color: #d84315; 
+}
+
+/* --- NAVIGATION BUTTONS --- */
+.nav-button {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background: white;
+    border: 2px solid #d84315;
+    color: #d84315;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s;
+    z-index: 9; /* Hiển thị trên cùng */
+    outline: none;
+}
+
+.nav-button:hover {
+    background: #d84315;
+    color: white;
+    box-shadow: 0 6px 16px rgba(216, 67, 21, 0.4);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.nav-button:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.prev-button {
+    left: 0; /* Căn sát mép trái wrapper */
+}
+
+.next-button {
+    right: 0; /* Căn sát mép phải wrapper */
+}
+
+.nav-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: #f5f5f5;
+    border-color: #ccc;
+    color: #999;
+    transform: translateY(-50%);
+    box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .category-item {
+        /* Tablet: Hiện 3 item */
+        flex: 0 0 calc((100% - 40px) / 3);
+        max-width: calc((100% - 40px) / 3);
+    }
+}
+
+@media (max-width: 768px) {
+    .categories-wrapper {
+        padding: 0 40px;
+    }
+    .category-item {
+        /* Mobile: Hiện 2 item */
+        flex: 0 0 calc((100% - 20px) / 2);
+        max-width: calc((100% - 20px) / 2);
+    }
+    .nav-button {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}
