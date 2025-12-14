@@ -157,6 +157,24 @@ a {
     color: #fff;
 }
 
+.product-detail-info .wishlist button {
+    font-size: 16px;
+    font-weight: bold;
+    width: 200px;
+    height: 40px;
+    background-color: #fff;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product-detail-info .wishlist button:hover {
+    background-color: #c0392b;
+    color: #fff;
+}
+
 .product-detail-info .combo {
     background-color: transparent;
     border: 2px solid #eeeeee;
@@ -168,6 +186,38 @@ a {
     font-size: 16px;
     margin-top: 0;
     margin-bottom: 15px;
+}
+
+.product-name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-name .icon {
+    position: relative;
+    font-size: 18px;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.product-name .icon:hover {
+    color: #c0392b;
+    transform: scale(1.1);
+}
+
+.product-name .badge span {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #c0392b;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 50%;
+    padding: 2px 6px;
+    line-height: 1;
 }
 
 .product-detail-info .combo ul {
@@ -339,17 +389,24 @@ a {
     justify-content: space-between;
     align-items: center;
 }
+
 .carousel span, .review-title{
     font-size: 19px;
     font-weight: bold;
     margin-top: 20px;
     cursor: pointer;
 }
+
 .carousel span:hover, .review-title:hover{
     color: #c0392b;
 }
+
 .product-watched{
     margin-bottom: 40px;
+}
+
+.product-relate{
+    margin-bottom: 20px;
 }
 
 /* =============================================== */
