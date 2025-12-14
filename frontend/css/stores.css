@@ -1,6 +1,11 @@
- .container {
+ /* Main Container */
+ main > .container {
      display: flex;
-     height: fit-content;
+     height: 550px;
+     margin: 30px auto;
+     max-width: 1200px;
+     padding: 0 20px;
+     gap: 20px;
  }
 
  /* Sidebar */
@@ -8,7 +13,8 @@
      width: 380px;
      background: #f5f1e6;
      overflow-y: auto;
-     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+     border-radius: 10px;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
  }
 
  .search-section {
@@ -189,13 +195,15 @@
      flex: 1;
      position: relative;
      background: #e5e3df;
-     min-height: 100vh;
+     border-radius: 10px;
+     overflow: hidden;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
  }
 
  #map {
      width: 100%;
      height: 100%;
-     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%23e5e3df" width="800" height="600"/><text x="400" y="300" font-size="20" fill="%23999" text-anchor="middle">Bản đồ sẽ hiển thị ở đây</text></svg>') center/cover;
+     background: #e5e3df;
  }
 
  #map iframe {
@@ -204,19 +212,19 @@
      border: none;
  }
 
-
  /* Responsive */
  @media (max-width: 768px) {
-     .container {
+     main > .container {
          flex-direction: column;
+         height: auto;
      }
 
      .sidebar {
          width: 100%;
-         height: 50vh;
+         max-height: 350px;
      }
 
      .map-section {
-         height: 50vh;
+         height: 350px;
      }
  }
