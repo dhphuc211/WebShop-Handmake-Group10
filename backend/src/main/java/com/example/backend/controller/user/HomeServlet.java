@@ -1,4 +1,4 @@
-package com.example.backend.controller;
+package com.example.backend.controller.user;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
