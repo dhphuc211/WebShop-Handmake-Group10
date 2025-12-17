@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%--Note: Cách su dụng herosection--%>
+<%--<c:set var="pageTitle" value="Tiêu đề trang" scope="request" />--%>
+<%--<c:set var="breadcrumbText" value="Breadcrumb" scope="request" />--%>
+<%--<jsp:include page="/compenents/hero-section.jsp" />--%>
 <!-- Hero Section -->
 <div class="hero-section-container">
     <section class="hero">
