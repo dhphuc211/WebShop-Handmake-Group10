@@ -16,7 +16,7 @@ public final class DBConnection {
             }
             PROPS.load(in);
 
-            // tránh lỗi môi trường
+            // Không bắt buộc với JDBC 4+, nhưng để rõ ràng và tránh lỗi môi trường:
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (Exception e) {
             throw new ExceptionInInitializerError(e);
