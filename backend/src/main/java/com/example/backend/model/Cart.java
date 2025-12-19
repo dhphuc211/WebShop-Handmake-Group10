@@ -1,10 +1,16 @@
 package com.example.backend.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class Cart {
+public class Cart implements Serializable {
     Map<Integer,CartItem> items;
+    private User user;
 
     public Cart() {
         items = new HashMap<>();
@@ -12,59 +18,83 @@ public class Cart {
 
     // Thêm sản phẩm vào giỏ
     public void add(Product product, int quantity) {
-        if (product == null) return;
+        if(quantity <= 0){
+            quantity = 1;
+        }
 
-        int id = product.getId();
+        if(get(product.getId())!=null){
+            items.get(product.getId()).updateQuantity(quantity);
+        }
 
-        if (items.containsKey(id)) {
-            CartItem cartItem = items.get(id);
-            cartItem.setQuantity(cartItem.getQuantity() + quantity);
-        } else {
-            items.put(id, new CartItem(product, quantity));
+        else{
+            items.put(product.getId(),new CartItem(product,quantity,product.getPrice()));
         }
     }
 
     // Cập nhật số lượng
-    public void update(int productId, int quantity) {
-        if (items.containsKey(productId)) {
-            if (quantity <= 0) {
-                items.remove(productId);
-            } else {
-                items.get(productId).setQuantity(quantity);
-            }
+    public boolean update(int productId, int quantity) {
+        if(get(productId)==null){
+            return false;
         }
+
+        if(quantity<=0){
+            quantity=1;
+        }
+
+        items.get(productId).setQuantity(quantity);
+        return true;
+
     }
 
     // Xóa sản phẩm khỏi giỏ
-    public void remove(int productId) {
-        items.remove(productId);
+    public CartItem remove(int productId) {
+        if(get(productId)==null){
+            return null;
+        }
+
+        return items.remove(productId);
+    }
+
+    // Xóa tất cả sản phẩm
+    public List<CartItem> removeAll(){
+        List<CartItem> list = new ArrayList<>(items.values());
+        items.clear();
+        return list;
     }
 
     // Tính tổng tiền cả giỏ hàng
     public double getTotal() {
-        double total = 0;
-        for (CartItem item : items.values()) {
-            total += item.getTotalPrice();
-        }
-        return total;
+        AtomicReference<Double> total = new AtomicReference<>();
+
+        getItems().forEach(item->{
+            total.updateAndGet(v -> v+(item.getQuantity()*item.getPrice()));
+        });
+        return total.get();
     }
 
     // Đếm tổng số lượng sản phẩm hiển thị trên phần header (icon)
     public int getTotalQuantity() {
-        int count = 0;
-        for (CartItem item : items.values()) {
-            count += item.getQuantity();
-        }
-        return count;
+        AtomicInteger total = new AtomicInteger();
+
+        getItems().forEach(item->{
+            total.addAndGet(item.getQuantity());
+        });
+        return total.get();
+
     }
 
     // Lấy danh sách items
-    public Map<Integer, CartItem> getItems() {
-        return items;
+    public List<CartItem> getItems() {
+        return new ArrayList<>(items.values());
     }
 
-    // Xóa sạch giỏ hàng
-    public void clear() {
-        items.clear();
+    private CartItem get(int id){
+        return items.get(id);
     }
+
+    // Thông tin khách hàng
+    public void updateCustomerInfo(User user){
+        this.user = user;
+    }
+
 }

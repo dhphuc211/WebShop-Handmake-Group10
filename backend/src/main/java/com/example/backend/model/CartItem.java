@@ -3,16 +3,11 @@ package com.example.backend.model;
 public class CartItem {
     private Product product;
     private int quantity;
+    private double price;
 
-    public CartItem(Product product,int quantity){
+    public CartItem(Product product,int quantity, double price){
         this.product = product;
         this.quantity = quantity;
-    }
-    // Tính tổng tiền của sản phẩm
-    // Hàm getSalePrice bên product sẽ thực hiện việc
-    // Nếu giá giảm thì lấy salePrice không giảm thì lấy giá gốc để tính tổng tiền
-    public double getTotalPrice() {
-        return product.getSalePrice() * quantity;
     }
 
     public Product getProduct() {
@@ -29,6 +24,18 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void updateQuantity(int quantity){
+        this.quantity+=quantity;
     }
 
 }
