@@ -122,9 +122,7 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    /**
-     * Hiển thị thông tin user
-     */
+    //Hiển thị thông tin user
     @Override
     public String toString() {
         return "User{" +
