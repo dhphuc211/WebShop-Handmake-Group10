@@ -4,14 +4,12 @@ import java.sql.Timestamp;
 
 public class Product {
     // 1. Các thuộc tính cơ bản (Basic Info)
-    private String id;              // Ánh xạ ID dạng chuỗi như 'P01'
+    private int id;              // Ánh xạ ID dạng chuỗi như 'P01'
     private String name;            // Tên sản phẩm [cite: 21]
-    private String slug;            // Đường dẫn thân thiện SEO [cite: 399]
-    private String imageUrl;        // Link ảnh đại diện [cite: 22]
+    private ProductImage pimage;      // Link ảnh đại diện [cite: 22]
 
     // 2. Giá và Kho (Price & Stock)
     private double price;           // Giá gốc [cite: 22]
-    private double salePrice;       // Giá đã giảm (nếu có lưu cứng trong DB) [cite: 22]
     private int stock;              // Số lượng tồn kho [cite: 16]
 
     // 3. Mô tả và Trạng thái (Description & Status)
@@ -21,16 +19,16 @@ public class Product {
     // 4. Các cờ đánh dấu (Flags - boolean)
     // Trong DB thường lưu là bit(1) hoặc tinyint(1), trong Java dùng boolean cho dễ xử lý logic
     private boolean isFeatured;     // Sản phẩm nổi bật [cite: 24]
-    private boolean isNew;          // Sản phẩm mới [cite: 425]
-    private boolean isBestseller;   // Sản phẩm bán chạy [cite: 426]
 
     // 5. Khóa ngoại (Foreign Keys)
-    private String categoryId;      // Mã danh mục (dạng 'DM01') [cite: 251]
-    private int saleId;             // Mã đợt giảm giá (nếu có) [cite: 39]
+    private int categoryId;      // Mã danh mục (dạng 'DM01') [cite: 251]     // Mã đợt giảm giá (nếu có) [cite: 39]
 
     // 6. Thời gian (Timestamps)
     private Timestamp createdAt;    // Ngày tạo [cite: 400]
     private Timestamp updatedAt;    // Ngày cập nhật [cite: 428]
+
+    // Thêm thông số kỹ thuật
+    private ProductAttribute attribute;
 
     // =======================================================
     // CONSTRUCTORS
@@ -41,21 +39,16 @@ public class Product {
     }
 
     // Constructor đầy đủ tham số
-    public Product(String id, String name, String slug, String imageUrl, double price, double salePrice, int stock, String fullDescription, String status, boolean isFeatured, boolean isNew, boolean isBestseller, String categoryId, int saleId, Timestamp createdAt, Timestamp updatedAt) {
+    public Product(int id, String name, ProductImage pimage, double price, int stock, String fullDescription, String status, boolean isFeatured, int categoryId, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.name = name;
-        this.slug = slug;
-        this.imageUrl = imageUrl;
+        this.pimage = pimage;
         this.price = price;
-        this.salePrice = salePrice;
         this.stock = stock;
         this.fullDescription = fullDescription;
         this.status = status;
         this.isFeatured = isFeatured;
-        this.isNew = isNew;
-        this.isBestseller = isBestseller;
         this.categoryId = categoryId;
-        this.saleId = saleId;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -64,11 +57,11 @@ public class Product {
     // GETTERS & SETTERS
     // =======================================================
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -80,20 +73,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getSlug() {
-        return slug;
+    public ProductImage getPimage() {
+        return pimage;
     }
 
-    public void setSlug(String slug) {
-        this.slug = slug;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageUrl(ProductImage imageUrl) {
+        this.pimage = imageUrl;
     }
 
     public double getPrice() {
@@ -102,14 +87,6 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public double getSalePrice() {
-        return salePrice;
-    }
-
-    public void setSalePrice(double salePrice) {
-        this.salePrice = salePrice;
     }
 
     public int getStock() {
@@ -144,36 +121,12 @@ public class Product {
         isFeatured = featured;
     }
 
-    public boolean isNew() {
-        return isNew;
-    }
-
-    public void setNew(boolean aNew) {
-        isNew = aNew;
-    }
-
-    public boolean isBestseller() {
-        return isBestseller;
-    }
-
-    public void setBestseller(boolean bestseller) {
-        isBestseller = bestseller;
-    }
-
-    public String getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
-    }
-
-    public int getSaleId() {
-        return saleId;
-    }
-
-    public void setSaleId(int saleId) {
-        this.saleId = saleId;
     }
 
     public Timestamp getCreatedAt() {
@@ -190,6 +143,14 @@ public class Product {
 
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public ProductAttribute getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(ProductAttribute attribute) {
+        this.attribute = attribute;
     }
 
     // toString() để debug in ra console xem dữ liệu
