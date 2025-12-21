@@ -134,4 +134,12 @@ public class User {
                 ", isActive=" + isActive +
                 '}';
     }
+
+    /**
+     * Kiểm tra user có phải admin không
+     * @return true nếu là admin
+     */
+    public boolean isAdmin() {
+        return "admin".equals(this.role);
+    }
 }
