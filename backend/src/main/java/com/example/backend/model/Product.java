@@ -3,42 +3,31 @@ package com.example.backend.model;
 import java.sql.Timestamp;
 
 public class Product {
-    // 1. Các thuộc tính cơ bản (Basic Info)
-    private int id;              // Ánh xạ ID dạng chuỗi như 'P01'
-    private String name;            // Tên sản phẩm [cite: 21]
-    private ProductImage pimage;      // Link ảnh đại diện [cite: 22]
 
-    // 2. Giá và Kho (Price & Stock)
-    private double price;           // Giá gốc [cite: 22]
-    private int stock;              // Số lượng tồn kho [cite: 16]
+    private int id;
+    private String name;
+    private ProductImage pimage;
 
-    // 3. Mô tả và Trạng thái (Description & Status)
-    private String fullDescription; // Mô tả chi tiết [cite: 240]
-    private String status;          // Trạng thái: 'active', 'inactive' [cite: 223]
+    private double price;
+    private int stock;
 
-    // 4. Các cờ đánh dấu (Flags - boolean)
-    // Trong DB thường lưu là bit(1) hoặc tinyint(1), trong Java dùng boolean cho dễ xử lý logic
-    private boolean isFeatured;     // Sản phẩm nổi bật [cite: 24]
+    private String fullDescription;
+    private String status;
+
+    private boolean isFeatured;
 
     // 5. Khóa ngoại (Foreign Keys)
-    private int categoryId;      // Mã danh mục (dạng 'DM01') [cite: 251]     // Mã đợt giảm giá (nếu có) [cite: 39]
+    private int categoryId;
 
     // 6. Thời gian (Timestamps)
-    private Timestamp createdAt;    // Ngày tạo [cite: 400]
-    private Timestamp updatedAt;    // Ngày cập nhật [cite: 428]
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    // Thêm thông số kỹ thuật
     private ProductAttribute attribute;
 
-    // =======================================================
-    // CONSTRUCTORS
-    // =======================================================
-
-    // Constructor rỗng (Bắt buộc phải có để khởi tạo object ban đầu)
     public Product() {
     }
 
-    // Constructor đầy đủ tham số
     public Product(int id, String name, ProductImage pimage, double price, int stock, String fullDescription, String status, boolean isFeatured, int categoryId, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.name = name;
@@ -53,9 +42,6 @@ public class Product {
         this.updatedAt = updatedAt;
     }
 
-    // =======================================================
-    // GETTERS & SETTERS
-    // =======================================================
 
     public int getId() {
         return id;
