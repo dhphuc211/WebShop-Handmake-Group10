@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -23,7 +25,7 @@
       <li class="nav-item"><a href="${pageContext.request.contextPath}/about.jsp">Giới thiệu</a></li>
 
       <li class="nav-item list-product">
-        <a href="${pageContext.request.contextPath}/products.jsp" class="caret-down active">
+        <a href="${pageContext.request.contextPath}/products" class="caret-down active">
           Sản phẩm
           <i class="fa-solid fa-caret-down"></i>
         </a>
@@ -221,75 +223,50 @@
 
   <main class="product-list">
     <div class="container">
+      <%-- BẮT ĐẦU VÒNG LẶP SẢN PHẨM --%>
       <div class="product-grid">
-        <div class="product-card">
-          <a href="${pageContext.request.contextPath}/productdetail.jsp" class="product-link">
-            <div class="product-img">
-              <span class="sale">Giảm 44%</span>
-              <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
-            </div>
-            <div class="product-info">
-              <h3>Bộ khay mứt 31.5cm Thiên Kim</h3>
-              <span class="price">1.590.000₫</span>
-              <del class="compare-price">2.000.000₫</del>
-            </div>
-          </a>
-        </div>
 
-        <div class="product-card">
-          <a href="${pageContext.request.contextPath}/productdetail.jsp" class="product-link">
-            <div class="product-img">
-              <span class="sale">Giảm 64%</span>
-              <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Botra">
-            </div>
-            <div class="product-info">
-              <h3>Bát sâu trong Silver Spruce</h3>
-              <span class="price">1.690.000đ</span>
-              <del class="compare-price">1.790.000đ</del>
-            </div>
-          </a>
-        </div>
+        <%-- Kiểm tra nếu danh sách rỗng --%>
+        <c:if test="${empty productList}">
+          <p style="text-align: center; width: 100%;">Không tìm thấy sản phẩm nào.</p>
+        </c:if>
 
-        <div class="product-card">
-          <a href="#" class="product-link">
-            <div class="product-img">
-              <span class="sale">Giảm 44%</span>
-              <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
-            </div>
-            <div class="product-info">
-              <h3>Bát sâu trong Silver Spruce</h3>
-              <span class="price">1.590.000đ</span>
-              <del class="compare-price">1.790.000đ</del>
-            </div>
-          </a>
-        </div>
+        <%-- Lặp qua từng sản phẩm trong list --%>
+        <c:forEach items="${productList}" var="p">
+          <div class="product-card">
+              <%-- Link tới trang chi tiết, truyền theo ID --%>
+            <a href="${pageContext.request.contextPath}/product-detail?id=${p.id}" class="product-link">
+              <div class="product-img">
+                  <%-- Logic hiển thị nhãn giảm giá (Ví dụ mẫu, bạn có thể tính toán logic này sau) --%>
+                <c:if test="${p.price > 0}">
+                </c:if>
 
-        <div class="product-card">
-          <a href="#" class="product-link">
-            <div class="product-img">
-              <span class="sale">Giảm 44%</span>
-              <img src="https://mia.vn/media/uploads/blog-du-lich/Hang-thu-cong-my-nghe-net-dep-truyen-thong-tai-vung-tau-06-1635702336.jpg" alt="Bokhay">
-            </div>
-            <div class="product-info">
-              <h3>Bát sâu trong Silver Spruce</h3>
-              <span class="price">1.590.000đ</span>
-              <del class="compare-price">1.790.000đ</del>
-            </div>
-          </a>
-        </div>
+                  <%-- Ảnh sản phẩm --%>
+                <img src="${p.imageUrl}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/300'">
+              </div>
+
+              <div class="product-info">
+                <h3>${p.name}</h3>
+
+                  <%-- Định dạng giá tiền --%>
+                <span class="price">
+                    <fmt:setLocale value="vi_VN"/>
+                    <fmt:formatNumber value="${p.price}" type="currency" currencySymbol="₫"/>
+                  </span>
+
+                  <%-- Giá gốc (Nếu có logic giá sale thì thêm vào đây) --%>
+                  <%-- <del class="compare-price">2.000.000₫</del> --%>
+              </div>
+            </a>
+          </div>
+        </c:forEach>
+
       </div>
+      <%-- KẾT THÚC VÒNG LẶP --%>
     </div>
 
+    <%-- Phần Phân trang giữ nguyên (Sau này xử lý logic sau) --%>
     <nav class="PhanTrang" aria-label="Phân trang sản phẩm">
-      <ul>
-        <li><a href="#" class="btn prev">&lt;</a></li>
-        <li><a href="#" class="btn active">1</a></li>
-        <li><a href="#" class="btn">2</a></li>
-        <li><a href="#" class="btn">3</a></li>
-        <li><a href="#" class="btn">4</a></li>
-        <li><a href="#" class="btn">5</a></li>
-        <li><a href="#" class="btn next">&gt;</a></li>
-      </ul>
     </nav>
   </main>
 </div>
