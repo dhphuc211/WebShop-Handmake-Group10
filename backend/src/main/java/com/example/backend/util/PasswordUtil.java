@@ -1,4 +1,58 @@
 package com.example.backend.util;
 
+import java.security.SecureRandom;
+
+/**
+ * PasswordUtil - mã hóa và kiểm tra mật khẩu
+ *
+ */
 public class PasswordUtil {
+
+
+
+
+    /**
+     * Tạo mật khẩu ngẫu nhiên (dùng cho chức năng quên mật khẩu)
+     *
+     * @param length Độ dài mật khẩu mong muốn
+     * @return Mật khẩu ngẫu nhiên
+     */
+    public static String generateRandomPassword(int length) {
+        // Các ký tự có thể sử dụng trong mật khẩu
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        // SecureRandom an toàn hơn Random thông thường
+        SecureRandom random = new SecureRandom();
+
+        StringBuilder password = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(chars.length());
+            password.append(chars.charAt(index));
+        }
+
+        return password.toString();
+    }
+
+    /**
+     * Kiểm tra độ mạnh của mật khẩu
+     *
+     * @param password Mật khẩu cần kiểm tra
+     * @return true nếu mật khẩu đủ mạnh
+     *
+     * Yêu cầu:
+     * - Ít nhất 6 ký tự
+     * - (Có thể thêm: chữ hoa, chữ thường, số, ký tự đặc biệt)
+     */
+    public static boolean isValidPassword(String password) {
+        if (password == null) {
+            return false;
+        }
+
+        // Kiểm tra độ dài tối thiểu
+        if (password.length() < 6) {
+            return false;
+        }
+
+        return true;
+    }
 }
