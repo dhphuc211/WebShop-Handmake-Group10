@@ -1,35 +1,53 @@
 package com.example.backend.util;
 
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
+import java.sql.*;
 
-public final class DBConnection {
-    private static final Properties PROPS = new Properties();
+public class DBConnection {
 
-    static {
-        try (InputStream in = DBConnection.class.getClassLoader().getResourceAsStream("db.properties")) {
-            if (in == null) {
-                throw new IllegalStateException("Không tìm thấy db.properties trong classpath (src/main/resources).");
-            }
-            PROPS.load(in);
+    private static final String URL = "jdbc:mysql://localhost:3306/webshop_db";
+    private static final String USER = "root";
+    private static final String PASS = "123123";
 
-            // Không bắt buộc với JDBC 4+, nhưng để rõ ràng và tránh lỗi môi trường:
+    public static Connection getConnection() {
+        Connection conn = null;
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (Exception e) {
-            throw new ExceptionInInitializerError(e);
+            conn = DriverManager.getConnection(URL, USER, PASS);
+            System.out.println("Kết nối Database thành công!");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Kết nối thất bại: " + e.getMessage());
+        }
+        return conn;
+    }
+
+    public static void runUpdate(String sql) {
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            if (conn != null) {
+                int rowsAffected = stmt.executeUpdate();
+                System.out.println("Đã cập nhật: " + rowsAffected + " dòng.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void runQuery(String sql) {
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            System.out.println("--- Kết quả Query ---");
+            while (rs.next()) {
+                System.out.println("Sản phẩm: " + rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-    private DBConnection() {}
+    public static void main(String[] args) {
+        String sql = "SELECT * from products";
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(
-                PROPS.getProperty("db.url"),
-                PROPS.getProperty("db.user"),
-                PROPS.getProperty("db.password")
-        );
+        runQuery(sql);
     }
 }

@@ -16,11 +16,11 @@
       <img src="https://suncraft.com.vn/suncraft/Suncraft_website_Inf/suncraft_logo/e6e59529-b1df-4676-a5b2-f3757e67957e.png" alt="Logo Suncraft">
     </a>
     <div class="menu">
-      <li class="nav-item"><a href="${pageContext.request.contextPath}/index.jsp" class="active">Trang chủ</a></li>
-      <li class="nav-item"><a href="${pageContext.request.contextPath}/about.jsp">Giới thiệu</a></li>
+      <li class="nav-item"><a href="${pageContext.request.contextPath}/index" class="active">Trang chủ</a></li>
+      <li class="nav-item"><a href="${pageContext.request.contextPath}/about">Giới thiệu</a></li>
 
       <li class="nav-item list-product">
-        <a href="${pageContext.request.contextPath}/products.jsp" class="caret-down a">
+        <a href="${pageContext.request.contextPath}/products" class="caret-down a">
           Sản phẩm <i class="fa-solid fa-caret-down"></i>
         </a>
         <div class="dropdown">
