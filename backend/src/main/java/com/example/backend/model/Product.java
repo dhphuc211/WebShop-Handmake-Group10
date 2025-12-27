@@ -1,25 +1,47 @@
 package com.example.backend.model;
 
+import java.sql.Timestamp;
+
 public class Product {
+
     private int id;
     private String name;
+    private ProductImage pimage;
+
     private double price;
-    private double salePrice;
-    private String image;
     private int stock;
-    private String description;
+
+    private String fullDescription;
+    private String status;
+
+    private boolean isFeatured;
+
+    // 5. Khóa ngoại (Foreign Keys)
     private int categoryId;
 
-    public Product(int id, String name, double price, double salePrice, String image, int stock, String description, int categoryId) {
+    // 6. Thời gian (Timestamps)
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+
+    private ProductAttribute attribute;
+
+    public Product() {
+    }
+
+    public Product(int id, String name, ProductImage pimage, double price, int stock, String fullDescription, String status, boolean isFeatured, int categoryId, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.name = name;
+        this.pimage = pimage;
         this.price = price;
-        this.salePrice = salePrice;
-        this.image = image;
         this.stock = stock;
-        this.description = description;
+        this.fullDescription = fullDescription;
+        this.status = status;
+        this.isFeatured = isFeatured;
         this.categoryId = categoryId;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
+
 
     public int getId() {
         return id;
@@ -37,30 +59,20 @@ public class Product {
         this.name = name;
     }
 
+    public ProductImage getPimage() {
+        return pimage;
+    }
+
+    public void setImageUrl(ProductImage imageUrl) {
+        this.pimage = imageUrl;
+    }
+
     public double getPrice() {
         return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    // Nếu không giảm giá thì sẽ trả về price là giá gôc của chúng ta
-    public double getSalePrice() {
-        if (salePrice == 0) return price;
-        return salePrice;
-    }
-
-    public void setSalePrice(double salePrice) {
-        this.salePrice = salePrice;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public int getStock() {
@@ -71,12 +83,28 @@ public class Product {
         this.stock = stock;
     }
 
-    public String getDescription() {
-        return description;
+    public String getFullDescription() {
+        return fullDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setFullDescription(String fullDescription) {
+        this.fullDescription = fullDescription;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public boolean isFeatured() {
+        return isFeatured;
+    }
+
+    public void setFeatured(boolean featured) {
+        isFeatured = featured;
     }
 
     public int getCategoryId() {
@@ -87,4 +115,38 @@ public class Product {
         this.categoryId = categoryId;
     }
 
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public ProductAttribute getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(ProductAttribute attribute) {
+        this.attribute = attribute;
+    }
+
+    // toString() để debug in ra console xem dữ liệu
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                '}';
+    }
 }

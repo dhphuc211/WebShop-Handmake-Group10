@@ -8,6 +8,7 @@
 
 # Bỏ qua thư mục build (nếu dùng Maven/Gradle)
 target/
+/backend/target/
 build/
 out/
 
