@@ -21,9 +21,9 @@ public class CartServlet extends HttpServlet {
 
         try {
             switch (action){
-//            case "add":
-//                addToCart(request,response);
-//                break;
+            case "add":
+                addToCart(request,response);
+                break;
                 case "update":
                     updateCart(request,response);
                     break;
@@ -78,33 +78,33 @@ public class CartServlet extends HttpServlet {
 
     }
 
-    // Chưa có class ProductService của đồng đội đợi chừng nào gửi lên pull về test thử
-//    private void addToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        int productId = Integer.parseInt(request.getParameter("productId"));
-//        int quantity = Integer.parseInt(request.getParameter("quantity"));
-//
-//        HttpSession session = request.getSession();
-//        Cart cart = (Cart) session.getAttribute("cart");
-//
-//        // Nếu cart chưa có gì thì thực hiện việc thêm vào
-//        if(cart == null){
-//            cart = new Cart();
-//        }
-//
-//        ProductService productService = new ProductService();
-//        Product product = productService.getProduct(productId);
-//
-//        if(product!=null){
-//            cart.add(product,quantity);
-//            session.setAttribute("cart",cart);
-//            response.sendRedirect("productdetail?id=" + productId);
-//            return;
-//
-//        }
-//
-//        request.setAttribute("msg","Product not found");
-//        request.getRequestDispatcher("shopping-cart.jsp").forward(request,response);
-//    }
+//     Chưa có class ProductService của đồng đội đợi chừng nào gửi lên pull về test thử
+    private void addToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+
+        // Nếu cart chưa có gì thì thực hiện việc thêm vào
+        if(cart == null){
+            cart = new Cart();
+        }
+
+        ProductService productService = new ProductService();
+        Product product = productService.getProduct(productId);
+
+        if(product!=null){
+            cart.add(product,quantity);
+            session.setAttribute("cart",cart);
+            response.sendRedirect("productdetail?id=" + productId);
+            return;
+
+        }
+
+        request.setAttribute("msg","Product not found");
+        request.getRequestDispatcher("shopping-cart.jsp").forward(request,response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,0 +1,5 @@
+.smarttomcat/
+backend/target/
+target/
+**/target/
+*.class
