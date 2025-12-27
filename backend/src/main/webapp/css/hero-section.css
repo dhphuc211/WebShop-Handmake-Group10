@@ -13,6 +13,7 @@
     background-size: cover;
     position: relative;
     padding-bottom: 50px; /* Tạo khoảng trống cho phần categories đè lên */
+    z-index: 50;
 }
 
 .hero {
@@ -68,7 +69,7 @@
     cursor: pointer;
     transition: transform 0.3s ease-out;
     /* TÍNH TOÁN CHIỀU RỘNG:
-       Muốn hiện 4 item. 
+       Muốn hiện 4 item.
        Khoảng cách (gap) là 20px. Có 3 khoảng trống giữa 4 item.
        Tổng gap = 20px * 3 = 60px.
        Chiều rộng mỗi item = (100% - 60px) / 4
@@ -78,13 +79,13 @@
 }
 
 .category-item:hover {
-    transform: translateY(-5px); 
+    transform: translateY(-5px);
 }
 
 .category-circle {
     width: 100%;
     /* Giữ tỷ lệ khung hình vuông hoặc hình tròn đẹp mắt */
-    aspect-ratio: 1 / 1; 
+    aspect-ratio: 1 / 1;
     max-width: 160px; /* Giới hạn kích thước tối đa */
     margin: 0 auto 15px; /* Canh giữa */
     border-radius: 50%;
@@ -122,7 +123,7 @@
 }
 
 .category-item:hover .category-name {
-    color: #d84315; 
+    color: #d84315;
 }
 
 /* --- NAVIGATION BUTTONS --- */
