@@ -20,16 +20,16 @@
         <div class="menu">
             <li class="nav-item"><a href="./index.jsp">Trang chủ</a></li>
             <li class="nav-item"><a href="./about.jsp">Giới thiệu</a></li>
-            
+
             <li class="nav-item list-product">
                 <a href="./products.jsp" class="caret-down a">
                     Sản phẩm
                     <i class="fa-solid fa-caret-down"></i>
                 </a>
-                
+
                 <div class="dropdown">
                     <div class="product-items">
-                        
+
                         <div class="menu-product-item">
                             <h4><a href="#">Đồ mây tre đan</a></h4>
                             <ul>
@@ -38,7 +38,7 @@
                                 <li><a href="#">Túi cói</a></li>
                             </ul>
                         </div>
-                        
+
                         <div class="menu-product-item">
                             <h4><a href="#">Gốm sứ</a></h4>
                             <ul>
@@ -105,7 +105,7 @@
                 <a href="wishlist.jsp" class="icon badge" >
                     <i class="fa-regular fa-heart"></i>
                     <span>0</span>
-                </a>    
+                </a>
                 <a href="./shopping-cart.jsp" class="icon badge">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>0</span>
@@ -444,7 +444,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </section>
 <footer id="footer">
@@ -521,17 +521,17 @@
             <i class="fa-solid fa-xmark"></i>
         </label>
     </div>
-    
+
     <div class="search-panel-content">
         <div class="search-form">
             <input type="text" placeholder="Nhập tên sản phẩm...">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
-        
+
         <h3>Sản phẩm được tìm nhiều nhất</h3>
-        
+
         <div class="search-results-list">
-            
+
             <a href="./search.jsp" class="search-result-item">
                 <div class="search-item-image">
                     <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca tháp">

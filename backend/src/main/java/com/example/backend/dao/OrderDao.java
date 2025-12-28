@@ -51,7 +51,7 @@ public class OrderDao {
             }
 
             // insert vào bảng detail
-            String sqlDetail = "INSERT INTO order_details (order_id, product_id, price, quantity, total_price) VALUES (?, ?, ?, ?, ?)";
+            String sqlDetail = "INSERT INTO order_items (order_id, product_id, price, quantity, total_price) VALUES (?, ?, ?, ?, ?)";
             preDetail = con.prepareStatement(sqlDetail);
 
             // Duyệt giỏ hàng
