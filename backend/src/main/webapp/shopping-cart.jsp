@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -181,269 +183,86 @@
                 <button id="nextButton" class="nav-button next-button">&#8250;</button>
             </div>
         </div>
+
 <section class="cart-page">
     <div class="container">
-        <div class="cart-layout">
-            <div class="cart-left">
-                <div class="cart-header">
-                    <span>Thông tin sản phẩm</span>
-                    <span>Đơn giá</span>
-                    <span>Số lượng</span>
-                    <span>Thành tiền</span>
+
+        <c:if test="${sessionScope.cart == null || sessionScope.cart.totalQuantity == 0}">
+            <div style="text-align: center; padding: 50px; background: #fff; border-radius: 8px;">
+                <i class="fa-solid fa-cart-arrow-down" style="font-size: 50px; color: #ccc; margin-bottom: 20px;"></i>
+                <h3>Giỏ hàng của bạn đang trống!</h3>
+                <p>Hãy thêm sản phẩm để tiến hành thanh toán.</p>
+                <a href="${pageContext.request.contextPath}/products.jsp" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #e67e22; color: white; text-decoration: none; border-radius: 5px;">Quay lại mua sắm</a>
+            </div>
+        </c:if>
+
+        <c:if test="${sessionScope.cart != null && sessionScope.cart.totalQuantity > 0}">
+            <div class="cart-layout">
+                <div class="cart-left">
+                    <div class="cart-header">
+                        <span>Thông tin sản phẩm</span>
+                        <span>Đơn giá</span>
+                        <span>Số lượng</span>
+                        <span>Thành tiền</span>
+                    </div>
+                    <div class="cart-body">
+
+                        <c:forEach var="item" items="${sessionScope.cart.items}">
+
+                            <div class="cart-row">
+                                <div class="cart-items">
+                                    <a href="productDetail?id=${item.product.id}" class="cart-item">
+                                        <img src="${item.product.image}" alt="${item.product.name}" onerror="this.src='https://via.placeholder.com/100'">
+                                    </a>
+                                    <div class="cart-info">
+                                        <a href="productDetail?id=${item.product.id}" class="cart-item-name">${item.product.name}</a>
+
+                                        <a href="cart?action=remove&productId=${item.product.id}" class="cart-item-delete" style="color: red; cursor: pointer; font-size: 0.9rem;" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');">
+                                            <i class="fa-solid fa-trash"></i> Xóa
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="price">
+                                    <span><fmt:formatNumber value="${item.product.salePrice > 0 ? item.product.salePrice : item.product.price}" type="currency" currencySymbol="₫" maxFractionDigits="0"/></span>
+                                </div>
+
+                                <div class="cart-items-quantity">
+                                    <form action="cart" method="GET" class="quantity" style="display: flex; align-items: center;">
+                                        <input type="hidden" name="action" value="update">
+
+                                        <input type="hidden" name="productId" value="${item.product.id}">
+
+                                        <button type="submit" name="quantity" value="${item.quantity - 1}" ${item.quantity <= 1 ? 'disabled' : ''} style="cursor: pointer;">-</button>
+
+                                        <input type="text" value="${item.quantity}" readonly style="text-align: center;">
+
+                                        <button type="submit" name="quantity" value="${item.quantity + 1}" style="cursor: pointer;">+</button>
+                                    </form>
+                                </div>
+
+                                <div class="price-total">
+                                    <span><fmt:formatNumber value="${(item.product.salePrice > 0 ? item.product.salePrice : item.product.price) * item.quantity}" type="currency" currencySymbol="₫" maxFractionDigits="0"/></span>
+                                </div>
+                            </div>
+                        </c:forEach>
+
+                    </div>
                 </div>
-                <div class="cart-body">
-                    <div class="cart-row">
-                        <div class="cart-items">
-                            <a href="#" class="cart-item">
-                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                            </a>
-                            <div class="cart-info">
-                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                <button class="cart-item-delete" type="button">Xóa</button>
-                            </div>
+
+                <div class="cart-footer">
+                    <div class="total-summary">
+                        <div class="total-price">
+                            <span>Tổng tiền: </span>
+                            <span style="font-weight: bold; color: #d0021b; font-size: 20px;">
+                                <fmt:formatNumber value="${sessionScope.cart.totalMoney}" type="currency" currencySymbol="₫" maxFractionDigits="0"/>
+                            </span>
                         </div>
-                        <div class="price">
-                            <span>1.688.800₫</span>
-                        </div>
-                        <div class="cart-items-quantity">
-                            <div class="quantity">
-                                <button type="button">-</button>
-                                <input type="text" value="1">
-                                <button type="button">+</button>
-                            </div>
-                        </div>
-                        <div class="price-total">
-                            <span>1.688.800₫</span>
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-items">
-                            <a href="#" class="cart-item">
-                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                            </a>
-                            <div class="cart-info">
-                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                <button class="cart-item-delete" type="button">Xóa</button>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>1.688.800₫</span>
-                        </div>
-                        <div class="cart-items-quantity">
-                            <div class="quantity">
-                                <button type="button">-</button>
-                                <input type="text" value="1">
-                                <button type="button">+</button>
-                            </div>
-                        </div>
-                        <div class="price-total">
-                            <span>1.688.800₫</span>
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-items">
-                            <a href="#" class="cart-item">
-                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                            </a>
-                            <div class="cart-info">
-                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                <button class="cart-item-delete" type="button">Xóa</button>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>1.688.800₫</span>
-                        </div>
-                        <div class="cart-items-quantity">
-                            <div class="quantity">
-                                <button type="button">-</button>
-                                <input type="text" value="1">
-                                <button type="button">+</button>
-                            </div>
-                        </div>
-                        <div class="price-total">
-                            <span>1.688.800₫</span>
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-items">
-                            <a href="#" class="cart-item">
-                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                            </a>
-                            <div class="cart-info">
-                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                <button class="cart-item-delete" type="button">Xóa</button>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>1.688.800₫</span>
-                        </div>
-                        <div class="cart-items-quantity">
-                            <div class="quantity">
-                                <button type="button">-</button>
-                                <input type="text" value="1">
-                                <button type="button">+</button>
-                            </div>
-                        </div>
-                        <div class="price-total">
-                            <span>1.688.800₫</span>
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-items">
-                            <a href="#" class="cart-item">
-                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                            </a>
-                            <div class="cart-info">
-                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                <button class="cart-item-delete" type="button">Xóa</button>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>1.688.800₫</span>
-                        </div>
-                        <div class="cart-items-quantity">
-                            <div class="quantity">
-                                <button type="button">-</button>
-                                <input type="text" value="1">
-                                <button type="button">+</button>
-                            </div>
-                        </div>
-                        <div class="price-total">
-                            <span>1.688.800₫</span>
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-items">
-                            <a href="#" class="cart-item">
-                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                            </a>
-                            <div class="cart-info">
-                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                <button class="cart-item-delete" type="button">Xóa</button>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>1.688.800₫</span>
-                        </div>
-                        <div class="cart-items-quantity">
-                            <div class="quantity">
-                                <button type="button">-</button>
-                                <input type="text" value="1">
-                                <button type="button">+</button>
-                            </div>
-                        </div>
-                        <div class="price-total">
-                            <span>1.688.800₫</span>
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-items">
-                            <a href="#" class="cart-item">
-                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                            </a>
-                            <div class="cart-info">
-                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                <button class="cart-item-delete" type="button">Xóa</button>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>1.688.800₫</span>
-                        </div>
-                        <div class="cart-items-quantity">
-                            <div class="quantity">
-                                <button type="button">-</button>
-                                <input type="text" value="1">
-                                <button type="button">+</button>
-                            </div>
-                        </div>
-                        <div class="price-total">
-                            <span>1.688.800₫</span>
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-items">
-                            <a href="#" class="cart-item">
-                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                            </a>
-                            <div class="cart-info">
-                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                <button class="cart-item-delete" type="button">Xóa</button>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>1.688.800₫</span>
-                        </div>
-                        <div class="cart-items-quantity">
-                            <div class="quantity">
-                                <button type="button">-</button>
-                                <input type="text" value="1">
-                                <button type="button">+</button>
-                            </div>
-                        </div>
-                        <div class="price-total">
-                            <span>1.688.800₫</span>
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-items">
-                            <a href="#" class="cart-item">
-                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                            </a>
-                            <div class="cart-info">
-                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                <button class="cart-item-delete" type="button">Xóa</button>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>1.688.800₫</span>
-                        </div>
-                        <div class="cart-items-quantity">
-                            <div class="quantity">
-                                <button type="button">-</button>
-                                <input type="text" value="1">
-                                <button type="button">+</button>
-                            </div>
-                        </div>
-                        <div class="price-total">
-                            <span>1.688.800₫</span>
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-items">
-                            <a href="#" class="cart-item">
-                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                            </a>
-                            <div class="cart-info">
-                                <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                <button class="cart-item-delete" type="button">Xóa</button>
-                            </div>
-                        </div>
-                        <div class="price">
-                            <span>1.688.800₫</span>
-                        </div>
-                        <div class="cart-items-quantity">
-                            <div class="quantity">
-                                <button type="button">-</button>
-                                <input type="text" value="1">
-                                <button type="button">+</button>
-                            </div>
-                        </div>
-                        <div class="price-total">
-                            <span>1.688.800₫</span>
-                        </div>
+                        <a href="${pageContext.request.contextPath}/checkout" class="btn-checkout">Thanh toán</a>
                     </div>
                 </div>
             </div>
-            <div class="cart-footer">
-                <div class="total-summary">
-                    <div class="total-price">
-                        <span>Tổng tiền: </span>
-                        <span>12.025.800₫</span>
-                    </div>
-                        <a href="./checkout.jsp" class="btn-checkout">Thanh toán</a>
-                </div>
-            </div>
-        </div>
+        </c:if>
 
     </div>
 </section>
