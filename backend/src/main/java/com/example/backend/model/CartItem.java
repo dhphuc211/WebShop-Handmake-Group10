@@ -1,6 +1,8 @@
 package com.example.backend.model;
 
-public class CartItem {
+import java.io.Serializable;
+
+public class CartItem implements Serializable {
     private Product product;
     private int quantity;
     private double price;
@@ -8,6 +10,7 @@ public class CartItem {
     public CartItem(Product product,int quantity, double price){
         this.product = product;
         this.quantity = quantity;
+        this.price = price;
     }
 
     public Product getProduct() {

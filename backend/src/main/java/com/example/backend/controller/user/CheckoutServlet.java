@@ -68,7 +68,7 @@ public class CheckoutServlet extends HttpServlet {
         order.setShipping_fee(30000);
         order.setNote(note);
         // Tiền hàng cộng thêm tiền ship nữa
-        order.setTotal_amount(cart.getTotal()+30000);
+        order.setTotal_amount(cart.getTotalMoney()+30000);
 
         // call Dao
         OrderDao orderDao = new OrderDao();
@@ -93,5 +93,7 @@ public class CheckoutServlet extends HttpServlet {
             request.setAttribute("ERROR"," "+e.getMessage());
             request.getRequestDispatcher("checkout.jsp").forward(request,response);
         }
+
     }
+
 }

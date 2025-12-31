@@ -108,9 +108,9 @@
                     <i class="fa-regular fa-heart"></i>
                     <span>0</span>
                 </a>
-                <a href="./shopping-cart.jsp" class="icon badge">
+               <a href="${pageContext.request.contextPath}/shopping-cart.jsp" class="icon badge">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <span>0</span>
+                    <span>${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}</span>
                 </a>
             </div>
         </div>
@@ -207,46 +207,48 @@
                     </div>
                     <div class="cart-body">
 
-                        <c:forEach var="item" items="${sessionScope.cart.items}">
+                    <c:forEach var="item" items="${sessionScope.cart.items}">
 
-                            <div class="cart-row">
-                                <div class="cart-items">
-                                    <a href="productDetail?id=${item.product.id}" class="cart-item">
-                                        <img src="${item.product.image}" alt="${item.product.name}" onerror="this.src='https://via.placeholder.com/100'">
+                        <div class="cart-row" style="display: flex; align-items: center; border-bottom: 1px solid #eee; padding: 15px 0;">
+
+                            <div class="cart-items" style="flex: 2; display: flex; align-items: center; gap: 15px;">
+                                <a href="productDetail?id=${item.product.id}" class="cart-item">
+                                    <img src="https://via.placeholder.com/100" alt="image" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
+                                </a>
+                                <div class="cart-info">
+                                    <strong class="cart-item-name" style="font-size: 1.1em;">${item.product.name}</strong>
+
+                                    <br>
+                                    <a href="cart?action=remove&productId=${item.product.id}" class="cart-item-delete" style="color: #ff4d4f; font-size: 0.9em; text-decoration: none; margin-top: 5px; display: inline-block;" onclick="return confirm('Bạn muốn xóa sản phẩm này?');">
+                                        <i class="fa-solid fa-trash"></i> Xóa
                                     </a>
-                                    <div class="cart-info">
-                                        <a href="productDetail?id=${item.product.id}" class="cart-item-name">${item.product.name}</a>
-
-                                        <a href="cart?action=remove&productId=${item.product.id}" class="cart-item-delete" style="color: red; cursor: pointer; font-size: 0.9rem;" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');">
-                                            <i class="fa-solid fa-trash"></i> Xóa
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="price">
-                                    <span><fmt:formatNumber value="${item.product.salePrice > 0 ? item.product.salePrice : item.product.price}" type="currency" currencySymbol="₫" maxFractionDigits="0"/></span>
-                                </div>
-
-                                <div class="cart-items-quantity">
-                                    <form action="cart" method="GET" class="quantity" style="display: flex; align-items: center;">
-                                        <input type="hidden" name="action" value="update">
-
-                                        <input type="hidden" name="productId" value="${item.product.id}">
-
-                                        <button type="submit" name="quantity" value="${item.quantity - 1}" ${item.quantity <= 1 ? 'disabled' : ''} style="cursor: pointer;">-</button>
-
-                                        <input type="text" value="${item.quantity}" readonly style="text-align: center;">
-
-                                        <button type="submit" name="quantity" value="${item.quantity + 1}" style="cursor: pointer;">+</button>
-                                    </form>
-                                </div>
-
-                                <div class="price-total">
-                                    <span><fmt:formatNumber value="${(item.product.salePrice > 0 ? item.product.salePrice : item.product.price) * item.quantity}" type="currency" currencySymbol="₫" maxFractionDigits="0"/></span>
                                 </div>
                             </div>
-                        </c:forEach>
 
+                            <div class="price" style="flex: 1; text-align: center;">
+                                <span style="font-weight: 500;">
+                                    <fmt:formatNumber value="${item.product.price}" type="currency" currencySymbol="₫" maxFractionDigits="0"/>
+                                </span>
+                            </div>
+
+                            <div class="cart-items-quantity" style="flex: 1; text-align: center;">
+                                <form action="cart" method="GET" class="quantity" style="display: flex; justify-content: center; align-items: center;">
+                                    <input type="hidden" name="action" value="update">
+                                    <input type="hidden" name="productId" value="${item.product.id}">
+
+                                    <button type="submit" name="quantity" value="${item.quantity - 1}" ${item.quantity <= 1 ? 'disabled' : ''} style="cursor: pointer; width: 30px; height: 30px; border: 1px solid #ddd; background: white;">-</button>
+                                    <input type="text" value="${item.quantity}" readonly style="width: 40px; height: 30px; text-align: center; border: 1px solid #ddd; border-left: none; border-right: none; outline: none;">
+                                    <button type="submit" name="quantity" value="${item.quantity + 1}" style="cursor: pointer; width: 30px; height: 30px; border: 1px solid #ddd; background: white;">+</button>
+                                </form>
+                            </div>
+
+                            <div class="price-total" style="flex: 1; text-align: right; font-weight: bold; color: #d0021b; font-size: 1.1em;">
+                                <fmt:formatNumber value="${item.product.price * item.quantity}" type="currency" currencySymbol="₫" maxFractionDigits="0"/>
+                            </div>
+
+                        </div>
+
+                    </c:forEach>
                     </div>
                 </div>
 

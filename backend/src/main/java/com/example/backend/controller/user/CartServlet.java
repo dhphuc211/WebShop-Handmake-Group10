@@ -9,7 +9,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "CartServlet", value = "/CartServlet")
+@WebServlet(name = "CartServlet", value = "/cart")
 public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -91,13 +91,22 @@ public class CartServlet extends HttpServlet {
             cart = new Cart();
         }
 
-        ProductService productService = new ProductService();
-        Product product = productService.getProduct(productId);
+//        ProductService productService = new ProductService();
+//        Product product = productService.getProduct(productId);
+
+        // (Do chưa có Database và ProductService tự tạo)
+        Product product = new Product();
+        product.setId(productId);
+        product.setName("Sản phẩm Test (Giả lập)");
+        product.setPrice(1688000); // Giá tiền giả định
+        product.setStock(100);     // Set số lượng tồn kho giả định
 
         if(product!=null){
             cart.add(product,quantity);
             session.setAttribute("cart",cart);
-            response.sendRedirect("productdetail?id=" + productId);
+
+            response.sendRedirect("shopping-cart.jsp");
+//            response.sendRedirect("productdetail?id=" + productId);
             return;
 
         }
