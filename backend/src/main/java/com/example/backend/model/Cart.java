@@ -38,7 +38,8 @@ public class Cart implements Serializable {
         }
 
         if(quantity<=0){
-            quantity=1;
+            items.remove(productId);
+            return true;
         }
 
         items.get(productId).setQuantity(quantity);
@@ -63,7 +64,7 @@ public class Cart implements Serializable {
     }
 
     // Tính tổng tiền cả giỏ hàng
-    public double getTotal() {
+    public double getTotalMoney() {
         AtomicReference<Double> total = new AtomicReference<>();
 
         getItems().forEach(item->{
@@ -94,6 +95,14 @@ public class Cart implements Serializable {
 
     // Thông tin khách hàng
     public void updateCustomerInfo(User user){
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
         this.user = user;
     }
 
