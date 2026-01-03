@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         //Kiểm tra đăng nhập
-        User user = null; // chưa hiện thực  hàm  CheckLogin  trong UserDao
+        User user = userDAO.checkLogin(emailOrPhone, password);
 
         if (user != null) {
             // ĐĂNG NHẬP THÀNH CÔNG
