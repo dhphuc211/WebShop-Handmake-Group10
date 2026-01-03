@@ -17,7 +17,7 @@
         <div class="order">
             <!-- Logo ở trên cùng và căn giữa -->
             <div class="order-header">
-                <a href="./index.html" class="logo">
+                <a href="${pageContext.request.contextPath}/index.jsp" class="logo">
                     <img src="https://suncraft.com.vn/suncraft/Suncraft_website_Inf/suncraft_logo/e6e59529-b1df-4676-a5b2-f3757e67957e.png"
                         alt="Logo">
                 </a>
@@ -37,7 +37,8 @@
                             </div>
                             <div class="thanks-content">
                                 <h3>Cảm ơn bạn đã đặt hàng</h3>
-                                <span>Một email xác nhận đã được gửi tới phucduong1900@gmail.com</span>
+                                <p>Mã đơn hàng: <strong style="color: #2a9dcc;">#${orderId}</strong></p>
+                                <span>Một email xác nhận đã được gửi tới <strong>${customerEmail}</strong></span>
                                 <span>Xin vui lòng kiểm tra email của bạn.</span>
                             </div>
                         </div>
@@ -45,18 +46,21 @@
                         <div class="order-info">
                             <div class="order-info-left">
                                 <h3>Thông tin mua hàng</h3>
-                            <span>Duong Hoang Phuc</span>
-                            <span>phucduong1900@gmail.com</span>
-                            <span>+84374905242</span>
-                                <h3>Phương thức thanh toán</h3>
+                                <span>${order.shipping_name}</span>
+                                <span>${customerEmail}</span>
+                                <span>${order.shipping_phone}</span>
+
+                                <h3 style="margin-top: 15px;">Phương thức thanh toán</h3>
                                 <span>Thanh toán khi giao hàng (COD)</span>
                             </div>
+
                             <div class="order-info-right">
                                 <h3>Địa chỉ nhận hàng</h3>
-                            <span>Duong Hoang Phuc</span>
-                            <span>Xã Tân Long, Tỉnh Đồng Tháp</span>
-                            <span>+84374905242</span>
-                                <h3>Phương thức vận chuyển</h3>
+                                <span>${order.shipping_name}</span>
+                                <span style="display: block; width: 100%; word-break: break-word;">${order.shipping_address}</span>
+                                <span>${order.shipping_phone}</span>
+
+                                <h3 style="margin-top: 15px;">Phương thức vận chuyển</h3>
                                 <span>Giao hàng tận nơi</span>
                             </div>
                         </div>
@@ -65,319 +69,53 @@
                 <div class="checkout-sidebar">
                     <div class="order-infos">
                         <div class="order-amount">
-                        <h3>Đơn hàng (15 sản phẩm)</h3>
+                            <h3>Đơn hàng</h3>
                         </div>
                         <div class="order-product">
                             <div class="order-summary">
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                            <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                        <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                    </div>
-                                </div>
-                                <div class="price-total">
-                                    <span>1.688.800₫</span>
-                                </div>
-                            </div>
-                            <div class="cart-row">
-                                <div class="cart-items">
-                                    <div class="cart-image">
-                                        <a href="#" class="cart-item">
-                                            <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                        </a>
-                                        <span class="quantity">1</span>
-                                    </div>
-                                    <div class="cart-info">
-                                        <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                    <span>1.688.800₫</span>
-                                </div>
-                            </div>
 
-                            <div class="cart-row">
-                                <div class="cart-items">
-                                    <div class="cart-image">
-                                        <a href="#" class="cart-item">
-                                            <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                        </a>
-                                        <span class="quantity">1</span>
-                                    </div>
-                                    <div class="cart-info">
-                                        <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                    </div>
-                                </div>
-                                <div class="price-total">
-                                    <span>1.688.800₫</span>
-                                </div>
-                            </div>
-                            <div class="cart-row">
-                                <div class="cart-items">
-                                    <div class="cart-image">
-                                        <a href="#" class="cart-item">
-                                            <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                        </a>
-                                        <span class="quantity">1</span>
-                                    </div>
-                                    <div class="cart-info">
-                                        <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                    </div>
-                                </div>
-                                <div class="price-total">
-                                    <span>1.688.800₫</span>
-                                </div>
-                            </div>
-                            <div class="cart-row">
-                                <div class="cart-items">
-                                    <div class="cart-image">
-                                        <a href="#" class="cart-item">
-                                            <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                        </a>
-                                        <span class="quantity">1</span>
-                                    </div>
-                                    <div class="cart-info">
-                                        <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                    </div>
-                                </div>
-                                <div class="price-total">
-                                    <span>1.688.800₫</span>
-                                </div>
-                            </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
+                                <c:forEach var="item" items="${orderedItems}">
+                                    <div class="cart-row">
+                                        <div class="cart-items">
+                                            <div class="cart-image">
+                                                <a href="#" class="cart-item">
+                                                    <img src="https://via.placeholder.com/60" alt="${item.product.name}">
+                                                </a>
+                                                <span class="quantity">${item.quantity}</span>
+                                            </div>
+                                            <div class="cart-info">
+                                                <a href="#" class="cart-item-name" style="text-decoration: none; color: #333; font-weight: 500;">${item.product.name}</a>
+                                            </div>
                                         </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
+                                        <div class="price-total">
+                                            <span><fmt:formatNumber value="${item.price * item.quantity}" type="currency" currencySymbol="₫" maxFractionDigits="0"/></span>
                                         </div>
                                     </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
-                                <div class="cart-row">
-                                    <div class="cart-items">
-                                        <div class="cart-image">
-                                            <a href="#" class="cart-item">
-                                                <img src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/danhmuc_3.jpg?1758008990171" alt="bokhay">
-                                            </a>
-                                            <span class="quantity">1</span>
-                                        </div>
-                                        <div class="cart-info">
-                                            <a href="#" class="cart-item-name">Bộ khay mức 31.5cm thiên kim</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-total">
-                                        <span>1.688.800₫</span>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </div>
                             <div class="order-total">
                                 <div class="order-total-top">
                                     <span>Tạm tính</span>
-                                <span class="price">36.047.000₫</span>
+                                <span class="price">
+                                    <fmt:formatNumber value="${order.total_amount - 30000}" type="currency" currencySymbol="₫" maxFractionDigits="0"/>
+                                </span>
                                 </div>
                                 <div class="order-total-bottom">
                                     <span>Phí vận chuyển</span>
-                                <span class="price">88.800₫</span>
+                                <span class="price">30.000₫</span>
                                 </div>
                             </div>
                             <div class="order-price">
                                 <div class="order-price-top">
                                     <span>Tổng cộng</span>
-                                <span class="price">36.047.000₫</span>
+                                <span class="price">
+                                    <fmt:formatNumber value="${order.total_amount}" type="currency" currencySymbol="₫" maxFractionDigits="0"/>
+                                </span>
                                 </div>
                                 <div class="order-price-bottom">
-                                    <a href="./order-review.html" class="btn-review">Đánh giá ngay</a>
+                                    <a href="${pageContext.request.contextPath}/order-review.jsp" class="btn-review">Đánh giá ngay</a>
 
-                                    <a href="./index.html" class="btn-continue">Tiếp tục mua hàng</a>
+                                    <a href="${pageContext.request.contextPath}/index.jsp" class="btn-continue">Tiếp tục mua hàng</a>
                                 </div>
                             </div>
                         </div>
