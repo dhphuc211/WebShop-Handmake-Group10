@@ -2,6 +2,7 @@ package com.example.backend.controller.user;
 
 import com.example.backend.dao.UserDAO;
 import com.example.backend.model.User;
+import com.example.backend.util.PasswordUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -78,7 +79,10 @@ public class LoginServlet extends HttpServlet {
         }
 
         //Kiểm tra đăng nhập
-        User user = userDAO.checkLogin(emailOrPhone, password);
+        // Mã hóa password trước khi kiểm tra
+        String hashedPassword = PasswordUtil.encrypt(password);
+        
+        User user = userDAO.checkLogin(emailOrPhone, hashedPassword);
 
         if (user != null) {
             // ĐĂNG NHẬP THÀNH CÔNG
