@@ -8,14 +8,14 @@ public class ProductAttribute {
     private String origin;
     private String material;
     private String size;
-    private double weight;
+    private String weight;
     private String color;
 
 
     public ProductAttribute() {
     }
 
-    public ProductAttribute(int id, String productId, String origin, String material, String size, double weight, String color) {
+    public ProductAttribute(int id, String productId, String origin, String material, String size, String weight, String color) {
         this.id = id;
         this.productId = productId;
         this.origin = origin;
@@ -25,7 +25,7 @@ public class ProductAttribute {
         this.color = color;
     }
 
-    public ProductAttribute(String productId, String origin, String material, String size, double weight, String color) {
+    public ProductAttribute(String productId, String origin, String material, String size, String weight, String color) {
         this.productId = productId;
         this.origin = origin;
         this.material = material;
@@ -75,11 +75,11 @@ public class ProductAttribute {
         this.size = size;
     }
 
-    public double getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 

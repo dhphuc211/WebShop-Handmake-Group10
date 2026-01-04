@@ -6,7 +6,7 @@ public class Product {
 
     private int id;
     private String name;
-    private ProductImage pimage;
+    private ProductImage image;
 
     private double price;
     private int stock;
@@ -28,10 +28,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String name, ProductImage pimage, double price, int stock, String fullDescription, String status, boolean isFeatured, int categoryId, Timestamp createdAt, Timestamp updatedAt) {
+    public Product(int id, String name, ProductImage image, double price, int stock, String fullDescription, String status, boolean isFeatured, int categoryId, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.name = name;
-        this.pimage = pimage;
+        this.image = image;
         this.price = price;
         this.stock = stock;
         this.fullDescription = fullDescription;
@@ -59,12 +59,19 @@ public class Product {
         this.name = name;
     }
 
-    public ProductImage getPimage() {
-        return pimage;
+    public ProductImage getImage() {
+        return image;
     }
 
-    public void setImageUrl(ProductImage imageUrl) {
-        this.pimage = imageUrl;
+    public String getImageUrl() {
+        if (this.image != null && this.image.getImageUrl() != null) {
+            return this.image.getImageUrl();
+        }
+        return "https://via.placeholder.com/300";
+    }
+
+    public void setImage(ProductImage image) {
+        this.image = image;
     }
 
     public double getPrice() {
@@ -139,15 +146,6 @@ public class Product {
         this.attribute = attribute;
     }
 
-
-    public String getImageUrl() {
-        // Nếu pimage có dữ liệu, lấy link ảnh từ đó
-        if (this.pimage != null && this.pimage.getImageUrl() != null) {
-            return this.pimage.getImageUrl();
-        }
-        // Nếu không có ảnh, trả về link ảnh mặc định để không bị lỗi giao diện
-        return "https://via.placeholder.com/300";
-    }
 
     // toString() để debug in ra console xem dữ liệu
     @Override
