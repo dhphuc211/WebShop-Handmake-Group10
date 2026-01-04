@@ -4,52 +4,27 @@ import java.sql.Timestamp;
 
 public class Category {
 
-    // 1. Thuộc tính cơ bản
-    private String id;              // Mã danh mục (Ví dụ 'DM01' như trong )
-    private String name;            // Tên danh mục (Ví dụ 'Điện thoại' )
-    private String slug;            // Tên trên URL (Ví dụ 'dien-thoai' )
-    private String imageUrl;        // Ảnh đại diện danh mục [cite: 16, 525]
-
-    // 2. Phân cấp (Hierarchy)
-    private String parentId;        // ID danh mục cha (Để làm menu đa cấp [cite: 55])
-
-    // 3. Trạng thái & Quản lý
-    private String status;          // Trạng thái (Ví dụ 'còn hàng', 'active' )
-    private Timestamp createdAt;    // Ngày tạo
-    private Timestamp updatedAt;    // Ngày cập nhật
-
-    // =======================================================
-    // CONSTRUCTORS
-    // =======================================================
-
-    // Constructor rỗng (Bắt buộc)
+    private String id;
+    private String name;
+    private String description;
+    private String imageUrl;
+    private String status;
+    private int sale_id;
+    private Timestamp createdAt;
+    private int parentId;
     public Category() {
     }
 
-    // Constructor đầy đủ
-    public Category(String id, String name, String slug, String imageUrl, String parentId, String status, Timestamp createdAt, Timestamp updatedAt) {
+    public Category(String id, String name, String description, String imageUrl, String status, int sale_id, Timestamp createdAt, int parentId) {
         this.id = id;
         this.name = name;
-        this.slug = slug;
+        this.description = description;
         this.imageUrl = imageUrl;
-        this.parentId = parentId;
         this.status = status;
+        this.sale_id = sale_id;
         this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    // Constructor dùng khi thêm mới (Insert) - Không cần ID nếu tự tăng, hoặc có ID nếu nhập tay
-    public Category(String name, String slug, String imageUrl, String parentId, String status) {
-        this.name = name;
-        this.slug = slug;
-        this.imageUrl = imageUrl;
         this.parentId = parentId;
-        this.status = status;
     }
-
-    // =======================================================
-    // GETTERS & SETTERS
-    // =======================================================
 
     public String getId() {
         return id;
@@ -67,12 +42,12 @@ public class Category {
         this.name = name;
     }
 
-    public String getSlug() {
-        return slug;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSlug(String slug) {
-        this.slug = slug;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImageUrl() {
@@ -83,20 +58,20 @@ public class Category {
         this.imageUrl = imageUrl;
     }
 
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getSale_id() {
+        return sale_id;
+    }
+
+    public void setSale_id(int sale_id) {
+        this.sale_id = sale_id;
     }
 
     public Timestamp getCreatedAt() {
@@ -107,20 +82,11 @@ public class Category {
         this.createdAt = createdAt;
     }
 
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
+    public int getParentId() {
+        return parentId;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", parentId='" + parentId + '\'' +
-                '}';
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 }

@@ -38,7 +38,7 @@ public class DBConnection {
              ResultSet rs = stmt.executeQuery()) {
             System.out.println("--- Kết quả Query ---");
             while (rs.next()) {
-                System.out.println("Sản phẩm: " + rs.getString("name"));
+                System.out.println("Sản phẩm: " + rs.getString("image_url"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,8 +46,9 @@ public class DBConnection {
     }
 
     public static void main(String[] args) {
-        String sql = "SELECT * from products";
-
+        String sql = "SELECT * FROM banners WHERE status = 'active' " +
+                "AND ((start_date IS NULL AND end_date IS NULL) " +
+                "OR (DATE_FORMAT(NOW(), '%m-%d') BETWEEN DATE_FORMAT(start_date, '%m-%d') AND DATE_FORMAT(end_date, '%m-%d')))";
         runQuery(sql);
     }
 

@@ -3,4 +3,6 @@ backend/target/
 target/
 **/target/
 *.class
-.idea/
+.idea
+.gitignore
+

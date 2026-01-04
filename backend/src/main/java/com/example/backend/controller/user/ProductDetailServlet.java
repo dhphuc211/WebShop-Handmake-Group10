@@ -11,7 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductDetailServlet", value = "/product-detail")
+@WebServlet(name = "ProductDetailServlet", value = "/productdetail")
 public class ProductDetailServlet extends HttpServlet {
 
     private ProductService productService = new ProductService();
@@ -47,6 +47,6 @@ public class ProductDetailServlet extends HttpServlet {
         request.setAttribute("product", product);
         request.setAttribute("relatedProducts", relatedProducts);
 
-        request.getRequestDispatcher("/product-detail.jsp").forward(request, response);
+        request.getRequestDispatcher("/productdetail.jsp").forward(request, response);
     }
 }
