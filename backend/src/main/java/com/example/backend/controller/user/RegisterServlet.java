@@ -117,13 +117,15 @@ public class RegisterServlet extends HttpServlet {
         }
 
         // Tạo tài khoản mới
+        // Mã hóa mật khẩu trước khi lưu
+        String hashedPassword = PasswordUtil.encrypt(password);
 
         // Tạo đối tượng User
         User newUser = new User(
                 fullName.trim(),
                 email.trim().toLowerCase(),  // Email luôn lowercase
                 phone.trim(),
-                password  // Password sẽ được hash trong DAO
+                hashedPassword  // Lưu mật khẩu đã mã hóa
         );
 
         // Gọi DAO để lưu vào database
