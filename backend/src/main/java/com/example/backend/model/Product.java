@@ -139,6 +139,16 @@ public class Product {
         this.attribute = attribute;
     }
 
+
+    public String getImageUrl() {
+        // Nếu pimage có dữ liệu, lấy link ảnh từ đó
+        if (this.pimage != null && this.pimage.getImageUrl() != null) {
+            return this.pimage.getImageUrl();
+        }
+        // Nếu không có ảnh, trả về link ảnh mặc định để không bị lỗi giao diện
+        return "https://via.placeholder.com/300";
+    }
+
     // toString() để debug in ra console xem dữ liệu
     @Override
     public String toString() {
