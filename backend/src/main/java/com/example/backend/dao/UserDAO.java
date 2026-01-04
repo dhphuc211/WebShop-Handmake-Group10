@@ -40,6 +40,41 @@ public class UserDAO {
     }
 
     /**
+     * Kiểm tra đăng nhập
+     * @param emailOrPhone Email hoặc số điện thoại
+     * @param password Mật khẩu
+     * @return User object nếu đăng nhập đúng, null nếu sai
+     */
+    public User checkLogin(String emailOrPhone, String password) {
+        String sql = "SELECT * FROM users WHERE (email = ? OR phone = ?) AND password = ?";
+        
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            
+            // Set tham số
+            pstmt.setString(1, emailOrPhone);
+            pstmt.setString(2, emailOrPhone);
+            pstmt.setString(3, password);
+            
+            rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+                return extractUserFromResultSet(rs);
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi đăng nhập: " + e.getMessage());
+        } finally {
+            closeResources(conn, pstmt, rs);
+        }
+        return null;
+    }
+
+    /**
      * Kiểm tra email đã tồn tại chưa
      */
     public boolean isEmailExists(String email) {
