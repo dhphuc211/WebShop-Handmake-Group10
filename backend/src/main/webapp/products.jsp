@@ -14,114 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
-
-<header id="header">
-    <div class="container">
-        <a href="${pageContext.request.contextPath}/index.jsp" class="logo">
-            <img src="https://suncraft.com.vn/suncraft/Suncraft_website_Inf/suncraft_logo/e6e59529-b1df-4676-a5b2-f3757e67957e.png"
-                 alt="Suncraft Logo">
-        </a>
-        <div class="menu">
-            <li class="nav-item"><a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a></li>
-            <li class="nav-item"><a href="${pageContext.request.contextPath}/about.jsp">Giới thiệu</a></li>
-
-            <li class="nav-item list-product">
-                <a href="${pageContext.request.contextPath}/products" class="caret-down active">
-                    Sản phẩm
-                    <i class="fa-solid fa-caret-down"></i>
-                </a>
-
-                <div class="dropdown">
-                    <div class="product-items">
-                        <div class="menu-product-item">
-                            <h4><a href="#">Đồ mây tre đan</a></h4>
-                            <ul>
-                                <li><a href="#">Giỏ</a></li>
-                                <li><a href="#">Đèn tre</a></li>
-                                <li><a href="#">Túi cói</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Gốm sứ</a></h4>
-                            <ul>
-                                <li><a href="#">Bình</a></li>
-                                <li><a href="#">Ấm chén</a></li>
-                                <li><a href="#">Tượng gốm</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Đồ gỗ mỹ nghệ</a></h4>
-                            <ul>
-                                <li><a href="#">Tượng</a></li>
-                                <li><a href="#">Hộp</a></li>
-                                <li><a href="#">Khung ảnh</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Dệt thêu & may mặc thủ công</a></h4>
-                            <ul>
-                                <li><a href="#">Khăn</a></li>
-                                <li><a href="#">Túi</a></li>
-                                <li><a href="#">Áo thổ cẩm</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Trang sức & phụ kiện thủ công</a></h4>
-                            <ul>
-                                <li><a href="#">Vòng</a></li>
-                                <li><a href="#">Dây chuyền</a></li>
-                                <li><a href="#">Nhẫn</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Đồ trang trí & quà tặng nghệ thuật</a></h4>
-                            <ul>
-                                <li><a href="#">Nến</a></li>
-                                <li><a href="#">Thiệp 3D</a></li>
-                                <li><a href="#">Tranh giấy</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="dropdown-image">
-                        <img width="300"
-                             src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/megamenu_banner.png?1758008990171"
-                             alt="Gốm sứ Bát Tràng">
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item"><a href="${pageContext.request.contextPath}/news.jsp">Tin tức</a></li>
-            <li class="nav-item"><a href="${pageContext.request.contextPath}/stores.jsp">Cửa hàng</a></li>
-            <li class="nav-item"><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
-        </div>
-        <div class="others">
-            <div class="others">
-                <div class="icon">
-                    <label for="search-toggle" class="search-toggle-label">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </label>
-                </div>
-                <a href="${pageContext.request.contextPath}/login.jsp" class="icon">
-                    <i class="fa-regular fa-user"></i>
-                </a>
-                <a href="${pageContext.request.contextPath}/wishlist.jsp" class="icon badge">
-                    <i class="fa-regular fa-heart"></i>
-                    <span>0</span>
-                </a>
-                <a href="${pageContext.request.contextPath}/shopping-cart.jsp" class="icon badge">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>0</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</header>
-
+<%@ include file="compenents/header.jsp" %>
 <div class="hero-section-container">
     <section class="hero">
         <div class="hero-content">
@@ -235,7 +128,7 @@
                 </c:if>
                 <c:forEach items="${productList}" var="p">
                     <div class="product-card">
-                        <a href="${pageContext.request.contextPath}/product-detail?id=${p.id}" class="product-link">
+                        <a href="${pageContext.request.contextPath}/productdetail?id=${p.id}" class="product-link">
                             <div class="product-img">
                                 <c:if test="${p.price > 0}">
                                 </c:if>

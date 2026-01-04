@@ -162,7 +162,7 @@ public class UserDAO {
         }
 
         // Đóng Connection cuối cùng
-        DBConnection.closeConnection(conn);
+//        DBConnection.closeConnection(conn);
     }
 
     private User extractUserFromResultSet(ResultSet rs) throws SQLException {
