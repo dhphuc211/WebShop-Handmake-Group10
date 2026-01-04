@@ -51,4 +51,7 @@ public class DBConnection {
                 "OR (DATE_FORMAT(NOW(), '%m-%d') BETWEEN DATE_FORMAT(start_date, '%m-%d') AND DATE_FORMAT(end_date, '%m-%d')))";
         runQuery(sql);
     }
+
+    public static void closeConnection(Connection conn) {
+    }
 }
