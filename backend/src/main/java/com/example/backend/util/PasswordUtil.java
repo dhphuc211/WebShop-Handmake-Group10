@@ -1,5 +1,6 @@
 package com.example.backend.util;
 
+import java.security.MessageDigest;
 import java.security.SecureRandom;
 
 /**
@@ -8,8 +9,33 @@ import java.security.SecureRandom;
  */
 public class PasswordUtil {
 
-
-
+    /**
+     * Mã hóa mật khẩu bằng MD5 (Đơn giản, dễ hiểu)
+     * @param password Mật khẩu gốc
+     * @return Mật khẩu đã mã hóa
+     */
+    public static String encrypt(String password) {
+        try {
+            // Sử dụng thuật toán MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            
+            // Chuyển đổi password thành mảng byte và băm
+            md.update(password.getBytes());
+            byte[] digest = md.digest();
+            
+            // Chuyển đổi mảng byte thành chuỗi Hex (hệ 16)
+            StringBuilder sb = new StringBuilder();
+            for (byte b : digest) {
+                // %02x nghĩa là in ra 2 ký tự hex, nếu thiếu thì thêm số 0 đằng trước
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     /**
      * Tạo mật khẩu ngẫu nhiên (dùng cho chức năng quên mật khẩu)

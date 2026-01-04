@@ -50,4 +50,7 @@ public class DBConnection {
 
         runQuery(sql);
     }
+
+    public static void closeConnection(Connection conn) {
+    }
 }
