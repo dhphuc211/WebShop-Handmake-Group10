@@ -108,7 +108,17 @@ public class ProductService {
 
     // Lấy chi tiết sản phẩm (Dành cho trang Product Detail)
     public Product getFullProductDetail(int id) {
-        return productDAO.getProductById(id);
+        // 1. Lấy thông tin cơ bản của Product (bao gồm ảnh) từ DAO
+        Product product = productDAO.getProductById(id);
+
+        if (product != null) {
+            // 2. Lấy thông tin thuộc tính chi tiết (Xuất xứ, Chất liệu...)
+            ProductAttribute attr = productDAO.getAttributeByProductId(id);
+
+            // 3. Gán thuộc tính vào đối tượng product để JSP có thể gọi ${product.attribute}
+            product.setAttribute(attr);
+        }
+        return product;
     }
 
     // Lấy sản phẩm liên quan (Dành cho trang Product Detail)

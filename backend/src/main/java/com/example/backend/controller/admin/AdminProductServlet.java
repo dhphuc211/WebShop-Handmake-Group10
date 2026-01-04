@@ -129,7 +129,7 @@ public class AdminProductServlet extends HttpServlet {
         if (imageUrl != null && !imageUrl.trim().isEmpty()) {
             ProductImage pImg = new ProductImage();
             pImg.setImageUrl(imageUrl.trim());
-            newProduct.setImageUrl(pImg);
+            newProduct.setImage(pImg);
         }
 
         // 3. Gọi Service lưu vào DB
@@ -162,7 +162,7 @@ public class AdminProductServlet extends HttpServlet {
         if (imageUrl != null && !imageUrl.trim().isEmpty()) {
             ProductImage pImg = new ProductImage();
             pImg.setImageUrl(imageUrl.trim());
-            product.setImageUrl(pImg);
+            product.setImage(pImg);
         }
 
         productService.updateProduct(product, null);

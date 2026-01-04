@@ -110,7 +110,7 @@ public class ProductDAO {
      */
     public List<Product> getProductsByCategory(int categoryId) {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT p.*, MAX(pi.image_url) AS thumbnail " +
+        String sql = "SELECT p.*, MAX(pi.image_url) AS image_url " +
                 "FROM products p " +
                 "LEFT JOIN product_images pi ON p.id = pi.product_id " +
                 "WHERE p.category_id = ? AND p.status = 'active' " +
@@ -132,7 +132,7 @@ public class ProductDAO {
      */
     public Product getProductById(int id) {
         Product product = null;
-        String sql = "SELECT p.*, MAX(pi.image_url) AS thumbnail " +
+        String sql = "SELECT p.*, MAX(pi.image_url) AS image_url " +
                 "FROM products p " +
                 "LEFT JOIN product_images pi ON p.id = pi.product_id " +
                 "WHERE p.id = ? " +
@@ -294,7 +294,7 @@ public class ProductDAO {
             e.printStackTrace();
         }
 
-        p.setImageUrl(img);
+        p.setImage(img);
         return p;
     }
 
@@ -311,7 +311,7 @@ public class ProductDAO {
                 attr.setOrigin(rs.getString("origin"));
                 attr.setMaterial(rs.getString("material"));
                 attr.setSize(rs.getString("size"));
-                attr.setWeight(rs.getDouble("weight"));
+                attr.setWeight(rs.getString("weight"));
                 attr.setColor(rs.getString("color"));
             }
         } catch (Exception e) {
