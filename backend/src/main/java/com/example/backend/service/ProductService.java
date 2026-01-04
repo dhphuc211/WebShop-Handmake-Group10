@@ -117,4 +117,18 @@ public class ProductService {
         // tạm thời dùng getProductsByCategory để thay thế:
         return productDAO.getProductsByCategory(categoryId);
     }
+
+    public void insertProduct(Product p) {
+        int newId = productDAO.insertProduct(p);
+
+        if (newId > 0 && p.getImageUrl() != null && !p.getImageUrl().isEmpty()) {
+            productDAO.insertProductImage(newId, p.getImageUrl());
+        }
+    }
+
+    public void deleteProduct(int id) {
+        productDAO.deleteProduct(id);
+    }
+
+
 }

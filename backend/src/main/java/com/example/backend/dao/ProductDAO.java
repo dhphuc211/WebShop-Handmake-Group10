@@ -8,6 +8,7 @@ import com.example.backend.util.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,6 @@ public class ProductDAO {
     public List<ProductImage> getImagesByProductId(int pid) {
         List<ProductImage> listImages = new ArrayList<>();
 
-        // Nên lấy cả ID để sau này có thể xóa/sửa ảnh cụ thể
         String sql = "SELECT id, image_url FROM product_images WHERE product_id = ?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -87,9 +87,11 @@ public class ProductDAO {
     public List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();
 
-        String sql = "SELECT p.*, " +
-                "(SELECT image_url FROM product_images WHERE product_id = p.id LIMIT 1) AS thumbnail " +
-                "FROM products p";
+        String sql = "SELECT p.*, pi.image_url " +
+                "FROM products p " +
+                "LEFT JOIN product_images pi ON p.id = pi.product_id " +
+                "GROUP BY p.id " +
+                "ORDER BY p.id DESC";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -108,19 +110,20 @@ public class ProductDAO {
      */
     public List<Product> getProductsByCategory(int categoryId) {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT * FROM products WHERE category_id = ? AND status = 'active'";
+        String sql = "SELECT p.*, MAX(pi.image_url) AS thumbnail " +
+                "FROM products p " +
+                "LEFT JOIN product_images pi ON p.id = pi.product_id " +
+                "WHERE p.category_id = ? AND p.status = 'active' " +
+                "GROUP BY p.id";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-
             ps.setInt(1, categoryId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(mapResultSetToProduct(rs));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) { e.printStackTrace(); }
         return list;
     }
 
@@ -129,11 +132,14 @@ public class ProductDAO {
      */
     public Product getProductById(int id) {
         Product product = null;
-        String sql = "SELECT * FROM products WHERE id = ?";
+        String sql = "SELECT p.*, MAX(pi.image_url) AS thumbnail " +
+                "FROM products p " +
+                "LEFT JOIN product_images pi ON p.id = pi.product_id " +
+                "WHERE p.id = ? " +
+                "GROUP BY p.id";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -221,23 +227,51 @@ public class ProductDAO {
     /**
      * Thêm mới sản phẩm (Dành cho Admin)
      */
-    public boolean insertProduct(Product p) {
-        String sql = "INSERT INTO products (id, name, slug, price, stock, category_id, status, created_at) " +
-                "VALUES (?, ?, ?, ?, ?, ?, 'active', NOW())";
+    public int insertProduct(Product p) {
+        String sql = "INSERT INTO products (name, slug, price, stock, category_id, status, created_at) " +
+                "VALUES (?, ?, ?, ?, ?, 'active', NOW())";
+
+        int generatedId = -1;
+
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             // Quan trọng: Thêm tham số RETURN_GENERATED_KEYS
+             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-            ps.setInt(1, p.getId());
-            ps.setString(2, p.getName());
-            ps.setDouble(4, p.getPrice());
-            ps.setInt(5, p.getStock());
-            ps.setInt(6, p.getCategoryId());
+            ps.setString(1, p.getName());
 
-            return ps.executeUpdate() > 0;
+            String slug = p.getName().toLowerCase().replaceAll("\\s+", "-");
+            ps.setString(2, slug);
+
+            ps.setDouble(3, p.getPrice()); // Index là 3 (sau slug)
+            ps.setInt(4, p.getStock());
+            ps.setInt(5, p.getCategoryId());
+
+            int rows = ps.executeUpdate();
+
+            // Lấy ID vừa sinh ra
+            if (rows > 0) {
+                try (ResultSet rs = ps.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        generatedId = rs.getInt(1); // Trả về ID mới nhất
+                    }
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return generatedId;
+    }
+
+    public void insertProductImage(int productId, String imageUrl) {
+        String sql = "INSERT INTO product_images (product_id, image_url) VALUES (?, ?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, productId);
+            ps.setString(2, imageUrl);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private Product mapResultSetToProduct(ResultSet rs) throws Exception {
@@ -249,24 +283,18 @@ public class ProductDAO {
         p.setFullDescription(rs.getString("full_description"));
         p.setStatus(rs.getString("status"));
         p.setFeatured(rs.getBoolean("is_featured"));
-        p.setCategoryId(rs.getInt("category_id")); //
+        p.setCategoryId(rs.getInt("category_id"));
+
+        ProductImage img = new ProductImage();
 
         try {
-            String thumb = rs.getString("thumbnail");
-            if (thumb != null) {
-//                p.setImageUrl(thumb);
-            } else {
-                // Nếu bảng ảnh chưa có, dùng tạm ảnh mặc định hoặc ảnh cũ
-//                p.setImageUrl(rs.getString("image_url"));
-            }
+            String url = rs.getString("image_url");
+            img.setImageUrl(url);
         } catch (Exception e) {
-            try {
-//                p.setImageUrl(rs.getString("image_url"));
-            } catch (Exception ex) {
-                e.printStackTrace();
-            }
+            e.printStackTrace();
         }
 
+        p.setImageUrl(img);
         return p;
     }
 
@@ -291,4 +319,17 @@ public class ProductDAO {
         }
         return attr;
     }
+
+    public boolean deleteProduct(int id) {
+        String sql = "DELETE FROM products WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }
