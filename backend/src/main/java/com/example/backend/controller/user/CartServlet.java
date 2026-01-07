@@ -83,6 +83,11 @@ public class CartServlet extends HttpServlet {
         int productId = Integer.parseInt(request.getParameter("productId"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
+        // test chức năng giỏ hàng
+        System.out.println("DEBUG: CartServlet -> addToCart");
+        System.out.println("DEBUG: Product ID nhận được: " + productId);
+        System.out.println("DEBUG: Quantity nhận được: " + quantity);
+
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
 
@@ -104,6 +109,8 @@ public class CartServlet extends HttpServlet {
         if(product!=null){
             cart.add(product,quantity);
             session.setAttribute("cart",cart);
+
+            System.out.println("DEBUG: Đã lưu Cart vào Session thành công! Tổng SP: " + cart.getTotalQuantity());
 
             response.sendRedirect("shopping-cart.jsp");
 //            response.sendRedirect("productdetail?id=" + productId);
