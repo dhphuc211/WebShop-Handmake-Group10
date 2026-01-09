@@ -1,0 +1,361 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết đơn hàng #DH2547</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/css/admin-dashboard.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/css/orders-detail.css">
+</head>
+
+<body>
+    <main class="admin-dashboard-main">
+        <div class="admin-dashboard-container">
+            <!-- Admin Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="sidebar-header">
+                    <div class="admin-logo">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <h2>Bảng quản lý Website</h2>
+                    <p>Quản trị viên</p>
+                </div>
+
+                <nav class="admin-menu">
+                    <a href="${pageContext.request.contextPath}/admin/dashboard.jsp" class="admin-menu-item">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span>Bảng điều khiển</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/products/product-list.jsp" class="admin-menu-item">
+                        <i class="fa-solid fa-box"></i>
+                        <span>Quản lý sản phẩm</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/order-list.jsp" class="admin-menu-item active">
+                        <i class="fa-solid fa-shopping-cart"></i>
+                        <span>Quản lý đơn hàng</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/customers/list.jsp" class="admin-menu-item">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Quản lý khách hàng</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/reviews/list.html" class="admin-menu-item">
+                        <i class="fa-solid fa-star"></i>
+                        <span>Quản lý đánh giá</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/categories/list.html" class="admin-menu-item">
+                        <i class="fa-solid fa-folder-tree"></i>
+                        <span>Quản lý danh mục</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/contact/list.html" class="admin-menu-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Quản lý liên hệ</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/blog/post.html" class="admin-menu-item">
+                        <i class="fa-solid fa-blog"></i>
+                        <span>Blog</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/admin/banner/list.html" class="admin-menu-item">
+                        <i class="fa-solid fa-images"></i>
+                        <span>Banner & Slider</span>
+                    </a>
+                    <a href="../../index.jsp" class="admin-menu-item">
+                        <i class="fa-solid fa-globe"></i>
+                        <span>Website</span>
+                    </a>
+                    <a href="../../index.jsp" class="admin-menu-item logout">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Đăng xuất</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="admin-content">
+                <!-- Page Header -->
+                <div class="page-header-detail">
+                    <div class="header-left">
+                        <a href="${pageContext.request.contextPath}/admin/order-list.jsp" class="back-link">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            Quay lại danh sách
+                        </a>
+                        <div class="order-header-info">
+                            <h1>Đơn hàng #DH2547</h1>
+                            <span class="status-badge status-pending">Chờ xác nhận</span>
+                        </div>
+                        <p class="order-date">Đặt lúc: 10/11/2025 lúc 14:30</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-action-header btn-print">
+                            <i class="fa-solid fa-print"></i>
+                            In hóa đơn
+                        </button>
+                        <button class="btn-action-header btn-shipping-label">
+                            <i class="fa-solid fa-file-invoice"></i>
+                            Phiếu giao hàng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Order Detail Layout -->
+                <div class="order-detail-layout">
+                    <!-- Main Column -->
+                    <div class="order-main-column">
+
+                        <!-- Order Items -->
+                        <div class="detail-section">
+                            <div class="section-header">
+                                <h2>
+                                    <i class="fa-solid fa-box-open"></i>
+                                    Sản phẩm đã đặt
+                                </h2>
+                            </div>
+                            <div class="section-content">
+                                <div class="order-items-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Sản phẩm</th>
+                                                <th>Đơn giá</th>
+                                                <th>Số lượng</th>
+                                                <th>Thành tiền</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="product-info">
+                                                        <img src="https://i.pinimg.com/originals/4a/c1/95/4ac195db7fe748fdd2b78f31cb7e4e8e.jpg"
+                                                            alt="Product">
+                                                        <div class="product-details">
+                                                            <h4>Bình gốm hoa sen trắng</h4>
+                                                            <p>SKU: BG001</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>450.000đ</td>
+                                                <td>2</td>
+                                                <td><strong>900.000đ</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="product-info">
+                                                        <img src="https://i.pinimg.com/1200x/c6/5e/76/c65e76df2dde432225ffcdd5f0602367.jpg"
+                                                            alt="Product">
+                                                        <div class="product-details">
+                                                            <h4>Chén sứ họa tiết truyền thống</h4>
+                                                            <p>SKU: CS002</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>320.000đ</td>
+                                                <td>1</td>
+                                                <td><strong>320.000đ</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Order Summary -->
+                                <div class="order-summary">
+                                    <div class="summary-row">
+                                        <span>Tạm tính:</span>
+                                        <span>1.220.000đ</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Giảm giá:</span>
+                                        <span class="discount">-20.000đ</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Phí vận chuyển:</span>
+                                        <span>50.000đ</span>
+                                    </div>
+                                    <div class="summary-row total">
+                                        <span>Tổng cộng:</span>
+                                        <span>1.250.000đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Note -->
+                        <div class="detail-section">
+                            <div class="section-header">
+                                <h2>
+                                    <i class="fa-solid fa-message"></i>
+                                    Ghi chú của khách hàng
+                                </h2>
+                            </div>
+                            <div class="section-content">
+                                <div class="note-box">
+                                    <p>Vui lòng giao hàng vào buổi chiều sau 14h. Nếu không có người nhận, vui lòng liên
+                                        hệ số điện thoại phụ: 0987 654 321</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Internal Notes -->
+                        <div class="detail-section">
+                            <div class="section-header">
+                                <h2>
+                                    <i class="fa-solid fa-note-sticky"></i>
+                                    Ghi chú nội bộ
+                                </h2>
+                            </div>
+                            <div class="section-content">
+                                <form action="#" method="post" class="add-note-form">
+                                    <textarea name="internal_note" rows="3"
+                                        placeholder="Thêm ghi chú nội bộ..."></textarea>
+                                    <button type="submit" class="btn-add-note">
+                                        <i class="fa-solid fa-plus"></i>
+                                        Thêm ghi chú
+                                    </button>
+                                </form>
+                                <div class="notes-list">
+                                    <div class="note-item">
+                                        <div class="note-header">
+                                            <div class="note-author">
+                                                <i class="fa-solid fa-user"></i>
+                                                Admin User
+                                            </div>
+                                            <div class="note-date">10/11/2025 15:00</div>
+                                        </div>
+                                        <div class="note-content">
+                                            Khách hàng yêu cầu đóng gói cẩn thận
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Column -->
+                    <div class="order-sidebar-column">
+
+                        <!-- Order Actions -->
+                        <div class="detail-section">
+                            <div class="section-header">
+                                <h2>
+                                    <i class="fa-solid fa-sliders"></i>
+                                    Thao tác
+                                </h2>
+                            </div>
+                            <div class="section-content">
+                                <form action="#" method="post">
+                                    <div class="form-group">
+                                        <label for="order-status">Cập nhật trạng thái</label>
+                                        <select id="order-status" name="order_status">
+                                            <option value="pending">Chờ xác nhận</option>
+                                            <option value="confirmed">Đã xác nhận</option>
+                                            <option value="preparing">Đang chuẩn bị</option>
+                                            <option value="shipping">Đang giao</option>
+                                            <option value="completed">Hoàn thành</option>
+                                            <option value="cancelled">Đã hủy</option>
+                                            <option value="returned">Hoàn trả</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn-update-status">
+                                        <i class="fa-solid fa-check"></i>
+                                        Cập nhật trạng thái
+                                    </button>
+                                </form>
+                                <div class="action-buttons">
+                                    <button class="btn-action-full btn-email">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        Gửi Email
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Info -->
+                        <div class="detail-section">
+                            <div class="section-header">
+                                <h2>
+                                    <i class="fa-solid fa-user"></i>
+                                    Thông tin khách hàng
+                                </h2>
+                            </div>
+                            <div class="section-content">
+                                <div class="info-group">
+                                    <div class="info-item">
+                                        <i class="fa-solid fa-user"></i>
+                                        <div class="info-details">
+                                            <label>Họ và tên</label>
+                                            <p>Nguyễn Văn A</p>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <div class="info-details">
+                                            <label>Email</label>
+                                            <p>nguyenvana@email.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <div class="info-details">
+                                            <label>Số điện thoại</label>
+                                            <p>0123 456 789</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shipping Info -->
+                        <div class="detail-section">
+                            <div class="section-header">
+                                <h2>
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    Địa chỉ giao hàng
+                                </h2>
+                            </div>
+                            <div class="section-content">
+                                <div class="shipping-address">
+                                    <p class="address-name"><strong>Nguyễn Văn A</strong></p>
+                                    <p class="address-phone">0123 456 789</p>
+                                    <p class="address-text">123 Đường ABC, Phường XYZ</p>
+                                    <p class="address-text">Quận 1, TP. Hồ Chí Minh</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Info -->
+                        <div class="detail-section">
+                            <div class="section-header">
+                                <h2>
+                                    <i class="fa-solid fa-credit-card"></i>
+                                    Thanh toán
+                                </h2>
+                            </div>
+                            <div class="section-content">
+                                <div class="info-group">
+                                    <div class="info-row">
+                                        <label>Phương thức:</label>
+                                        <span class="payment-badge cod">COD</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <label>Trạng thái:</label>
+                                        <span class="payment-status unpaid">Chưa thanh toán</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <label>Tổng tiền:</label>
+                                        <strong class="total-amount">1.250.000đ</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
