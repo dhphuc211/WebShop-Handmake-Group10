@@ -142,6 +142,55 @@ public class UserDAO {
         }
     }
 
+    //Lấy thông tin user theo ID
+    public User getUserById(int id) {
+        String sql = "SELECT * FROM users WHERE id = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return extractUserFromResultSet(rs);
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi lấy user theo id: " + e.getMessage());
+        } finally {
+            closeResources(conn, pstmt, rs);
+        }
+        return null;
+    }
+
+    //Cập nhật thông tin cá nhân (Họ tên, SĐT)
+    public boolean updateProfile(User user) {
+        String sql = "UPDATE users SET full_name = ?, phone = ? WHERE id = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, user.getFullName());
+            pstmt.setString(2, user.getPhone());
+            pstmt.setInt(3, user.getId());
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi cập nhật profile: " + e.getMessage());
+            return false;
+        } finally {
+            closeResources(conn, pstmt, null);
+        }
+    }
+
     private void closeResources(Connection conn, Statement stmt, ResultSet rs) {
         // Đóng ResultSet trước
         if (rs != null) {
