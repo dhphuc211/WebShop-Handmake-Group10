@@ -27,6 +27,7 @@ public class UserProfileServlet extends HttpServlet {
 
 
      //Hiển thị trang thông tin cá nhân
+     //Kiểm tra session đăng nhập
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,14 +36,25 @@ public class UserProfileServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         User currentUser = (session != null) ? (User) session.getAttribute("user") : null;
 
-        if (currentUser != null) {
-            // Lấy thông tin mới nhất từ DB
-            User userFromDB = userDAO.getUserById(currentUser.getId());
-            
-            if (userFromDB != null) {
-                session.setAttribute("user", userFromDB);
-                request.setAttribute("user", userFromDB);
-            }
+        if (currentUser == null) {
+            // Chưa đăng nhập -> Chuyển về trang login
+            // Lưu lại URL hiện tại để sau khi login xong quay lại (nếu cần)
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
+
+        // Lấy thông tin mới nhất từ DB
+        User userFromDB = userDAO.getUserById(currentUser.getId());
+        
+        if (userFromDB != null) {
+            // Cập nhật lại session nếu có thay đổi
+            session.setAttribute("user", userFromDB);
+            request.setAttribute("user", userFromDB);
+        } else {
+            // Trường hợp hiếm: User trong session có nhưng trong DB không tìm thấy
+            session.invalidate();
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
         }
 
         request.getRequestDispatcher("/profile.jsp").forward(request, response);
@@ -59,33 +71,40 @@ public class UserProfileServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         User currentUser = (session != null) ? (User) session.getAttribute("user") : null;
 
-        // Nếu có user thì thực hiện cập nhật
-        if (currentUser != null) {
-            // Lấy dữ liệu từ form
-            String fullName = request.getParameter("fullName");
-            String phone = request.getParameter("phone");
+        if (currentUser == null) {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
+
+        // 2. Lấy dữ liệu từ form
+        String fullName = request.getParameter("fullName");
+        String phone = request.getParameter("phone");
+        
+        // Validate cơ bản
+        if (fullName == null || fullName.trim().isEmpty() || 
+            phone == null || phone.trim().isEmpty()) {
             
-            // Validate
-            if (fullName != null && !fullName.trim().isEmpty() && 
-                phone != null && !phone.trim().isEmpty()) {
-                
-                // Cập nhật thông tin vào object User
-                currentUser.setFullName(fullName.trim());
-                currentUser.setPhone(phone.trim());
+            request.setAttribute("errorMessage", "Vui lòng không để trống họ tên và số điện thoại!");
+            request.getRequestDispatcher("/profile.jsp").forward(request, response);
+            return;
+        }
 
-                // Gọi DAO để lưu xuống DB
-                boolean success = userDAO.updateProfile(currentUser);
+        // Cập nhật thông tin vào object User
+        // Không cho phép đổi email ở đây (thường email là định danh)
+        currentUser.setFullName(fullName.trim());
+        currentUser.setPhone(phone.trim());
 
-                if (success) {
-                    session.setAttribute("user", currentUser);
-                    session.setAttribute("userName", currentUser.getFullName());
-                    request.setAttribute("successMessage", "Cập nhật thông tin thành công!");
-                } else {
-                    request.setAttribute("errorMessage", "Đã có lỗi xảy ra. Vui lòng thử lại!");
-                }
-            } else {
-                 request.setAttribute("errorMessage", "Vui lòng không để trống họ tên và số điện thoại!");
-            }
+        // 4. Gọi DAO để lưu xuống DB
+        boolean success = userDAO.updateProfile(currentUser);
+
+        if (success) {
+            // Cập nhật lại session
+            session.setAttribute("user", currentUser);
+            session.setAttribute("userName", currentUser.getFullName());
+            
+            request.setAttribute("successMessage", "Cập nhật thông tin thành công!");
+        } else {
+            request.setAttribute("errorMessage", "Đã có lỗi xảy ra. Vui lòng thử lại!");
         }
 
         request.getRequestDispatcher("/profile.jsp").forward(request, response);
