@@ -85,10 +85,12 @@
                             Quay lại danh sách
                         </a>
                         <div class="order-header-info">
-                            <h1>Đơn hàng #DH2547</h1>
-                            <span class="status-badge status-pending">Chờ xác nhận</span>
+                            <h1>Đơn hàng #${order.id}</h1>
+                            <span class="status-badge status-${order.order-status.toLowerCase()}">Chờ xác nhận</span>
                         </div>
-                        <p class="order-date">Đặt lúc: 10/11/2025 lúc 14:30</p>
+                        <p class="order-date">
+                            Đặt lúc: <fmt:formatDate value="${order.created_at}" pattern="dd/MM/yyyy HH:mm"/>
+                        </p>
                     </div>
                     <div class="header-actions">
                         <button class="btn-action-header btn-print">
@@ -127,36 +129,27 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="product-info">
-                                                        <img src="https://i.pinimg.com/originals/4a/c1/95/4ac195db7fe748fdd2b78f31cb7e4e8e.jpg"
-                                                            alt="Product">
-                                                        <div class="product-details">
-                                                            <h4>Bình gốm hoa sen trắng</h4>
-                                                            <p>SKU: BG001</p>
+                                            <%-- 1. VÒNG LẶP SẢN PHẨM --%>
+                                                <c:forEach var="item" items="${details}">
+                                                <tr>
+                                                    <td>
+                                                        <div class="product-info">
+                                                            <%-- Xử lý ảnh (nếu null thì hiện ảnh mặc định) --%>
+                                                            <img src="${item.product.image != null ? item.product.image : 'https://via.placeholder.com/60'}"
+                                                                 alt="Product">
+                                                            <div class="product-details">
+                                                                <h4>${item.product.name}</h4>
+                                                                <p>Mã SP: #${item.product.id}</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td>450.000đ</td>
-                                                <td>2</td>
-                                                <td><strong>900.000đ</strong></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="product-info">
-                                                        <img src="https://i.pinimg.com/1200x/c6/5e/76/c65e76df2dde432225ffcdd5f0602367.jpg"
-                                                            alt="Product">
-                                                        <div class="product-details">
-                                                            <h4>Chén sứ họa tiết truyền thống</h4>
-                                                            <p>SKU: CS002</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>320.000đ</td>
-                                                <td>1</td>
-                                                <td><strong>320.000đ</strong></td>
-                                            </tr>
+                                                    </td>
+                                                    <td><fmt:formatNumber value="${item.product.price}" type="currency"/></td>
+                                                    <td>${item.quantity}</td>
+                                                    <td>
+                                                        <strong><fmt:formatNumber value="${item.product.price * item.quantity}" type="currency"/></strong>
+                                                    </td>
+                                                </tr>
+                                                </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
@@ -165,7 +158,7 @@
                                 <div class="order-summary">
                                     <div class="summary-row">
                                         <span>Tạm tính:</span>
-                                        <span>1.220.000đ</span>
+                                        <span><fmt:formatNumber value="${order.total_amount - order.shipping_fee}" type="currency"/></span>
                                     </div>
                                     <div class="summary-row">
                                         <span>Giảm giá:</span>
@@ -173,11 +166,11 @@
                                     </div>
                                     <div class="summary-row">
                                         <span>Phí vận chuyển:</span>
-                                        <span>50.000đ</span>
+                                        <span><fmt:formatNumber value="${order.shipping_fee}" type="currency"/></span>
                                     </div>
                                     <div class="summary-row total">
                                         <span>Tổng cộng:</span>
-                                        <span>1.250.000đ</span>
+                                        <span><fmt:formatNumber value="${order.total_amount}" type="currency"/></span>
                                     </div>
                                 </div>
                             </div>
@@ -193,8 +186,7 @@
                             </div>
                             <div class="section-content">
                                 <div class="note-box">
-                                    <p>Vui lòng giao hàng vào buổi chiều sau 14h. Nếu không có người nhận, vui lòng liên
-                                        hệ số điện thoại phụ: 0987 654 321</p>
+                                    <p>${not empty order.note ? order.note : "Khách hàng không để lại ghi chú."}</p>
                                 </div>
                             </div>
                         </div>
@@ -287,21 +279,21 @@
                                         <i class="fa-solid fa-user"></i>
                                         <div class="info-details">
                                             <label>Họ và tên</label>
-                                            <p>Nguyễn Văn A</p>
+                                            <p>${order.shipping_name}</p>
                                         </div>
                                     </div>
                                     <div class="info-item">
                                         <i class="fa-solid fa-envelope"></i>
                                         <div class="info-details">
                                             <label>Email</label>
-                                            <p>nguyenvana@email.com</p>
+                                            <p>${order.shipping_email != null ? order.shipping_email : "Chưa cập nhật"}</p>
                                         </div>
                                     </div>
                                     <div class="info-item">
                                         <i class="fa-solid fa-phone"></i>
                                         <div class="info-details">
                                             <label>Số điện thoại</label>
-                                            <p>0123 456 789</p>
+                                            <p>${order.shipping_phone}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -318,10 +310,9 @@
                             </div>
                             <div class="section-content">
                                 <div class="shipping-address">
-                                    <p class="address-name"><strong>Nguyễn Văn A</strong></p>
-                                    <p class="address-phone">0123 456 789</p>
-                                    <p class="address-text">123 Đường ABC, Phường XYZ</p>
-                                    <p class="address-text">Quận 1, TP. Hồ Chí Minh</p>
+                                    <p class="address-name"><strong>${order.shipping_name}</strong></p>
+                                    <p class="address-phone">${order.shipping_phone}</p>
+                                    <p class="address-text">${order.shipping_address}</p>
                                 </div>
                             </div>
                         </div>
@@ -346,7 +337,7 @@
                                     </div>
                                     <div class="info-row">
                                         <label>Tổng tiền:</label>
-                                        <strong class="total-amount">1.250.000đ</strong>
+                                        <strong class="total-amount"><fmt:formatNumber value="${order.total_amount}" type="currency"/></strong>
                                     </div>
                                 </div>
                             </div>
