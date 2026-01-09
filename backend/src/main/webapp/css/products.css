@@ -147,30 +147,54 @@ body {
     font-size: small;
 }
 
-/* --- Phân trang --- */
-.PhanTrang {
+.pagination-area {
     display: flex;
     justify-content: center;
-    margin: 50px 0;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
-.PhanTrang ul {
+.pagination {
     display: flex;
-    gap: 8px;
     list-style: none;
+    padding: 0;
+    gap: 8px;
 }
 
-.PhanTrang .btn {
-    padding: 8px 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+.page-link {
+    display: block;
+    padding: 8px 16px;
     text-decoration: none;
-    color: #555;
-    transition: 0.2s;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-.PhanTrang .btn:hover, .PhanTrang .btn.active {
-    background-color: #c0392b;
-    color: white;
-    border-color: #c0392b;
+.page-link:hover {
+    background-color: #f8f9fa;
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    cursor: default;
+}
+
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+    font-weight: bold;
+    background-color: #fdfdfd;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #dee2e6;
 }

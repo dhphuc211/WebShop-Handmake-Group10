@@ -132,20 +132,14 @@
                             <div class="product-img">
                                 <c:if test="${p.price > 0}">
                                 </c:if>
-
-                                    <%-- Ảnh sản phẩm --%>
                                 <img src="${p.imageUrl}" alt="${p.name}">
                             </div>
-
                             <div class="product-info">
                                 <h3>${p.name}</h3>
-
-                                    <%-- Định dạng giá tiền --%>
                                 <span class="price">
                     <fmt:setLocale value="vi_VN"/>
-                    <fmt:formatNumber value="${p.price}" type="currency" currencySymbol="₫"/>
+                    <fmt:formatNumber value="${p.price}" type="currency" currencySymbol="đ"/>
                   </span>
-
                                     <%-- Giá gốc (Nếu có logic giá sale thì thêm vào đây) --%>
                                     <%-- <del class="compare-price">2.000.000₫</del> --%>
                             </div>
@@ -154,12 +148,30 @@
                 </c:forEach>
 
             </div>
-            <%-- KẾT THÚC VÒNG LẶP --%>
         </div>
+        <div class="pagination-area">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <c:if test="${currentPage > 1}">
+                        <li class="page-item">
+                            <a class="page-link" href="products?page=${currentPage - 1}">Previous</a>
+                        </li>
+                    </c:if>
 
-        <%-- Phần Phân trang giữ nguyên (Sau này xử lý logic sau) --%>
-        <nav class="PhanTrang" aria-label="Phân trang sản phẩm">
-        </nav>
+                    <c:forEach begin="1" end="${totalPages}" var="i">
+                        <li class="page-item ${currentPage == i ? 'active' : ''}">
+                            <a class="page-link" href="products?page=${i}">${i}</a>
+                        </li>
+                    </c:forEach>
+
+                    <c:if test="${currentPage < totalPages}">
+                        <li class="page-item">
+                            <a class="page-link" href="products?page=${currentPage + 1}">Next</a>
+                        </li>
+                    </c:if>
+                </ul>
+            </nav>
+        </div>
     </main>
 </div>
 

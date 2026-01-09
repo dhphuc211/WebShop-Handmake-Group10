@@ -5,10 +5,7 @@ import com.example.backend.model.ProductAttribute;
 import com.example.backend.model.ProductImage;
 import com.example.backend.util.DBConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,25 +81,38 @@ public class ProductDAO {
     /**
      * Xem danh sách toàn bộ sản phẩm
      */
-    public List<Product> getAllProducts() {
+    public List<Product> getAllProducts(int offset, int limit) {
         List<Product> list = new ArrayList<>();
 
-        String sql = "SELECT p.*, pi.image_url " +
-                "FROM products p " +
-                "LEFT JOIN product_images pi ON p.id = pi.product_id " +
-                "GROUP BY p.id " +
-                "ORDER BY p.id DESC";
+        String sql = "select p.*, pi.image_url from products p "
+                + "left join product_images pi on p.id = pi.product_id "+
+                "group by p.id order by p.id desc limit ?,?";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
+        PreparedStatement ps = conn.prepareStatement(sql);) {
+            ps.setInt(1, offset);
+            ps.setInt(2, limit);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
                 list.add(mapResultSetToProduct(rs));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public int getTotalProductsCount() {
+        String sql = "select count(*) from products where status = 'active'";
+        try (Connection conn = DBConnection.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) { return rs.getInt(1); }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     /**

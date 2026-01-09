@@ -60,7 +60,8 @@ public class ProductService {
      * Lấy tất cả sản phẩm để hiển thị trong trang Admin
      */
     public List<Product> getAllProductsForAdmin() {
-        return productDAO.getAllProducts();
+//        return productDAO.getAllProducts()
+        return null;
     }
 
     /**
@@ -87,8 +88,14 @@ public class ProductService {
 
 
     // Lấy tất cả sản phẩm
-    public List<Product> getAllProducts() {
-        return productDAO.getAllProducts();
+    public List<Product> getAllProducts(int page, int pageSize) {
+        int offset = (page -1 )*pageSize;
+        return productDAO.getAllProducts(offset, pageSize);
+    }
+
+    public int getTotalPages(int pageSize) {
+        int totalRecords = productDAO.getTotalProductsCount();
+        return (int) Math.ceil((double) totalRecords/pageSize);
     }
 
     // Tìm kiếm sản phẩm (Mapping từ searchProducts -> searchProductsByName của DAO)

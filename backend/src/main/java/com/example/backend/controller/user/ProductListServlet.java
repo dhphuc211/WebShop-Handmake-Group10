@@ -24,8 +24,16 @@ public class ProductListServlet extends HttpServlet {
         String categoryIdStr = request.getParameter("cid"); // Lấy chuỗi trước
         String searchKeyword = request.getParameter("search");
         String sortType = request.getParameter("sort");
+        int page = 1;
+        int pageSize = 12;
 
-        List<Product> productList;
+        String pageStr = request.getParameter("page");
+        if (pageStr != null && !pageStr.isEmpty()) {
+            page = Integer.parseInt(pageStr);
+        }
+
+        List<Product> productList = productService.getAllProducts(page,pageSize);
+        int totalPages = productService.getTotalPages(pageSize);
 
         try {
             if (searchKeyword != null && !searchKeyword.trim().isEmpty()) {
@@ -40,7 +48,7 @@ public class ProductListServlet extends HttpServlet {
                     productList = productService.getProductsByCategory(cid);
                     request.setAttribute("title", "Sản phẩm theo danh mục");
                 } catch (NumberFormatException e) {
-                    productList = productService.getAllProducts();
+                    productList = productService.getAllProducts(page,pageSize);
                 }
 
             } else if (sortType != null && !sortType.trim().isEmpty()) {
@@ -50,7 +58,7 @@ public class ProductListServlet extends HttpServlet {
 
             } else {
                 // Mặc định: Lấy tất cả sản phẩm
-                productList = productService.getAllProducts();
+                productList = productService.getAllProducts(page, pageSize);
                 request.setAttribute("title", "Tất cả sản phẩm");
             }
         } catch (Exception e) {
@@ -62,6 +70,8 @@ public class ProductListServlet extends HttpServlet {
 
         request.setAttribute("paramSearch", searchKeyword);
         request.setAttribute("paramCid", categoryIdStr);
+        request.setAttribute("page", page);
+        request.setAttribute("totalPages", totalPages);
 
         request.getRequestDispatcher("/products.jsp").forward(request, response);
     }

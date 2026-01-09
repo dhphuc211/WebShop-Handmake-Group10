@@ -16,24 +16,14 @@
 </head>
 <body>
 <%@ include file="compenents/header.jsp" %>
-<div class="hero-section-container">
-    <section class="hero">
-        <div class="hero-content">
-            <h1>${product.name}</h1>
-            <div class="breadcrumb">
-                <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a> /
-                <a href="${pageContext.request.contextPath}/products.jsp">Sản phẩm</a> /
-                ${product.name}
-            </div>
-        </div>
-    </section>
-    <%-- Categories wrapper giữ nguyên... --%>
-</div>
+<c:set var="pageTitle" value="${product.name}" scope="request" />
+<c:set var="breadcrumbText" value="<a href='${pageContext.request.contextPath}/products.jsp'>Sản phẩm</a> / ${product.name}" scope="request" />
+
+<jsp:include page="compenents/hero-section.jsp" />
 
 <div class="product-page">
     <section class="product-details">
         <div class="container">
-            <%-- 3. Product Gallery - Sửa lỗi Thymeleaf --%>
             <div class="product-gallery">
                 <div class="product-img">
                     <a href="#">
@@ -42,7 +32,6 @@
                 </div>
             </div>
 
-            <%-- 4. Product Info - Dynamic Data --%>
             <div class="product-detail-info">
                 <div class="product-name">
                     <h2>${product.name}</h2>
@@ -70,7 +59,6 @@
                     </div>
                 </div>
 
-                <%-- 5. Attributes - Lấy từ product.attribute --%>
                 <div class="product-attributes-short">
                     <h3>Thông tin chi tiết</h3>
                     <ul>
@@ -95,7 +83,6 @@
         </div>
     </section>
 
-    <%-- 6. Description --%>
     <section class="product-description">
         <div class="container">
             <div class="product-tab">
@@ -113,7 +100,6 @@
         </div>
     </section>
 
-    <%-- 7. Related Products --%>
     <section class="product-relate">
         <div class="container">
             <div class="product-relate">
@@ -144,77 +130,7 @@
         </div>
     </section>
 </div>
-
-
-<footer id="footer">
-    <div class="container">
-        <div class="content">
-            <div class="info">
-                <div class="info_details">
-                    <h2>Thông tin</h2>
-                    <div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <p>Trường Đại học Nông Lâm Tp.Hcm</p>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-phone"></i>
-                        <p>0337429995</p></div>
-                    <div>
-                        <i class="fa-solid fa-envelope"></i>
-                        <p>23130240@st.hcmuaf.edu.vn</p></div>
-                </div>
-
-                <div class="info_media">
-                    <h2>Mạng xã hội</h2>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon zalo" aria-label="Zalo"><strong>Za</strong></a>
-                        <a href="#" class="social-icon fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="social-icon gg" aria-label="Google"><i class="fa-brands fa-google"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="policy-guide-wrapper">
-                <div class="component policy">
-                    <h2>Chính sách</h2>
-                    <ul>
-                        <li><a href="${pageContext.request.contextPath}/policy/security.jsp" class="hover color">Chính
-                            sách bảo mật</a></li>
-                        <li><a href="${pageContext.request.contextPath}/policy/transport.jsp" class="hover color">Chính
-                            sách vận chuyển</a></li>
-                        <li><a href="${pageContext.request.contextPath}/policy/change.jsp" class="hover color">Chính
-                            sách đổi trả</a></li>
-                        <li><a href="${pageContext.request.contextPath}/policy/regulation-use.jsp" class="hover color">Quy
-                            định sử dụng</a></li>
-                    </ul>
-                </div>
-                <div class="component guide">
-                    <h2>Hướng dẫn</h2>
-                    <ul>
-                        <li><a href="${pageContext.request.contextPath}/guide/purchase.jsp" class="hover color">Hướng
-                            dẫn mua hàng</a></li>
-                        <li><a href="${pageContext.request.contextPath}/guide/payment.jsp" class="hover color">Hướng dẫn
-                            thanh toán</a></li>
-                        <li><a href="${pageContext.request.contextPath}/guide/delivery.jsp" class="hover color">Hướng
-                            dẫn giao nhận</a></li>
-                        <li><a href="${pageContext.request.contextPath}/guide/clause.jsp" class="hover color">Điều khoản
-                            sử dụng</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="others">
-                <h2>Đăng ký nhận tin</h2>
-                <p>Đăng ký ngay! Để nhận nhiều ưu đãi</p>
-                <div class="input">
-                    <input type="text" name="Email" id="email" placeholder="Nhập địa chỉ email">
-                    <button>Đăng ký</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<%@include file="compenents/footer.jsp"%>
 
 <input type="checkbox" id="search-toggle" class="hidden-checkbox">
 <label for="search-toggle" class="search-overlay"></label>
@@ -277,30 +193,27 @@
 </div>
 
 <script src="${pageContext.request.contextPath}/js/hero-section.js"></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
 
-        // --- 1. Lấy các phần tử ---
         const openButton = document.querySelector('.product-detail-info .cart button');
         const modal = document.getElementById('cart-modal-overlay');
         const closeXBtn = document.getElementById('modal-close-x');
         const continueShoppingBtn = document.getElementById('modal-continue-shopping');
 
-        // --- 2. Hàm MỞ pop-up ---
         function openModal() {
             if (modal) {
                 modal.classList.add('show');
             }
         }
 
-        // --- 3. Hàm ĐÓNG pop-up ---
         function closeModal() {
             if (modal) {
                 modal.classList.remove('show');
             }
         }
 
-        // --- 4. Gán sự kiện "Lắng Nghe" ---
         if (openButton) {
             openButton.addEventListener('click', function (e) {
                 e.preventDefault();
