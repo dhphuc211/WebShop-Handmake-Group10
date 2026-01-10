@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -67,7 +68,7 @@
                             <i class="fa-solid fa-user"></i>
                             Họ và tên
                         </label>
-                        <input type="text" id="fullName" name="fullName"
+                        <input type="text" id="fullName" name="fullName" value="${fullName}"
                                placeholder="Nhập họ và tên đầy đủ" required>
                     </div>
 
@@ -76,7 +77,7 @@
                             <i class="fa-solid fa-envelope"></i>
                             Email
                         </label>
-                        <input type="email" id="email" name="email"
+                        <input type="email" id="email" name="email" value="${email}"
                                placeholder="example@email.com" required>
                     </div>
 
@@ -85,7 +86,7 @@
                             <i class="fa-solid fa-phone"></i>
                             Số điện thoại
                         </label>
-                        <input type="tel" id="phone" name="phone"
+                        <input type="tel" id="phone" name="phone" value="${phone}"
                                placeholder="Nhập số điện thoại" pattern="[0-9]{10,11}" required>
                     </div>
 
@@ -143,7 +144,7 @@
                 </div>
 
                 <div class="login-link">
-                    <p>Bạn đã có tài khoản? <a href="${pageContext.request.contextPath}/login.jsp">Đăng nhập ngay</a></p>
+                    <p>Bạn đã có tài khoản? <a href="${pageContext.request.contextPath}/login">Đăng nhập ngay</a></p>
                 </div>
             </div>
         </div>

@@ -79,9 +79,8 @@
           </div>
         </div>
       </li>
-      <li class="nav-item"><a href="${pageContext.request.contextPath}/news.jsp">Tin tức</a></li>
-      <li class="nav-item"><a href="${pageContext.request.contextPath}/stores.jsp">Cửa hàng</a></li>
-      <li class="nav-item"><a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a></li>
+      <li class="nav-item"><a href="${pageContext.request.contextPath}/news">Tin tức</a></li>
+      <li class="nav-item"><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
     </div>
     <div class="others">
       <div class="others">
@@ -90,14 +89,28 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </label>
         </div>
-        <a href="${pageContext.request.contextPath}/login.jsp" class="icon">
-          <i class="fa-regular fa-user"></i>
-        </a>
-        <a href="${pageContext.request.contextPath}/wishlist.jsp" class="icon badge" >
+        <div class="icon user-menu-container">
+          <a href="${pageContext.request.contextPath}/login" class="icon">
+            <i class="fa-regular fa-user"></i>
+          </a>
+          <% if (session.getAttribute("user") != null) { %>
+            <div class="user-dropdown">
+              <div class="user-info-header">
+                <span>Xin chào, <strong>${sessionScope.user.fullName}</strong></span>
+              </div>
+              <hr>
+              <ul>
+                <li><a href="${pageContext.request.contextPath}/account/dashboard.jsp"><i class="fa-regular fa-address-card"></i> Thông tin cá nhân</a></li>
+                <li><a href="${pageContext.request.contextPath}/logout" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
+              </ul>
+            </div>
+          <% } %>
+        </div>
+        <a href="${pageContext.request.contextPath}/wishlist" class="icon badge" >
           <i class="fa-regular fa-heart"></i>
           <span>0</span>
         </a>
-        <a href="${pageContext.request.contextPath}/shopping-cart.jsp" class="icon badge">
+        <a href="${pageContext.request.contextPath}/shopping-cart" class="icon badge">
           <i class="fa-solid fa-cart-shopping"></i>
           <span>0</span>
         </a>

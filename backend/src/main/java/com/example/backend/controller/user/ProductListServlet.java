@@ -21,9 +21,10 @@ public class ProductListServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String categoryIdStr = request.getParameter("cid"); // Lấy chuỗi trước
+        String categoryIdStr = request.getParameter("category_id");
         String searchKeyword = request.getParameter("search");
         String sortType = request.getParameter("sort");
+        String direction = request.getParameter("direction");
         int page = 1;
         int pageSize = 12;
 
@@ -37,12 +38,9 @@ public class ProductListServlet extends HttpServlet {
 
         try {
             if (searchKeyword != null && !searchKeyword.trim().isEmpty()) {
-                // Tìm kiếm
                 productList = productService.searchProducts(searchKeyword);
                 request.setAttribute("title", "Tìm kiếm: " + searchKeyword);
-
             } else if (categoryIdStr != null && !categoryIdStr.trim().isEmpty()) {
-                // Lọc theo danh mục
                 try {
                     int cid = Integer.parseInt(categoryIdStr);
                     productList = productService.getProductsByCategory(cid);
@@ -52,8 +50,7 @@ public class ProductListServlet extends HttpServlet {
                 }
 
             } else if (sortType != null && !sortType.trim().isEmpty()) {
-                // Sắp xếp
-                productList = productService.getAllProductsSorted(sortType);
+                productList = productService.getAllProductsSorted(sortType, direction);
                 request.setAttribute("title", "Sắp xếp theo giá");
 
             } else {

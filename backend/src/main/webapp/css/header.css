@@ -365,41 +365,60 @@ header .others .badge span {
 .nav-mobile-btn, .nav-overlay {
     display: none;
 }
-
-.user-dropdown {
-  position: relative;
-  display: inline-block;
+.user-menu-container {
+    position: relative;
+    display: flex; /* Thay vì inline-block để căn giữa icon */
+    align-items: center;
+    height: 100%;
+    z-index: 1000;
 }
 
-.dropdown-content {
-  display: none;             /* Ẩn menu */
-  position: absolute;        /* Định vị tuyệt đối theo div cha */
-  right: -10px;                  /* Canh lề phải thẳng với icon */
-  background-color: #fff;    /* Màu nền */
-  min-width: 150px;          /* Chiều rộng tối thiểu */
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Đổ bóng cho đẹp */
-  z-index: 10;                /* Đảm bảo nó nổi lên trên các thành phần khác */
-  border-radius: 5px;        /* Bo tròn góc */
-  overflow: hidden;
+/* Khối dropdown - Cần ép kiểu để không bị flex của header làm loạn */
+.user-menu-container .user-dropdown {
+    display: none; /* Mặc định ẩn */
+    position: absolute;
+    top: 100%; /* Sát mép dưới header */
+    right: 0;
+    width: 220px;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    padding: 10px 0;
+    z-index: 9999; /* Đảm bảo nổi lên trên cùng */
+    text-align: left; /* Chữ canh trái lại */
+    text-transform: none; /* Bỏ viết hoa nếu bị dính từ menu */
 }
 
-/* Style cho các link bên trong menu */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-family: sans-serif;   /* Hoặc font chữ của web bạn */
+/* Hiển thị khi hover */
+.user-menu-container:hover .user-dropdown {
+    display: block !important; /* Dùng !important nếu vẫn bị các class khác đè */
 }
 
-/* Hiệu ứng khi rê chuột vào từng mục con */
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
+/* Sửa lỗi chữ bị trắng hoặc khó nhìn */
+.user-info-header {
+    padding: 5px 15px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #eee;
 }
 
-/* 3. QUAN TRỌNG: Hiện menu khi rê chuột vào icon */
-.user-dropdown:hover .dropdown-content {
-  display: block;
+.user-dropdown ul {
+    list-style: none;
+    padding: 0;
+}
+
+.user-dropdown ul li a {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333 !important; /* Ép màu chữ đen/xám */
+    font-size: 14px;
+}
+
+.user-dropdown ul li a:hover {
+    background-color: #f8f8f8;
+    color: #c0392b !important;
 }
 
 /* --- 1. Tablet & Laptop nhỏ (Max-width: 1024px) --- */

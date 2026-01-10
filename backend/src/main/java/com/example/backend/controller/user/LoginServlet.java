@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         // Kiểm tra nếu user đã đăng nhập rồi thì chuyển về trang chủ
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("user") != null) {
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            response.sendRedirect(request.getContextPath() + "/index");
             return;
         }
 
@@ -109,7 +109,7 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/admin/dashboard");
             } else {
                 // User thường -> trang chủ
-                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                response.sendRedirect(request.getContextPath() + "/index");
             }
 
         } else {
