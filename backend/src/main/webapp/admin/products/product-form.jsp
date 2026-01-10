@@ -32,7 +32,7 @@
     <div class="admin-content">
       <div class="page-header-edit">
         <div class="header-left">
-          <a href="${pageContext.request.contextPath}/admin/products" class="back-link">
+          <a href="${pageContext.request.contextPath}/admin/products/product-form.jsp" class="back-link">
             <i class="fa-solid fa-arrow-left"></i> Quay lại danh sách
           </a>
           <h1>${product != null ? 'Cập nhật sản phẩm' : 'Thêm sản phẩm mới'}</h1>

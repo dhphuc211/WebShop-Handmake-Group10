@@ -8,35 +8,9 @@ import com.example.backend.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ProductDAO {
-
-    public List<ProductImage> getImagesByProductId(int pid) {
-        List<ProductImage> listImages = new ArrayList<>();
-
-        String sql = "SELECT id, image_url FROM product_images WHERE product_id = ?";
-
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setInt(1, pid);
-
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-
-                    ProductImage img = new ProductImage();
-                    img.setId(rs.getInt("id"));
-                    img.setImageUrl(rs.getString("image_url"));
-                    img.setProductId(pid);
-
-                    listImages.add(img);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return listImages;
-    }
 
     public List<Product> getFeaturedProducts() {
         List<Product> list = new ArrayList<>();
@@ -115,9 +89,6 @@ public class ProductDAO {
         return 0;
     }
 
-    /**
-     * Lọc sản phẩm theo danh mục
-     */
     public List<Product> getProductsByCategory(int categoryId) {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT p.*, MAX(pi.image_url) AS image_url " +
@@ -137,14 +108,12 @@ public class ProductDAO {
         return list;
     }
 
-    /**
-     * Xem chi tiết một sản phẩm theo ID
-     */
     public Product getProductById(int id) {
         Product product = null;
-        String sql = "SELECT p.*, MAX(pi.image_url) AS image_url " +
+        String sql = "SELECT p.*, MAX(pi.image_url) AS image_url, pa.* " +
                 "FROM products p " +
                 "LEFT JOIN product_images pi ON p.id = pi.product_id " +
+                "LEFT JOIN product_attributes pa on pa.product_id = p.id " +
                 "WHERE p.id = ? " +
                 "GROUP BY p.id";
 
@@ -182,13 +151,21 @@ public class ProductDAO {
         return list;
     }
 
-    /**
-     * Sắp xếp sản phẩm theo giá (Tăng/Giảm)
-     */
-    public List<Product> getAllProductsSorted(String sortType) {
+    public List<Product> getAllProductsSorted(String orderBy, String direction) {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT * FROM products WHERE status = 'active' ORDER BY price " +
-                (sortType.equalsIgnoreCase("ASC") ? "ASC" : "DESC");
+
+        Set<String> allowedOrderBy = Set.of(
+                "price", "name", "created_at", "stock"
+        );
+        if (!allowedOrderBy.contains(orderBy)) {
+            orderBy = "price";
+        }
+        String sortDir = "ASC";
+        if ("DESC".equalsIgnoreCase(direction)) {
+            sortDir = "DESC";
+        }
+
+        String sql = "SELECT * FROM products WHERE status = 'active' ORDER BY "+ orderBy+ " " + sortDir;
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -204,12 +181,9 @@ public class ProductDAO {
     }
 
 
-    /**
-     * Cập nhật thông tin sản phẩm
-     */
     public boolean updateProduct(Product p) {
-        String sql = "UPDATE products SET name=?, slug=?, price=?, sale_price=?, stock=?, " +
-                "full_description=?, status=?, is_featured=?, is_new=?, is_bestseller=?, " +
+        String sql = "UPDATE products SET name=?, price=?, stock=?, " +
+                "full_description=?, status=?, is_featured=?, " +
                 "category_id=?, updated_at=NOW() WHERE id=?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -217,14 +191,14 @@ public class ProductDAO {
 
             ps.setString(1, p.getName());
 
-            ps.setDouble(3, p.getPrice());
+            ps.setDouble(2, p.getPrice());
 
-            ps.setInt(5, p.getStock());
-            ps.setString(6, p.getFullDescription());
-            ps.setString(7, p.getStatus());
-            ps.setBoolean(8, p.isFeatured());
-            ps.setInt(11, p.getCategoryId());
-            ps.setInt(12, p.getId());
+            ps.setInt(3, p.getStock());
+            ps.setString(4, p.getFullDescription());
+            ps.setString(5, p.getStatus());
+            ps.setBoolean(6, p.isFeatured());
+            ps.setInt(7, p.getCategoryId());
+            ps.setInt(8, p.getId());
 
             int rows = ps.executeUpdate();
             return rows > 0;
@@ -234,35 +208,25 @@ public class ProductDAO {
         return false;
     }
 
-    /**
-     * Thêm mới sản phẩm (Dành cho Admin)
-     */
     public int insertProduct(Product p) {
-        String sql = "INSERT INTO products (name, slug, price, stock, category_id, status, created_at) " +
+        String sql = "INSERT INTO products (name, price, stock, category_id, status, created_at) " +
                 "VALUES (?, ?, ?, ?, ?, 'active', NOW())";
 
         int generatedId = -1;
 
         try (Connection conn = DBConnection.getConnection();
-             // Quan trọng: Thêm tham số RETURN_GENERATED_KEYS
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setString(1, p.getName());
-
-            String slug = p.getName().toLowerCase().replaceAll("\\s+", "-");
-            ps.setString(2, slug);
-
-            ps.setDouble(3, p.getPrice()); // Index là 3 (sau slug)
-            ps.setInt(4, p.getStock());
-            ps.setInt(5, p.getCategoryId());
+            ps.setDouble(2, p.getPrice());
+            ps.setInt(3, p.getStock());
+            ps.setInt(4, p.getCategoryId());
 
             int rows = ps.executeUpdate();
-
-            // Lấy ID vừa sinh ra
             if (rows > 0) {
                 try (ResultSet rs = ps.getGeneratedKeys()) {
                     if (rs.next()) {
-                        generatedId = rs.getInt(1); // Trả về ID mới nhất
+                        generatedId = rs.getInt(1);
                     }
                 }
             }
@@ -316,7 +280,6 @@ public class ProductDAO {
             ps.setInt(1, productId);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                // Giả sử constructor ProductAttribute(origin, material, size, weight, color)
                 attr = new ProductAttribute();
                 attr.setOrigin(rs.getString("origin"));
                 attr.setMaterial(rs.getString("material"));
@@ -330,16 +293,15 @@ public class ProductDAO {
         return attr;
     }
 
-    public boolean deleteProduct(int id) {
-        String sql = "DELETE FROM products WHERE id = ?";
+    public void deleteProduct(int id) {
+        String sql = "update products set status = 'inactive' where id = ? ";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);
-            return ps.executeUpdate() > 0;
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
     }
 
 }

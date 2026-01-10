@@ -1,21 +1,16 @@
 package com.example.backend.controller.admin;
 
 import com.example.backend.model.Product;
-import com.example.backend.model.ProductAttribute;
 import com.example.backend.model.ProductImage;
 import com.example.backend.service.ProductService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
 
 @WebServlet(name = "AdminProductServlet", value = "/admin/products")
@@ -71,8 +66,9 @@ public class AdminProductServlet extends HttpServlet {
     // --- CÁC HÀM HIỂN THỊ (GET) ---
 
     private void listProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Gọi service lấy danh sách (dùng hàm cho Admin để thấy cả sản phẩm ẩn)
-        List<Product> listProducts = productService.getAllProductsForAdmin();
+        int offset = Integer.parseInt(request.getParameter("start"));
+        int limit = Integer.parseInt(request.getParameter("length"));
+        List<Product> listProducts = productService.getAllProducts(offset, limit);
         request.setAttribute("listProducts", listProducts);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/products/product-list.jsp");
         dispatcher.forward(request, response);
@@ -106,13 +102,13 @@ public class AdminProductServlet extends HttpServlet {
 
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // 1. Lấy thông tin cơ bản
-        String name = request.getParameter("product_name");
+        String name = request.getParameter("name");
         double price = Double.parseDouble(request.getParameter("price"));
         int stock = Integer.parseInt(request.getParameter("stock"));
         String desc = request.getParameter("full_description");
         String status = request.getParameter("status");
         boolean featured = request.getParameter("featured") != null;
-        int categoryId = 1; // Hoặc request.getParameter("category_id")
+        int categoryId = Integer.parseInt(request.getParameter("category_id"));
 
         Product newProduct = new Product();
         newProduct.setName(name);
@@ -141,7 +137,7 @@ public class AdminProductServlet extends HttpServlet {
     // --- XỬ LÝ CẬP NHẬT (POST) ---
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("product_name");
+        String name = request.getParameter("name");
         double price = Double.parseDouble(request.getParameter("price"));
         int stock = Integer.parseInt(request.getParameter("stock"));
         String desc = request.getParameter("full_description");
