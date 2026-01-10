@@ -12,7 +12,8 @@ public class UserDAO {
      * @return true nếu đăng ký thành công, false nếu thất bại
      */
     public boolean register(User user) {
-        String sql = "INSERT INTO users (full_name, email, phone, password, role, is_active) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users (full_name, email, phone, password, role_id, status, created_at) " +
+                "VALUES (?, ?, ?, ?, COALESCE((SELECT id FROM role WHERE name = ?), 1), ?, NOW())";
         
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -25,8 +26,9 @@ public class UserDAO {
             pstmt.setString(2, user.getEmail());
             pstmt.setString(3, user.getPhone());
             pstmt.setString(4, user.getPassword());
+            String status = user.isActive() ? "active" : "inactive";
             pstmt.setString(5, user.getRole());
-            pstmt.setBoolean(6, user.isActive());
+            pstmt.setString(6, status);
             
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
@@ -46,7 +48,10 @@ public class UserDAO {
      * @return User object nếu đăng nhập đúng, null nếu sai
      */
     public User checkLogin(String emailOrPhone, String password) {
-        String sql = "SELECT * FROM users WHERE (email = ? OR phone = ?) AND password = ?";
+        String sql = "SELECT u.*, r.name AS role " +
+                "FROM users u " +
+                "LEFT JOIN role r ON u.role_id = r.id " +
+                "WHERE (u.email = ? OR u.phone = ?) AND u.password = ?";
         
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -82,7 +87,10 @@ public class UserDAO {
     }
 
     private User findByEmail(String email) {
-        String sql = "SELECT * FROM users WHERE email = ?";
+        String sql = "SELECT u.*, r.name AS role " +
+                "FROM users u " +
+                "LEFT JOIN role r ON u.role_id = r.id " +
+                "WHERE u.email = ?";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -116,7 +124,10 @@ public class UserDAO {
     }
 
     private User findByPhone(String phone) {
-        String sql = "SELECT * FROM users WHERE phone = ?";
+        String sql = "SELECT u.*, r.name AS role " +
+                "FROM users u " +
+                "LEFT JOIN role r ON u.role_id = r.id " +
+                "WHERE u.phone = ?";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -139,6 +150,58 @@ public class UserDAO {
             return null;
         } finally {
             closeResources(conn, pstmt, rs);
+        }
+    }
+
+    //Lấy thông tin user theo ID
+    public User getUserById(int id) {
+        String sql = "SELECT u.*, r.name AS role " +
+                "FROM users u " +
+                "LEFT JOIN role r ON u.role_id = r.id " +
+                "WHERE u.id = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return extractUserFromResultSet(rs);
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi lấy user theo id: " + e.getMessage());
+        } finally {
+            closeResources(conn, pstmt, rs);
+        }
+        return null;
+    }
+
+    //Cập nhật thông tin cá nhân (Họ tên, SĐT)
+    public boolean updateProfile(User user) {
+        String sql = "UPDATE users SET full_name = ?, phone = ? WHERE id = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, user.getFullName());
+            pstmt.setString(2, user.getPhone());
+            pstmt.setInt(3, user.getId());
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi cập nhật profile: " + e.getMessage());
+            return false;
+        } finally {
+            closeResources(conn, pstmt, null);
         }
     }
 
@@ -176,7 +239,12 @@ public class UserDAO {
             if (hasColumn(rs, "phone")) user.setPhone(rs.getString("phone"));
             if (hasColumn(rs, "password")) user.setPassword(rs.getString("password"));
             if (hasColumn(rs, "role")) user.setRole(rs.getString("role"));
-            if (hasColumn(rs, "is_active")) user.setActive(rs.getBoolean("is_active"));
+            if (hasColumn(rs, "is_active")) {
+                user.setActive(rs.getBoolean("is_active"));
+            } else if (hasColumn(rs, "status")) {
+                String status = rs.getString("status");
+                user.setActive("active".equalsIgnoreCase(status));
+            }
         } catch (SQLException e) {
              System.err.println("Lỗi mapping user: " + e.getMessage());
         }
