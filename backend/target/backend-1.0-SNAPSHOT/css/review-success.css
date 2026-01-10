@@ -1,0 +1,107 @@
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa; /* Nền xám xanh nhạt dịu mắt */
+}
+
+/* Căn giữa trang web */
+.success-page-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Thẻ thông báo chính */
+.success-card {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    animation: slideUp 0.5s ease-out;
+}
+
+/* Icon dấu tích xanh */
+.icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: #e8f5e9; /* Nền xanh lá rất nhạt */
+    color: #2ecc71;       /* Màu xanh lá cây */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin: 0 auto 25px;
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.2);
+}
+
+/* Tiêu đề */
+.success-title {
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Nội dung chữ */
+.success-message p {
+    font-size: 16px;
+    color: #34495e;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.success-message .sub-text {
+    font-size: 14px;
+    color: #7f8c8d; /* Màu xám nhạt hơn */
+}
+
+/* Khu vực nút bấm */
+.action-buttons {
+    margin-top: 30px;
+}
+
+.btn-continue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #3498db; /* Màu xanh chủ đạo của web bạn */
+    color: white;
+    text-decoration: none;
+    padding: 14px 30px;
+    border-radius: 50px; /* Bo tròn kiểu viên thuốc */
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btn-continue:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+/* Hiệu ứng xuất hiện nhẹ nhàng */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

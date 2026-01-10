@@ -1,19 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <%@ include file="compenents/header.jsp" %>
+
 <main class="component">
     <section class="section_intro">
-        <img id="intro-bg"
-             src="${not empty banners ? banners[0].image_url.trim() : ''}"
-             class="intro-bg-img"
-             alt="Background Banner">
-
         <div class="section_intro-content">
             <h1>Đồ thủ công mỹ nghệ</h1>
             <p>Tinh tế – Mộc mạc – Đậm bản sắc Việt</p>
             <a href="${pageContext.request.contextPath}/products.jsp" class="btn">Khám phá ngay</a>
         </div>
     </section>
+
     <section class="section_danhmuc">
         <div class="container">
             <div class="category-list">
@@ -154,39 +151,6 @@
             <a href="${pageContext.request.contextPath}/news.jsp" class="btn-view-all">Xem Tất Cả</a>
         </div>
     </section>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const bgImg = document.getElementById('intro-bg');
-            if (!bgImg) return;
-
-            const rawImages = [
-                <c:forEach var="url" items="${banners}" varStatus="status">
-                '${url.image_url}'${!status.last ? ',' : ''}
-                </c:forEach>
-            ];
-
-            const cleanImages = rawImages
-                .map(img => img.replace(/\s/g, ''))
-                .filter(img => img !== "");
-
-            if (cleanImages.length === 0) return;
-
-            let currentIndex = 0;
-
-            function updateBanner(index) {
-                const url = cleanImages[index];
-                bgImg.src = url;
-            }
-
-            updateBanner(0);
-            if (cleanImages.length > 1) {
-                setInterval(() => {
-                    currentIndex = (currentIndex + 1) % cleanImages.length;
-                    updateBanner(currentIndex);
-                }, 5000);
-            }
-        });
-    </script>
 </main>
 
 <%@ include file="compenents/footer.jsp" %>
