@@ -1,0 +1,9 @@
+.smarttomcat/
+backend/target/
+target/
+**/target/
+*.class
+.idea
+.gitignore
+backend/src/main/java/com/example/backend/util/DBConnection.java
+
