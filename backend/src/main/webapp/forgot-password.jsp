@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -30,13 +31,28 @@
                     <p>Nhập email hoặc SĐT để nhận hướng dẫn đặt lại mật khẩu</p>
                 </div>
 
-                <form class="login-form" action="${pageContext.request.contextPath}/forgot-password.jsp" method="post">
+                <c:if test="${not empty successMessage}">
+                    <div class="alert alert-success">
+                        <i class="fa-solid fa-check-circle"></i> ${successMessage}
+                        <c:if test="${not empty generatedPassword}">
+                            <div>Mật khẩu mới: <strong>${generatedPassword}</strong></div>
+                        </c:if>
+                    </div>
+                </c:if>
+                <c:if test="${not empty errorMessage}">
+                    <div class="alert alert-error">
+                        <i class="fa-solid fa-exclamation-circle"></i> ${errorMessage}
+                    </div>
+                </c:if>
+
+                <form class="login-form" action="${pageContext.request.contextPath}/forgot-password" method="post">
                     <div class="form-group">
                         <label for="emailOrPhone">
                             <i class="fa-solid fa-envelope"></i>
                             Email hoặc Số điện thoại
                         </label>
-                        <input type="text" id="emailOrPhone" name="emailOrPhone" placeholder="Nhập email hoặc số điện thoại" required>
+                        <input type="text" id="emailOrPhone" name="emailOrPhone" value="${emailOrPhone}"
+                               placeholder="Nhập email hoặc số điện thoại" required>
                     </div>
 
                     <button type="submit" class="btn-login">

@@ -74,7 +74,7 @@
                             <input type="checkbox" id="rememberMe" name="rememberMe">
                             <span>Ghi nhớ đăng nhập</span>
                         </label>
-                        <a href="${pageContext.request.contextPath}/forgot-password.jsp" class="forgot-password">Quên mật khẩu?</a>
+                        <a href="${pageContext.request.contextPath}/forgot-password" class="forgot-password">Quên mật khẩu?</a>
                     </div>
 
                     <button type="submit" class="btn-login">

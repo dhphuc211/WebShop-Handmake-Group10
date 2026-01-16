@@ -79,6 +79,57 @@ public class UserDAO {
         return null;
     }
 
+    //Tìm user theo email hoặc số điện thoại (dùng cho quên mật khẩu)
+    public User findByEmailOrPhone(String emailOrPhone) {
+        String sql = "SELECT u.*, r.name AS role " +
+                "FROM users u " +
+                "LEFT JOIN role r ON u.role_id = r.id " +
+                "WHERE u.email = ? OR u.phone = ?";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, emailOrPhone);
+            pstmt.setString(2, emailOrPhone);
+
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return extractUserFromResultSet(rs);
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi tìm user theo email/phone: " + e.getMessage());
+        } finally {
+            closeResources(conn, pstmt, rs);
+        }
+        return null;
+    }
+
+    //Cập nhật mật khẩu theo user id
+    public boolean updatePassword(int userId, String hashedPassword) {
+        String sql = "UPDATE users SET password = ? WHERE id = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, hashedPassword);
+            pstmt.setInt(2, userId);
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi cập nhật mật khẩu: " + e.getMessage());
+            return false;
+        } finally {
+            closeResources(conn, pstmt, null);
+        }
+    }
+
     /**
      * Kiểm tra email đã tồn tại chưa
      */

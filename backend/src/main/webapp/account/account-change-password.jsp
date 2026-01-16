@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -38,7 +39,7 @@
                     <i class="fa-solid fa-user-circle"></i>
                     <span>Thông tin</span>
                 </a>
-                <a href="${pageContext.request.contextPath}/account/account-change-password.jsp" class="menu-item active">
+                <a href="${pageContext.request.contextPath}/change-password" class="menu-item active">
                     <i class="fa-solid fa-key"></i>
                     <span>Đổi mật khẩu</span>
                 </a>
@@ -71,7 +72,17 @@
 
             <div class="password-container">
                 <div class="password-form-wrapper">
-                    <form class="password-form" action="${pageContext.request.contextPath}/account/account-change-password.jsp" method="post">
+                    <c:if test="${not empty successMessage}">
+                        <div class="alert alert-success">
+                            <i class="fa-solid fa-check-circle"></i> ${successMessage}
+                        </div>
+                    </c:if>
+                    <c:if test="${not empty errorMessage}">
+                        <div class="alert alert-error">
+                            <i class="fa-solid fa-exclamation-circle"></i> ${errorMessage}
+                        </div>
+                    </c:if>
+                    <form class="password-form" action="${pageContext.request.contextPath}/change-password" method="post">
                         <div class="form-group">
                             <label for="currentPassword">
                                 <i class="fa-solid fa-lock"></i>
@@ -85,7 +96,7 @@
                                     <i class="fa-solid fa-eye"></i>
                                 </label>
                             </div>
-                            <a href="${pageContext.request.contextPath}/forgot-password.jsp" class="forgot-password">Quên mật khẩu?</a>
+                            <a href="${pageContext.request.contextPath}/forgot-password" class="forgot-password">Quên mật khẩu?</a>
                         </div>
 
                         <div class="form-divider"></div>
