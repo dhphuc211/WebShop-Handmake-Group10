@@ -103,14 +103,8 @@ public class LoginServlet extends HttpServlet {
             // Log để debug
             System.out.println("✓ Đăng nhập thành công: " + user.getEmail());
 
-            // Chuyển hướng dựa vào role
-            if (user.isAdmin()) {
-                // Admin -> trang quản trị
-                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
-            } else {
-                // User thường -> trang chủ
-                response.sendRedirect(request.getContextPath() + "/index");
-            }
+            // User login luon ve trang chu (admin chi vao dashboard khi dang nhap trang admin)
+            response.sendRedirect(request.getContextPath() + "/index");
 
         } else {
             // ĐĂNG NHẬP THẤT BẠI
