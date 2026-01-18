@@ -27,6 +27,9 @@
                 <a href="${pageContext.request.contextPath}/admin/products/product-list.jsp" class="admin-menu-item">
                     <i class="fa-solid fa-box"></i> <span>Quản lý sản phẩm</span>
                 </a>
+                <a href="${pageContext.request.contextPath}/admin/customers" class="admin-menu-item">
+                    <i class="fa-solid fa-users"></i> <span>Quản lý khách hàng</span>
+                </a>
                 <a href="${pageContext.request.contextPath}/admin/orders/order-list.jsp" class="admin-menu-item">
                     <i class="fa-solid fa-shopping-cart"></i> <span>Quản lý đơn hàng</span>
                 </a>
