@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -39,7 +41,7 @@
                     <i class="fa-solid fa-user-circle"></i>
                     <span>Thông tin</span>
                 </a>
-                <a href="${pageContext.request.contextPath}/account/account-change-password.jsp" class="menu-item">
+                <a href="${pageContext.request.contextPath}/change-password" class="menu-item">
                     <i class="fa-solid fa-key"></i>
                     <span>Đổi mật khẩu</span>
                 </a>

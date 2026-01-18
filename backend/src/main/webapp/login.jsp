@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -73,7 +74,7 @@
                             <input type="checkbox" id="rememberMe" name="rememberMe">
                             <span>Ghi nhớ đăng nhập</span>
                         </label>
-                        <a href="${pageContext.request.contextPath}/forgot-password.jsp" class="forgot-password">Quên mật khẩu?</a>
+                        <a href="${pageContext.request.contextPath}/forgot-password" class="forgot-password">Quên mật khẩu?</a>
                     </div>
 
                     <button type="submit" class="btn-login">

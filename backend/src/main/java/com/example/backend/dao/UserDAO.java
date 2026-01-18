@@ -3,6 +3,8 @@ package com.example.backend.dao;
 import com.example.backend.model.User;
 import com.example.backend.util.DBConnection;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
     /**
@@ -77,6 +79,57 @@ public class UserDAO {
             closeResources(conn, pstmt, rs);
         }
         return null;
+    }
+
+    //Tìm user theo email hoặc số điện thoại (dùng cho quên mật khẩu)
+    public User findByEmailOrPhone(String emailOrPhone) {
+        String sql = "SELECT u.*, r.name AS role " +
+                "FROM users u " +
+                "LEFT JOIN role r ON u.role_id = r.id " +
+                "WHERE u.email = ? OR u.phone = ?";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, emailOrPhone);
+            pstmt.setString(2, emailOrPhone);
+
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return extractUserFromResultSet(rs);
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi tìm user theo email/phone: " + e.getMessage());
+        } finally {
+            closeResources(conn, pstmt, rs);
+        }
+        return null;
+    }
+
+    //Cập nhật mật khẩu theo user id
+    public boolean updatePassword(int userId, String hashedPassword) {
+        String sql = "UPDATE users SET password = ? WHERE id = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, hashedPassword);
+            pstmt.setInt(2, userId);
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi cập nhật mật khẩu: " + e.getMessage());
+            return false;
+        } finally {
+            closeResources(conn, pstmt, null);
+        }
     }
 
     /**
@@ -205,6 +258,120 @@ public class UserDAO {
         }
     }
 
+    //Lấy danh sách user (có phân trang, tìm kiếm)
+    public List<User> getUsers(String keyword, int offset, int limit) {
+        List<User> users = new ArrayList<>();
+        String trimmedKeyword = keyword == null ? "" : keyword.trim();
+        boolean hasKeyword = !trimmedKeyword.isEmpty();
+        int safeOffset = Math.max(0, offset);
+        int safeLimit = Math.max(1, limit);
+
+        StringBuilder sql = new StringBuilder("SELECT u.*, r.name AS role ");
+        sql.append("FROM users u ");
+        sql.append("LEFT JOIN role r ON u.role_id = r.id ");
+        sql.append("WHERE (r.name IS NULL OR r.name <> 'admin') ");
+        if (hasKeyword) {
+            sql.append("AND (u.full_name LIKE ? OR u.email LIKE ? OR u.phone LIKE ?) ");
+        }
+        sql.append("ORDER BY u.created_at DESC ");
+        sql.append("LIMIT ? OFFSET ?");
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql.toString());
+
+            int index = 1;
+            if (hasKeyword) {
+                String pattern = "%" + trimmedKeyword + "%";
+                pstmt.setString(index++, pattern);
+                pstmt.setString(index++, pattern);
+                pstmt.setString(index++, pattern);
+            }
+            pstmt.setInt(index++, safeLimit);
+            pstmt.setInt(index, safeOffset);
+
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                users.add(extractUserFromResultSet(rs));
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi lấy danh sách user: " + e.getMessage());
+        } finally {
+            closeResources(conn, pstmt, rs);
+        }
+        return users;
+    }
+
+    //Đếm tổng user (phục vụ phân trang)
+    public int countUsers(String keyword) {
+        String trimmedKeyword = keyword == null ? "" : keyword.trim();
+        boolean hasKeyword = !trimmedKeyword.isEmpty();
+
+        StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM users u ");
+        sql.append("LEFT JOIN role r ON u.role_id = r.id ");
+        sql.append("WHERE (r.name IS NULL OR r.name <> 'admin') ");
+        if (hasKeyword) {
+            sql.append("AND (u.full_name LIKE ? OR u.email LIKE ? OR u.phone LIKE ?)");
+        }
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql.toString());
+
+            if (hasKeyword) {
+                String pattern = "%" + trimmedKeyword + "%";
+                pstmt.setString(1, pattern);
+                pstmt.setString(2, pattern);
+                pstmt.setString(3, pattern);
+            }
+
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi đếm user: " + e.getMessage());
+        } finally {
+            closeResources(conn, pstmt, rs);
+        }
+        return 0;
+    }
+
+    //Cập nhật trạng thái user (khóa/mở khóa). Không áp dụng cho admin.
+    public boolean updateUserStatus(int userId, boolean isActive) {
+        String status = isActive ? "active" : "inactive";
+        String sql = "UPDATE users u " +
+                "LEFT JOIN role r ON u.role_id = r.id " +
+                "SET u.status = ? " +
+                "WHERE u.id = ? AND (r.name IS NULL OR r.name <> 'admin')";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, status);
+            pstmt.setInt(2, userId);
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi cập nhật trạng thái user: " + e.getMessage());
+            return false;
+        } finally {
+            closeResources(conn, pstmt, null);
+        }
+    }
+
     private void closeResources(Connection conn, Statement stmt, ResultSet rs) {
         // Đóng ResultSet trước
         if (rs != null) {
@@ -239,6 +406,8 @@ public class UserDAO {
             if (hasColumn(rs, "phone")) user.setPhone(rs.getString("phone"));
             if (hasColumn(rs, "password")) user.setPassword(rs.getString("password"));
             if (hasColumn(rs, "role")) user.setRole(rs.getString("role"));
+            if (hasColumn(rs, "created_at")) user.setCreatedAt(rs.getTimestamp("created_at"));
+            if (hasColumn(rs, "updated_at")) user.setUpdatedAt(rs.getTimestamp("updated_at"));
             if (hasColumn(rs, "is_active")) {
                 user.setActive(rs.getBoolean("is_active"));
             } else if (hasColumn(rs, "status")) {

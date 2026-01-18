@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--Note: Cách su dụng herosection--%>
 <%--<c:set var="pageTitle" value="Tiêu đề trang" scope="request" />--%>
 <%--<c:set var="breadcrumbText" value="Breadcrumb" scope="request" />--%>

@@ -57,7 +57,7 @@ public class UserProfileServlet extends HttpServlet {
             return;
         }
 
-        request.getRequestDispatcher("/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("/account/account-profile.jsp").forward(request, response);
     }
 
     //Cập nhật thông tin cá nhân
@@ -85,7 +85,7 @@ public class UserProfileServlet extends HttpServlet {
             phone == null || phone.trim().isEmpty()) {
             
             request.setAttribute("errorMessage", "Vui lòng không để trống họ tên và số điện thoại!");
-            request.getRequestDispatcher("/profile.jsp").forward(request, response);
+            request.getRequestDispatcher("/account/account-profile.jsp").forward(request, response);
             return;
         }
 
@@ -107,6 +107,6 @@ public class UserProfileServlet extends HttpServlet {
             request.setAttribute("errorMessage", "Đã có lỗi xảy ra. Vui lòng thử lại!");
         }
 
-        request.getRequestDispatcher("/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("/account/account-profile.jsp").forward(request, response);
     }
 }
