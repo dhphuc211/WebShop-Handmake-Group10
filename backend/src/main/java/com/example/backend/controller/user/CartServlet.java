@@ -80,48 +80,40 @@ public class CartServlet extends HttpServlet {
 
 //     Chưa có class ProductService của đồng đội đợi chừng nào gửi lên pull về test thử
     private void addToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int productId = Integer.parseInt(request.getParameter("productId"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        try {
+            int productId = Integer.parseInt(request.getParameter("productId"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-        // test chức năng giỏ hàng
-        System.out.println("DEBUG: CartServlet -> addToCart");
-        System.out.println("DEBUG: Product ID nhận được: " + productId);
-        System.out.println("DEBUG: Quantity nhận được: " + quantity);
+            HttpSession session = request.getSession();
+            Cart cart = (Cart) session.getAttribute("cart");
 
-        HttpSession session = request.getSession();
-        Cart cart = (Cart) session.getAttribute("cart");
+            // Nếu cart chưa có gì thì thực hiện việc thêm vào
+            if (cart == null) {
+                cart = new Cart();
+            }
 
-        // Nếu cart chưa có gì thì thực hiện việc thêm vào
-        if(cart == null){
-            cart = new Cart();
-        }
+            ProductService productService = new ProductService();
+            Product product = productService.getProduct(productId);
 
-//        ProductService productService = new ProductService();
-//        Product product = productService.getProduct(productId);
+            if (product != null) {
+                cart.add(product, quantity);
+                session.setAttribute("cart", cart);
+                response.sendRedirect("shopping-cart.jsp");
+                return;
+            }
 
-        // (Do chưa có Database và ProductService tự tạo)
-        Product product = new Product();
-        product.setId(productId);
-        product.setName("Sản phẩm Test (Giả lập)");
-        product.setPrice(1688000); // Giá tiền giả định
-        product.setStock(100);     // Set số lượng tồn kho giả định
+            request.setAttribute("msg", "Product not found");
+            request.getRequestDispatcher("shopping-cart.jsp").forward(request, response);
 
-        if(product!=null){
-            cart.add(product,quantity);
-            session.setAttribute("cart",cart);
-
-            System.out.println("DEBUG: Đã lưu Cart vào Session thành công! Tổng SP: " + cart.getTotalQuantity());
-
+        } catch (NumberFormatException e) {
+            // Xử lý lỗi nếu ID hoặc quantity không phải số
+            e.printStackTrace();
+            response.sendRedirect("products.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
             response.sendRedirect("shopping-cart.jsp");
-//            response.sendRedirect("productdetail?id=" + productId);
-            return;
-
         }
-
-        request.setAttribute("msg","Product not found");
-        request.getRequestDispatcher("shopping-cart.jsp").forward(request,response);
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
