@@ -1,11 +1,11 @@
 package com.example.backend.dao;
 
-import com.example.backend.model.Cart;
-import com.example.backend.model.CartItem;
-import com.example.backend.model.Order;
+import com.example.backend.model.*;
 import com.example.backend.util.DBConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDao {
 
@@ -94,4 +94,106 @@ public class OrderDao {
         }
         return orderId;
     }
+    // Lấy danh sách đơn hàng trong quản lí đơn hàng admin
+    public List<Order> getAllOrders(){
+        List<Order> list = new ArrayList<>();
+        String sql = "select * from orders order by id desc";
+        try(Connection conn = DBConnection.getConnection();
+            PreparedStatement pre = conn.prepareStatement(sql);
+            ResultSet rs = pre.executeQuery()){
+
+            while (rs.next()) {
+                Order o = new Order();
+                o.setId(rs.getInt("id"));
+                o.setUser_id(rs.getInt("user_id"));
+                o.setShipping_name(rs.getString("shipping_name"));
+                o.setShipping_phone(rs.getString("shipping_phone"));
+                o.setShipping_address(rs.getString("shipping_address"));
+                o.setShipping_fee(rs.getDouble("shipping_fee"));
+                o.setTotal_amount(rs.getDouble("total_amount"));
+                o.setOrder_status(rs.getString("order_status"));
+                o.setCreated_at(rs.getTimestamp("created_at"));
+
+                list.add(o);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    // Xem đơn hàng theo id
+    public Order getOrderById(int id){
+        String sql = "select * from orders where id = ?";
+        try(Connection con  = DBConnection.getConnection();
+            PreparedStatement pre = con.prepareStatement(sql)){
+
+            pre.setInt(1,id);
+            ResultSet rs= pre.executeQuery();
+
+            if(rs.next()){
+                Order o = new Order();
+                o.setId(rs.getInt("id"));
+                o.setUser_id(rs.getInt("user_id"));
+                o.setShipping_name(rs.getString("shipping_name"));
+                o.setShipping_phone(rs.getString("shipping_phone"));
+                o.setShipping_address(rs.getString("shipping_address"));
+                o.setNote(rs.getString("note"));
+                o.setShipping_fee(rs.getDouble("shipping_fee"));
+                o.setTotal_amount(rs.getDouble("total_amount"));
+                o.setOrder_status(rs.getString("order_status"));
+                o.setCreated_at(rs.getTimestamp("created_at"));
+                return o;
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    // Lấy danh sách sản phẩm trong đơn hàng
+    public List<OrderItem> getOrderItems(int orderId) {
+        List<OrderItem> list = new ArrayList<>();
+
+        String sql = "select oi.*, p.name, p.price, " +
+                "(select image_url from product_images where product_id = p.id limit 1) as image_url " +
+                "from order_items oi " +
+                "join products p on oi.product_id = p.id " +
+                "where oi.order_id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, orderId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                OrderItem item = new OrderItem();
+                item.setId(rs.getInt("id"));
+                item.setOrderId(rs.getInt("order_id"));
+                item.setProductId(rs.getInt("product_id"));
+                item.setQuantity(rs.getInt("quantity"));
+                item.setTotalPrice(rs.getDouble("total_price"));
+
+                Product p = new Product();
+                p.setId(rs.getInt("product_id"));
+                p.setName(rs.getString("name"));
+                p.setPrice(rs.getDouble("price"));
+
+                String url = rs.getString("image_url");
+                ProductImage pi = new ProductImage();
+                pi.setProductId(p.getId());
+                pi.setImageUrl(url); // Gán link ảnh vào đây
+
+                p.setImage(pi);
+
+                item.setProduct(p);
+                list.add(item);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 }

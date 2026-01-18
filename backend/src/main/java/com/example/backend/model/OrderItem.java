@@ -8,6 +8,7 @@ public class OrderItem {
     private int productId;
     private int quantity;
     private double totalPrice;
+    private Product product;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
@@ -22,6 +23,12 @@ public class OrderItem {
         this.totalPrice = totalPrice;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+    public Product getProduct(){
+        return product;
+    }
+    public void setProduct(Product product){
+        this.product = product;
     }
 
     public int getId() {

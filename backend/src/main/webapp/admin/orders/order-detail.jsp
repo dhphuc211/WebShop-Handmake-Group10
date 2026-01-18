@@ -86,8 +86,10 @@
                         </a>
                         <div class="order-header-info">
                             <h1>Đơn hàng #${order.id}</h1>
-                            <span class="status-badge status-${order.order-status.toLowerCase()}">Chờ xác nhận</span>
-                        </div>
+                             <span class="status-badge status-${order.order_status != null ? order.order_status.toLowerCase() : 'pending'}">
+                                ${order.order_status}
+                            </span>
+                            </div>
                         <p class="order-date">
                             Đặt lúc: <fmt:formatDate value="${order.created_at}" pattern="dd/MM/yyyy HH:mm"/>
                         </p>
@@ -134,9 +136,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="product-info">
-                                                            <%-- Xử lý ảnh (nếu null thì hiện ảnh mặc định) --%>
-                                                            <img src="${item.product.image != null ? item.product.image : 'https://via.placeholder.com/60'}"
-                                                                 alt="Product">
+                                                            <img src="${item.product.imageUrl}" alt="Product" onerror="this.src='https://via.placeholder.com/60'">                                                                 alt="Product">
                                                             <div class="product-details">
                                                                 <h4>${item.product.name}</h4>
                                                                 <p>Mã SP: #${item.product.id}</p>
