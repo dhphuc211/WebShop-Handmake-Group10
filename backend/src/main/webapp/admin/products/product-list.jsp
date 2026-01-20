@@ -19,26 +19,9 @@
 <body>
 <main class="admin-dashboard-main">
     <div class="admin-dashboard-container">
-        <aside class="admin-sidebar">
-            <div class="sidebar-header">
-                <div class="admin-logo">
-                    <i class="fa-solid fa-user-shield"></i>
-                </div>
-                <h2>Bảng quản lý</h2>
-                <p>Quản trị viên</p>
-            </div>
-            <nav class="admin-menu">
-                <a href="${pageContext.request.contextPath}/admin/dashboard" class="admin-menu-item">
-                    <i class="fa-solid fa-chart-line"></i> <span>Bảng điều khiển</span>
-                </a>
-                <a href="${pageContext.request.contextPath}/admin/products" class="admin-menu-item active">
-                    <i class="fa-solid fa-box"></i> <span>Quản lý sản phẩm</span>
-                </a>
-                <a href="${pageContext.request.contextPath}/index.jsp" class="admin-menu-item logout">
-                    <i class="fa-solid fa-right-from-bracket"></i> <span>Về Website</span>
-                </a>
-            </nav>
-        </aside>
+        <jsp:include page="/admin/components/sidebar.jsp">
+            <jsp:param name="active" value="products" />
+        </jsp:include>
 
         <div class="admin-content">
             <div class="page-header">
@@ -174,15 +157,30 @@
 </main>
 <script>
     $(document).ready(function() {
+        // Khai báo đối tượng ngôn ngữ trực tiếp để tránh lỗi CORS
+        const vietnameseLanguage = {
+            "sProcessing":   "Đang xử lý...",
+            "sLengthMenu":   "Xem _MENU_ mục",
+            "sZeroRecords":  "Không tìm thấy dòng nào phù hợp",
+            "sInfo":         "Đang xem _START_ đến _END_ trong tổng số _TOTAL_ mục",
+            "sInfoEmpty":    "Đang xem 0 đến 0 trong tổng số 0 mục",
+            "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+            "sSearch":       "Tìm kiếm:",
+            "oPaginate": {
+                "sFirst":    "Đầu",
+                "sPrevious": "Trước",
+                "sNext":     "Tiếp",
+                "sLast":     "Cuối"
+            }
+        };
+
         $('#productTable').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.13.7/i18n/vi.json" // Việt hóa giao diện
-            },
+            "language": vietnameseLanguage, // Sử dụng biến local thay vì link URL
             "columnDefs": [
-                { "orderable": false, "targets": [0, 1, 7] } // Vô hiệu hóa sắp xếp cột Checkbox, Ảnh, Thao tác
+                { "orderable": false, "targets": [0, 1, 7] }
             ],
-            "pageLength": 10, // Số dòng hiển thị mặc định
-            "order": [[2, 'asc']] // Sắp xếp mặc định theo tên sản phẩm (cột thứ 3)
+            "pageLength": 10,
+            "order": [[2, 'asc']]
         });
     });
 </script>

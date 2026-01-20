@@ -12,32 +12,9 @@
 <body>
 <main class="admin-dashboard-main">
     <div class="admin-dashboard-container">
-        <aside class="admin-sidebar">
-            <div class="sidebar-header">
-                <div class="admin-logo">
-                    <i class="fa-solid fa-user-shield"></i>
-                </div>
-                <h2>Bảng quản lý</h2>
-                <p>Quản trị viên</p>
-            </div>
-            <nav class="admin-menu">
-                <a href="${pageContext.request.contextPath}/admin/dashboard" class="admin-menu-item active">
-                    <i class="fa-solid fa-chart-line"></i> <span>Bảng điều khiển</span>
-                </a>
-                <a href="${pageContext.request.contextPath}/admin/products/product-list.jsp" class="admin-menu-item">
-                    <i class="fa-solid fa-box"></i> <span>Quản lý sản phẩm</span>
-                </a>
-                <a href="${pageContext.request.contextPath}/admin/customers" class="admin-menu-item">
-                    <i class="fa-solid fa-users"></i> <span>Quản lý khách hàng</span>
-                </a>
-                <a href="${pageContext.request.contextPath}/admin/orders/order-list.jsp" class="admin-menu-item">
-                    <i class="fa-solid fa-shopping-cart"></i> <span>Quản lý đơn hàng</span>
-                </a>
-                <a href="${pageContext.request.contextPath}/index.jsp" class="admin-menu-item logout">
-                    <i class="fa-solid fa-right-from-bracket"></i> <span>Về Website</span>
-                </a>
-            </nav>
-        </aside>
+        <jsp:include page="/admin/components/sidebar.jsp">
+            <jsp:param name="active" value="dashboard" />
+        </jsp:include>
 
         <div class="admin-content">
             <div class="page-header">
