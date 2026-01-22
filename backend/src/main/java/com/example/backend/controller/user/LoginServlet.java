@@ -84,6 +84,13 @@ public class LoginServlet extends HttpServlet {
         
         User user = userDAO.checkLogin(emailOrPhone, hashedPassword);
 
+        if (user != null && !user.isActive()) {
+            request.setAttribute("errorMessage", "Tài khoản đang bị khóa!");
+            request.setAttribute("emailOrPhone", emailOrPhone);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return;
+        }
+
         if (user != null) {
             // ĐĂNG NHẬP THÀNH CÔNG
 
