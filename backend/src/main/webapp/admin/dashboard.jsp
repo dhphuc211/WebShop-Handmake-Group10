@@ -127,10 +127,10 @@
                             <strong>Danh sách sản phẩm</strong>
                             <span>Quản lý hàng hóa</span>
                         </a>
-                        <a class="action-card" href="${pageContext.request.contextPath}/index.jsp">
-                            <i class="fa-solid fa-globe"></i>
-                            <strong>Website</strong>
-                            <span>Quay lại trang chủ</span>
+                        <a class="action-card" href="${pageContext.request.contextPath}/admin/customers">
+                            <i class="fa-solid fa-users"></i>
+                            <strong>Danh sách khách hàng</strong>
+                            <span>Quay lại khách hàng</span>
                         </a>
                     </div>
 

@@ -129,6 +129,11 @@
                             </td>
                             <td class="col-actions">
                                 <div class="action-buttons">
+                                    <a class="btn-action btn-view"
+                                       href="${pageContext.request.contextPath}/admin/customers/detail?id=${c.id}"
+                                       title="Xem chi tiết">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
                                     <c:choose>
                                         <c:when test="${c.active}">
                                             <form method="post" action="${pageContext.request.contextPath}/admin/customers"

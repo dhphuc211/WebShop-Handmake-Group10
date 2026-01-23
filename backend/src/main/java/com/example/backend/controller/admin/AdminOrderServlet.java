@@ -19,6 +19,9 @@ public class AdminOrderServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/orders/order-list.jsp");
+        dispatcher.forward(request, response);
+
         String action = request.getParameter("action");
         if (action == null) {
             action = "list";
