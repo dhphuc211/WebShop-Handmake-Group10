@@ -14,26 +14,52 @@
 <body>
 <main class="admin-dashboard-main">
     <div class="admin-dashboard-container">
+        <!-- Admin Sidebar -->
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <div class="admin-logo">
                     <i class="fa-solid fa-user-shield"></i>
                 </div>
-                <h2>Bảng quản lý</h2>
+                <h2>Bảng quản lý Website</h2>
                 <p>Quản trị viên</p>
             </div>
+
             <nav class="admin-menu">
-                <a href="${pageContext.request.contextPath}/admin/dashboard" class="admin-menu-item">
-                    <i class="fa-solid fa-chart-line"></i> <span>Bảng điều khiển</span>
+                <a href="${pageContext.request.contextPath}/admin/dashboard.jsp" class="admin-menu-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Bảng điều khiển</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/admin/products/product-list.jsp" class="admin-menu-item">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Quản lý sản phẩm</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/admin/orders" class="admin-menu-item">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span>Quản lý đơn hàng</span>
                 </a>
                 <a href="${pageContext.request.contextPath}/admin/customers" class="admin-menu-item active">
-                    <i class="fa-solid fa-users"></i> <span>Quản lý khách hàng</span>
+                    <i class="fa-solid fa-users"></i>
+                    <span>Quản lý khách hàng</span>
                 </a>
-                <a href="${pageContext.request.contextPath}/admin/products" class="admin-menu-item">
-                    <i class="fa-solid fa-box"></i> <span>Quản lý sản phẩm</span>
+                <a href="../reviews/list.html" class="admin-menu-item">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Quản lý đánh giá</span>
                 </a>
-                <a href="${pageContext.request.contextPath}/admin/orders/order-list.jsp" class="admin-menu-item">
-                    <i class="fa-solid fa-shopping-cart"></i> <span>Quản lý đơn hàng</span>
+                <a href="../categories/list.html" class="admin-menu-item">
+                    <i class="fa-solid fa-folder-tree"></i>
+                    <span>Quản lý danh mục</span>
+                </a>
+                <a href="../contact/list.html" class="admin-menu-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Quản lý liên hệ</span>
+                </a>
+                <a href="../blog/posts.html" class="admin-menu-item">
+                    <i class="fa-solid fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+                <a href="../banners/list.html" class="admin-menu-item">
+                    <i class="fa-solid fa-images"></i>
+                    <span>Banner & Slider</span>
                 </a>
                 <a href="${pageContext.request.contextPath}/index.jsp" class="admin-menu-item logout">
                     <i class="fa-solid fa-right-from-bracket"></i> <span>Về Website</span>
@@ -152,6 +178,11 @@
                             </td>
                             <td class="col-actions">
                                 <div class="action-buttons">
+                                    <a class="btn-action btn-view"
+                                       href="${pageContext.request.contextPath}/admin/customers/detail?id=${c.id}"
+                                       title="Xem chi tiết">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
                                     <c:choose>
                                         <c:when test="${c.active}">
                                             <form method="post" action="${pageContext.request.contextPath}/admin/customers"
