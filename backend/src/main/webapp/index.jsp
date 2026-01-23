@@ -11,7 +11,7 @@
         <div class="section_intro-content">
             <h1>Đồ thủ công mỹ nghệ</h1>
             <p>Tinh tế – Mộc mạc – Đậm bản sắc Việt</p>
-            <a href="${pageContext.request.contextPath}/products.jsp" class="btn">Khám phá ngay</a>
+            <a href="${pageContext.request.contextPath}/products" class="btn">Khám phá ngay</a>
         </div>
     </section>
     <section class="section_danhmuc">

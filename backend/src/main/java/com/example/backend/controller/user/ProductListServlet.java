@@ -33,7 +33,9 @@ public class ProductListServlet extends HttpServlet {
             page = Integer.parseInt(pageStr);
         }
 
-        List<Product> productList = productService.getAllProducts(page,pageSize);
+        int offset = (page - 1) * pageSize;
+
+        List<Product> productList = productService.getAllProducts(offset,pageSize);
         int totalPages = productService.getTotalPages(pageSize);
 
         try {
