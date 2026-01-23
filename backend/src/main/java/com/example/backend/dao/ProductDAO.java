@@ -64,7 +64,7 @@ public class ProductDAO {
         String sql = "SELECT p.*, pi.image_url FROM products p "
                 + "INNER JOIN product_images pi ON p.id = pi.product_id "
                 + "WHERE pi.image_url IS NOT NULL AND pi.image_url != '' "
-                + "GROUP BY p.id ORDER BY p.id DESC LIMIT ?, ?";
+                + "GROUP BY p.id ORDER BY p.id LIMIT ?, ?";
 
         try (Connection conn = DBConnection.getConnection();
         PreparedStatement ps = conn.prepareStatement(sql);) {

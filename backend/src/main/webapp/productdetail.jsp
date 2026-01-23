@@ -51,16 +51,19 @@
                     </div>
                 </div>
 
-                <div class="product-amount-cart">
+                <form action="${pageContext.request.contextPath}/cart" method="get" class="product-amount-cart">
+                    <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="productId" value="${product.id}">
                     <div class="quantity">
                         <label for="quantity">Số lượng: </label>
-                        <input type="number" id="quantity" value="1" min="1" max="${product.stock}">
+                        <input type="number" name="quantity" id="quantity" value="1" min="1" max="${product.stock}">
                     </div>
                     <div class="cart">
-                        <button type="button" ${product.stock == 0 ? 'disabled' : ''}><a
-                                href="cart?productId=${product.id}&quantity=1;">Thêm vào giỏ hàng</a></button>
+                        <button type="submit" ${product.stock == 0 ? 'disabled' : ''}>
+                            <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+                        </button>
                     </div>
-                </div>
+                </form>
 
                 <div class="product-attributes-short">
                     <h3>Thông tin chi tiết</h3>
@@ -156,7 +159,7 @@
         <div class="search-results-list">
             <a href="${pageContext.request.contextPath}/search.jsp" class="search-result-item">
                 <div class="search-item-image">
-                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca tháp">
+                    <img src="#" alt="Ca tháp">
                 </div>
                 <div class="search-item-info">
                     <p class="product-name">Ca tháp quai tròn 0.35 L - Jasmine - Trắng</p>
@@ -217,12 +220,12 @@
             }
         }
 
-        if (openButton) {
-            openButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                openModal();
-            });
-        }
+        // if (openButton) {
+        //     openButton.addEventListener('click', function (e) {
+        //         e.preventDefault();
+        //         openModal();
+        //     });
+        // }
 
         if (closeXBtn) {
             closeXBtn.addEventListener('click', closeModal);

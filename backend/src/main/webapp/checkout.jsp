@@ -16,7 +16,7 @@
 <main class="checkout-layout">
     <div class="checkout-main">
         <header class="header">
-            <a href="${pageContext.request.contextPath}/index.jsp" class="logo">
+            <a href="${pageContext.request.contextPath}/" class="logo">
                 <img src="https://suncraft.com.vn/suncraft/Suncraft_website_Inf/suncraft_logo/e6e59529-b1df-4676-a5b2-f3757e67957e.png" alt="Suncraft Logo">
             </a>
         </header>
@@ -137,7 +137,7 @@
                             <div class="cart-items">
                                 <div class="cart-image" style="position: relative;">
                                     <a href="#" class="cart-item">
-                                        <img src="${item.product.image}" alt="${item.product.name}" onerror="this.src='https://via.placeholder.com/60'">
+                                        <img src="${item.product.imageUrl}" alt="${item.product.name}">
                                     </a>
                                     <span class="quantity" style="position: absolute; top: -5px; right: -5px; background: #2a9dcc; color: #fff; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 11px;">${item.quantity}</span>
                                 </div>
@@ -145,9 +145,9 @@
                                     <a href="#" class="cart-item-name">${item.product.name}</a>
                                 </div>
                             </div>
-                            <div class="price-total">
-                                <span><fmt:formatNumber value="${(item.product.salePrice > 0 ? item.product.salePrice : item.product.price) * item.quantity}" type="currency" currencySymbol="₫" maxFractionDigits="0"/></span>
-                            </div>
+<%--                            <div class="price-total">--%>
+<%--                                <span><fmt:formatNumber value="${(item.product.salePrice > 0 ? item.product.salePrice : item.product.price) * item.quantity}" type="currency" currencySymbol="₫" maxFractionDigits="0"/></span>--%>
+<%--                            </div>--%>
                         </div>
                     </c:forEach>
 
@@ -178,7 +178,8 @@
                             <span><i class="fa-solid fa-chevron-left"></i> Quay về giỏ hàng</span>
                         </a>
 
-                        <button type="submit" form="checkoutForm" class="btn-order" style="border: none; cursor: pointer;">Đặt hàng</button>
+                        <button type="submit" form="checkoutForm" class="btn-order" style="border: none; cursor: pointer;">
+                            <a href="${pageContext.request.contextPath}/order-success.jsp">Đặt hàng</a></button>
                     </div>
                 </div>
             </div>

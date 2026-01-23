@@ -14,176 +14,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
-<header id="header">
-    <div class="container">
-        <a href="./index.jsp" class="logo">
-            <img src="https://suncraft.com.vn/suncraft/Suncraft_website_Inf/suncraft_logo/e6e59529-b1df-4676-a5b2-f3757e67957e.png" alt="">
-        </a>
-        <div class="menu">
-            <li class="nav-item"><a href="./index.jsp">Trang chủ</a></li>
-            <li class="nav-item"><a href="./about.jsp">Giới thiệu</a></li>
-
-            <li class="nav-item list-product">
-                <a href="./products.jsp" class="caret-down a">
-                    Sản phẩm
-                    <i class="fa-solid fa-caret-down"></i>
-                </a>
-
-                <div class="dropdown">
-                    <div class="product-items">
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Đồ mây tre đan</a></h4>
-                            <ul>
-                                <li><a href="#">Giỏ</a></li>
-                                <li><a href="#">Đèn tre</a></li>
-                                <li><a href="#">Túi cói</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Gốm sứ</a></h4>
-                            <ul>
-                                <li><a href="#">Bình</a></li>
-                                <li><a href="#">Ấm chén</a></li>
-                                <li><a href="#">Tượng gốm</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Đồ gỗ mỹ nghệ</a></h4>
-                            <ul>
-                                <li><a href="#">Tượng</a></li>
-                                <li><a href="#">Hộp</a></li>
-                                <li><a href="#">Khung ảnh</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Dệt thêu & may mặc thủ công</a></h4>
-                            <ul>
-                                <li><a href="#">Khăn</a></li>
-                                <li><a href="#">Túi</a></li>
-                                <li><a href="#">Áo thổ cẩm</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Trang sức & phụ kiện thủ công</a></h4>
-                            <ul>
-                                <li><a href="#">Vòng</a></li>
-                                <li><a href="#">Dây chuyền</a></li>
-                                <li><a href="#">Nhẫn</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="menu-product-item">
-                            <h4><a href="#">Đồ trang trí & quà tặng nghệ thuật</a></h4>
-                            <ul>
-                                <li><a href="#">Nến</a></li>
-                                <li><a href="#">Thiệp 3D</a></li>
-                                <li><a href="#">Tranh giấy</a></li>
-                            </ul>
-                        </div>
-
-                    </div> <div class="dropdown-image">
-                         <img width="300" src="https://bizweb.dktcdn.net/100/485/241/themes/911577/assets/megamenu_banner.png?1758008990171" alt="Gốm sứ Bát Tràng">
-                    </div>
-                </div> </li>
-            <li class="nav-item"><a href="./news.jsp">Tin tức</a></li>
-            <li class="nav-item"><a href="./stores.jsp">Cửa hàng</a></li>
-            <li class="nav-item"><a href="./contact.jsp">Liên hệ</a></li>
-        </div>
-        <div class="others">
-            <div class="others">
-                <div class="icon">
-                    <label for="search-toggle" class="search-toggle-label">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </label>
-                </div>
-                <a href="./login.jsp" class="icon">
-                    <i class="fa-regular fa-user"></i>
-                </a>
-                <a href="wishlist.jsp" class="icon badge" >
-                    <i class="fa-regular fa-heart"></i>
-                    <span>0</span>
-                </a>
-               <a href="${pageContext.request.contextPath}/shopping-cart.jsp" class="icon badge">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</header>
-<div class="hero-section-container">
-            <section class="hero">
-                <div class="hero-content">
-                    <h1>Giỏ hàng</h1>
-                    <div class="breadcrumb">
-                        <a href="./index.jsp">Trang chủ</a> / Giỏ hàng
-                    </div>
-                </div>
-            </section>
-
-            <div class="categories-wrapper">
-
-                <button id="prevButton" class="nav-button prev-button">&#8249;</button>
-
-                <div class="categories" id="categoriesContainer">
-                    <div class="category-item" data-category="may-tre-dan">
-                        <div class="category-circle">
-                            <img src="https://denmaytre.net/wp-content/uploads/2019/12/san-pham-may-tre-dan-xuat-khau-lang-nghe-tang-tien.jpg.webp"
-                                alt="Đồ mây tre đan">
-                        </div>
-                        <div class="category-name">Đồ mây tre đan</div>
-                    </div>
-
-                    <div class="category-item" data-category="gom-su">
-                        <div class="category-circle">
-                            <img src="https://cdn.pixabay.com/photo/2023/05/29/18/10/pottery-8026823_1280.jpg"
-                                alt="Gốm sứ">
-                        </div>
-                        <div class="category-name">Gốm sứ</div>
-                    </div>
-
-                    <div class="category-item" data-category="go-my-nghe">
-                        <div class="category-circle">
-                            <img src="https://dntt.mediacdn.vn/197608888129458176/2023/7/14/27-1-1689328749793900374452.jpg"
-                                alt="Đồ gỗ mỹ nghệ">
-                        </div>
-                        <div class="category-name">Đồ gỗ mỹ nghệ</div>
-                    </div>
-
-                    <div class="category-item" data-category="det-theu">
-                        <div class="category-circle">
-                            <img src="https://images.pexels.com/photos/236748/pexels-photo-236748.jpeg"
-                                alt="Dệt thêu & may mặc thủ công">
-                        </div>
-                        <div class="category-name">Dệt thêu & may mặc thủ công</div>
-                    </div>
-
-                    <div class="category-item" data-category="trang-suc">
-                        <div class="category-circle">
-                            <img src="https://nvhphunu.vn/wp-content/uploads/2023/12/2023-07-29_0000478.png"
-                                alt="Trang sức & phụ kiện thủ công">
-                        </div>
-                        <div class="category-name">Trang sức & phụ kiện thủ công</div>
-                    </div>
-
-                    <div class="category-item" data-category="trang-tri">
-                        <div class="category-circle">
-                            <img src="https://chus.vn/images/detailed/239/10237_21_F1.jpg"
-                                alt="Đồ trang trí & quà tặng nghệ thuật">
-                        </div>
-                        <div class="category-name">Đồ trang trí & quà tặng nghệ thuật</div>
-                    </div>
-                </div>
-
-                <button id="nextButton" class="nav-button next-button">&#8250;</button>
-            </div>
-        </div>
-
+<%@ include file="compenents/header.jsp" %>
+<c:set var="pageTitle" value="Giỏ hàng" scope="request"/>
+<c:set var="breadcrumbText"
+       value="Giỏ hàng"
+       scope="request"/>
+<jsp:include page="compenents/hero-section.jsp"/>
 <section class="cart-page">
     <div class="container">
 
@@ -213,7 +49,7 @@
 
                             <div class="cart-items" style="flex: 2; display: flex; align-items: center; gap: 15px;">
                                 <a href="productdetail?id=${item.product.id}" class="cart-item">
-                                    <img src="https://via.placeholder.com/100" alt="image" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
+                                    <img src="${item.product.imageUrl}" alt="image" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
                                 </a>
                                 <div class="cart-info">
                                     <strong class="cart-item-name" style="font-size: 1.1em;">${item.product.name}</strong>
@@ -260,7 +96,7 @@
                                 <fmt:formatNumber value="${sessionScope.cart.totalMoney}" type="currency" currencySymbol="₫" maxFractionDigits="0"/>
                             </span>
                         </div>
-                        <a href="${pageContext.request.contextPath}/checkout" class="btn-checkout">Thanh toán</a>
+                        <a href="${pageContext.request.contextPath}/checkout.jsp" class="btn-checkout">Thanh toán</a>
                     </div>
                 </div>
             </div>
