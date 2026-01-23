@@ -156,45 +156,33 @@ body {
 
 .pagination {
     display: flex;
+    justify-content: center;
     list-style: none;
-    padding: 0;
-    gap: 8px;
+    padding: 20px 0;
+    gap: 5px;
 }
 
-.page-link {
-    display: block;
+.page-item .page-link {
     padding: 8px 16px;
-    text-decoration: none;
+    border: 1px solid #ddd;
     color: #333;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
+    text-decoration: none;
     border-radius: 4px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.page-link:hover {
-    background-color: #f8f9fa;
-    border-color: #007bff;
-    color: #007bff;
+    transition: all 0.3s;
 }
 
 .page-item.active .page-link {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: #fff;
-    cursor: default;
-}
-
-.page-item:first-child .page-link,
-.page-item:last-child .page-link {
-    font-weight: bold;
-    background-color: #fdfdfd;
+    background-color: #8b572a; /* Màu chủ đạo của bạn */
+    color: white;
+    border-color: #8b572a;
 }
 
 .page-item.disabled .page-link {
-    color: #6c757d;
-    pointer-events: none;
-    background-color: #fff;
-    border-color: #dee2e6;
+    border: none;
+    background: transparent;
+    cursor: default;
+}
+
+.page-item:hover:not(.active):not(.disabled) .page-link {
+    background-color: #f5f5f5;
 }
