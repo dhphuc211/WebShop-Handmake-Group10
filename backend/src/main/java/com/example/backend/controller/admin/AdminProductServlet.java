@@ -66,30 +66,27 @@ public class AdminProductServlet extends HttpServlet {
     // --- CÁC HÀM HIỂN THỊ (GET) ---
 
     private void listProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int offset = Integer.parseInt(request.getParameter("start"));
-        int limit = Integer.parseInt(request.getParameter("length"));
+        String startParam = request.getParameter("start");
+        String lengthParam = request.getParameter("length");
+
+        int offset = (startParam != null) ? Integer.parseInt(startParam) : 0;
+        int limit = (lengthParam != null) ? Integer.parseInt(lengthParam) : 1000;
+
         List<Product> listProducts = productService.getAllProducts(offset, limit);
+
         request.setAttribute("listProducts", listProducts);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/products/product-list.jsp");
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher("/admin/products/product-list.jsp").forward(request, response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/products/product-form.jsp");
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher("/admin/products/product-form.jsp").forward(request, response);
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Product existingProduct = productService.getProduct(id);
-
-        // Lấy thêm thuộc tính nếu có
-        // ProductAttribute attr = productService.getAttribute(id);
-        // request.setAttribute("attribute", attr);
-
         request.setAttribute("product", existingProduct);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/products/product-form.jsp");
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher("/admin/products/product-form.jsp").forward(request, response);
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -101,67 +98,36 @@ public class AdminProductServlet extends HttpServlet {
     // --- CÁC HÀM XỬ LÝ DỮ LIỆU (POST) ---
 
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // 1. Lấy thông tin cơ bản
-        String name = request.getParameter("name");
-        double price = Double.parseDouble(request.getParameter("price"));
-        int stock = Integer.parseInt(request.getParameter("stock"));
-        String desc = request.getParameter("full_description");
-        String status = request.getParameter("status");
-        boolean featured = request.getParameter("featured") != null;
-        int categoryId = Integer.parseInt(request.getParameter("category_id"));
-
-        Product newProduct = new Product();
-        newProduct.setName(name);
-        newProduct.setPrice(price);
-        newProduct.setStock(stock);
-        newProduct.setFullDescription(desc);
-        newProduct.setStatus(status);
-        newProduct.setFeatured(featured);
-        newProduct.setCategoryId(categoryId);
-
-        String imageUrl = request.getParameter("image_url");
-
-        // Gán vào đối tượng để Service xử lý
-        if (imageUrl != null && !imageUrl.trim().isEmpty()) {
-            ProductImage pImg = new ProductImage();
-            pImg.setImageUrl(imageUrl.trim());
-            newProduct.setImage(pImg);
-        }
-
-        // 3. Gọi Service lưu vào DB
+        Product newProduct = mapRequestToProduct(request);
         productService.insertProduct(newProduct);
-
-        response.sendRedirect(request.getContextPath() + "/admin/products?message=inserted");
-    }
+        response.sendRedirect(request.getContextPath() + "/admin/products?message=inserted");    }
 
     // --- XỬ LÝ CẬP NHẬT (POST) ---
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        double price = Double.parseDouble(request.getParameter("price"));
-        int stock = Integer.parseInt(request.getParameter("stock"));
-        String desc = request.getParameter("full_description");
-        String status = request.getParameter("status");
-        boolean featured = request.getParameter("featured") != null;
+        Product product = mapRequestToProduct(request);
+        product.setId(Integer.parseInt(request.getParameter("id")));
+        productService.updateProduct(product, null);
+        response.sendRedirect(request.getContextPath() + "/admin/products?message=updated");
+    }
 
+    private Product mapRequestToProduct(HttpServletRequest request) {
         Product product = new Product();
-        product.setId(id);
-        product.setName(name);
-        product.setPrice(price);
-        product.setStock(stock);
-        product.setFullDescription(desc);
-        product.setStatus(status);
-        product.setFeatured(featured);
+        product.setName(request.getParameter("name"));
+        product.setPrice(Double.parseDouble(request.getParameter("price")));
+        product.setStock(Integer.parseInt(request.getParameter("stock")));
+        product.setFullDescription(request.getParameter("full_description"));
+        product.setStatus(request.getParameter("status"));
+        product.setFeatured(request.getParameter("featured") != null);
 
-        // LẤY LINK ẢNH MỚI (NẾU CÓ)
+        String catId = request.getParameter("category_id");
+        if (catId != null) product.setCategoryId(Integer.parseInt(catId));
+
         String imageUrl = request.getParameter("image_url");
         if (imageUrl != null && !imageUrl.trim().isEmpty()) {
             ProductImage pImg = new ProductImage();
             pImg.setImageUrl(imageUrl.trim());
             product.setImage(pImg);
         }
-
-        productService.updateProduct(product, null);
-        response.sendRedirect(request.getContextPath() + "/admin/products?message=updated");
+        return product;
     }
 }
