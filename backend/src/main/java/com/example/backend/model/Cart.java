@@ -65,7 +65,7 @@ public class Cart implements Serializable {
 
     // Tính tổng tiền cả giỏ hàng
     public double getTotalMoney() {
-        AtomicReference<Double> total = new AtomicReference<>();
+        AtomicReference<Double> total = new AtomicReference<>(0.0);
 
         getItems().forEach(item->{
             total.updateAndGet(v -> v+(item.getQuantity()*item.getPrice()));
@@ -75,7 +75,7 @@ public class Cart implements Serializable {
 
     // Đếm tổng số lượng sản phẩm hiển thị trên phần header (icon)
     public int getTotalQuantity() {
-        AtomicInteger total = new AtomicInteger();
+        AtomicInteger total = new AtomicInteger(0);
 
         getItems().forEach(item->{
             total.addAndGet(item.getQuantity());

@@ -44,7 +44,8 @@ public class ProductService {
         return (int) Math.round(percent);
     }
 
-    public List<Product> getAllProducts(int offset, int pageSize) {
+    public List<Product> getAllProducts(int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
         return productDAO.getAllProducts(offset, pageSize);
     }
 
