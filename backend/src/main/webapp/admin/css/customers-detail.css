@@ -184,6 +184,26 @@
     gap: 20px;
 }
 
+.account-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.account-info-list .info-item {
+    min-width: 0;
+}
+
+.account-info-list .info-item label {
+    white-space: normal;
+}
+
+.account-info-list .info-item p,
+.account-info-list .info-item a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 .info-item {
     display: flex;
     flex-direction: column;
