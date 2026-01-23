@@ -154,19 +154,41 @@
                 <ul class="pagination">
                     <c:if test="${currentPage > 1}">
                         <li class="page-item">
-                            <a class="page-link" href="products?page=${currentPage - 1}">Previous</a>
+                            <a class="page-link" href="products?page=${currentPage - 1}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
                         </li>
                     </c:if>
 
-                    <c:forEach begin="1" end="${totalPages}" var="i">
-                        <li class="page-item ${currentPage == i ? 'active' : ''}">
-                            <a class="page-link" href="products?page=${i}">${i}</a>
-                        </li>
-                    </c:forEach>
+                    <li class="page-item ${currentPage == 1 ? 'active' : ''}">
+                        <a class="page-link" href="products?page=1">1</a>
+                    </li>
+                    <c:if test="${currentPage > 3}">
+                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                    </c:if>
 
+                    <c:forEach begin="${currentPage - 1 > 2 ? currentPage - 1 : 2}"
+                               end="${currentPage + 1 < totalPages ? currentPage + 1 : totalPages - 1}"
+                               var="i">
+                        <c:if test="${i > 1 && i < totalPages}">
+                            <li class="page-item ${currentPage == i ? 'active' : ''}">
+                                <a class="page-link" href="products?page=${i}">${i}</a>
+                            </li>
+                        </c:if>
+                    </c:forEach>
+                    <c:if test="${currentPage < totalPages - 2}">
+                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                    </c:if>
+                    <c:if test="${totalPages > 1}">
+                        <li class="page-item ${currentPage == totalPages ? 'active' : ''}">
+                            <a class="page-link" href="products?page=${totalPages}">${totalPages}</a>
+                        </li>
+                    </c:if>
                     <c:if test="${currentPage < totalPages}">
                         <li class="page-item">
-                            <a class="page-link" href="products?page=${currentPage + 1}">Next</a>
+                            <a class="page-link" href="products?page=${currentPage + 1}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
                         </li>
                     </c:if>
                 </ul>

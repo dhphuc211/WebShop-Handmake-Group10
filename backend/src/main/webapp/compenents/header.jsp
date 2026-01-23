@@ -79,7 +79,7 @@
           </div>
         </div>
       </li>
-      <li class="nav-item"><a href="${pageContext.request.contextPath}/news">Tin tức</a></li>
+      <li class="nav-item"><a href="${pageContext.request.contextPath}/news.jsp">Tin tức</a></li>
       <li class="nav-item"><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
     </div>
     <div class="others">
@@ -110,9 +110,9 @@
           <i class="fa-regular fa-heart"></i>
           <span>0</span>
         </a>
-        <a href="${pageContext.request.contextPath}/shopping-cart" class="icon badge">
+        <a href="${pageContext.request.contextPath}/shopping-cart.jsp" class="icon badge">
           <i class="fa-solid fa-cart-shopping"></i>
-          <span>0</span>
+          <span>${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}</span>
         </a>
       </div>
     </div>
