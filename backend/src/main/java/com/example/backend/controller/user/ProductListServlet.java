@@ -67,7 +67,7 @@ public class ProductListServlet extends HttpServlet {
 
         request.setAttribute("paramSearch", searchKeyword);
         request.setAttribute("paramCid", categoryIdStr);
-        request.setAttribute("page", page);
+        request.setAttribute("currentPage", page);
         request.setAttribute("totalPages", totalPages);
 
         request.getRequestDispatcher("/products.jsp").forward(request, response);

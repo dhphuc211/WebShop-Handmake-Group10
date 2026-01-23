@@ -16,10 +16,12 @@
 </head>
 <body>
 <%@ include file="compenents/header.jsp" %>
-<c:set var="pageTitle" value="${product.name}" scope="request" />
-<c:set var="breadcrumbText" value="<a href='${pageContext.request.contextPath}/products.jsp'>Sản phẩm</a> / ${product.name}" scope="request" />
+<c:set var="pageTitle" value="${product.name}" scope="request"/>
+<c:set var="breadcrumbText"
+       value="<a href='${pageContext.request.contextPath}/products.jsp'>Sản phẩm</a> / ${product.name}"
+       scope="request"/>
 
-<jsp:include page="compenents/hero-section.jsp" />
+<jsp:include page="compenents/hero-section.jsp"/>
 
 <div class="product-page">
     <section class="product-details">
@@ -55,7 +57,8 @@
                         <input type="number" id="quantity" value="1" min="1" max="${product.stock}">
                     </div>
                     <div class="cart">
-                        <button type="button" ${product.stock == 0 ? 'disabled' : ''}>Thêm vào giỏ hàng</button>
+                        <button type="button" ${product.stock == 0 ? 'disabled' : ''}><a
+                                href="cart?productId=${product.id}&quantity=1;">Thêm vào giỏ hàng</a></button>
                     </div>
                 </div>
 
@@ -130,7 +133,7 @@
         </div>
     </section>
 </div>
-<%@include file="compenents/footer.jsp"%>
+<%@include file="compenents/footer.jsp" %>
 
 <input type="checkbox" id="search-toggle" class="hidden-checkbox">
 <label for="search-toggle" class="search-overlay"></label>
@@ -181,12 +184,12 @@
                 </div>
             </div>
 
-            <p class="modal-cart-status">Giỏ hàng của bạn hiện có 1 sản phẩm</p>
+            <p class="modal-cart-status">Giỏ hàng của bạn hiện có ${sessionScope.cart.totalQuantity} sản phẩm</p>
 
             <div class="modal-actions">
                 <button id="modal-continue-shopping" class="btn-continue">Tiếp tục mua hàng</button>
                 <button id="modal-checkout" class="btn-checkout"><a
-                        href="${pageContext.request.contextPath}/checkout.jsp">Thanh toán ngay</a></button>
+                        href="${pageContext.request.contextPath}/shopping-cart.jsp">Đến giỏ hàng</a></button>
             </div>
         </div>
     </div>
