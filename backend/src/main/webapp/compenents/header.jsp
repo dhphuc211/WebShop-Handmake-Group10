@@ -12,7 +12,7 @@
 <body>
 <header id="header">
   <div class="container">
-    <a href="${pageContext.request.contextPath}/index.jsp" class="logo">
+    <a href="${pageContext.request.contextPath}/" class="logo">
       <img src="https://suncraft.com.vn/suncraft/Suncraft_website_Inf/suncraft_logo/e6e59529-b1df-4676-a5b2-f3757e67957e.png" alt="Logo Suncraft">
     </a>
     <div class="menu">

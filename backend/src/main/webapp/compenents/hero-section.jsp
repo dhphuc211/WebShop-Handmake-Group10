@@ -10,7 +10,7 @@
         <div class="hero-content">
             <h1>${not empty pageTitle ? pageTitle : 'Trang chủ'}</h1>
             <div class="breadcrumb">
-                <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
+                <a href="${pageContext.request.contextPath}/">Trang chủ</a>
                 <c:if test="${not empty breadcrumbText}">
                     / ${breadcrumbText}
                 </c:if>

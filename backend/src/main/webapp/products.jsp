@@ -290,7 +290,7 @@
         <div class="search-results-list">
             <a href="${pageContext.request.contextPath}/search.jsp" class="search-result-item">
                 <div class="search-item-image">
-                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca tháp">
+                    <img src="#" alt="Ca tháp">
                 </div>
                 <div class="search-item-info">
                     <p class="product-name">Ca tháp quai tròn 0.35 L - Jasmine - Trắng</p>
