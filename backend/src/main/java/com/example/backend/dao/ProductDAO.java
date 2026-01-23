@@ -58,9 +58,13 @@ public class ProductDAO {
     public List<Product> getAllProducts(int offset, int limit) {
         List<Product> list = new ArrayList<>();
 
-        String sql = "select p.*, pi.image_url from products p "
-                + "left join product_images pi on p.id = pi.product_id "+
-                "group by p.id order by p.id desc limit ?,?";
+//        String sql = "select p.*, pi.image_url from products p "
+//                + "left join product_images pi on p.id = pi.product_id "+
+//                "group by p.id order by p.id desc limit ?,?";
+        String sql = "SELECT p.*, pi.image_url FROM products p "
+                + "INNER JOIN product_images pi ON p.id = pi.product_id "
+                + "WHERE pi.image_url IS NOT NULL AND pi.image_url != '' "
+                + "GROUP BY p.id ORDER BY p.id DESC LIMIT ?, ?";
 
         try (Connection conn = DBConnection.getConnection();
         PreparedStatement ps = conn.prepareStatement(sql);) {

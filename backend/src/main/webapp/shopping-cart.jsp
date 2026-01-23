@@ -192,7 +192,7 @@
                 <i class="fa-solid fa-cart-arrow-down" style="font-size: 50px; color: #ccc; margin-bottom: 20px;"></i>
                 <h3>Giỏ hàng của bạn đang trống!</h3>
                 <p>Hãy thêm sản phẩm để tiến hành thanh toán.</p>
-                <a href="${pageContext.request.contextPath}/products.jsp" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #e67e22; color: white; text-decoration: none; border-radius: 5px;">Quay lại mua sắm</a>
+                <a href="${pageContext.request.contextPath}/products" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #e67e22; color: white; text-decoration: none; border-radius: 5px;">Quay lại mua sắm</a>
             </div>
         </c:if>
 
@@ -212,7 +212,7 @@
                         <div class="cart-row" style="display: flex; align-items: center; border-bottom: 1px solid #eee; padding: 15px 0;">
 
                             <div class="cart-items" style="flex: 2; display: flex; align-items: center; gap: 15px;">
-                                <a href="productDetail?id=${item.product.id}" class="cart-item">
+                                <a href="productdetail?id=${item.product.id}" class="cart-item">
                                     <img src="https://via.placeholder.com/100" alt="image" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
                                 </a>
                                 <div class="cart-info">

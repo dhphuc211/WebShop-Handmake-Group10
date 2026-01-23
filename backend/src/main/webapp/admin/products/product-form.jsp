@@ -32,7 +32,7 @@
     <div class="admin-content">
       <div class="page-header-edit">
         <div class="header-left">
-          <a href="${pageContext.request.contextPath}/admin/products/product-form.jsp" class="back-link">
+          <a href="${pageContext.request.contextPath}/admin/products" class="back-link">
             <i class="fa-solid fa-arrow-left"></i> Quay lại danh sách
           </a>
           <h1>${product != null ? 'Cập nhật sản phẩm' : 'Thêm sản phẩm mới'}</h1>
@@ -58,7 +58,7 @@
               <div class="section-content">
                 <div class="form-group full-width">
                   <label class="required">Tên sản phẩm</label>
-                  <input type="text" name="product_name" value="${product.name}" required placeholder="VD: Bình gốm...">
+                  <input type="text" name="name" value="${product.name}" required placeholder="VD: Bình gốm...">
                 </div>
                 <div class="form-row three-cols">
                   <div class="form-group">
@@ -72,7 +72,7 @@
                   </div>
                   <div class="form-group">
                     <label>Danh mục (ID)</label>
-                    <input type="number" name="categoryId" value="${product != null ? product.categoryId : 1}" required>
+                    <input type="number" name="category_id" value="${product != null ? product.categoryId : 1}" required>
                   </div>
                 </div>
               </div>
@@ -130,7 +130,7 @@
         </div>
 
         <div class="form-actions">
-          <a href="${pageContext.request.contextPath}/admin/product" class="btn-cancel">Hủy bỏ</a>
+          <a href="${pageContext.request.contextPath}/admin/products" class="btn-cancel">Hủy bỏ</a>
           <button type="submit" class="btn-save-main">Lưu sản phẩm</button>
         </div>
       </form>
