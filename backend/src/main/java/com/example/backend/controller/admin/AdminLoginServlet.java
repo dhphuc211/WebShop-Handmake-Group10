@@ -53,6 +53,12 @@ public class AdminLoginServlet extends HttpServlet {
             return;
         }
 
+        if (!user.isActive()) {
+            request.setAttribute("errorMessage", "Tai khoan dang bi khoa.");
+            request.getRequestDispatcher("/admin/admin-login.jsp").forward(request, response);
+            return;
+        }
+
         if (!user.isAdmin()) {
             request.setAttribute("errorMessage", "Tai khoan khong co quyen admin.");
             request.getRequestDispatcher("/admin/admin-login.jsp").forward(request, response);

@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="admin-login-link">
-                    <a href="${pageContext.request.contextPath}/admin/admin-login">
+                    <a href="${pageContext.request.contextPath}/admin-login">
                         <i class="fa-solid fa-user-shield"></i>
                         Đăng nhập với tư cách admin
                     </a>
