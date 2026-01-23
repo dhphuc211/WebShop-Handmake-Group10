@@ -33,7 +33,7 @@
                         <i class="fa-solid fa-box"></i>
                         <span>Quản lý sản phẩm</span>
                     </a>
-                    <a href="$${pageContext.request.contextPath}/admin/orders" class="admin-menu-item active">
+                    <a href="${pageContext.request.contextPath}/admin/orders" class="admin-menu-item active">
                         <i class="fa-solid fa-shopping-cart"></i>
                         <span>Quản lý đơn hàng</span>
                     </a>
