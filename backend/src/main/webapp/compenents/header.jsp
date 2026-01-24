@@ -17,7 +17,7 @@
     </a>
     <div class="menu">
       <li class="nav-item"><a href="${pageContext.request.contextPath}/index" class="active">Trang chủ</a></li>
-      <li class="nav-item"><a href="${pageContext.request.contextPath}/about">Giới thiệu</a></li>
+      <li class="nav-item"><a href="${pageContext.request.contextPath}/about.jsp">Giới thiệu</a></li>
 
       <li class="nav-item list-product">
         <a href="${pageContext.request.contextPath}/products" class="caret-down a">
