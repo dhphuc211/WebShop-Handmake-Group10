@@ -2,6 +2,7 @@ package com.example.backend.controller.user;
 
 import com.example.backend.dao.UserDAO;
 import com.example.backend.model.User;
+import com.example.backend.util.CheckoutSessionUtil;
 import com.example.backend.util.PasswordUtil;
 
 import jakarta.servlet.ServletException;
@@ -9,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -135,6 +137,26 @@ public class RegisterServlet extends HttpServlet {
             //ĐĂNG KÝ THÀNH CÔNG
             System.out.println("Đăng ký thành công: " + email);
 
+            HttpSession session = request.getSession();
+            String redirectUrl = (String) session.getAttribute("postLoginRedirect");
+            if (redirectUrl != null && !redirectUrl.trim().isEmpty()) {
+                User user = userDAO.checkLogin(email.trim().toLowerCase(), hashedPassword);
+                if (user != null) {
+                    session.setAttribute("user", user);
+                    session.setAttribute("userId", user.getId());
+                    session.setAttribute("userName", user.getFullName());
+                    session.setAttribute("userRole", user.getRole());
+                    session.setMaxInactiveInterval(30 * 60);
+                    int orderId = CheckoutSessionUtil.placeOrderFromSession(session);
+                    session.removeAttribute("postLoginRedirect");
+                    if (orderId > 0) {
+                        response.sendRedirect(request.getContextPath() + "/order-success.jsp");
+                        return;
+                    }
+                    response.sendRedirect(request.getContextPath() + "/checkout");
+                    return;
+                }
+            }
             // Chuyển đến trang login với thông báo thành công
             request.setAttribute("successMessage", "Đăng ký thành công! Vui lòng đăng nhập.");
             request.getRequestDispatcher("/login.jsp").forward(request, response);

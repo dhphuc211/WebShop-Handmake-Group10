@@ -33,20 +33,20 @@
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" placeholder="Email"
-                                   value="${sessionScope.user != null ? sessionScope.user.email : ''}" required>
+                                   value="${not empty sessionScope.checkoutForm.email ? sessionScope.checkoutForm.email : (sessionScope.user != null ? sessionScope.user.email : '')}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="full-name">Họ và tên</label>
                             <input type="text" name="fullname" id="full-name" placeholder="Họ và tên"
-                                   value="${sessionScope.user != null ? sessionScope.user.fullName : ''}" required>
+                                   value="${not empty sessionScope.checkoutForm.fullname ? sessionScope.checkoutForm.fullname : (sessionScope.user != null ? sessionScope.user.fullName : '')}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="phone">Số điện thoại</label>
                             <div class="phone-input-group">
                                 <input type="tel" name="phone" id="phone" placeholder="Số điện thoại"
-                                       value="${sessionScope.user != null ? sessionScope.user.phone : ''}" required>
+                                       value="${not empty sessionScope.checkoutForm.phone ? sessionScope.checkoutForm.phone : (sessionScope.user != null ? sessionScope.user.phone : '')}" required>
                                 <select class="country-code">
                                     <option>🇻🇳</option>
                                 </select>
@@ -55,38 +55,39 @@
 
                         <div class="form-group">
                             <label for="address">Địa chỉ</label>
-                            <input type="text" name="address" id="address" placeholder="Địa chỉ (Số nhà, đường...)" required>
+                            <input type="text" name="address" id="address" placeholder="Địa chỉ (Số nhà, đường...)" required
+                                   value="${not empty sessionScope.checkoutForm.address ? sessionScope.checkoutForm.address : ''}">
                         </div>
 
                         <div class="form-group">
                             <label for="province">Tỉnh / Thành phố</label>
                             <select id="province" name="province">
-                                <option value="" selected disabled>Chọn Tỉnh / Thành phố</option>
-                                <option value="Hồ Chí Minh">Hồ Chí Minh</option>
-                                <option value="Hà Nội">Hà Nội</option>
-                                <option value="Đà Nẵng">Đà Nẵng</option>
+                                <option value="" disabled ${empty sessionScope.checkoutForm.province ? 'selected' : ''}>Chọn Tỉnh / Thành phố</option>
+                                <option value="Hồ Chí Minh" ${sessionScope.checkoutForm.province == 'Hồ Chí Minh' ? 'selected' : ''}>Hồ Chí Minh</option>
+                                <option value="Hà Nội" ${sessionScope.checkoutForm.province == 'Hà Nội' ? 'selected' : ''}>Hà Nội</option>
+                                <option value="Đà Nẵng" ${sessionScope.checkoutForm.province == 'Đà Nẵng' ? 'selected' : ''}>Đà Nẵng</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="district">Quận / Huyện</label>
                             <select id="district" name="district">
-                                <option value="" selected disabled>Chọn Quận / Huyện</option>
-                                <option value="Quận 1">Quận 1</option>
-                                <option value="Thủ Đức">Thủ Đức</option>
+                                <option value="" disabled ${empty sessionScope.checkoutForm.district ? 'selected' : ''}>Chọn Quận / Huyện</option>
+                                <option value="Quận 1" ${sessionScope.checkoutForm.district == 'Quận 1' ? 'selected' : ''}>Quận 1</option>
+                                <option value="Thủ Đức" ${sessionScope.checkoutForm.district == 'Thủ Đức' ? 'selected' : ''}>Thủ Đức</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="ward">Phường / Xã</label>
                             <select id="ward" name="ward">
-                                <option value="" selected disabled>Chọn Phường / Xã</option>
-                                <option value="Linh Trung">Linh Trung</option>
+                                <option value="" disabled ${empty sessionScope.checkoutForm.ward ? 'selected' : ''}>Chọn Phường / Xã</option>
+                                <option value="Linh Trung" ${sessionScope.checkoutForm.ward == 'Linh Trung' ? 'selected' : ''}>Linh Trung</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="note">Ghi chú</label>
-                            <textarea id="note" name="note" rows="3" placeholder="Ghi chú (tùy chọn)"></textarea>
+                            <textarea id="note" name="note" rows="3" placeholder="Ghi chú (tùy chọn)">${sessionScope.checkoutForm.note}</textarea>
                         </div>
                     </div>
                 </div>
@@ -179,7 +180,7 @@
                         </a>
 
                         <button type="submit" form="checkoutForm" class="btn-order" style="border: none; cursor: pointer;">
-                            <a href="${pageContext.request.contextPath}/order-success.jsp">Đặt hàng</a></button>
+                            Đặt hàng</button>
                     </div>
                 </div>
             </div>

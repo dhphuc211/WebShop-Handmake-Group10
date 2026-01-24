@@ -4,15 +4,19 @@ import com.example.backend.dao.OrderDao;
 import com.example.backend.model.Cart;
 import com.example.backend.model.Order;
 import com.example.backend.model.User;
+import com.example.backend.util.CheckoutSessionUtil;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(name = "CheckoutServlet", value = "/checkout")
 public class CheckoutServlet extends HttpServlet {
+    private static final String POST_LOGIN_REDIRECT_KEY = "postLoginRedirect";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("checkout.jsp").forward(request,response);
@@ -42,6 +46,7 @@ public class CheckoutServlet extends HttpServlet {
         String ward = request.getParameter("ward");
         String note = request.getParameter("note");
 
+        cacheCheckoutForm(session, email, fullName, phone, address, province, district, ward, note);
         String fullAddress = address;
         if (ward != null) fullAddress += ", " + ward;
         if (district != null) fullAddress += ", " + district;
@@ -55,7 +60,8 @@ public class CheckoutServlet extends HttpServlet {
             userId = user.getId();
         }
         else{
-            response.sendRedirect("login.jsp");
+            session.setAttribute(POST_LOGIN_REDIRECT_KEY, request.getContextPath() + "/checkout");
+            response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 
@@ -78,6 +84,7 @@ public class CheckoutServlet extends HttpServlet {
             // Nếu orderId lớn hơn 0 nghĩa là thực hiện thanh toán thành công và thực hiện xóa giỏ hàng
             if(orderId>0){
                 session.removeAttribute("cart");
+                session.removeAttribute(CheckoutSessionUtil.CHECKOUT_FORM_SESSION_KEY);
 
                 request.setAttribute("order",order);
                 request.setAttribute("orderId",orderId);
@@ -96,4 +103,29 @@ public class CheckoutServlet extends HttpServlet {
 
     }
 
+    private void cacheCheckoutForm(HttpSession session, String email, String fullName, String phone,
+                                   String address, String province, String district, String ward, String note) {
+        Map<String, String> formData = new HashMap<>();
+        putIfPresent(formData, "email", email);
+        putIfPresent(formData, "fullname", fullName);
+        putIfPresent(formData, "phone", phone);
+        putIfPresent(formData, "address", address);
+        putIfPresent(formData, "province", province);
+        putIfPresent(formData, "district", district);
+        putIfPresent(formData, "ward", ward);
+        putIfPresent(formData, "note", note);
+
+        if (!formData.isEmpty()) {
+            session.setAttribute(CheckoutSessionUtil.CHECKOUT_FORM_SESSION_KEY, formData);
+        }
+    }
+
+    private void putIfPresent(Map<String, String> formData, String key, String value) {
+        if (value != null) {
+            String trimmed = value.trim();
+            if (!trimmed.isEmpty()) {
+                formData.put(key, trimmed);
+            }
+        }
+    }
 }

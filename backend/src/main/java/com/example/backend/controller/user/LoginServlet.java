@@ -2,6 +2,7 @@ package com.example.backend.controller.user;
 
 import com.example.backend.dao.UserDAO;
 import com.example.backend.model.User;
+import com.example.backend.util.CheckoutSessionUtil;
 import com.example.backend.util.PasswordUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -110,6 +111,17 @@ public class LoginServlet extends HttpServlet {
             // Log để debug
             System.out.println("✓ Đăng nhập thành công: " + user.getEmail());
 
+            String redirectUrl = (String) session.getAttribute("postLoginRedirect");
+            if (redirectUrl != null && !redirectUrl.trim().isEmpty()) {
+                int orderId = CheckoutSessionUtil.placeOrderFromSession(session);
+                session.removeAttribute("postLoginRedirect");
+                if (orderId > 0) {
+                    response.sendRedirect(request.getContextPath() + "/order-success.jsp");
+                    return;
+                }
+                response.sendRedirect(request.getContextPath() + "/checkout");
+                return;
+            }
             // User login luon ve trang chu (admin chi vao dashboard khi dang nhap trang admin)
             response.sendRedirect(request.getContextPath() + "/index");
 
