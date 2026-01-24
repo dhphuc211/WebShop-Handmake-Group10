@@ -99,12 +99,6 @@
                     <p>Chưa có tài khoản? <a href="${pageContext.request.contextPath}/register">Đăng ký ngay</a></p>
                 </div>
 
-                <div class="admin-login-link">
-                    <a href="${pageContext.request.contextPath}/admin-login">
-                        <i class="fa-solid fa-user-shield"></i>
-                        Đăng nhập với tư cách admin
-                    </a>
-                </div>
             </div>
         </div>
     </div>

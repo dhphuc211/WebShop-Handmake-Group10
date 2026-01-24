@@ -23,7 +23,7 @@
                     <p>Theo dõi nhanh tình trạng cửa hàng</p>
                 </div>
                 <div class="header-right">
-                    <a href="${pageContext.request.contextPath}/index.jsp" class="btn btn-secondary">
+                    <a href="${pageContext.request.contextPath}/" class="btn btn-secondary">
                         <i class="fa-solid fa-globe"></i> Website
                     </a>
                     <a href="${pageContext.request.contextPath}/admin/products?action=new" class="btn btn-primary">

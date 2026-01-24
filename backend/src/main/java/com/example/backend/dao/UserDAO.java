@@ -405,6 +405,7 @@ public class UserDAO {
             if (hasColumn(rs, "email")) user.setEmail(rs.getString("email"));
             if (hasColumn(rs, "phone")) user.setPhone(rs.getString("phone"));
             if (hasColumn(rs, "password")) user.setPassword(rs.getString("password"));
+            if (hasColumn(rs, "role_id")) user.setRoleId(rs.getInt("role_id"));
             if (hasColumn(rs, "role")) user.setRole(rs.getString("role"));
             if (hasColumn(rs, "created_at")) user.setCreatedAt(rs.getTimestamp("created_at"));
             if (hasColumn(rs, "updated_at")) user.setUpdatedAt(rs.getTimestamp("updated_at"));
