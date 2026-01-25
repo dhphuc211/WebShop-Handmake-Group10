@@ -2,6 +2,7 @@ package com.example.backend.controller.user;
 
 import com.example.backend.dao.UserDAO;
 import com.example.backend.model.User;
+import com.example.backend.util.CheckoutSessionUtil;
 import com.example.backend.util.PasswordUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -42,9 +43,17 @@ public class LoginServlet extends HttpServlet {
 
         // Kiểm tra nếu user đã đăng nhập rồi thì chuyển về trang chủ
         HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("user") != null) {
-            response.sendRedirect(request.getContextPath() + "/index");
-            return;
+        if (session != null) {
+            Object sessionUser = session.getAttribute("user");
+            if (sessionUser instanceof User) {
+                User user = (User) sessionUser;
+                if (user.isAdmin()) {
+                    response.sendRedirect(request.getContextPath() + "/admin/dashboard");
+                    return;
+                }
+                response.sendRedirect(request.getContextPath() + "/index");
+                return;
+            }
         }
 
         // Chuyển đến trang login.jsp
@@ -110,7 +119,24 @@ public class LoginServlet extends HttpServlet {
             // Log để debug
             System.out.println("✓ Đăng nhập thành công: " + user.getEmail());
 
-            // User login luon ve trang chu (admin chi vao dashboard khi dang nhap trang admin)
+            if (user.isAdmin()) {
+                session.removeAttribute("postLoginRedirect");
+                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
+                return;
+            }
+
+            String redirectUrl = (String) session.getAttribute("postLoginRedirect");
+            if (redirectUrl != null && !redirectUrl.trim().isEmpty()) {
+                int orderId = CheckoutSessionUtil.placeOrderFromSession(session);
+                session.removeAttribute("postLoginRedirect");
+                if (orderId > 0) {
+                    response.sendRedirect(request.getContextPath() + "/order-success.jsp");
+                    return;
+                }
+                response.sendRedirect(request.getContextPath() + "/checkout");
+                return;
+            }
+            // User login luon ve trang chu
             response.sendRedirect(request.getContextPath() + "/index");
 
         } else {

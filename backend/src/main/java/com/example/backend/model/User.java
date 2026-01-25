@@ -13,9 +13,11 @@ public class User {
     private String phone;              // Số điện thoại (cũng có thể dùng để đăng nhập)
     private String password;           // Mật khẩu (đã được mã hóa)
     private String role;               // Vai trò: "user" hoặc "admin"
+    private int roleId;                // ID vai trò từ bảng role
     private boolean isActive;          // Trạng thái: true = hoạt động, false = bị khóa
     private Timestamp createdAt;       // Thời gian tạo tài khoản
     private Timestamp updatedAt;       // Thời gian cập nhật gần nhất
+    private static final int ADMIN_ROLE_ID = 1;
 
     //Constructor mặc định - cần thiết cho việc tạo object rỗng
     public User() {
@@ -98,6 +100,14 @@ public class User {
         this.role = role;
     }
 
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
     public boolean isActive() {
         return isActive;
     }
@@ -131,6 +141,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", role='" + role + '\'' +
+                ", roleId=" + roleId +
                 ", isActive=" + isActive +
                 '}';
     }
@@ -140,6 +151,6 @@ public class User {
      * @return true nếu là admin
      */
     public boolean isAdmin() {
-        return "admin".equals(this.role);
+        return roleId == ADMIN_ROLE_ID && "admin".equalsIgnoreCase(this.role);
     }
 }

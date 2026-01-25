@@ -92,17 +92,19 @@
             <form action="${pageContext.request.contextPath}/contact" method="post">
                 <div class="form-group">
                     <label>Tên</label>
-                    <input type="text" name="name" required>
+                    <input type="text" name="name" required
+                           value="${clearForm ? '' : (not empty formName ? formName : (sessionScope.user != null ? sessionScope.user.fullName : ''))}">
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" required
+                           value="${clearForm ? '' : (not empty formEmail ? formEmail : (sessionScope.user != null ? sessionScope.user.email : ''))}">
                 </div>
 
                 <div class="form-group">
                     <label>Nội dung</label>
-                    <textarea name="message" required></textarea>
+                    <textarea name="message" required>${clearForm ? '' : (not empty formMessage ? formMessage : '')}</textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Gửi</button>

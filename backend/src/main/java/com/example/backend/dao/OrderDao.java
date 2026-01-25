@@ -51,16 +51,15 @@ public class OrderDao {
             }
 
             // insert vào bảng detail
-            String sqlDetail = "INSERT INTO order_items (order_id, product_id, price, quantity, total_price) VALUES (?, ?, ?, ?, ?)";
+            String sqlDetail = "INSERT INTO order_items (order_id, product_id, quantity, total_price) VALUES (?, ?, ?, ?)";
             preDetail = con.prepareStatement(sqlDetail);
 
             // Duyệt giỏ hàng
             for (CartItem item : cart.getItems()) {
                 preDetail.setInt(1, orderId); // id của đơn hàng
                 preDetail.setInt(2, item.getProduct().getId());
-                preDetail.setDouble(3, item.getProduct().getPrice());
-                preDetail.setInt(4, item.getQuantity());
-                preDetail.setDouble(5, item.getProduct().getPrice() * item.getQuantity());
+                preDetail.setInt(3, item.getQuantity());
+                preDetail.setDouble(4, item.getProduct().getPrice() * item.getQuantity());
 
                 preDetail.addBatch();
             }
