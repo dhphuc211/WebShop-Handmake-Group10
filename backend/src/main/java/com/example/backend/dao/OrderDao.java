@@ -108,10 +108,12 @@ public class OrderDao {
                 o.setShipping_name(rs.getString("shipping_name"));
                 o.setShipping_phone(rs.getString("shipping_phone"));
                 o.setShipping_address(rs.getString("shipping_address"));
+                o.setNote(rs.getString("note"));
                 o.setShipping_fee(rs.getDouble("shipping_fee"));
                 o.setTotal_amount(rs.getDouble("total_amount"));
                 o.setOrder_status(rs.getString("order_status"));
                 o.setCreated_at(rs.getTimestamp("created_at"));
+                o.setUpdated_at(rs.getTimestamp("updated_at"));
 
                 list.add(o);
             }

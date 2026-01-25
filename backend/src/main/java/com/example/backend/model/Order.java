@@ -9,8 +9,8 @@ public class Order {
     private String shipping_name;
     private String shipping_phone;
     private String shipping_address;
-    private double shipping_fee;
     private String note;
+    private double shipping_fee;
     private double total_amount;
     private String order_status;
     private Timestamp created_at;
@@ -19,14 +19,14 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, int user_id, String shipping_name, String shipping_phone, String shipping_address, double shipping_fee, String note, double total_amount, String order_status, Timestamp created_at, Timestamp updated_at) {
+    public Order(int id, int user_id, String shipping_name, String shipping_phone, String shipping_address, String note, double shipping_fee, double total_amount, String order_status, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         this.user_id = user_id;
         this.shipping_name = shipping_name;
         this.shipping_phone = shipping_phone;
         this.shipping_address = shipping_address;
-        this.shipping_fee = shipping_fee;
         this.note = note;
+        this.shipping_fee = shipping_fee;
         this.total_amount = total_amount;
         this.order_status = order_status;
         this.created_at = created_at;

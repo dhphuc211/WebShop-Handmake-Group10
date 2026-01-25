@@ -79,7 +79,7 @@
           </div>
         </div>
       </li>
-      <li class="nav-item"><a href="${pageContext.request.contextPath}/news.jsp">Tin tức</a></li>
+      <li class="nav-item"><a href="${pageContext.request.contextPath}/news">Tin tức</a></li>
       <li class="nav-item"><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
     </div>
     <div class="others">

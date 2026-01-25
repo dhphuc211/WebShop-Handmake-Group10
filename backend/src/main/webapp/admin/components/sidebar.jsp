@@ -24,7 +24,7 @@
       <i class="fa-solid fa-users"></i> <span>Quản lý khách hàng</span>
     </a>
 
-    <a href="${pageContext.request.contextPath}/admin/orders/order-list.jsp"
+    <a href="${pageContext.request.contextPath}/admin/orders"
        class="admin-menu-item ${param.active == 'orders' ? 'active' : ''}">
       <i class="fa-solid fa-shopping-cart"></i> <span>Quản lý đơn hàng</span>
     </a>

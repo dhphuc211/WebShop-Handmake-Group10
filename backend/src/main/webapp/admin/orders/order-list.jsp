@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/css/orders-list.css">
 </head>
 <body>
+    <fmt:setLocale value="vi_VN"/>
     <main class="admin-dashboard-main">
         <div class="admin-dashboard-container">
             <jsp:include page="/admin/components/sidebar.jsp">
@@ -203,9 +204,7 @@
                                     </td>
 
                                     <td class="col-payment-method">
-                                        <span class="payment-badge ${o.payment_method != null ? o.payment_method.toLowerCase() : 'cod'}">
-                                            ${o.payment_method != null ? o.payment_method : 'COD'}
-                                        </span>
+                                        <span class="payment-badge cod">COD</span>
                                     </td>
 
                                     <td class="col-date">
@@ -218,7 +217,7 @@
                                     <td class="col-status">
                                         <%-- Dynamic Status Class: status-pending, status-completed... --%>
                                        <span class="status-badge status-${o.status != null ? o.status.toLowerCase() : 'pending'}">
-                                           ${o.status != null ? o.status : 'Pending'}
+                                           ${o.order_status != null ? o.order_status : 'Pending'}
                                        </span>
                                     </td>
 

@@ -19,9 +19,6 @@ public class AdminOrderServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/orders/order-list.jsp");
-        dispatcher.forward(request, response);
-
         String action = request.getParameter("action");
         if (action == null) {
             action = "list";
@@ -42,7 +39,7 @@ public class AdminOrderServlet extends HttpServlet {
     private void viewOrderList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Order> orders = orderDao.getAllOrders();
         request.setAttribute("orders", orders);
-        request.getRequestDispatcher("/admin/order-list.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/orders/order-list.jsp").forward(request, response);
     }
 
     // xem chi tiết đơn hàng
