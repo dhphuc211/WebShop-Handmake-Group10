@@ -14,6 +14,7 @@
 </head>
 <body data-context-path="${pageContext.request.contextPath}">
 <!-- Header -->
+<c:set var="activeTab" value="contact" scope="request"/>
 <jsp:include page="/compenents/header.jsp" />
 
 <main>

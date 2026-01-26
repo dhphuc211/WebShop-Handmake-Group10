@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html>
+<html lang="vi"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
+    <title>Nhóm 10 | Trang chủ</title>
+</head>
+<body>
+<c:set var="activeTab" value="home" scope="request"/>
 <%@ include file="compenents/header.jsp" %>
 <main class="component">
     <section class="section_intro">
@@ -188,5 +200,6 @@
         });
     </script>
 </main>
+</body>
 
 <%@ include file="compenents/footer.jsp" %>

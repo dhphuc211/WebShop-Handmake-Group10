@@ -18,10 +18,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hero-section.css">
 </head>
 <body>
+<c:set var="activeTab" value="about" scope="request"/>
 <%@ include file="compenents/header.jsp" %>
-<c:set var="pageTitle" value="${product.name}" scope="request"/>
+<c:set var="pageTitle" value="Giới thiệu" scope="request"/>
 <c:set var="breadcrumbText"
-       value="<a href='${pageContext.request.contextPath}/products.jsp'>Sản phẩm</a> / ${product.name}"
+       value="<a href='${pageContext.request.contextPath}/about.jsp'>Giới thiệu</a>"
        scope="request"/>
 
 <jsp:include page="compenents/hero-section.jsp"/>

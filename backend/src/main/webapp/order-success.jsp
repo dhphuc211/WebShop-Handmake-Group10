@@ -115,7 +115,7 @@
                                 <div class="order-price-bottom">
                                     <a href="${pageContext.request.contextPath}/order-review.jsp" class="btn-review">Đánh giá ngay</a>
 
-                                    <a href="${pageContext.request.contextPath}/index.jsp" class="btn-continue">Tiếp tục mua hàng</a>
+                                    <a href="${pageContext.request.contextPath}/" class="btn-continue">Tiếp tục mua hàng</a>
                                 </div>
                             </div>
                         </div>
