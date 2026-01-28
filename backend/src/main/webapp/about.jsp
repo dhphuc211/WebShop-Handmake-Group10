@@ -340,7 +340,7 @@
 
             <a href="./search.html" class="search-result-item">
                 <div class="search-item-image">
-                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca tháp">
+                    <img src="" alt="Ca tháp">
                 </div>
                 <div class="search-item-info">
                     <p class="product-name">Ca tháp quai tròn 0.35 L - Jasmine - Trắng</p>
@@ -348,45 +348,6 @@
                 </div>
             </a>
 
-            <a href="#" class="search-result-item">
-                <div class="search-item-image">
-                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca thon">
-                </div>
-                <div class="search-item-info">
-                    <p class="product-name">Ca thon quai số 7 0.33 L - Jasmine - Trắng</p>
-                    <p class="product-price">79.200đ</p>
-                </div>
-            </a>
-
-            <a href="#" class="search-result-item">
-                <div class="search-item-image">
-                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca trà">
-                </div>
-                <div class="search-item-info">
-                    <p class="product-name">Ca trà 0.30 L - Mẫu Đơn IFP - Chỉ Vàng</p>
-                    <p class="product-price">176.000đ</p>
-                </div>
-            </a>
-
-            <a href="#" class="search-result-item">
-                <div class="search-item-image">
-                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca trà">
-                </div>
-                <div class="search-item-info">
-                    <p class="product-name">Ca trà 0.30 L - Mẫu Đơn - Trắng</p>
-                    <p class="product-price">108.900đ</p>
-                </div>
-            </a>
-
-            <a href="#" class="search-result-item">
-                <div class="search-item-image">
-                    <img src="https://via.placeholder.com/60x60/f5f5f5/cccccc?text=Img" alt="Ca bia">
-                </div>
-                <div class="search-item-info">
-                    <p class="product-name">Ca bia 0.36 L - Jasmine - Trắng</p>
-                    <p class="product-price">75.900đ</p>
-                </div>
-            </a>
 
         </div>
     </div>
