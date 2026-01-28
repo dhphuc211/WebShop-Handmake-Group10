@@ -93,12 +93,20 @@
         <div class="container">
             <div class="product-tab">
                 <ul>
-                    <li class="tab-link active"><h3>Mô tả sản phẩm</h3></li>
+                    <li class="tab-link active" onclick="openTab(event, 'tab-description')"><h3>Mô tả sản phẩm</h3></li>
+                    <li class="tab-link" onclick="openTab(event, 'tab-review')"><h3>Đánh giá</h3></li>
                 </ul>
+
                 <div class="tab">
-                    <div class="tab-content">
+                    <div id="tab-description" class="tab-content-item" style="display: block;">
                         <div class="product-content">
                             <p>${not empty product.fullDescription ? product.fullDescription : 'Chưa có mô tả chi tiết cho sản phẩm này.'}</p>
+                        </div>
+                    </div>
+
+                    <div id="tab-review" class="tab-content-item" style="display: none;">
+                        <div class="product-content">
+                            <p>Hiện chưa có đánh giá nào cho sản phẩm này.</p>
                         </div>
                     </div>
                 </div>
@@ -109,9 +117,9 @@
     <section class="product-relate">
         <div class="container">
             <div class="product-relate">
-                <div class="carousel">
+                <h2 class="carousel">
                     <span>Sản phẩm liên quan</span>
-                </div>
+                </h2>
                 <div class="product-grid">
                     <c:forEach items="${relatedProducts}" var="rp">
                         <div class="product-card">
@@ -243,6 +251,26 @@
             });
         }
     });
+</script>
+<script>
+    function openTab(evt, tabName) {
+        // 1. Lấy tất cả các phần tử có class "tab-content-item" và ẩn chúng đi
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content-item");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // 2. Lấy tất cả các thẻ li có class "tab-link" và xóa class "active"
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // 3. Hiển thị tab hiện tại và thêm class "active" vào nút đã bấm
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
 </script>
 </body>
 </html>
