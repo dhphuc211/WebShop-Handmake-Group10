@@ -1,6 +1,8 @@
 package com.example.backend.controller.user;
 
+import com.example.backend.model.Category;
 import com.example.backend.model.Product;
+import com.example.backend.service.CategoryService;
 import com.example.backend.service.ProductService;
 
 import jakarta.servlet.ServletException;
@@ -32,6 +34,7 @@ public class ProductListServlet extends HttpServlet {
         if (pageStr != null && !pageStr.isEmpty()) {
             page = Integer.parseInt(pageStr);
         }
+        int offset = (page - 1) * pageSize;
 
         List<Product> productList = productService.getAllProducts(page,pageSize);
         int totalPages = productService.getTotalPages(pageSize);
@@ -43,10 +46,16 @@ public class ProductListServlet extends HttpServlet {
             } else if (categoryIdStr != null && !categoryIdStr.trim().isEmpty()) {
                 try {
                     int cid = Integer.parseInt(categoryIdStr);
-                    productList = productService.getProductsByCategory(cid);
+                    // Lấy sản phẩm theo danh mục có offset và limit
+                    productList = productService.getProductsByCategory(cid, offset, pageSize);
+
+                    // Tính tổng trang cho riêng danh mục này
+                    int totalProducts = productService.getTotalProductsCountByCategory(cid);
+                    totalPages = (int) Math.ceil((double) totalProducts / pageSize);
+
                     request.setAttribute("title", "Sản phẩm theo danh mục");
                 } catch (NumberFormatException e) {
-                    productList = productService.getAllProducts(page,pageSize);
+                    productList = productService.getAllProducts(page, pageSize);
                 }
 
             } else if (sortType != null && !sortType.trim().isEmpty()) {
@@ -56,14 +65,18 @@ public class ProductListServlet extends HttpServlet {
             } else {
                 // Mặc định: Lấy tất cả sản phẩm
                 productList = productService.getAllProducts(page, pageSize);
+                totalPages = productService.getTotalPages(pageSize);
                 request.setAttribute("title", "Tất cả sản phẩm");
             }
         } catch (Exception e) {
             e.printStackTrace();
             productList = null;
         }
-
+        CategoryService categoryService = new CategoryService();
+        List<Category> categoryList = categoryService.getAllCategories();
+        request.setAttribute("categoryList", categoryList);
         request.setAttribute("productList", productList);
+        request.setAttribute("totalPages", totalPages);
 
         request.setAttribute("paramSearch", searchKeyword);
         request.setAttribute("paramCid", categoryIdStr);

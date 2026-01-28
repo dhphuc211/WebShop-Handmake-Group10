@@ -36,7 +36,8 @@ public class ProductDAO {
     public List<Product> getSaleProducts() {
         List<Product> list = new ArrayList<>();
 
-        String sql = "SELECT p.* FROM products p JOIN sale s ON p.sale_id = s.id " +
+        String sql = "SELECT p.* FROM product p JOIN product_categories pc ON p.category_id = pc.id " +
+                "JOIN sale s on pc.sale_id = s.id "+
                 "WHERE NOW() BETWEEN s.start_sale AND s.end_sale AND p.status = 'active'";
 
         try (Connection conn = DBConnection.getConnection();
@@ -97,27 +98,68 @@ public class ProductDAO {
         return 0;
     }
 
-    public List<Product> getProductsByCategory(int categoryId) {
+    public List<Product> getProductsByCategory(int categoryId, int offset, int limit) {
         List<Product> list = new ArrayList<>();
+        // Thêm LIMIT và OFFSET vào cuối câu truy vấn
         String sql = "SELECT p.*, MAX(pi.image_url) AS image_url " +
                 "FROM products p " +
                 "LEFT JOIN product_images pi ON p.id = pi.product_id " +
                 "WHERE p.category_id = ? AND p.status = 'active' " +
-                "GROUP BY p.id";
-//        String sql = "SELECT p.*, MAX(NULLIF(pi.image_url, '')) AS image_url " +
-//                "FROM products p " +
-//                "LEFT JOIN product_images pi ON p.id = pi.product_id " +
-//                "WHERE p.id = ? " +
-//                "GROUP BY p.id";
+                "GROUP BY p.id ORDER BY p.id LIMIT ?, ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, categoryId);
+            ps.setInt(2, offset);
+            ps.setInt(3, limit);
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(mapResultSetToProduct(rs));
             }
-        } catch (Exception e) { e.printStackTrace(); }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public int getTotalProductsCountByCategory(int categoryId) {
+        String sql = "SELECT COUNT(*) FROM products WHERE category_id = ? AND status = 'active'";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, categoryId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public List<Product> getRelatedProducts(int categoryId, int currentProductId, int limit) {
+        List<Product> list = new ArrayList<>();
+        // SQL: Lấy sản phẩm cùng category nhưng KHÔNG PHẢI sản phẩm hiện tại (id != ?)
+        String sql = "SELECT p.*, MAX(pi.image_url) AS image_url " +
+                "FROM products p " +
+                "LEFT JOIN product_images pi ON p.id = pi.product_id " +
+                "WHERE p.category_id = ? AND p.id != ? AND p.status = 'active' " +
+                "GROUP BY p.id LIMIT ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, categoryId);
+            ps.setInt(2, currentProductId);
+            ps.setInt(3, limit);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(mapResultSetToProduct(rs));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return list;
     }
 

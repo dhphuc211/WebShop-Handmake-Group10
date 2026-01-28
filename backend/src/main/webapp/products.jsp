@@ -20,19 +20,22 @@
 <c:set var="breadcrumbText"
        value="<a href='${pageContext.request.contextPath}/products'>Sản phẩm</a>"
        scope="request"/>
-<jsp:include page="compenents/hero-section.jsp"/>
+<jsp:include page="compenents/hero-section.jsp" />
 
 <div class="products-wrapper">
     <section class="filter-bar">
         <div class="filter-controls">
-            <select name="danh-muc" id="category">
-                <option selected> Danh mục</option>
-                <option>Trà - cà phê</option>
-                <option>Nồi sứ dưỡng sinh</option>
-                <option>Sứ dưỡng sinh</option>
-                <option>Phụ kiện bàn ăn</option>
-                <option>Sứ nghệ thuật</option>
-            </select>
+            <form action="products" method="GET" id="filterForm">
+                <select name="category_id" id="category" onchange="this.form.submit()">
+                    <option value="">Tất cả danh mục</option>
+                    <c:forEach items="${categoryList}" var="cat">
+                        <%-- Kiểm tra param.category_id để giữ lại giá trị đã chọn sau khi load trang --%>
+                        <option value="${cat.id}" ${param.category_id == cat.id ? 'selected' : ''}>
+                                ${cat.name}
+                        </option>
+                    </c:forEach>
+                </select>
+            </form>
             <div class="select">
                 <select name="bo-loc" id="bo-loc">
                     <option selected>Bộ lọc</option>
@@ -93,43 +96,24 @@
         <div class="pagination-area">
             <nav aria-label="Page navigation">
                 <ul class="pagination">
+                    <%-- Nút trang trước --%>
                     <c:if test="${currentPage > 1}">
                         <li class="page-item">
-                            <a class="page-link" href="products?page=${currentPage - 1}" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
+                            <a class="page-link" href="products?page=${currentPage - 1}${not empty paramCid ? '&category_id='.concat(paramCid) : ''}">&laquo;</a>
                         </li>
                     </c:if>
 
-                    <li class="page-item ${currentPage == 1 ? 'active' : ''}">
-                        <a class="page-link" href="products?page=1">1</a>
-                    </li>
-                    <c:if test="${currentPage > 3}">
-                        <li class="page-item disabled"><span class="page-link">...</span></li>
-                    </c:if>
-
-                    <c:forEach begin="${currentPage - 1 > 2 ? currentPage - 1 : 2}"
-                               end="${currentPage + 1 < totalPages ? currentPage + 1 : totalPages - 1}"
-                               var="i">
-                        <c:if test="${i > 1 && i < totalPages}">
-                            <li class="page-item ${currentPage == i ? 'active' : ''}">
-                                <a class="page-link" href="products?page=${i}">${i}</a>
-                            </li>
-                        </c:if>
+                    <%-- Vòng lặp hiển thị các số trang --%>
+                    <c:forEach begin="1" end="${totalPages}" var="i">
+                        <li class="page-item ${currentPage == i ? 'active' : ''}">
+                            <a class="page-link" href="products?page=${i}${not empty paramCid ? '&category_id='.concat(paramCid) : ''}">${i}</a>
+                        </li>
                     </c:forEach>
-                    <c:if test="${currentPage < totalPages - 2}">
-                        <li class="page-item disabled"><span class="page-link">...</span></li>
-                    </c:if>
-                    <c:if test="${totalPages > 1}">
-                        <li class="page-item ${currentPage == totalPages ? 'active' : ''}">
-                            <a class="page-link" href="products?page=${totalPages}">${totalPages}</a>
-                        </li>
-                    </c:if>
+
+                    <%-- Nút trang sau --%>
                     <c:if test="${currentPage < totalPages}">
                         <li class="page-item">
-                            <a class="page-link" href="products?page=${currentPage + 1}" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
+                            <a class="page-link" href="products?page=${currentPage + 1}${not empty paramCid ? '&category_id='.concat(paramCid) : ''}">&raquo;</a>
                         </li>
                     </c:if>
                 </ul>

@@ -1,6 +1,6 @@
 # Sử dụng hình ảnh Maven để build file WAR
 FROM maven:3.8.4-openjdk-11 AS build
-COPY backend .
+COPY backend/pom.xml .
 RUN mvn clean package -DskipTests
 
 # Sử dụng Tomcat để chạy ứng dụng
