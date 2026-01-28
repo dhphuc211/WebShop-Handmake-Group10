@@ -95,14 +95,12 @@ body{
 }
 
 .cart-items-quantity{
-    border: 1px solid #333333;
     width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.cart-items-quantity .quantity {
-    display: flex;
-    width: 120px;
-}
 
 .quantity button,
 .quantity input {
