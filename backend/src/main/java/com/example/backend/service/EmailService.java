@@ -38,16 +38,31 @@ public class EmailService {
         }
 
         String from = (RESEND_FROM_EMAIL != null) ? RESEND_FROM_EMAIL : "onboarding@resend.dev";
-        String subject = "Your New Password for WebShop Handmade";
-        String htmlBody = "<h1>Password Reset</h1>"
-                + "<p>Hello,</p>"
-                + "<p>Your password has been reset. Here is your new password:</p>"
-                + "<h2>" + newPassword + "</h2>"
-                + "<p>Please change it after logging in.</p>"
-                + "<p>Thank you,<br>WebShop Handmade Team</p>";
+        String subject = "Mật khẩu mới của bạn tại Sun Craft";
+        
+        String htmlBody = "<div style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;\">"
+                + "<div style=\"max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);\">"
+                + "<div style=\"background-color: #2c3e50; padding: 20px; text-align: center;\">"
+                + "<h1 style=\"color: #ffffff; margin: 0; font-size: 24px;\">Sun Craft</h1>"
+                + "</div>"
+                + "<div style=\"padding: 30px;\">"
+                + "<h2 style=\"color: #333333; margin-top: 0;\">Khôi phục mật khẩu</h2>"
+                + "<p style=\"color: #666666; line-height: 1.6;\">Xin chào,</p>"
+                + "<p style=\"color: #666666; line-height: 1.6;\">Mật khẩu của bạn đã được đặt lại theo yêu cầu. Dưới đây là mật khẩu mới của bạn:</p>"
+                + "<div style=\"background-color: #f8f9fa; border: 1px solid #e9ecef; border-radius: 4px; padding: 15px; margin: 20px 0; text-align: center;\">"
+                + "<span style=\"font-family: monospace; font-size: 24px; font-weight: bold; color: #2c3e50; letter-spacing: 2px;\">" + newPassword + "</span>"
+                + "</div>"
+                + "<p style=\"color: #666666; line-height: 1.6;\">Vui lòng đăng nhập và đổi mật khẩu này ngay lập tức để đảm bảo an toàn.</p>"
+                + "<p style=\"color: #666666; line-height: 1.6; margin-top: 30px;\">Trân trọng,<br>Đội ngũ Sun Craft</p>"
+                + "</div>"
+                + "<div style=\"background-color: #f4f4f4; padding: 15px; text-align: center; font-size: 12px; color: #999999;\">"
+                + "<p style=\"margin: 0;\">&copy; 2026 Sun Craft. All rights reserved.</p>"
+                + "</div>"
+                + "</div>"
+                + "</div>";
 
         // Tạo JSON payload thủ công, sử dụng biến from từ cấu hình
-        String jsonPayload = String.format("{\"from\":\"WebShop Handmade <%s>\",\"to\":\"%s\",\"subject\":\"%s\",\"html\":\"%s\"}",
+        String jsonPayload = String.format("{\"from\":\"Sun Craft <%s>\",\"to\":\"%s\",\"subject\":\"%s\",\"html\":\"%s\"}",
                 from, toEmail, subject, htmlBody.replace("\"", "\\\""));
 
 
