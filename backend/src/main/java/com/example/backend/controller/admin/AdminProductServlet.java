@@ -3,17 +3,24 @@ package com.example.backend.controller.admin;
 import com.example.backend.model.Product;
 import com.example.backend.model.ProductImage;
 import com.example.backend.service.ProductService;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "AdminProductServlet", value = "/admin/products")
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10,      // 10MB
+        maxRequestSize = 1024 * 1024 * 50    // 50MB
+)
 public class AdminProductServlet extends HttpServlet {
 
     private ProductService productService = new ProductService();
@@ -65,6 +72,23 @@ public class AdminProductServlet extends HttpServlet {
 
     // --- CÁC HÀM HIỂN THỊ (GET) ---
 
+    private String getFinalImageUrl(HttpServletRequest request) throws IOException, ServletException {
+        // Ưu tiên lấy file upload trước
+        Part filePart = request.getPart("image_file");
+        if (filePart != null && filePart.getSize() > 0) {
+            String fileName = System.currentTimeMillis() + "_" + filePart.getSubmittedFileName();
+            // Lưu vào thư mục 'uploads' trong webapp
+            String uploadPath = getServletContext().getRealPath("/uploads");
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) uploadDir.mkdir();
+
+            filePart.write(uploadPath + File.separator + fileName);
+            return "uploads/" + fileName;
+        }
+        // Nếu không có file thì lấy từ ô input URL
+        return request.getParameter("image_url");
+    }
+
     private void listProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String startParam = request.getParameter("start");
         String lengthParam = request.getParameter("length");
@@ -72,7 +96,8 @@ public class AdminProductServlet extends HttpServlet {
         int offset = (startParam != null) ? Integer.parseInt(startParam) : 0;
         int limit = (lengthParam != null) ? Integer.parseInt(lengthParam) : 1000;
 
-        List<Product> listProducts = productService.getAllProducts(offset, limit);
+        // GỌI HÀM NÀY: Để offset truyền thẳng vào DAO không qua tính toán (page-1)
+        List<Product> listProducts = productService.getAllProductsForAdmin(offset, limit);
 
         request.setAttribute("listProducts", listProducts);
         request.getRequestDispatcher("/admin/products/product-list.jsp").forward(request, response);
@@ -99,6 +124,12 @@ public class AdminProductServlet extends HttpServlet {
 
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Product newProduct = mapRequestToProduct(request);
+        String imageUrl = getFinalImageUrl(request);
+
+        ProductImage pImg = new ProductImage();
+        pImg.setImageUrl(imageUrl);
+        newProduct.setImage(pImg);
+
         productService.insertProduct(newProduct);
         response.sendRedirect(request.getContextPath() + "/admin/products?message=inserted");    }
 

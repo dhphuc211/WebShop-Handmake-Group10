@@ -87,6 +87,16 @@ public class OrderItem {
         this.updatedAt = updatedAt;
     }
 
+    public String getImageUrl() {
+        return product.getImageUrl();
+    }
+    public String getPName() {
+        return product.getName();
+    }
+    public int getPId() {
+        return product.getId();
+    }
+
     @Override
     public String toString() {
         return "OrderItem{" +

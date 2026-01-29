@@ -68,7 +68,7 @@
                             </div>
 
                             <div class="cart-items-quantity" style="flex: 1; text-align: center;">
-                                <form action="cart" method="GET" class="quantity" style="display: flex; justify-content: center; align-items: center;">
+                                <form action="cart" method="GET" class="quantity" style="display: flex; justify-content: center; align-items: center; width: fit-content; border: 1px solid #333333;">
                                     <input type="hidden" name="action" value="update">
                                     <input type="hidden" name="productId" value="${item.product.id}">
 

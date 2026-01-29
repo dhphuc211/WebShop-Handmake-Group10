@@ -80,9 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const contextPath = document.body.getAttribute('data-context-path') || '';
 
             if (category) {
-                window.location.href = contextPath + '/products.jsp?category=' + category;
+                window.location.href = contextPath + '/products?category_id=' + category;
             } else {
-                window.location.href = contextPath + '/products.jsp';
+                window.location.href = contextPath + '/products';
             }
         });
 

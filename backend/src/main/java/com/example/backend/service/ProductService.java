@@ -3,11 +3,7 @@ package com.example.backend.service;
 import com.example.backend.dao.ProductDAO;
 import com.example.backend.model.Product;
 import com.example.backend.model.ProductAttribute;
-import com.example.backend.model.ProductImage;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ProductService {
 
@@ -48,6 +44,9 @@ public class ProductService {
         int offset = (page - 1) * pageSize;
         return productDAO.getAllProducts(offset, pageSize);
     }
+    public List<Product> getAllProductsForAdmin(int offset, int limit) {
+        return productDAO.getAllProducts(offset, limit);
+    }
 
     public int getTotalPages(int pageSize) {
         int totalRecords = productDAO.getTotalProductsCount();
@@ -58,8 +57,12 @@ public class ProductService {
         return productDAO.searchProductsByName(keyword);
     }
 
-    public List<Product> getProductsByCategory(int cid) {
-        return productDAO.getProductsByCategory(cid);
+    public List<Product> getProductsByCategory(int cid, int offset, int limit) {
+        return productDAO.getProductsByCategory(cid, offset, limit);
+    }
+
+    public int getTotalProductsCountByCategory(int cid) {
+        return productDAO.getTotalProductsCountByCategory(cid);
     }
 
     public List<Product> getAllProductsSorted(String sortType, String direction) {
@@ -77,7 +80,7 @@ public class ProductService {
     }
 
     public List<Product> getRelatedProducts(int categoryId, int currentProductId) {
-        return productDAO.getProductsByCategory(categoryId);
+        return productDAO.getRelatedProducts(categoryId, currentProductId, 4);
     }
 
     public void insertProduct(Product p) {

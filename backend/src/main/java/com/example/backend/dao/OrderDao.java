@@ -183,25 +183,24 @@ public class OrderDao {
         }
         return null;
     }
-    // Lấy danh sách sản phẩm trong đơn hàng
     public List<OrderItem> getOrderItems(int orderId) {
         List<OrderItem> list = new ArrayList<>();
-
-        String sql = "select oi.*, p.name, p.price, " +
-                "(select image_url from product_images where product_id = p.id limit 1) as image_url " +
-                "from order_items oi " +
-                "join products p on oi.product_id = p.id " +
-                "where oi.order_id = ?";
+        // Chỉ định rõ cột của từng bảng và dùng bí danh (alias) nếu cần
+        String sql = "SELECT oi.id AS item_id, oi.order_id, oi.product_id, oi.quantity, oi.total_price, " +
+                "p.name AS product_name, p.price AS product_price, " +
+                "(SELECT image_url FROM product_images WHERE product_id = p.id LIMIT 1) AS image_url " +
+                "FROM order_items oi " +
+                "JOIN products p ON oi.product_id = p.id " +
+                "WHERE oi.order_id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-
             ps.setInt(1, orderId);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 OrderItem item = new OrderItem();
-                item.setId(rs.getInt("id"));
+                item.setId(rs.getInt("item_id")); // Dùng bí danh đã đặt
                 item.setOrderId(rs.getInt("order_id"));
                 item.setProductId(rs.getInt("product_id"));
                 item.setQuantity(rs.getInt("quantity"));
@@ -209,22 +208,18 @@ public class OrderDao {
 
                 Product p = new Product();
                 p.setId(rs.getInt("product_id"));
-                p.setName(rs.getString("name"));
-                p.setPrice(rs.getDouble("price"));
+                p.setName(rs.getString("product_name"));
+                p.setPrice(rs.getDouble("product_price"));
 
                 String url = rs.getString("image_url");
                 ProductImage pi = new ProductImage();
-                pi.setProductId(p.getId());
-                pi.setImageUrl(url); // Gán link ảnh vào đây
-
+                pi.setImageUrl(url != null ? url : "");
                 p.setImage(pi);
 
                 item.setProduct(p);
                 list.add(item);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) { e.printStackTrace(); }
         return list;
     }
 

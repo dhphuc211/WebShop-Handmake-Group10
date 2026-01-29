@@ -1,5 +1,6 @@
 package com.example.backend.controller.user;
 
+import com.example.backend.dao.BlogDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -14,16 +15,15 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Ví dụ dữ liệu giả (sau này lấy từ DB)
-        List<Map<String, Object>> categories = new ArrayList<>();
+        BlogDAO blogDAO = new BlogDAO();
 
-        categories.add(Map.of("name", "Mây tre đan", "total", 0));
-        categories.add(Map.of("name", "Gốm sứ", "total", 30));
-        categories.add(Map.of("name", "Đồ gỗ mỹ nghệ", "total", 0));
+        // Lấy tin nổi bật cho trang chủ
+        request.setAttribute("featuredPosts", blogDAO.getFeaturedPosts(3));
 
-        request.setAttribute("categories", categories);
+        // Có thể lấy thêm banner, sản phẩm...
+        // request.setAttribute("banners", bannerService.getAll());
 
-        request.getRequestDispatcher("/views/index.jsp")
-                .forward(request, response);
+        // Sau khi có đủ dữ liệu mới mở trang index.jsp
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }
