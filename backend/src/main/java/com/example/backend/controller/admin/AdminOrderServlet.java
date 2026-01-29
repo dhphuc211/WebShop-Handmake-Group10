@@ -84,6 +84,34 @@ public class AdminOrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("action");
+
+        if ("updateStatus".equals(action)) {
+            updateOrderStatus(request, response);
+        } else {
+            // Nếu có các action POST khác thì xử lý ở đây, không thì quay về danh sách
+            response.sendRedirect(request.getContextPath() + "/admin/orders");
+        }
+    }
+
+    private void updateOrderStatus(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            int orderId = Integer.parseInt(request.getParameter("order_id"));
+            String newStatus = request.getParameter("order_status");
+
+            // Gọi hàm update trong DAO (hàm đã hướng dẫn ở câu trả lời trước)
+            boolean success = orderDao.updateOrderStatus(orderId, newStatus);
+
+            if (success) {
+                // Redirect về trang chi tiết kèm tham số thông báo thành công
+                response.sendRedirect(request.getContextPath() + "/admin/orders?action=detail&id=" + orderId + "&status=updated");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/admin/orders?action=detail&id=" + orderId + "&status=error");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/admin/orders");
+        }
     }
 }

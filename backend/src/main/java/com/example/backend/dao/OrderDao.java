@@ -263,4 +263,20 @@ public class OrderDao {
             return false;
         }
     }
+
+    public boolean updateOrderStatus(int orderId, String status) {
+        String sql = "UPDATE orders SET order_status = ?, updated_at = ? WHERE id = ?";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement pre = con.prepareStatement(sql)) {
+
+            pre.setString(1, status);
+            pre.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+            pre.setInt(3, orderId);
+
+            return pre.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

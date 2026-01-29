@@ -209,6 +209,17 @@
                             </h2>
                         </div>
                         <div class="section-content">
+                            <c:if test="${param.status == 'updated'}">
+                                <div class="alert-update success">
+                                    <i class="fa-solid fa-circle-check"></i> Cập nhật thành công!
+                                </div>
+                            </c:if>
+                            <c:if test="${param.status == 'error'}">
+                                <div class="alert-update error">
+                                    <i class="fa-solid fa-circle-xmark"></i> Có lỗi xảy ra!
+                                </div>
+                            </c:if>
+
                             <form action="${pageContext.request.contextPath}/admin/orders" method="post">
                                 <input type="hidden" name="action" value="updateStatus">
                                 <input type="hidden" name="order_id" value="${order.id}">
@@ -216,22 +227,11 @@
                                 <div class="form-group">
                                     <label for="order-status">Cập nhật trạng thái</label>
                                     <select id="order-status" name="order_status">
-                                        <%-- Dùng JSTL để tự động chọn trạng thái hiện tại --%>
-                                        <option value="Pending" ${order.order_status == 'Pending' ? 'selected' : ''}>Chờ
-                                            xác nhận
-                                        </option>
-                                        <option value="Confirmed" ${order.order_status == 'Confirmed' ? 'selected' : ''}>
-                                            Đã xác nhận
-                                        </option>
-                                        <option value="Shipping" ${order.order_status == 'Shipping' ? 'selected' : ''}>
-                                            Đang giao
-                                        </option>
-                                        <option value="Completed" ${order.order_status == 'Completed' ? 'selected' : ''}>
-                                            Hoàn thành
-                                        </option>
-                                        <option value="Cancelled" ${order.order_status == 'Cancelled' ? 'selected' : ''}>
-                                            Đã hủy
-                                        </option>
+                                        <option value="Pending" ${order.order_status == 'Pending' ? 'selected' : ''}>Chờ xác nhận</option>
+                                        <option value="Confirmed" ${order.order_status == 'Confirmed' ? 'selected' : ''}>Đã xác nhận</option>
+                                        <option value="Shipping" ${order.order_status == 'Shipping' ? 'selected' : ''}>Đang giao</option>
+                                        <option value="Completed" ${order.order_status == 'Completed' ? 'selected' : ''}>Hoàn thành</option>
+                                        <option value="Cancelled" ${order.order_status == 'Cancelled' ? 'selected' : ''}>Đã hủy</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn-update-status">
