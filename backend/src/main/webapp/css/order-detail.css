@@ -8,7 +8,7 @@
     background: linear-gradient(135deg, #fff9f0 0%, #fef5e6 50%, #f5f1e6 100%);
     padding: 30px 20px;
     position: relative;
-    /* overflow: hidden; */ /* Đã gỡ bỏ để position: sticky hoạt động */
+  overflow: hidden;
 }
 
 /* Decorative background patterns */
@@ -99,15 +99,14 @@
     font-size: 14px;
     font-weight: 600;
     border: 2px solid #e0e0e0;
-    transition: all 0.3s ease;
+    transition: none;
 }
 
 .btn-back:hover {
-    background: white;
-    border-color: #c0392b;
-    color: #c0392b;
-    transform: translateX(-5px);
-    box-shadow: 0 4px 15px rgba(192, 57, 43, 0.1);
+    background: #fafafa;
+    border-color: #e0e0e0;
+    color: #555;
+    box-shadow: none;
 }
 
 .btn-print {
@@ -122,12 +121,11 @@
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: none;
 }
-
 .btn-print:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.3);
+    opacity: 1;
+    box-shadow: none;
 }
 
 .header-content {
@@ -216,7 +214,7 @@
     padding: 25px;
     box-shadow: 0 8px 30px rgba(78, 52, 46, 0.08);
     border: 2px solid transparent;
-    transition: all 0.3s ease;
+    transition: none;
     position: relative;
     overflow: hidden;
 }
@@ -230,17 +228,16 @@
     height: 100%;
     background: linear-gradient(180deg, #c0392b 0%, #c97a3a 100%);
     transform: scaleY(0);
-    transition: transform 0.3s ease;
+    transition: none;
 }
 
 .info-card:hover {
-    border-color: rgba(192, 57, 43, 0.2);
-    box-shadow: 0 12px 40px rgba(78, 52, 46, 0.12);
-    transform: translateY(-3px);
+    border-color: transparent;
+    box-shadow: 0 8px 30px rgba(78, 52, 46, 0.08);
 }
 
 .info-card:hover::before {
-    transform: scaleY(1);
+    transform: scaleY(0);
 }
 
 .card-header {
@@ -465,13 +462,13 @@
     background: #fafafa;
     border-radius: 14px;
     border: 2px solid transparent;
-    transition: all 0.3s ease;
+    transition: none;
 }
 
 .product-item:hover {
-    background: white;
-    border-color: #c0392b;
-    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.1);
+    background: #fafafa;
+    border-color: transparent;
+    box-shadow: none;
 }
 
 .product-image {
@@ -650,7 +647,7 @@
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: none;
 }
 
 .btn-secondary {
@@ -660,11 +657,10 @@
 }
 
 .btn-secondary:hover {
-    background: white;
-    border-color: #c0392b;
-    color: #c0392b;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.15);
+    background: #fafafa;
+    border-color: #e0e0e0;
+    color: #555;
+    box-shadow: none;
 }
 
 .btn-support {
@@ -673,8 +669,8 @@
 }
 
 .btn-support:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+    opacity: 1;
+    box-shadow: none;
 }
 
 /* ============================================
