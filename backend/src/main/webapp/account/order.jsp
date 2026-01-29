@@ -74,7 +74,7 @@
                         <i class="fa-solid fa-box-open"></i>
                         <h3>Bạn chưa có đơn hàng</h3>
                         <p>Hãy bắt đầu mua sắm để tạo đơn hàng mới.</p>
-                        <a href="${pageContext.request.contextPath}/products.jsp" class="btn-shop">Mua sắm ngay</a>
+                        <a href="${pageContext.request.contextPath}/products" class="btn-shop">Mua sắm ngay</a>
                     </div>
                 </div>
             </div>

@@ -80,7 +80,7 @@
                 <!-- Page Header -->
                 <div class="page-header-detail">
                     <div class="header-left">
-                        <a href="${pageContext.request.contextPath}/admin/order-list.jsp" class="back-link">
+                        <a href="${pageContext.request.contextPath}/admin/orders" class="back-link">
                             <i class="fa-solid fa-arrow-left"></i>
                             Quay lại danh sách
                         </a>
@@ -136,14 +136,17 @@
                                                 <tr>
                                                     <td>
                                                         <div class="product-info">
-                                                            <img src="${item.product.imageUrl}" alt="Product" onerror="this.src='https://via.placeholder.com/60'">                                                                 alt="Product">
+                                                                <%-- Sử dụng item.product.imageUrl từ hàm getImageUrl() của class Product --%>
+                                                            <img src="${item.product.imageUrl}" alt="${item.product.name}" onerror="this.src='https://via.placeholder.com/60'">
                                                             <div class="product-details">
+                                                                    <%-- Truy cập trực tiếp vào name của product --%>
                                                                 <h4>${item.product.name}</h4>
+                                                                    <%-- Truy cập trực tiếp vào id của product --%>
                                                                 <p>Mã SP: #${item.product.id}</p>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td><fmt:formatNumber value="${item.product.price}" type="currency"/></td>
+                                                    <td><fmt:formatNumber value="${item.product.price}" type="currency" currencySymbol="₫"/></td>
                                                     <td>${item.quantity}</td>
                                                     <td>
                                                         <strong><fmt:formatNumber value="${item.product.price * item.quantity}" type="currency"/></strong>
@@ -153,24 +156,27 @@
                                         </tbody>
                                     </table>
                                 </div>
-
-                                <!-- Order Summary -->
+                                <c:set var="total" value="${(order.total_amount != null) ? order.total_amount : 0}" />
+                                <c:set var="shipping" value="${(order.shipping_fee != null) ? order.shipping_fee : 0}" />
+                                <c:set var="subtotal" value="${total - shipping}" />
                                 <div class="order-summary">
                                     <div class="summary-row">
                                         <span>Tạm tính:</span>
-                                        <span><fmt:formatNumber value="${order.total_amount - order.shipping_fee}" type="currency"/></span>
+                                        <span>
+                                            <fmt:formatNumber value="${subtotal}" type="currency" currencySymbol="₫"/>
+                                        </span>
                                     </div>
                                     <div class="summary-row">
                                         <span>Giảm giá:</span>
-                                        <span class="discount">-20.000đ</span>
+                                        <span class="discount">-20.000₫</span>
                                     </div>
                                     <div class="summary-row">
                                         <span>Phí vận chuyển:</span>
-                                        <span><fmt:formatNumber value="${order.shipping_fee}" type="currency"/></span>
+                                        <span><fmt:formatNumber value="${shipping}" type="currency" currencySymbol="₫"/></span>
                                     </div>
                                     <div class="summary-row total">
                                         <span>Tổng cộng:</span>
-                                        <span><fmt:formatNumber value="${order.total_amount}" type="currency"/></span>
+                                        <span><fmt:formatNumber value="${total}" type="currency" currencySymbol="₫"/></span>
                                     </div>
                                 </div>
                             </div>
@@ -238,22 +244,23 @@
                                 </h2>
                             </div>
                             <div class="section-content">
-                                <form action="#" method="post">
+                                <form action="${pageContext.request.contextPath}/admin/orders" method="post">
+                                    <input type="hidden" name="action" value="updateStatus">
+                                    <input type="hidden" name="order_id" value="${order.id}">
+
                                     <div class="form-group">
                                         <label for="order-status">Cập nhật trạng thái</label>
                                         <select id="order-status" name="order_status">
-                                            <option value="pending">Chờ xác nhận</option>
-                                            <option value="confirmed">Đã xác nhận</option>
-                                            <option value="preparing">Đang chuẩn bị</option>
-                                            <option value="shipping">Đang giao</option>
-                                            <option value="completed">Hoàn thành</option>
-                                            <option value="cancelled">Đã hủy</option>
-                                            <option value="returned">Hoàn trả</option>
+                                            <%-- Dùng JSTL để tự động chọn trạng thái hiện tại --%>
+                                            <option value="Pending" ${order.order_status == 'Pending' ? 'selected' : ''}>Chờ xác nhận</option>
+                                            <option value="Confirmed" ${order.order_status == 'Confirmed' ? 'selected' : ''}>Đã xác nhận</option>
+                                            <option value="Shipping" ${order.order_status == 'Shipping' ? 'selected' : ''}>Đang giao</option>
+                                            <option value="Completed" ${order.order_status == 'Completed' ? 'selected' : ''}>Hoàn thành</option>
+                                            <option value="Cancelled" ${order.order_status == 'Cancelled' ? 'selected' : ''}>Đã hủy</option>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn-update-status">
-                                        <i class="fa-solid fa-check"></i>
-                                        Cập nhật trạng thái
+                                        <i class="fa-solid fa-check"></i> Cập nhật trạng thái
                                     </button>
                                 </form>
                                 <div class="action-buttons">

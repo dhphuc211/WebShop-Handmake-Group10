@@ -121,7 +121,7 @@
                     <span>Sản phẩm liên quan</span>
                 </h2>
                 <div class="product-grid">
-                    <c:forEach items="${relatedProducts}" var="rp">
+                    <c:forEach items="${relatedProducts}" var="rp" begin="0" end="3">
                         <div class="product-card">
                             <a href="${pageContext.request.contextPath}/productdetail?id=${rp.id}" class="product-link">
                                 <div class="product-imgs">

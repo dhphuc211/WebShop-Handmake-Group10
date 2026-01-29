@@ -23,7 +23,7 @@ public class NewsServlet extends HttpServlet {
 
         request.setAttribute("posts", postList);
         request.setAttribute("featuredPosts", featuredList);
-        request.setAttribute("categories", categoryList);
+        request.setAttribute("blogCategories", categoryList);
 
         request.getRequestDispatcher("news.jsp").forward(request, response);
     }

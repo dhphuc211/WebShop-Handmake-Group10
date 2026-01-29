@@ -11,6 +11,40 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
     <title>Đổi mật khẩu</title>
+    <style>
+        .verification-method-selector {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        .verification-method-selector label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .google-verify-container {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .verify-success {
+            color: #28a745;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .verify-error {
+            color: #dc3545;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="/compenents/header.jsp" />
@@ -83,20 +117,47 @@
                         </div>
                     </c:if>
                     <form class="password-form" action="${pageContext.request.contextPath}/change-password" method="post">
-                        <div class="form-group">
-                            <label for="currentPassword">
-                                <i class="fa-solid fa-lock"></i>
-                                Mật khẩu hiện tại
-                                <span class="required">*</span>
-                            </label>
-                            <div class="password-input-wrapper">
-                                <input type="password" id="currentPassword" name="currentPassword" placeholder="Nhập mật khẩu hiện tại" required>
-                                <label class="toggle-password" for="showCurrentPassword">
-                                    <input type="checkbox" id="showCurrentPassword" hidden>
-                                    <i class="fa-solid fa-eye"></i>
+
+                        <c:if test="${not empty sessionScope.user.googleId}">
+                            <div class="verification-method-selector">
+                                <label>
+                                    <input type="radio" name="verifyMethod" value="password" checked onchange="toggleVerifyMethod()">
+                                    Mật khẩu hiện tại
+                                </label>
+                                <label>
+                                    <input type="radio" name="verifyMethod" value="google" onchange="toggleVerifyMethod()">
+                                    Xác thực Google
                                 </label>
                             </div>
-                            <a href="${pageContext.request.contextPath}/forgot-password" class="forgot-password">Quên mật khẩu?</a>
+                        </c:if>
+
+                        <div id="passwordAuthSection">
+                            <div class="form-group">
+                                <label for="currentPassword">
+                                    <i class="fa-solid fa-lock"></i>
+                                    Mật khẩu hiện tại
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="password-input-wrapper">
+                                    <input type="password" id="currentPassword" name="currentPassword" placeholder="Nhập mật khẩu hiện tại" required>
+                                    <label class="toggle-password" for="showCurrentPassword">
+                                        <input type="checkbox" id="showCurrentPassword" hidden>
+                                        <i class="fa-solid fa-eye"></i>
+                                    </label>
+                                </div>
+                                <a href="${pageContext.request.contextPath}/forgot-password" class="forgot-password">Quên mật khẩu?</a>
+                            </div>
+                        </div>
+
+                        <div id="googleAuthSection" style="display: none;">
+                            <div class="form-group google-verify-container">
+                                <label style="margin-bottom: 10px; display: block;">Xác thực bằng tài khoản Google</label>
+                                <div id="googleVerifyButton"></div>
+                                <div id="googleVerifySuccess" class="verify-success" style="display: none;">
+                                    <i class="fa-solid fa-check-circle"></i> Đã xác thực thành công!
+                                </div>
+                                <div id="googleVerifyError" class="verify-error"></div>
+                            </div>
                         </div>
 
                         <div class="form-divider"></div>
@@ -166,5 +227,89 @@
 </main>
 
 <jsp:include page="/compenents/footer.jsp" />
+
+<script>
+    function toggleVerifyMethod() {
+        const method = document.querySelector('input[name="verifyMethod"]:checked').value;
+        const passSection = document.getElementById('passwordAuthSection');
+        const googleSection = document.getElementById('googleAuthSection');
+        const currentPassInput = document.getElementById('currentPassword');
+
+        if (method === 'password') {
+            passSection.style.display = 'block';
+            googleSection.style.display = 'none';
+            currentPassInput.required = true;
+            currentPassInput.disabled = false;
+        } else {
+            passSection.style.display = 'none';
+            googleSection.style.display = 'block';
+            currentPassInput.required = false;
+            currentPassInput.disabled = true;
+        }
+    }
+</script>
+
+<c:if test="${not empty applicationScope.googleClientId}">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        const googleClientId = "${applicationScope.googleClientId}";
+        const verifyUrl = "${pageContext.request.contextPath}/change-password?action=verifyGoogle";
+
+        function handleGoogleVerifyResponse(response) {
+            const errorEl = document.getElementById('googleVerifyError');
+            errorEl.textContent = '';
+
+            if (!response || !response.credential) {
+                errorEl.textContent = 'Xác thực Google thất bại.';
+                return;
+            }
+
+            const body = new URLSearchParams();
+            body.append('idToken', response.credential);
+
+            fetch(verifyUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: body.toString()
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.success) {
+                    document.getElementById('googleVerifySuccess').style.display = 'flex';
+                    document.getElementById('googleVerifyButton').style.display = 'none';
+                    // Lock selection
+                    document.querySelectorAll('input[name="verifyMethod"]').forEach(el => el.disabled = true);
+                } else {
+                    errorEl.textContent = (data && data.message) ? data.message : 'Xác thực thất bại.';
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                errorEl.textContent = 'Lỗi kết nối đến máy chủ.';
+            });
+        }
+
+        window.addEventListener('load', () => {
+            if (!window.google || !googleClientId) return;
+
+            google.accounts.id.initialize({
+                client_id: googleClientId,
+                callback: handleGoogleVerifyResponse
+            });
+
+            const container = document.getElementById('googleVerifyButton');
+            if (container) {
+                google.accounts.id.renderButton(container, {
+                    theme: 'outline',
+                    size: 'large',
+                    text: 'continue_with',
+                    shape: 'rectangular',
+                    width: 250
+                });
+            }
+        });
+    </script>
+</c:if>
+
 </body>
 </html>

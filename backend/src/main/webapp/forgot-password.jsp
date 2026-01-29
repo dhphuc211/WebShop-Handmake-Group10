@@ -15,11 +15,11 @@
         <div class="login-decoration">
             <div class="decoration-content">
                 <h2>Đồ thủ công mỹ nghệ Việt</h2>
-                <p>Lấy lại mật khẩu để tiếp tục mua sắm</p>
+                <p>Khôi phục quyền truy cập vào tài khoản của bạn</p>
                 <div class="decoration-pattern">
-                    <i class="fa-solid fa-leaf"></i>
-                    <i class="fa-solid fa-spa"></i>
-                    <i class="fa-solid fa-leaf"></i>
+                    <i class="fa-solid fa-key"></i>
+                    <i class="fa-solid fa-lock-open"></i>
+                    <i class="fa-solid fa-shield-halved"></i>
                 </div>
             </div>
         </div>
@@ -27,16 +27,13 @@
         <div class="login-form-wrapper">
             <div class="login-form-container">
                 <div class="login-header">
-                    <h1>Quên mật khẩu</h1>
-                    <p>Nhập email hoặc SĐT để nhận hướng dẫn đặt lại mật khẩu</p>
+                    <h1>Quên Mật Khẩu</h1>
+                    <p>Nhập email của bạn để nhận mật khẩu mới</p>
                 </div>
 
                 <c:if test="${not empty successMessage}">
                     <div class="alert alert-success">
                         <i class="fa-solid fa-check-circle"></i> ${successMessage}
-                        <c:if test="${not empty generatedPassword}">
-                            <div>Mật khẩu mới: <strong>${generatedPassword}</strong></div>
-                        </c:if>
                     </div>
                 </c:if>
                 <c:if test="${not empty errorMessage}">
@@ -47,22 +44,21 @@
 
                 <form class="login-form" action="${pageContext.request.contextPath}/forgot-password" method="post">
                     <div class="form-group">
-                        <label for="emailOrPhone">
+                        <label for="email">
                             <i class="fa-solid fa-envelope"></i>
-                            Email hoặc Số điện thoại
+                            Email
                         </label>
-                        <input type="text" id="emailOrPhone" name="emailOrPhone" value="${emailOrPhone}"
-                               placeholder="Nhập email hoặc số điện thoại" required>
+                        <input type="email" id="email" name="email"
+                               placeholder="Nhập địa chỉ email của bạn" required>
                     </div>
 
                     <button type="submit" class="btn-login">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        Gửi yêu cầu
+                        <i class="fa-solid fa-paper-plane"></i> Gửi yêu cầu
                     </button>
                 </form>
 
                 <div class="register-link">
-                    <p>Đã nhớ mật khẩu? <a href="${pageContext.request.contextPath}/login">Quay lại đăng nhập</a></p>
+                    <p>Đã nhớ mật khẩu? <a href="${pageContext.request.contextPath}/login.jsp">Đăng nhập ngay</a></p>
                 </div>
             </div>
         </div>

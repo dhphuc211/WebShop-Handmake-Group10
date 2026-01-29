@@ -736,6 +736,78 @@
     cursor: pointer;
 }
 
+/* Container của checkbox */
+.custom-checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+}
+
+/* Ẩn checkbox mặc định của trình duyệt */
+.custom-checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Tạo ô vuông checkbox mới (màu xám khi chưa chọn) */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    transition: all 0.3s;
+}
+
+/* Khi di chuột vào */
+.custom-checkbox-container:hover input ~ .checkmark {
+    background-color: #ddd;
+}
+
+/* Khi ĐÃ CHỌN: Đổi màu nền sang màu xanh (hoặc màu bạn thích) */
+.custom-checkbox-container input:checked ~ .checkmark {
+    background-color: #2196F3; /* Màu xanh dương */
+    border-color: #2196F3;
+}
+
+/* Tạo dấu tick trắng (ẩn khi chưa chọn) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Hiển thị dấu tick khi được chọn */
+.custom-checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Định dạng dấu tick (hình chữ L xoay nghiêng) */
+.custom-checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.label-text {
+    margin-left: 5px;
+}
+
 .btn-save-main:hover {
 
     box-shadow: var(--admin-shadow-md);

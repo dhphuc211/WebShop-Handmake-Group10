@@ -1,10 +1,26 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--Note: Cách su dụng herosection--%>
-<%--<c:set var="pageTitle" value="Tiêu đề trang" scope="request" />--%>
-<%--<c:set var="breadcrumbText" value="Breadcrumb" scope="request" />--%>
-<%--<jsp:include page="/compenents/hero-section.jsp" />--%>
-<!-- Hero Section -->
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ page import="com.example.backend.service.CategoryService" %>
+<%@ page import="com.example.backend.model.Category" %>
+<%@ page import="java.util.List" %>
+
+<%
+    // Kiểm tra nếu request chưa có 'categories' (từ Servlet đổ về)
+    if (request.getAttribute("categories") == null) {
+        try {
+            com.example.backend.service.CategoryService service = new com.example.backend.service.CategoryService();
+            List<com.example.backend.model.Category> list = service.getAllCategories();
+
+            // In ra console để debug - kiểm tra log của Server (Tomcat) xem có dữ liệu không
+            System.out.println("DEBUG Category List Size: " + (list != null ? list.size() : "null"));
+
+            request.setAttribute("categories", list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+%>
 <div class="hero-section-container">
     <section class="hero">
         <div class="hero-content">
@@ -21,42 +37,17 @@
     <div class="categories-wrapper">
         <button id="prevButton" class="nav-button prev-button">&#8249;</button>
         <div class="categories" id="categoriesContainer">
-            <div class="category-item" data-category="may-tre-dan">
-                <div class="category-circle">
-                    <img src="https://denmaytre.net/wp-content/uploads/2019/12/san-pham-may-tre-dan-xuat-khau-lang-nghe-tang-tien.jpg.webp" alt="Đồ mây tre đan">
+            <c:if test="${empty categories}"><p style="text-align: center; width: 100%;">Không tìm thấy sản phẩm
+                nào.</p>
+            </c:if>
+            <c:forEach items="${categories}" var="c">
+                <div class="category-item" data-category="${c.id}">
+                    <div class="category-circle">
+                        <img src="${c.imageUrl}" alt="Đồ mây tre đan">
+                    </div>
+                    <div class="category-name">${c.name}</div>
                 </div>
-                <div class="category-name">Đồ mây tre đan</div>
-            </div>
-            <div class="category-item" data-category="gom-su">
-                <div class="category-circle">
-                    <img src="https://cdn.pixabay.com/photo/2023/05/29/18/10/pottery-8026823_1280.jpg" alt="Gốm sứ">
-                </div>
-                <div class="category-name">Gốm sứ</div>
-            </div>
-            <div class="category-item" data-category="go-my-nghe">
-                <div class="category-circle">
-                    <img src="https://dntt.mediacdn.vn/197608888129458176/2023/7/14/27-1-1689328749793900374452.jpg" alt="Đồ gỗ mỹ nghệ">
-                </div>
-                <div class="category-name">Đồ gỗ mỹ nghệ</div>
-            </div>
-            <div class="category-item" data-category="det-theu">
-                <div class="category-circle">
-                    <img src="https://images.pexels.com/photos/236748/pexels-photo-236748.jpeg" alt="Dệt thêu & may mặc thủ công">
-                </div>
-                <div class="category-name">Dệt thêu & may mặc thủ công</div>
-            </div>
-            <div class="category-item" data-category="trang-suc">
-                <div class="category-circle">
-                    <img src="https://nvhphunu.vn/wp-content/uploads/2023/12/2023-07-29_0000478.png" alt="Trang sức & phụ kiện thủ công">
-                </div>
-                <div class="category-name">Trang sức & phụ kiện thủ công</div>
-            </div>
-            <div class="category-item" data-category="trang-tri">
-                <div class="category-circle">
-                    <img src="https://chus.vn/images/detailed/239/10237_21_F1.jpg" alt="Đồ trang trí & quà tặng nghệ thuật">
-                </div>
-                <div class="category-name">Đồ trang trí & quà tặng nghệ thuật</div>
-            </div>
+            </c:forEach>
         </div>
         <button id="nextButton" class="nav-button next-button">&#8250;</button>
     </div>
