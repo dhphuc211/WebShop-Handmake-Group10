@@ -1,15 +1,14 @@
 package com.example.backend.controller.user;
 
 import com.example.backend.dao.OrderDao;
-import com.example.backend.model.Cart;
-import com.example.backend.model.Order;
-import com.example.backend.model.User;
+import com.example.backend.model.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "CheckoutServlet", value = "/checkout")
@@ -83,23 +82,36 @@ public class CheckoutServlet extends HttpServlet {
         order.setTotal_amount(cart.getTotalMoney() + 30000);
 
         OrderDao orderDao = new OrderDao();
+        String url = "/checkout.jsp";
         try {
-            int orderId = orderDao.saveOrder(order, cart);
-            if (orderId > 0) {
+            int orderId = orderDao.saveOrder(order,cart);
+
+            // Nếu orderId lớn hơn 0 nghĩa là thực hiện thanh toán thành công và thực hiện xóa giỏ hàng
+            if(orderId>0){
+                List<OrderItem> orderItems = orderDao.getOrderItems(orderId);
                 session.removeAttribute("cart");
                 session.removeAttribute(CHECKOUT_FORM_SESSION_KEY);
-                request.setAttribute("order", order);
-                request.setAttribute("orderId", orderId);
-                request.getRequestDispatcher("order-success.jsp").forward(request, response);
-            } else {
-                request.setAttribute("errorMessage", "Đặt hàng thất bại");
-                request.getRequestDispatcher("checkout.jsp").forward(request, response);
+
+                request.setAttribute("order",order);
+                request.setAttribute("orderId",orderId);
+                request.setAttribute("orderedItems",orderItems);
+                request.setAttribute("customerEmail",email);
+
+                url = "/order-success.jsp";
+                //request.getRequestDispatcher("/order-success.jsp").forward(request,response);
             }
+            else{
+                request.setAttribute("ERROR","Đặt hàng thất bại");
+                //request.getRequestDispatcher("checkout.jsp").forward(request,response);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("errorMessage", "Lỗi: " + e.getMessage());
-            request.getRequestDispatcher("checkout.jsp").forward(request, response);
+            request.setAttribute("ERROR","Lỗi hệ thống: "+e.getMessage());
+            //request.getRequestDispatcher("checkout.jsp").forward(request,response);
         }
+        request.getRequestDispatcher(url).forward(request,response);
+
     }
 
     private void cacheCheckoutForm(HttpSession session, String email, String fullName, String phone,
