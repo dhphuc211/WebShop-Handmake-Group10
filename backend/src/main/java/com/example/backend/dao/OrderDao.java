@@ -122,6 +122,37 @@ public class OrderDao {
         }
         return list;
     }
+
+    public List<Order> getOrdersByUserId(int userId){
+        List<Order> list = new ArrayList<>();
+        String sql = "select * from orders where user_id = ? order by id desc";
+        try(Connection conn = DBConnection.getConnection();
+            PreparedStatement pre = conn.prepareStatement(sql)){
+
+            pre.setInt(1, userId);
+            ResultSet rs = pre.executeQuery();
+
+            while (rs.next()) {
+                Order o = new Order();
+                o.setId(rs.getInt("id"));
+                o.setUser_id(rs.getInt("user_id"));
+                o.setShipping_name(rs.getString("shipping_name"));
+                o.setShipping_phone(rs.getString("shipping_phone"));
+                o.setShipping_address(rs.getString("shipping_address"));
+                o.setNote(rs.getString("note"));
+                o.setShipping_fee(rs.getDouble("shipping_fee"));
+                o.setTotal_amount(rs.getDouble("total_amount"));
+                o.setOrder_status(rs.getString("order_status"));
+                o.setCreated_at(rs.getTimestamp("created_at"));
+                o.setUpdated_at(rs.getTimestamp("updated_at"));
+
+                list.add(o);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     // Xem đơn hàng theo id
     public Order getOrderById(int id){
         String sql = "select * from orders where id = ?";
@@ -197,4 +228,21 @@ public class OrderDao {
         return list;
     }
 
+    public boolean cancelOrder(int orderId, int userId) {
+        String sql = "UPDATE orders SET order_status = 'Cancelled', updated_at = ? WHERE id = ? AND user_id = ? AND order_status = 'Pending'";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement pre = con.prepareStatement(sql)) {
+
+            pre.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+            pre.setInt(2, orderId);
+            pre.setInt(3, userId);
+
+            int affectedRows = pre.executeUpdate();
+            return affectedRows > 0; // Trả về true nếu cập nhật thành công
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

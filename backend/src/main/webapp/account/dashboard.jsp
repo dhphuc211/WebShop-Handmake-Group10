@@ -1,6 +1,11 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="com.example.backend.model.User" %>
+<%@ page import="com.example.backend.model.Order" %>
+<%@ page import="com.example.backend.dao.OrderDao" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.Locale" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -16,6 +21,22 @@
 <!-- Header -->
 <jsp:include page="/compenents/header.jsp" />
 
+<%
+    User user = (User) session.getAttribute("user");
+    if (user == null) {
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        return;
+    }
+
+    OrderDao orderDao = new OrderDao();
+    List<Order> orders = orderDao.getOrdersByUserId(user.getId());
+    int totalOrders = orders.size();
+
+    List<Order> recentOrders = orders.size() > 3 ? orders.subList(0, 3) : orders;
+
+    NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+%>
 <main class="dashboard-main">
     <div class="dashboard-container">
         <!-- Sidebar Menu -->
@@ -79,24 +100,11 @@
                         <i class="fa-solid fa-shopping-bag"></i>
                     </div>
                     <div class="stat-info">
-                        <h3>${not empty totalOrders ? totalOrders : 0}</h3>
+                        <h3><%= totalOrders %></h3>
                         <p>Đơn hàng</p>
                     </div>
                     <div class="stat-decoration">
                         <i class="fa-solid fa-certificate"></i>
-                    </div>
-                </div>
-
-                <div class="stat-card card-wishlist">
-                    <div class="stat-icon">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3>${not empty totalWishlist ? totalWishlist : 0}</h3>
-                        <p>Yêu thích</p>
-                    </div>
-                    <div class="stat-decoration">
-                        <i class="fa-solid fa-feather"></i>
                     </div>
                 </div>
             </div>
@@ -111,134 +119,48 @@
                     <a href="${pageContext.request.contextPath}/account/order.jsp" class="view-all">Xem tất cả <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="orders-list">
-                    <c:choose>
-                        <c:when test="${not empty recentOrders}">
-                            <c:forEach var="order" items="${recentOrders}">
-                                <div class="order-item">
-                                    <div class="order-image">
-                                        <img src="${order.productImage}" alt="Sản phẩm">
-                                    </div>
-                                    <div class="order-info">
-                                        <h4>${order.productName}</h4>
-                                        <p class="order-date">
-                                            <i class="fa-regular fa-calendar"></i>
-                                            Ngày đặt: <fmt:formatDate value="${order.orderDate}" pattern="dd/MM/yyyy"/>
-                                        </p>
-                                        <p class="order-id">Mã đơn: #${order.orderId}</p>
-                                    </div>
-                                    <div class="order-status">
-                                        <span class="status-badge status-${order.status}">${order.statusText}</span>
-                                        <p class="order-price"><fmt:formatNumber value="${order.totalPrice}" type="currency" currencySymbol="" maxFractionDigits="0"/>đ</p>
-                                    </div>
-                                    <div class="order-actions">
-                                        <a href="${pageContext.request.contextPath}/account/order-detail?id=${order.orderId}" class="btn-detail">Chi tiết</a>
-                                    </div>
+                    <% if (recentOrders == null || recentOrders.isEmpty()) { %>
+                        <div class="empty-state">
+                            <i class="fa-solid fa-box-open"></i>
+                            <p>Bạn chưa có đơn hàng nào</p>
+                            <a href="${pageContext.request.contextPath}/products.jsp" class="btn-shop">Mua sắm ngay</a>
+                        </div>
+                    <% } else { %>
+                        <% for (Order order : recentOrders) {
+                            String statusClass = "";
+                            String statusText = order.getOrder_status();
+                            if ("Pending".equalsIgnoreCase(statusText)) {
+                                statusClass = "pending";
+                                statusText = "Chờ xác nhận";
+                            } else if ("Shipping".equalsIgnoreCase(statusText)) {
+                                statusClass = "shipping";
+                                statusText = "Đang giao";
+                            } else if ("Completed".equalsIgnoreCase(statusText)) {
+                                statusClass = "completed";
+                                statusText = "Hoàn thành";
+                            } else if ("Cancelled".equalsIgnoreCase(statusText)) {
+                                statusClass = "cancelled";
+                                statusText = "Đã hủy";
+                            }
+                        %>
+                            <div class="order-item">
+                                <div class="order-info">
+                                    <h4>Đơn hàng #<%= order.getId() %></h4>
+                                    <p class="order-date">
+                                        <i class="fa-regular fa-calendar"></i>
+                                        Ngày đặt: <%= dateFormat.format(order.getCreated_at()) %>
+                                    </p>
                                 </div>
-                            </c:forEach>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="empty-state">
-                                <i class="fa-solid fa-box-open"></i>
-                                <p>Bạn chưa có đơn hàng nào</p>
-                                <a href="${pageContext.request.contextPath}/products.jsp" class="btn-shop">Mua sắm ngay</a>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-            </div>
-
-
-            <!-- Favorite Products -->
-            <div class="section-container">
-                <div class="section-header">
-                    <h2>
-                        <i class="fa-solid fa-heart"></i>
-                        Sản phẩm yêu thích
-                    </h2>
-                    <a href="${pageContext.request.contextPath}/wishlist.jsp" class="view-all">Xem tất cả <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="wishlist-grid">
-                    <c:choose>
-                        <c:when test="${not empty wishlistItems}">
-                            <c:forEach var="item" items="${wishlistItems}" end="3">
-                                <div class="wishlist-item">
-                                    <div class="wishlist-image">
-                                        <img src="${item.productImage}" alt="${item.productName}">
-                                        <button class="btn-remove-wishlist" data-product-id="${item.productId}">
-                                            <i class="fa-solid fa-heart"></i>
-                                        </button>
-                                    </div>
-                                    <div class="wishlist-info">
-                                        <h4>${item.productName}</h4>
-                                        <p class="wishlist-price"><fmt:formatNumber value="${item.price}" type="currency" currencySymbol="" maxFractionDigits="0"/>đ</p>
-                                        <a href="${pageContext.request.contextPath}/cart/add?productId=${item.productId}" class="btn-add-cart">
-                                            <i class="fa-solid fa-cart-plus"></i>
-                                            Thêm vào giỏ
-                                        </a>
-                                    </div>
+                                <div class="order-status">
+                                    <span class="status-badge status-<%= statusClass %>"><%= statusText %></span>
+                                    <p class="order-price"><%= currencyFormat.format(order.getTotal_amount()) %></p>
                                 </div>
-                            </c:forEach>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="empty-state">
-                                <i class="fa-regular fa-heart"></i>
-                                <p>Chưa có sản phẩm yêu thích</p>
-                                <a href="${pageContext.request.contextPath}/products.jsp" class="btn-shop">Khám phá ngay</a>
+                                <div class="order-actions">
+                                    <a href="${pageContext.request.contextPath}/account/order-detail.jsp?id=<%= order.getId() %>" class="btn-detail">Chi tiết</a>
+                                </div>
                             </div>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-            </div>
-
-            <!-- Account Info -->
-            <div class="section-container">
-                <div class="section-header">
-                    <h2>
-                        <i class="fa-solid fa-user-circle"></i>
-                        Thông tin cá nhân
-                    </h2>
-                    <a href="${pageContext.request.contextPath}/account/account-profile.jsp" class="view-all">Chỉnh sửa <i class="fa-solid fa-pen"></i></a>
-                </div>
-                <div class="account-info-grid">
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-                        <div class="info-details">
-                            <p class="info-label">Họ và tên</p>
-                            <p class="info-value">${sessionScope.user.fullName}</p>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="info-details">
-                            <p class="info-label">Email</p>
-                            <p class="info-value">${sessionScope.user.email}</p>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="info-details">
-                            <p class="info-label">Số điện thoại</p>
-                            <p class="info-value">${not empty sessionScope.user.phone ? sessionScope.user.phone : 'Chưa cập nhật'}</p>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="info-details">
-                            <p class="info-label">Địa chỉ</p>
-                            <p class="info-value">${not empty sessionScope.user.address ? sessionScope.user.address : 'Chưa cập nhật'}</p>
-                        </div>
-                    </div>
+                        <% } %>
+                    <% } %>
                 </div>
             </div>
         </div>

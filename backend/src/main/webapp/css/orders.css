@@ -94,7 +94,7 @@
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: none;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -111,7 +111,7 @@
     height: 100%;
     background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: none;
     z-index: -1;
 }
 
@@ -121,9 +121,7 @@
 }
 
 .filter-label:hover {
-    border-color: #c0392b;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.15);
+    border-color: #e0e0e0;
 }
 
 /* Styles when filter is selected */
@@ -135,8 +133,7 @@
     background: linear-gradient(135deg, #c0392b 0%, #c97a3a 100%);
     color: white;
     border-color: #c0392b;
-    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
-    transform: translateY(-3px);
+    box-shadow: none;
 }
 
 #filter-all:checked ~ .filter-section .filter-label[for="filter-all"]::before,
@@ -196,32 +193,18 @@
     border: 2px solid transparent;
     border-radius: 16px;
     padding: 25px;
-    transition: all 0.3s ease;
+    transition: none;
     position: relative;
     overflow: hidden;
 }
 
 .order-card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 6px;
-    height: 100%;
-    background: linear-gradient(180deg, #c0392b 0%, #c97a3a 100%);
-    transform: scaleY(0);
-    transition: transform 0.3s ease;
+    display: none;
 }
 
 .order-card:hover {
-    border-color: #c0392b;
-    background: white;
-    box-shadow: 0 8px 30px rgba(192, 57, 43, 0.12);
-    transform: translateY(-3px);
-}
-
-.order-card:hover::before {
-    transform: scaleY(1);
+    border-color: transparent;
+    background: #fafafa;
 }
 
 /* Order Header */
@@ -385,7 +368,7 @@
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: none;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -398,8 +381,8 @@
 }
 
 .btn-detail:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(192, 57, 43, 0.3);
+    opacity: 1;
+    box-shadow: none;
 }
 
 .btn-rebuy {
@@ -408,8 +391,8 @@
 }
 
 .btn-rebuy:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(39, 174, 96, 0.3);
+    opacity: 1;
+    box-shadow: none;
 }
 
 .btn-cancel {
@@ -419,10 +402,9 @@
 }
 
 .btn-cancel:hover {
-    background: #e74c3c;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(231, 76, 60, 0.3);
+    background: #fafafa;
+    color: #e74c3c;
+    box-shadow: none;
 }
 
 /* Empty State */
@@ -461,12 +443,12 @@
     border-radius: 12px;
     font-size: 14px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: none;
 }
 
 .btn-shopping:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(192, 57, 43, 0.3);
+    opacity: 1;
+    box-shadow: none;
 }
 
 /* Filter logic - Show/Hide orders based on status */
