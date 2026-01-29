@@ -37,26 +37,46 @@ public class AdminOrderServlet extends HttpServlet {
 
     // xem danh sách đơn hàng
     private void viewOrderList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Order> orders = orderDao.getAllOrders();
+        int page = 1;
+        int pageSize = 8;
+        try {
+            if (request.getParameter("page") != null) {
+                page = Integer.parseInt(request.getParameter("page"));
+            }
+            if (request.getParameter("pageSize") != null) {
+                pageSize = Integer.parseInt(request.getParameter("pageSize"));
+            }
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+        List<Order> orders = orderDao.getAllOrders(); // Tạm thời lấy hết nếu chưa sửa DAO
+
+        int totalOrders = orders.size(); // Thay bằng hàm count() trong DAO nếu dữ liệu lớn
+        int totalPages = (int) Math.ceil((double) totalOrders / pageSize);
+
         request.setAttribute("orders", orders);
-        request.getRequestDispatcher("/admin/orders/order-list.jsp").forward(request, response);
-    }
+        request.setAttribute("currentPage", page);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("pageSize", pageSize);
+        request.setAttribute("totalOrders", totalOrders);
+
+        request.getRequestDispatcher("/admin/orders/order-list.jsp").forward(request, response);    }
 
     // xem chi tiết đơn hàng
     private void viewOrderDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            Order order = orderDao.getOrderById(id);
-            List<OrderItem> details = orderDao.getOrderItems(id);
+            Order order = orderDao.getOrderById(id); // Lấy thông tin đơn hàng
+            List<OrderItem> details = orderDao.getOrderItems(id); // Lấy danh sách sản phẩm trong đơn hàng
 
             if (order != null) {
                 request.setAttribute("order", order);
                 request.setAttribute("details", details);
-                request.getRequestDispatcher("/admin/order-detail.jsp").forward(request, response);
+                // Đảm bảo đường dẫn này đúng với vị trí file JSP của bạn
+                request.getRequestDispatcher("/admin/orders/order-detail.jsp").forward(request, response);
             } else {
                 response.sendRedirect(request.getContextPath() + "/admin/orders");
             }
-
         } catch (NumberFormatException e) {
             response.sendRedirect(request.getContextPath() + "/admin/orders");
         }

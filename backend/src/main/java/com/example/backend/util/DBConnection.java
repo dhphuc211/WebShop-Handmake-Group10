@@ -8,16 +8,31 @@ public class DBConnection {
     private static final String USER = "root";
     private static final String PASS = "123123";
 
-    public static Connection getConnection() {
-        Connection conn = null;
+    static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(URL, USER, PASS);
-            System.out.println("Kết nối Database thành công!");
-        } catch (ClassNotFoundException | SQLException e) {
-            System.err.println("Kết nối thất bại: " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        return conn;
+    }
+
+    public static Connection getConnection() {
+        try {
+            return DriverManager.getConnection(URL, USER, PASS);
+        } catch (SQLException e) {
+            System.err.println("Kết nối thất bại: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static void closeConnection(Connection conn) {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static void runUpdate(String sql) {
@@ -50,8 +65,5 @@ public class DBConnection {
                 "AND ((start_date IS NULL AND end_date IS NULL) " +
                 "OR (DATE_FORMAT(NOW(), '%m-%d') BETWEEN DATE_FORMAT(start_date, '%m-%d') AND DATE_FORMAT(end_date, '%m-%d')))";
         runQuery(sql);
-    }
-
-    public static void closeConnection(Connection conn) {
     }
 }
