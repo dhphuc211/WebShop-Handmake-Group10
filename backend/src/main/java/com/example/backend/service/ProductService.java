@@ -44,6 +44,9 @@ public class ProductService {
         int offset = (page - 1) * pageSize;
         return productDAO.getAllProducts(offset, pageSize);
     }
+    public List<Product> getAllProductsForAdmin(int offset, int limit) {
+        return productDAO.getAllProducts(offset, limit);
+    }
 
     public int getTotalPages(int pageSize) {
         int totalRecords = productDAO.getTotalProductsCount();

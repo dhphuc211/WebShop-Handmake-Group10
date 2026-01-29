@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <form id="product-form" action="${pageContext.request.contextPath}/admin/products" method="post">
+      <form id="product-form" action="${pageContext.request.contextPath}/admin/products" method="post" enctype="multipart/form-data">
 
         <input type="hidden" name="action" value="${product != null ? 'update' : 'insert'}">
         <c:if test="${product != null}">
@@ -88,20 +88,32 @@
             </div>
 
             <div class="form-section">
-              <div class="section-header"><h2>Hình ảnh (URL)</h2></div>
+              <div class="section-header"><h2>Hình ảnh sản phẩm</h2></div>
               <div class="section-content">
+                <div class="form-group" style="margin-bottom: 15px;">
+                  <label>Chọn ảnh từ thiết bị</label>
+                  <input type="file" name="image_file" id="image-file"
+                         class="form-control" accept="image/*"
+                         onchange="previewLocalFile(this)">
+                </div>
+
+                <div style="text-align: center; margin: 10px 0; color: #888; font-style: italic;">
+                  -- Hoặc nhập liên kết ảnh --
+                </div>
+
                 <div class="form-group">
-                  <label>Link ảnh sản phẩm</label>
+                  <label>Link ảnh sản phẩm (URL)</label>
                   <input type="text" id="image-url" name="image_url"
                          class="form-control"
                          value="${product.imageUrl}"
                          placeholder="https://..."
                          oninput="document.getElementById('preview-img').src = this.value">
                 </div>
+
                 <div style="margin-top: 10px; border: 1px dashed #ccc; padding: 5px; width: 150px; text-align: center;">
                   <img id="preview-img" src="${product.imageUrl}" alt="Preview"
                        style="max-width: 100%; max-height: 150px;"
-                       onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+                       >
                 </div>
               </div>
             </div>
@@ -119,21 +131,32 @@
                   </select>
                 </div>
                 <div class="checkbox-group" style="margin-top: 15px;">
-                  <label class="checkbox-label">
+                  <label class="custom-checkbox-container">
                     <input type="checkbox" name="featured" value="1" ${product.featured ? 'checked' : ''}>
-                    <span class="checkbox-text"> Sản phẩm nổi bật</span>
+                    <span class="checkmark"></span>
+                    <span class="label-text">Sản phẩm nổi bật</span>
                   </label>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="form-actions">
-          <a href="${pageContext.request.contextPath}/admin/products" class="btn-cancel">Hủy bỏ</a>
-          <button type="submit" class="btn-save-main">Lưu sản phẩm</button>
-        </div>
       </form>
+      <script>
+        // Hàm xử lý xem trước khi chọn file từ máy
+        function previewLocalFile(input) {
+          const file = input.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              document.getElementById('preview-img').src = e.target.result;
+              // Xóa giá trị trong ô URL để tránh nhầm lẫn khi lưu
+              document.getElementById('image-url').value = "";
+            }
+            reader.readAsDataURL(file);
+          }
+        }
+      </script>
     </div>
   </div>
 </main>

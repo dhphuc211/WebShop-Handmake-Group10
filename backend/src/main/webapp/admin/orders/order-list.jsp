@@ -151,131 +151,113 @@
                     </form>
                 </div>
 
-                <!-- Orders Table -->
                 <div class="orders-table-container">
                     <table class="orders-table">
                         <thead>
-                            <tr>
-                                <th class="col-order-id">Mã đơn hàng</th>
-                                <th class="col-customer">Khách hàng</th>
-                                <th class="col-contact">Liên hệ</th>
-                                <th class="col-total">Tổng tiền</th>
-                                <th class="col-payment-method">Thanh toán</th>
-                                <th class="col-payment-status">TT Thanh toán</th>
-                                <th class="col-date">Ngày đặt</th>
-                                <th class="col-status">Trạng thái</th>
-                                <th class="col-actions">Thao tác</th>
-                            </tr>
+                        <tr>
+                            <th class="col-order-id">MÃ ĐƠN HÀNG</th>
+                            <th class="col-customer">KHÁCH HÀNG / LIÊN HỆ</th>
+                            <th class="col-total">TỔNG TIỀN</th>
+                            <th class="col-payment">THANH TOÁN</th>
+                            <th class="col-payment-status">TT THANH TOÁN</th>
+                            <th class="col-date">NGÀY ĐẶT</th>
+                            <th class="col-status">TRẠNG THÁI</th>
+                            <th class="col-actions">THAO TÁC</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <%-- BẮT ĐẦU VÒNG LẶP JSTL --%>
-                            <c:forEach var="o" items="${orders}">
-                                <tr class="order-row">
-                                    <td class="col-order-id">
-                                        <%-- Link xem chi tiết --%>
-                                        <a href="orders?action=detail&id=${o.id}" class="order-id-link">#${o.id}</a>
-                                    </td>
+                        <c:forEach var="o" items="${orders}">
+                            <tr class="order-row">
+                                <td class="col-order-id">
+                                    <a href="orders?action=detail&id=${o.id}" class="order-id-link">#DH${o.id}</a>
+                                </td>
 
-                                    <td class="col-customer">
-                                        <div class="customer-info">
-                                            <div class="customer-avatar"><i class="fa-solid fa-user"></i></div>
-                                            <div class="customer-details">
-                                                <h4>${o.shipping_name}</h4>
-                                                <%-- Nếu có User ID thì hiện, không thì hiện khách vãng lai --%>
-                                                <small>${o.user_id != 0 ? "Thành viên" : "Khách vãng lai"}</small>
-                                            </div>
+                                <td class="col-customer">
+                                    <div class="customer-info-box">
+                                        <div class="customer-main">
+                                            <i class="fa-solid fa-circle-user"></i>
+                                            <strong>${o.shipping_name}</strong>
                                         </div>
-                                    </td>
-
-                                    <td class="col-contact">
-                                        <div class="contact-info">
-                                            <p><i class="fa-solid fa-phone"></i> ${o.shipping_phone}</p>
-                                            <%-- Nếu email null thì ẩn --%>
-                                            <c:if test="${not empty o.shipping_email}">
-                                                <p><i class="fa-solid fa-envelope"></i> ${o.shipping_email}</p>
-                                            </c:if>
+                                        <div class="customer-sub">
+                                            <span><i class="fa-solid fa-phone"></i> ${o.shipping_phone}</span>
                                         </div>
-                                    </td>
+                                    </div>
+                                </td>
 
-                                    <td class="col-total">
-                                        <span class="total-amount">
-                                            <fmt:formatNumber value="${o.total_amount}" type="currency"/>
-                                        </span>
-                                    </td>
+                                <td class="col-total">
+                        <span class="total-amount">
+                            <fmt:formatNumber value="${o.total_amount}" pattern="#,###"/>₫
+                        </span>
+                                </td>
 
-                                    <td class="col-payment-method">
-                                        <span class="payment-badge cod">COD</span>
-                                    </td>
+                                <td class="col-payment">
+                                    <span class="payment-badge cod">COD</span>
+                                </td>
 
-                                    <td class="col-date">
-                                        <div class="date-info">
-                                            <p><fmt:formatDate value="${o.created_at}" pattern="dd/MM/yyyy"/></p>
-                                            <small><fmt:formatDate value="${o.created_at}" pattern="HH:mm"/></small>
-                                        </div>
-                                    </td>
+                                <td class="col-payment-status">
+                        <span class="status-text ${o.order_status == 'Pending' ? 'text-unpaid' : 'text-paid'}">
+                                ${o.order_status == 'Pending' ? 'Chưa TT' : 'Đã TT'}
+                        </span>
+                                </td>
 
-                                    <td class="col-status">
-                                        <%-- Dynamic Status Class: status-pending, status-completed... --%>
-                                       <span class="status-badge status-${o.status != null ? o.status.toLowerCase() : 'pending'}">
-                                           ${o.order_status != null ? o.order_status : 'Pending'}
-                                       </span>
-                                    </td>
+                                <td class="col-date">
+                                    <div class="date-info">
+                                        <p><fmt:formatDate value="${o.created_at}" pattern="dd/MM/yyyy"/></p>
+                                        <small><fmt:formatDate value="${o.created_at}" pattern="HH:mm"/></small>
+                                    </div>
+                                </td>
 
-                                    <td class="col-actions">
-                                        <div class="action-buttons">
-                                            <%-- Link nút xem --%>
-                                            <a href="orders?action=detail&id=${o.id}" class="btn-action btn-view" title="Xem chi tiết">
-                                                <i class="fa-solid fa-eye"></i>
-                                            </a>
-                                            <%-- Nút in hóa đơn (Demo) --%>
-                                            <button class="btn-action btn-print" title="In hóa đơn" onclick="window.print()">
-                                                <i class="fa-solid fa-print"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </c:forEach>
+                                <td class="col-status">
+                        <span class="status-badge status-${o.order_status.toLowerCase()}">
+                                ${o.order_status}
+                        </span>
+                                </td>
 
-                            <%-- Hiển thị thông báo nếu danh sách đơn hàng trống --%>
-                            <c:if test="${empty orders}">
-                                <tr>
-                                    <td colspan="8" style="text-align: center; padding: 30px;">
-                                        <i class="fa-solid fa-box-open" style="font-size: 30px; color: #ccc; margin-bottom: 10px;"></i>
-                                        <p>Không tìm thấy đơn hàng nào.</p>
-                                    </td>
-                                </tr>
-                            </c:if>
+                                <td class="col-actions">
+                                    <div class="action-buttons">
+                                        <a href="orders?action=detail&id=${o.id}" class="btn-action btn-view" title="Xem">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <button class="btn-action btn-print" title="In" onclick="window.print()">
+                                            <i class="fa-solid fa-print"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Pagination -->
                 <div class="pagination-section">
                     <div class="pagination-info">
-                        Hiển thị <strong>1-8</strong> trong tổng số <strong>456</strong> đơn hàng
+                        <%-- Tính toán hiển thị: ví dụ 1-8 trong 456 --%>
+                        Hiển thị <strong>1 - ${orders.size()}</strong> trong tổng số <strong>${totalOrders != null ? totalOrders : orders.size()}</strong> đơn hàng
                     </div>
+
                     <div class="pagination">
-                        <a href="#" class="page-link disabled">
+                        <%-- Nút Previous --%>
+                        <a href="orders?action=list&page=${currentPage - 1}" class="page-link ${currentPage <= 1 ? 'disabled' : ''}">
                             <i class="fa-solid fa-chevron-left"></i>
                         </a>
-                        <a href="#" class="page-link active">1</a>
-                        <a href="#" class="page-link">2</a>
-                        <a href="#" class="page-link">3</a>
-                        <a href="#" class="page-link">4</a>
-                        <a href="#" class="page-link">5</a>
-                        <span class="page-dots">...</span>
-                        <a href="#" class="page-link">58</a>
-                        <a href="#" class="page-link">
+
+                        <%-- Vòng lặp hiển thị số trang --%>
+                        <c:forEach begin="1" end="${totalPages}" var="i">
+                            <a href="orders?action=list&page=${i}" class="page-link ${i == currentPage ? 'active' : ''}">${i}</a>
+                        </c:forEach>
+
+                        <%-- Nút Next --%>
+                        <a href="orders?action=list&page=${currentPage + 1}" class="page-link ${currentPage >= totalPages ? 'disabled' : ''}">
                             <i class="fa-solid fa-chevron-right"></i>
                         </a>
                     </div>
+
                     <div class="per-page">
                         <label for="per-page">Hiển thị:</label>
-                        <select name="per_page" id="per-page">
-                            <option value="8">8</option>
-                            <option value="20">20</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
+                        <select name="per_page" id="per-page" onchange="window.location.href='orders?action=list&pageSize=' + this.value">
+                            <option value="8" ${pageSize == 8 ? 'selected' : ''}>8</option>
+                            <option value="20" ${pageSize == 20 ? 'selected' : ''}>20</option>
+                            <option value="50" ${pageSize == 50 ? 'selected' : ''}>50</option>
                         </select>
                     </div>
                 </div>

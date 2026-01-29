@@ -103,11 +103,20 @@
                         </li>
                     </c:if>
 
-                    <%-- Vòng lặp hiển thị các số trang --%>
                     <c:forEach begin="1" end="${totalPages}" var="i">
-                        <li class="page-item ${currentPage == i ? 'active' : ''}">
-                            <a class="page-link" href="products?page=${i}${not empty paramCid ? '&category_id='.concat(paramCid) : ''}">${i}</a>
-                        </li>
+                        <c:choose>
+                            <%-- Hiển thị trang đầu, trang cuối và các trang xung quanh trang hiện tại (bán kính 2) --%>
+                            <c:when test="${i == 1 || i == totalPages || (i >= currentPage - 2 && i <= currentPage + 2)}">
+                                <li class="page-item ${currentPage == i ? 'active' : ''}">
+                                    <a class="page-link" href="products?page=${i}${not empty paramCid ? '&category_id='.concat(paramCid) : ''}">${i}</a>
+                                </li>
+                            </c:when>
+
+                            <%-- Hiển thị dấu "..." nếu cách trang đầu hoặc trang cuối một khoảng --%>
+                            <c:when test="${i == currentPage - 3 || i == currentPage + 3}">
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            </c:when>
+                        </c:choose>
                     </c:forEach>
 
                     <%-- Nút trang sau --%>
@@ -122,75 +131,7 @@
     </main>
 </div>
 
-<footer id="footer">
-    <div class="container">
-        <div class="content">
-            <div class="info">
-                <div class="info_details">
-                    <h2>Thông tin</h2>
-                    <div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <p>Trường Đại học Nông Lâm Tp.Hcm</p>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-phone"></i>
-                        <p>0337429995</p></div>
-                    <div>
-                        <i class="fa-solid fa-envelope"></i>
-                        <p>23130240@st.hcmuaf.edu.vn</p></div>
-                </div>
-
-                <div class="info_media">
-                    <h2>Mạng xã hội</h2>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon zalo" aria-label="Zalo"><strong>Za</strong></a>
-                        <a href="#" class="social-icon fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="social-icon gg" aria-label="Google"><i class="fa-brands fa-google"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="policy-guide-wrapper">
-                <div class="component policy">
-                    <h2>Chính sách</h2>
-                    <ul>
-                        <li><a href="${pageContext.request.contextPath}/policy/security.jsp" class="hover color">Chính
-                            sách bảo mật</a></li>
-                        <li><a href="${pageContext.request.contextPath}/policy/transport.jsp" class="hover color">Chính
-                            sách vận chuyển</a></li>
-                        <li><a href="${pageContext.request.contextPath}/policy/change.jsp" class="hover color">Chính
-                            sách đổi trả</a></li>
-                        <li><a href="${pageContext.request.contextPath}/policy/regulation-use.jsp" class="hover color">Quy
-                            định sử dụng</a></li>
-                    </ul>
-                </div>
-                <div class="component guide">
-                    <h2>Hướng dẫn</h2>
-                    <ul>
-                        <li><a href="${pageContext.request.contextPath}/guide/purchase.jsp" class="hover color">Hướng
-                            dẫn mua hàng</a></li>
-                        <li><a href="${pageContext.request.contextPath}/guide/payment.jsp" class="hover color">Hướng dẫn
-                            thanh toán</a></li>
-                        <li><a href="${pageContext.request.contextPath}/guide/delivery.jsp" class="hover color">Hướng
-                            dẫn giao nhận</a></li>
-                        <li><a href="${pageContext.request.contextPath}/guide/clause.jsp" class="hover color">Điều khoản
-                            sử dụng</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="others">
-                <h2>Đăng ký nhận tin</h2>
-                <p>Đăng ký ngay! Để nhận nhiều ưu đãi</p>
-                <div class="input">
-                    <input type="text" name="Email" id="email" placeholder="Nhập địa chỉ email">
-                    <button>Đăng ký</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<%@include file="compenents/footer.jsp"%>
 
 <script src="${pageContext.request.contextPath}/js/hero-section.js"></script>
 
