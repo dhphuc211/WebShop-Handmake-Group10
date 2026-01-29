@@ -1,6 +1,7 @@
 package com.example.backend.controller.admin;
 
 import com.example.backend.model.Product;
+import com.example.backend.model.ProductAttribute;
 import com.example.backend.model.ProductImage;
 import com.example.backend.service.ProductService;
 import jakarta.servlet.ServletException;
@@ -109,7 +110,7 @@ public class AdminProductServlet extends HttpServlet {
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        Product existingProduct = productService.getProduct(id);
+        Product existingProduct = productService.getFullProductDetail(id);
         request.setAttribute("product", existingProduct);
         request.getRequestDispatcher("/admin/products/product-form.jsp").forward(request, response);
     }
@@ -123,21 +124,47 @@ public class AdminProductServlet extends HttpServlet {
     // --- CÁC HÀM XỬ LÝ DỮ LIỆU (POST) ---
 
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        // 1. Map thông tin cơ bản
         Product newProduct = mapRequestToProduct(request);
-        String imageUrl = getFinalImageUrl(request);
 
+        // 2. Tạo đối tượng Attribute để chứa thông tin chi tiết
+        ProductAttribute pa = new ProductAttribute();
+        pa.setMaterial(request.getParameter("material"));
+        pa.setOrigin(request.getParameter("origin"));
+        pa.setSize(request.getParameter("size"));
+        pa.setWeight(request.getParameter("weight"));
+        pa.setColor(request.getParameter("color"));
+
+        // 3. Xử lý ảnh
+        String imageUrl = getFinalImageUrl(request);
         ProductImage pImg = new ProductImage();
         pImg.setImageUrl(imageUrl);
         newProduct.setImage(pImg);
 
-        productService.insertProduct(newProduct);
-        response.sendRedirect(request.getContextPath() + "/admin/products?message=inserted");    }
+        // 4. GỌI SERVICE: Bạn cần sửa hàm này trong ProductService để nhận cả ProductAttribute
+        productService.insertFullProduct(newProduct, pa);
 
+        response.sendRedirect(request.getContextPath() + "/admin/products?message=inserted");
+    }
     // --- XỬ LÝ CẬP NHẬT (POST) ---
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        // 1. Lấy thông tin cơ bản
         Product product = mapRequestToProduct(request);
-        product.setId(Integer.parseInt(request.getParameter("id")));
-        productService.updateProduct(product, null);
+        int productId = Integer.parseInt(request.getParameter("id"));
+        product.setId(productId);
+
+        // 2. Lấy thông tin thuộc tính từ Form
+        ProductAttribute pa = new ProductAttribute();
+        pa.setProductId(productId); // Đừng quên set ID để biết update cho sp nào
+        pa.setMaterial(request.getParameter("material"));
+        pa.setOrigin(request.getParameter("origin"));
+        pa.setSize(request.getParameter("size"));
+        pa.setWeight(request.getParameter("weight"));
+        pa.setColor(request.getParameter("color"));
+
+        // 3. Gọi service cập nhật cả hai
+        productService.updateProduct(product, pa);
+
         response.sendRedirect(request.getContextPath() + "/admin/products?message=updated");
     }
 

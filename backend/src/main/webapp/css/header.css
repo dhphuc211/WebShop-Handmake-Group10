@@ -400,6 +400,7 @@ header .others .badge span {
     font-size: 14px;
     color: #333;
     border-bottom: 1px solid #eee;
+    z-index: 0;
 }
 
 .user-dropdown ul {

@@ -223,6 +223,21 @@ public class OrderDao {
         return list;
     }
 
+    public Order getLatestOrderByUserId(int userId) {
+        String sql = "SELECT * FROM orders WHERE user_id = ? ORDER BY created_at DESC LIMIT 1";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Order o = new Order();
+                o.setId(rs.getInt("id"));
+                o.setCreated_at(rs.getTimestamp("created_at"));
+                o.setTotal_amount(rs.getDouble("total_amount"));
+                return o;
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+        return null;
     public boolean cancelOrder(int orderId, int userId) {
         String sql = "UPDATE orders SET order_status = 'Cancelled', updated_at = ? WHERE id = ? AND user_id = ? AND order_status = 'Pending'";
         try (Connection con = DBConnection.getConnection();

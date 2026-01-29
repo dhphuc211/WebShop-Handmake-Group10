@@ -114,10 +114,7 @@
         </div>
         <% } %>
       </div>
-      <a href="${pageContext.request.contextPath}/wishlist" class="icon badge">
-        <i class="fa-regular fa-heart"></i>
-        <span>0</span>
-      </a>
+
       <a href="${pageContext.request.contextPath}/shopping-cart.jsp" class="icon badge">
         <i class="fa-solid fa-cart-shopping"></i>
         <span>${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}</span>
