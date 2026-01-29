@@ -79,7 +79,7 @@
                                         <div class="cart-items">
                                             <div class="cart-image">
                                                 <a href="#" class="cart-item">
-                                                    <img src="https://via.placeholder.com/60" alt="${item.product.name}">
+                                                    <img src="${item.product.imageUrl}" alt="${item.product.name}">
                                                 </a>
                                                 <span class="quantity">${item.quantity}</span>
                                             </div>
@@ -88,7 +88,7 @@
                                             </div>
                                         </div>
                                         <div class="price-total">
-                                            <span><fmt:formatNumber value="${item.price * item.quantity}" type="currency" currencySymbol="₫" maxFractionDigits="0"/></span>
+                                            <span><fmt:formatNumber value="${item.product.price*item.quantity}" type="currency" currencySymbol="₫" maxFractionDigits="0"/></span>
                                         </div>
                                     </div>
                                 </c:forEach>
