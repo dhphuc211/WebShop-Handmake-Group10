@@ -1,6 +1,8 @@
 package com.example.backend.controller.user;
 
+import com.example.backend.dao.ProductDAO;
 import com.example.backend.model.Product;
+import com.example.backend.model.Review;
 import com.example.backend.service.ProductService;
 
 import jakarta.servlet.ServletException;
@@ -42,9 +44,14 @@ public class ProductDetailServlet extends HttpServlet {
             return;
         }
 
+        ProductDAO productDAO = new ProductDAO(); // Hoặc gọi qua Service nếu bạn đã viết
+        List<Review> reviews = productDAO.getReviewsByProductId(pid);
+        System.out.println("Số lượng review lấy được: " + (reviews != null ? reviews.size() : 0));
+
         List<Product> relatedProducts = productService.getRelatedProducts(product.getCategoryId(), pid);
 
         request.setAttribute("product", product);
+        request.setAttribute("reviews", reviews);
         request.setAttribute("relatedProducts", relatedProducts);
 
         request.getRequestDispatcher("/productdetail.jsp").forward(request, response);

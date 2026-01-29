@@ -3,6 +3,7 @@ package com.example.backend.dao;
 import com.example.backend.model.Product;
 import com.example.backend.model.ProductAttribute;
 import com.example.backend.model.ProductImage;
+import com.example.backend.model.Review;
 import com.example.backend.util.DBConnection;
 
 import java.sql.*;
@@ -373,6 +374,38 @@ public class ProductDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Review> getReviewsByProductId(int productId) {
+        List<Review> reviews = new ArrayList<>();
+        // JOIN bảng review (r) với bảng users (u) dựa trên user_id
+        String sql = "SELECT r.*, u.full_name FROM review r " +
+                "JOIN users u ON r.user_id = u.id " +
+                "WHERE r.pid = ? ORDER BY r.create_at DESC";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, productId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Review review = new Review();
+                review.setId(rs.getInt("id")); //
+                review.setUserId(rs.getInt("user_id")); //
+                review.setProductId(rs.getInt("pid")); // Map với cột pid
+                review.setRating(rs.getInt("rating")); //
+                review.setComment(rs.getString("comment")); //
+                review.setCreatedAt(rs.getTimestamp("create_at")); // Map với cột create_at
+
+                // Lấy full_name từ bảng users và gán vào userName trong Model
+                review.setUserName(rs.getString("full_name")); //
+
+                reviews.add(review);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return reviews;
     }
 
 }

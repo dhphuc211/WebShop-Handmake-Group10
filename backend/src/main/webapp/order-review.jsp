@@ -44,7 +44,7 @@
             <c:forEach var="item" items="${orderItems}">
                 <div class="product-item" id="product-item-${item.productId}">
                     <div class="product-image">
-                        <img src="${pageContext.request.contextPath}/${item.product.image.imageUrl}" alt="${item.product.name}">
+                        <img src="${item.product.image.imageUrl}" alt="${item.product.name}">
                     </div>
                     <div class="product-info">
                         <div class="product-name">${item.product.name}</div>

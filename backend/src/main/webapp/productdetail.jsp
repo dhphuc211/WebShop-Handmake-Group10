@@ -106,7 +106,28 @@
 
                     <div id="tab-review" class="tab-content-item" style="display: none;">
                         <div class="product-content">
-                            <p>Hiện chưa có đánh giá nào cho sản phẩm này.</p>
+                            <c:choose>
+                                <c:when test="${not empty reviews}">
+                                    <c:forEach items="${reviews}" var="rev">
+                                        <div class="review-item" style="border-bottom: 1px solid #eee; margin-bottom: 15px; padding-bottom: 10px;">
+                                            <strong style="color: #333;">${rev.userName}</strong>
+
+                                            <span style="color: #ffc107; margin-left: 10px;">
+                                                <c:forEach begin="1" end="${rev.rating}">★</c:forEach>
+                                            </span>
+
+                                            <p style="margin-top: 10px; color: #555;">${rev.comment}</p>
+
+                                            <small style="color: #999;">
+                                                <fmt:formatDate value="${rev.createdAt}" pattern="dd/MM/yyyy HH:mm"/>
+                                            </small>
+                                        </div>
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <p>Hiện chưa có đánh giá nào cho sản phẩm này.</p>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                 </div>

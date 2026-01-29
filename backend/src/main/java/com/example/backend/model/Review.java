@@ -9,6 +9,7 @@ public class Review {
     private int rating;
     private String comment;
     private Timestamp createdAt;
+    private String userName;
 
     public Review(int id, int userId, int productId, int rating, String comment, Timestamp createdAt) {
         this.id = id;
@@ -20,6 +21,14 @@ public class Review {
     }
     public Review() {
 
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 
     public void setId(int id) {

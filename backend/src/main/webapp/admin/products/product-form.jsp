@@ -15,19 +15,9 @@
 <body>
 <main class="admin-dashboard-main">
   <div class="admin-dashboard-container">
-    <aside class="admin-sidebar">
-      <div class="sidebar-header">
-        <h2>Quản lý</h2>
-      </div>
-      <nav class="admin-menu">
-        <a href="${pageContext.request.contextPath}/admin/products" class="admin-menu-item active">
-          <i class="fa-solid fa-box"></i> <span>Sản phẩm</span>
-        </a>
-        <a href="${pageContext.request.contextPath}/admin/products" class="admin-menu-item">
-          <i class="fa-solid fa-arrow-left"></i> <span>Quay lại</span>
-        </a>
-      </nav>
-    </aside>
+    <jsp:include page="/admin/components/sidebar.jsp">
+      <jsp:param name="active" value="products" />
+    </jsp:include>
 
     <div class="admin-content">
       <div class="page-header-edit">

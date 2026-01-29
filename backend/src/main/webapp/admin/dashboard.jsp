@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -38,7 +40,7 @@
                         <div class="stat-icon info"><i class="fa-solid fa-boxes-stacked"></i></div>
                         <span class="badge info">Sản phẩm</span>
                     </div>
-                    <div class="stat-value">0</div>
+                    <div class="stat-value">${totalProducts}</div>
                     <div class="stat-label">Tổng số sản phẩm</div>
                     <div class="stat-meta">Cập nhật gần nhất: hôm nay</div>
                 </div>
@@ -48,7 +50,7 @@
                         <div class="stat-icon"><i class="fa-solid fa-cart-shopping"></i></div>
                         <span class="badge info">Đơn hàng</span>
                     </div>
-                    <div class="stat-value">0</div>
+                    <div class="stat-value">${ordersToday}</div>
                     <div class="stat-label">Đơn hàng hôm nay</div>
                     <div class="stat-meta">Chưa có dữ liệu đồng bộ</div>
                 </div>
@@ -58,7 +60,7 @@
                         <div class="stat-icon warning"><i class="fa-solid fa-clock"></i></div>
                         <span class="badge warning">Chờ xử lý</span>
                     </div>
-                    <div class="stat-value">0</div>
+                    <div class="stat-value">${pendingOrders}</div>
                     <div class="stat-label">Đơn chờ xác nhận</div>
                     <div class="stat-meta">Theo dõi trạng thái mới</div>
                 </div>
@@ -68,7 +70,7 @@
                         <div class="stat-icon success"><i class="fa-solid fa-sack-dollar"></i></div>
                         <span class="badge success">Doanh thu</span>
                     </div>
-                    <div class="stat-value">0đ</div>
+                    <div class="stat-value"><fmt:formatNumber value="${monthlyRevenue}" type="currency" currencySymbol="đ" /></div>
                     <div class="stat-label">Doanh thu tháng</div>
                     <div class="stat-meta">Chưa có báo cáo</div>
                 </div>
@@ -83,27 +85,33 @@
                         </a>
                     </div>
                     <div class="activity-list">
-                        <div class="activity-item">
-                            <div>
-                                <p class="activity-title">Chưa có hoạt động mới</p>
-                                <span class="activity-time">Hôm nay</span>
+                        <c:forEach var="order" items="${recentOrders}">
+                            <div class="activity-item">
+                                <div>
+                                    <p class="activity-title">Đơn hàng #${order.id} - ${order.shipping_name}</p>
+                                    <span class="activity-time">
+                        <fmt:formatDate value="${order.created_at}" pattern="dd/MM/yyyy HH:mm"/>
+                    </span>
+                                </div>
+                                <c:choose>
+                                    <c:when test="${order.order_status == 'pending'}">
+                                        <span class="badge warning">Chờ xử lý</span>
+                                    </c:when>
+                                    <c:when test="${order.order_status == 'completed'}">
+                                        <span class="badge success">Hoàn tất</span>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span class="badge info">${order.order_status}</span>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
-                            <span class="badge muted">Chờ dữ liệu</span>
-                        </div>
-                        <div class="activity-item">
-                            <div>
-                                <p class="activity-title">Cập nhật danh mục</p>
-                                <span class="activity-time">Ví dụ dữ liệu mẫu</span>
+                        </c:forEach>
+
+                        <c:if test="${empty recentOrders}">
+                            <div class="activity-item">
+                                <p class="activity-title">Chưa có đơn hàng nào mới</p>
                             </div>
-                            <span class="badge info">Nội bộ</span>
-                        </div>
-                        <div class="activity-item">
-                            <div>
-                                <p class="activity-title">Kiểm tra tồn kho</p>
-                                <span class="activity-time">Ví dụ dữ liệu mẫu</span>
-                            </div>
-                            <span class="badge warning">Nhắc việc</span>
-                        </div>
+                        </c:if>
                     </div>
                 </div>
 
@@ -132,24 +140,6 @@
                             <strong>Danh sách khách hàng</strong>
                             <span>Quay lại khách hàng</span>
                         </a>
-                    </div>
-
-                    <div class="panel-header panel-header-spaced">
-                        <h2>Tóm tắt nhanh</h2>
-                    </div>
-                    <div class="summary-list">
-                        <div class="summary-item">
-                            <strong>Trạng thái hệ thống</strong>
-                            <span>Ổn định</span>
-                        </div>
-                        <div class="summary-item">
-                            <strong>Phiên đăng nhập</strong>
-                            <span>Hoạt động</span>
-                        </div>
-                        <div class="summary-item">
-                            <strong>Dữ liệu thống kê</strong>
-                            <span>Chưa cập nhật</span>
-                        </div>
                     </div>
                 </div>
             </section>
