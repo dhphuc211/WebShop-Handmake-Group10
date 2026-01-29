@@ -3,7 +3,7 @@ package com.example.backend.model;
 public class ProductAttribute {
 
     private int id;
-    private String productId;
+    private int productId;
 
     private String origin;
     private String material;
@@ -15,7 +15,7 @@ public class ProductAttribute {
     public ProductAttribute() {
     }
 
-    public ProductAttribute(int id, String productId, String origin, String material, String size, String weight, String color) {
+    public ProductAttribute(int id, int productId, String origin, String material, String size, String weight, String color) {
         this.id = id;
         this.productId = productId;
         this.origin = origin;
@@ -25,7 +25,7 @@ public class ProductAttribute {
         this.color = color;
     }
 
-    public ProductAttribute(String productId, String origin, String material, String size, String weight, String color) {
+    public ProductAttribute(int productId, String origin, String material, String size, String weight, String color) {
         this.productId = productId;
         this.origin = origin;
         this.material = material;
@@ -43,11 +43,11 @@ public class ProductAttribute {
         this.id = id;
     }
 
-    public String getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 

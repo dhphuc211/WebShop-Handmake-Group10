@@ -59,16 +59,10 @@ public class ProductDAO {
     public List<Product> getAllProducts(int offset, int limit) {
         List<Product> list = new ArrayList<>();
 
-//        String sql = "select p.*, pi.image_url from products p "
-//                + "left join product_images pi on p.id = pi.product_id "+
-//                "group by p.id order by p.id desc limit ?,?";
-        String sql = "SELECT p.*, pi.image_url FROM products p " +
+       String sql = "SELECT p.*, pi.image_url FROM products p " +
                 "LEFT JOIN product_images pi ON p.id = pi.product_id " +
-                "GROUP BY p.id ORDER BY p.id DESC LIMIT ?, ?";
-//        String sql = "SELECT p.*, MAX(pi.image_url) AS image_url FROM products p "
-//                + "INNER JOIN product_images pi ON p.id = pi.product_id "
-//                + "WHERE pi.image_url IS NOT NULL AND pi.image_url != '' "
-//                + "GROUP BY p.id ORDER BY p.id LIMIT ?, ?";
+                "GROUP BY p.id ORDER BY p.id LIMIT ?, ?";
+
 
         try (Connection conn = DBConnection.getConnection();
         PreparedStatement ps = conn.prepareStatement(sql);) {
@@ -99,7 +93,6 @@ public class ProductDAO {
 
     public List<Product> getProductsByCategory(int categoryId, int offset, int limit) {
         List<Product> list = new ArrayList<>();
-        // Thêm LIMIT và OFFSET vào cuối câu truy vấn
         String sql = "SELECT p.*, MAX(pi.image_url) AS image_url " +
                 "FROM products p " +
                 "LEFT JOIN product_images pi ON p.id = pi.product_id " +
@@ -186,9 +179,14 @@ public class ProductDAO {
     /**
      * Tìm kiếm sản phẩm theo tên
      */
+    // Kiểm tra lại hàm này trong ProductDAO.java
     public List<Product> searchProductsByName(String keyword) {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT * FROM products WHERE name LIKE ? AND status = 'active'";
+        // Thêm JOIN để lấy luôn hình ảnh, nếu không p.getImage() sẽ bị null gây lỗi ở Servlet
+        String sql = "SELECT p.*, pi.image_url FROM products p " +
+                "LEFT JOIN product_images pi ON p.id = pi.product_id " +
+                "WHERE p.name LIKE ? AND p.status = 'active' " +
+                "GROUP BY p.id";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -196,7 +194,7 @@ public class ProductDAO {
             ps.setString(1, "%" + keyword + "%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(mapResultSetToProduct(rs));
+                list.add(mapResultSetToProduct(rs)); // Hàm map này đã có logic khởi tạo p.setImage()
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -262,11 +260,11 @@ public class ProductDAO {
     }
 
     public int insertProduct(Product p) {
-        String sql = "INSERT INTO products (name, price, stock, category_id, status, created_at) " +
-                "VALUES (?, ?, ?, ?, ?, 'active', NOW())";
+        // Thêm trường full_description và is_featured vào câu SQL
+        String sql = "INSERT INTO products (name, price, stock, category_id, full_description, status, is_featured, created_at) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
 
         int generatedId = -1;
-
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -274,6 +272,9 @@ public class ProductDAO {
             ps.setDouble(2, p.getPrice());
             ps.setInt(3, p.getStock());
             ps.setInt(4, p.getCategoryId());
+            ps.setString(5, p.getFullDescription());
+            ps.setString(6, p.getStatus());
+            ps.setBoolean(7, p.isFeatured());
 
             int rows = ps.executeUpdate();
             if (rows > 0) {
@@ -287,6 +288,23 @@ public class ProductDAO {
             e.printStackTrace();
         }
         return generatedId;
+    }
+
+    // Thêm hàm insert thuộc tính
+    public void insertProductAttributes(int productId, ProductAttribute pa) {
+        String sql = "INSERT INTO product_attributes (product_id, material, origin, size, weight, color, created_ad) VALUES (?, ?, ?, ?, ?, ?, NOW())";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, productId);
+            ps.setString(2, pa.getMaterial());
+            ps.setString(3, pa.getOrigin());
+            ps.setString(4, pa.getSize()); // dimensions map vào cột size
+            ps.setString(5, pa.getWeight());
+            ps.setString(6, pa.getColor());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void insertProductImage(int productId, String imageUrl) {

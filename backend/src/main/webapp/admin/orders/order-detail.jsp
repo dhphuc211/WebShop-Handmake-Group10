@@ -28,11 +28,11 @@
                 </div>
 
                 <nav class="admin-menu">
-                    <a href="${pageContext.request.contextPath}/admin/dashboard.jsp" class="admin-menu-item">
+                    <a href="${pageContext.request.contextPath}/admin/dashboard" class="admin-menu-item">
                         <i class="fa-solid fa-chart-line"></i>
                         <span>Bảng điều khiển</span>
                     </a>
-                    <a href="${pageContext.request.contextPath}/admin/products/product-list.jsp" class="admin-menu-item">
+                    <a href="${pageContext.request.contextPath}/admin/products" class="admin-menu-item">
                         <i class="fa-solid fa-box"></i>
                         <span>Quản lý sản phẩm</span>
                     </a>
@@ -40,37 +40,29 @@
                         <i class="fa-solid fa-shopping-cart"></i>
                         <span>Quản lý đơn hàng</span>
                     </a>
-                    <a href="${pageContext.request.contextPath}/admin/customers/list.jsp" class="admin-menu-item">
+                    <a href="${pageContext.request.contextPath}/admin/customers" class="admin-menu-item">
                         <i class="fa-solid fa-users"></i>
                         <span>Quản lý khách hàng</span>
                     </a>
-                    <a href="${pageContext.request.contextPath}/admin/reviews/list.html" class="admin-menu-item">
+                    <a href="${pageContext.request.contextPath}/admin/reviews" class="admin-menu-item">
                         <i class="fa-solid fa-star"></i>
                         <span>Quản lý đánh giá</span>
                     </a>
-                    <a href="${pageContext.request.contextPath}/admin/categories/list.html" class="admin-menu-item">
+                    <a href="${pageContext.request.contextPath}/admin/categories" class="admin-menu-item">
                         <i class="fa-solid fa-folder-tree"></i>
                         <span>Quản lý danh mục</span>
                     </a>
-                    <a href="${pageContext.request.contextPath}/admin/contact/list.html" class="admin-menu-item">
+                    <a href="${pageContext.request.contextPath}/admin/contact" class="admin-menu-item">
                         <i class="fa-solid fa-envelope"></i>
                         <span>Quản lý liên hệ</span>
                     </a>
-                    <a href="${pageContext.request.contextPath}/admin/blog/post.html" class="admin-menu-item">
+                    <a href="${pageContext.request.contextPath}/admin/blog" class="admin-menu-item">
                         <i class="fa-solid fa-blog"></i>
                         <span>Blog</span>
                     </a>
-                    <a href="${pageContext.request.contextPath}/admin/banner/list.html" class="admin-menu-item">
+                    <a href="${pageContext.request.contextPath}/admin/banner" class="admin-menu-item">
                         <i class="fa-solid fa-images"></i>
                         <span>Banner & Slider</span>
-                    </a>
-                    <a href="../../index.jsp" class="admin-menu-item">
-                        <i class="fa-solid fa-globe"></i>
-                        <span>Website</span>
-                    </a>
-                    <a href="../../index.jsp" class="admin-menu-item logout">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <span>Đăng xuất</span>
                     </a>
                 </nav>
             </aside>

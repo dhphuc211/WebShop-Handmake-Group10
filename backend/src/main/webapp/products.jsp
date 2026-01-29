@@ -146,25 +146,46 @@
     </div>
 
     <div class="search-panel-content">
-        <div class="search-form">
-            <input type="text" placeholder="Nhập tên sản phẩm...">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        </div>
+        <form action="${pageContext.request.contextPath}/products" method="GET" class="search-form">
+            <input type="text" name="search" id="ajaxSearchInput"
+                   placeholder="Nhập tên sản phẩm..." autocomplete="off">
+            <button type="submit" style="background: none; border: none; cursor: pointer;">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </button>
+        </form>
 
-        <h3>Sản phẩm được tìm nhiều nhất</h3>
+        <h3 id="searchTitle">Sản phẩm gợi ý</h3>
 
-        <div class="search-results-list">
-            <a href="${pageContext.request.contextPath}/search.jsp" class="search-result-item">
-                <div class="search-item-image">
-                    <img src="#" alt="Ca tháp">
-                </div>
-                <div class="search-item-info">
-                    <p class="product-name">Ca tháp quai tròn 0.35 L - Jasmine - Trắng</p>
-                    <p class="product-price">93.500đ</p>
-                </div>
-            </a>
+        <div class="search-results-list" id="searchResultArea">
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById("ajaxSearchInput");
+        const resultArea = document.getElementById("searchResultArea");
+        const searchTitle = document.getElementById("searchTitle");
+
+        searchInput.addEventListener("input", function() {
+            const keyword = this.value.trim();
+
+            if (keyword.length >= 1) { // Tìm kiếm khi nhập từ 1 ký tự
+                searchTitle.innerText = "Kết quả gợi ý cho: '" + keyword + "'";
+
+                // Gọi AJAX lấy kết quả nhanh
+                fetch("${pageContext.request.contextPath}/search-ajax?keyword=" + encodeURIComponent(keyword))
+                    .then(response => response.text())
+                    .then(data => {
+                        resultArea.innerHTML = data;
+                    })
+                    .catch(err => console.error("Lỗi tìm kiếm AJAX:", err));
+            } else {
+                searchTitle.innerText = "Sản phẩm gợi ý";
+                resultArea.innerHTML = "";
+            }
+        });
+    });
+</script>
 </body>
 </html>
