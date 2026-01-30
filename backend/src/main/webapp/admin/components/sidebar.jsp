@@ -32,34 +32,22 @@
       <i class="fa-solid fa-users"></i> <span>Quản lý khách hàng</span>
     </a>
 
-    <%-- 3. Quản lý danh mục --%>
+    <%-- 6. Quản lý danh mục --%>
     <a href="${pageContext.request.contextPath}/admin/categories"
        class="admin-menu-item ${param.active == 'categories' ? 'active' : ''}">
       <i class="fa-solid fa-folder-tree"></i> <span>Quản lý danh mục</span>
     </a>
 
-    <%-- 6. Quản lý đánh giá --%>
+    <%-- 7. Quản lý đánh giá --%>
     <a href="${pageContext.request.contextPath}/admin/review/list.jsp"
        class="admin-menu-item ${param.active == 'reviews' ? 'active' : ''}">
       <i class="fa-solid fa-star"></i> <span>Quản lý đánh giá</span>
     </a>
 
-    <%-- 9. Banner & Slider --%>
+    <%-- 8. Banner & Slider --%>
     <a href="${pageContext.request.contextPath}/admin/banner/list.jsp"
        class="admin-menu-item ${param.active == 'banners' ? 'active' : ''}">
       <i class="fa-solid fa-images"></i> <span>Banner & Slider</span>
-    </a>
-
-    <%-- 7. Quản lý liên hệ --%>
-    <a href="${pageContext.request.contextPath}/admin/contacts"
-       class="admin-menu-item ${param.active == 'contacts' ? 'active' : ''}">
-      <i class="fa-solid fa-envelope"></i> <span>Quản lý liên hệ</span>
-    </a>
-
-    <%-- 8. Quản lý Blog --%>
-    <a href="${pageContext.request.contextPath}/admin/blog"
-       class="admin-menu-item ${param.active == 'blog' ? 'active' : ''}">
-      <i class="fa-solid fa-blog"></i> <span>Blog</span>
     </a>
 
     <%-- Nút thoát về Website --%>
