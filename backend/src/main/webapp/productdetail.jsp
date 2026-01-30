@@ -44,10 +44,24 @@
                 </div>
                 <div class="product-price">
                     <div class="prices">
-                        <span class="price">
-                            <fmt:setLocale value="vi_VN"/>
-                            <fmt:formatNumber value="${product.price}" type="currency"/>
-                        </span>
+                        <c:choose>
+                            <c:when test="${product.discountPercent > 0}">
+                                <span class="price" style="color: red; font-weight: bold;">
+                                    <fmt:formatNumber value="${product.price * (1 - product.discountPercent)}" type="currency" currencySymbol="đ" maxFractionDigits="0"/>
+                                </span>
+                                    <span class="old-price" style="text-decoration: line-through; color: #888; margin-left: 10px; font-size: 0.9em;">
+                                    <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="đ" maxFractionDigits="0"/>
+                                </span>
+                                    <span class="badge-sale" style="background: #ff4d4d; color: white; padding: 2px 5px; border-radius: 3px; margin-left: 5px;">
+                                    -<fmt:formatNumber value="${product.discountPercent * 100}" maxFractionDigits="0"/>%
+                                </span>
+                            </c:when>
+                            <c:otherwise>
+                                <span class="price">
+                                    <fmt:formatNumber value="${product.price}" type="currency"/>
+                                </span>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
 
@@ -150,9 +164,24 @@
                                 </div>
                                 <div class="product-info">
                                     <h3>${rp.name}</h3>
-                                    <span class="price">
-                                        <fmt:formatNumber value="${rp.price}" type="currency"/>
-                                    </span>
+                                    <div class="price-box">
+                                        <c:choose>
+                                            <c:when test="${rp.discountPercent > 0}">
+                                                <span class="price" style="color: red;">
+                                                    <fmt:formatNumber value="${rp.price * (1 - rp.discountPercent/100)}" type="currency" currencySymbol="đ" maxFractionDigits="0"/>
+                                                </span>
+                                                <br>
+                                                <span class="old-price" style="text-decoration: line-through; color: #999; font-size: 0.8em;">
+                                                    <fmt:formatNumber value="${rp.price}" type="currency" currencySymbol="đ" maxFractionDigits="0"/>
+                                                </span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="price">
+                                                    <fmt:formatNumber value="${rp.price}" type="currency"/>
+                                                </span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
                                 </div>
                             </a>
                         </div>

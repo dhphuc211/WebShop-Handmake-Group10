@@ -168,12 +168,14 @@ public class ProductDAO {
 
     public List<Product> getRelatedProducts(int categoryId, int currentProductId, int limit) {
         List<Product> list = new ArrayList<>();
-        // SQL: Lấy sản phẩm cùng category nhưng KHÔNG PHẢI sản phẩm hiện tại (id != ?)
-        String sql = "SELECT p.*, MAX(pi.image_url) AS image_url " +
+        String sql = "SELECT p.*, " +
+                "(SELECT pi.image_url FROM product_images pi WHERE pi.product_id = p.id LIMIT 1) AS image_url, " +
+                "s.discount_percent " +
                 "FROM products p " +
-                "LEFT JOIN product_images pi ON p.id = pi.product_id " +
+                "LEFT JOIN product_categories pc ON p.category_id = pc.id " +
+                "LEFT JOIN sale s ON pc.sale_id = s.id AND (NOW() BETWEEN s.start_sale AND s.end_sale) " +
                 "WHERE p.category_id = ? AND p.id != ? AND p.status = 'active' " +
-                "GROUP BY p.id LIMIT ?";
+                "LIMIT ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -183,7 +185,9 @@ public class ProductDAO {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(mapResultSetToProduct(rs));
+                Product p = mapResultSetToProduct(rs);
+                p.setDiscountPercent(rs.getDouble("discount_percent"));
+                list.add(p);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -193,11 +197,13 @@ public class ProductDAO {
 
     public Product getProductById(int id) {
         Product product = null;
-        String sql = "SELECT p.*, MAX(pi.image_url) AS image_url " +
+        String sql = "SELECT p.*, " +
+                "(SELECT pi.image_url FROM product_images pi WHERE pi.product_id = p.id LIMIT 1) AS image_url, " +
+                "s.discount_percent " +
                 "FROM products p " +
-                "LEFT JOIN product_images pi ON p.id = pi.product_id " +
-                "WHERE p.id = ? " +
-                "GROUP BY p.id";
+                "LEFT JOIN product_categories pc ON p.category_id = pc.id " +
+                "LEFT JOIN sale s ON pc.sale_id = s.id AND (NOW() BETWEEN s.start_sale AND s.end_sale) " +
+                "WHERE p.id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -205,6 +211,7 @@ public class ProductDAO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 product = mapResultSetToProduct(rs);
+                product.setDiscountPercent(rs.getDouble("discount_percent"));
             }
         } catch (Exception e) {
             e.printStackTrace();
