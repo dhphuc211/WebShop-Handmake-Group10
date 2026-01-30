@@ -73,7 +73,7 @@
                                         <c:when test="${p.discountPercent > 0}">
                                             <%-- Tính giá sau giảm nếu cần hoặc dùng salePrice từ DB --%>
                                             <span class="price-sale" style="color:red;">
-                                                <fmt:formatNumber value="${p.price * (1 - p.discountPercent)}" type="currency" currencySymbol="đ"/>
+                                                <fmt:formatNumber value="${p.price * (1 - p.discountPercent)}" type="currency" currencySymbol="đ" />
                                             </span>
                                             <del><fmt:formatNumber value="${p.price}" type="currency" currencySymbol="đ"/></del>
                                         </c:when>
