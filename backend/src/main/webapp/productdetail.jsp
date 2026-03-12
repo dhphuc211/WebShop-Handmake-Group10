@@ -92,7 +92,7 @@
                             thước:</strong> ${not empty product.attribute.size ? product.attribute.size : 'Đang cập nhật'}
                         </li>
                         <li><strong>Trọng
-                            lượng:</strong> ${not empty product.attribute.weight ? product.attribute.weight : '0'}
+                            lượng:</strong> ${not empty product.attribute.weight ? product.attribute.weight : 'Đang cập nhật'}
                         </li>
                         <li><strong>Màu
                             sắc:</strong> ${not empty product.attribute.color ? product.attribute.color : 'Đang cập nhật'}
