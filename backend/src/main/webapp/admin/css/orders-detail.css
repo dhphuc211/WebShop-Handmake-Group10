@@ -1,8 +1,8 @@
-﻿/* ============================================
-   ORDERS DETAIL - ADMIN PANEL
-   ============================================ */
+﻿
 
-/* Page Header Detail */
+
+
+
 .page-header-detail {
     margin-bottom: 24px;
 }
@@ -87,9 +87,9 @@
     box-shadow: var(--admin-shadow-md);
 }
 
-/* ============================================
-   ORDER DETAIL LAYOUT
-   ============================================ */
+
+
+
 .order-detail-layout {
     display: grid;
     grid-template-columns: 1fr 380px;
@@ -103,9 +103,9 @@
     gap: 25px;
 }
 
-/* ============================================
-   DETAIL SECTION
-   ============================================ */
+
+
+
 .detail-section {
     background: white;
     border-radius: 16px;
@@ -141,9 +141,9 @@
     padding: 25px;
 }
 
-/* ============================================
-   ORDER ITEMS TABLE
-   ============================================ */
+
+
+
 .order-items-table {
     overflow-x: auto;
     margin-bottom: 25px;
@@ -202,7 +202,7 @@
     color: var(--admin-text-muted);
 }
 
-/* Order Summary */
+
 .order-summary {
     background: var(--admin-surface-alt);
     border-radius: 12px;
@@ -232,9 +232,9 @@
     font-weight: 600;
 }
 
-/* ============================================
-   TIMELINE
-   ============================================ */
+
+
+
 .timeline {
     display: flex;
     flex-direction: column;
@@ -317,9 +317,9 @@
     color: var(--admin-text-soft);
 }
 
-/* ============================================
-   NOTES
-   ============================================ */
+
+
+
 .note-box {
     padding: 20px;
     background: var(--admin-surface-alt);
@@ -427,9 +427,9 @@
     line-height: 1.5;
 }
 
-/* ============================================
-   SIDEBAR SECTIONS
-   ============================================ */
+
+
+
 .form-group {
     display: flex;
     flex-direction: column;
@@ -526,7 +526,7 @@
     box-shadow: var(--admin-shadow-sm);
 }
 
-/* Info Group */
+
 .info-group {
     display: flex;
     flex-direction: column;
@@ -583,7 +583,7 @@
     color: var(--admin-text-main);
 }
 
-/* Shipping Address */
+
 .shipping-address {
     padding: 15px;
     background: var(--admin-surface-alt);
@@ -611,7 +611,7 @@
     margin-bottom: 0;
 }
 
-/* Payment & Shipping Badges */
+
 .payment-badge {
     display: inline-block;
     padding: 5px 12px;
@@ -680,7 +680,7 @@
     box-shadow: var(--admin-shadow-sm);
 }
 
-/* Status Badges */
+
 .status-badge {
     display: inline-block;
     padding: 7px 14px;
@@ -720,9 +720,9 @@
     color: white;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+
+
+
 @media (max-width: 1200px) {
     .order-detail-layout {
         grid-template-columns: 1fr;
@@ -814,7 +814,7 @@
     }
 }
 
-/* Focus Styles for Accessibility */
+
 .btn-action-header:focus-visible,
 .btn-update-status:focus-visible,
 .btn-action-full:focus-visible,

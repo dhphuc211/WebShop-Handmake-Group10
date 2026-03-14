@@ -95,7 +95,7 @@
 </div>
 
 <script>
-    // Logic chọn sản phẩm
+    
     function selectProduct(pid, pname) {
         document.getElementById('selectedProductId').value = pid;
         document.getElementById('displayProductName').innerText = pname;
@@ -107,7 +107,7 @@
         document.getElementById('review-form').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Logic đánh giá sao
+    
     const stars = document.querySelectorAll('.star-rating');
     const ratingInput = document.getElementById('ratingInput');
     const ratingText = document.getElementById('ratingText');

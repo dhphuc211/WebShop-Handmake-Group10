@@ -20,19 +20,19 @@ public class SearchAjaxServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String keyword = request.getParameter("keyword");
 
-        // Gọi hàm search đã có trong DAO của bạn
+        
         List<Product> list = productDAO.searchProductsByName(keyword);
         PrintWriter out = response.getWriter();
 
         if (list == null || list.isEmpty()) {
             out.println("<p style='padding: 20px; color: #888;'>Không tìm thấy sản phẩm phù hợp.</p>");
         } else {
-            // Trong file SearchAjaxServlet.java, phần vòng lặp for:
+            
             for (Product p : list) {
                 out.println("<a href='" + request.getContextPath() + "/productdetail?id=" + p.getId() + "' class='search-result-item'>");
                 out.println("    <div class='search-item-image'>");
 
-                // Đảm bảo lấy đúng URL từ đối tượng Image lồng bên trong Product
+                
                 String imgUrl = (p.getImage() != null) ? p.getImage().getImageUrl() : "https://via.placeholder.com/60";
                 out.println("        <img src='" + imgUrl + "' alt='" + p.getName() + "'>");
 

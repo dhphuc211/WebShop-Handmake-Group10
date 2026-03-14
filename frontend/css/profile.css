@@ -1,8 +1,8 @@
-/* ============================================
-   PROFILE PAGE - ĐỒ THỦ CÔNG MỸ NGHỆ VIỆT NAM
-   ============================================ */
 
-/* Page Header */
+
+
+
+
 .page-header {
     background: white;
     border-radius: 20px;
@@ -52,7 +52,7 @@
     opacity: 0.1;
 }
 
-/* Profile Container */
+
 .profile-container {
     background: white;
     border-radius: 20px;
@@ -61,7 +61,7 @@
     margin-bottom: 25px;
 }
 
-/* Success Message */
+
 .success-message {
     display: none;
     align-items: center;
@@ -81,7 +81,7 @@
     font-size: 20px;
 }
 
-/* Show success message when form is submitted successfully */
+
 .success-message.show {
     display: flex;
 }
@@ -97,7 +97,7 @@
     }
 }
 
-/* Avatar Section */
+
 .avatar-section {
     margin-bottom: 40px;
     padding-bottom: 35px;
@@ -190,7 +190,7 @@
     box-shadow: 0 6px 20px rgba(192, 57, 43, 0.35);
 }
 
-/* Form Section */
+
 .form-section {
     margin-bottom: 35px;
 }
@@ -215,7 +215,7 @@
     font-weight: 600;
 }
 
-/* Form Grid */
+
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -291,7 +291,7 @@
     color: #999;
 }
 
-/* Validation Styles */
+
 .form-group input:valid:not(:placeholder-shown):not(:disabled):not(:read-only) {
     border-color: #27ae60;
     background: rgba(39, 174, 96, 0.03);
@@ -302,7 +302,7 @@
     background: rgba(231, 76, 60, 0.03);
 }
 
-/* Radio Group */
+
 .radio-group {
     display: flex;
     gap: 20px;
@@ -368,7 +368,7 @@
     transition: all 0.3s ease;
 }
 
-/* Form Actions */
+
 .form-actions {
     display: flex;
     gap: 15px;
@@ -421,7 +421,7 @@
     transform: translateY(0);
 }
 
-/* Account Statistics */
+
 .account-stats {
     background: white;
     border-radius: 20px;
@@ -490,9 +490,9 @@
     color: #777;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+
+
+
 @media (max-width: 968px) {
     .page-header {
         flex-direction: column;
@@ -613,7 +613,7 @@
     }
 }
 
-/* Focus styles for accessibility */
+
 .btn-upload:focus-visible,
 .btn-cancel:focus-visible,
 .btn-submit:focus-visible {
@@ -626,7 +626,7 @@
     outline: none;
 }
 
-/* Print styles */
+
 @media print {
     .dashboard-sidebar,
     .form-actions,
@@ -644,13 +644,13 @@
     }
 }
 
-/* Smooth transitions */
+
 * {
     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
     transition-timing-function: ease;
 }
 
-/* Loading state for submit button */
+
 .btn-submit.loading {
     pointer-events: none;
     opacity: 0.7;

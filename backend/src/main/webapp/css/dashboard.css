@@ -1,8 +1,8 @@
-/* ============================================
-   DASHBOARD - ĐỒ THỦ CÔNG MỸ NGHỆ VIỆT NAM
-   ============================================ */
 
-/* Main Container */
+
+
+
+
 html, body,main{
     margin: 0!important;
     box-sizing: border-box;
@@ -43,7 +43,7 @@ main{
     }
 }
 
-/* Dashboard Container */
+
 .dashboard-container {
     display: flex;
     max-width: 1220px;
@@ -53,9 +53,9 @@ main{
     z-index: 1;
 }
 
-/* ============================================
-   SIDEBAR
-   ============================================ */
+
+
+
 .dashboard-sidebar {
     width: 300px;
     background: white;
@@ -71,13 +71,13 @@ main{
     overflow-y: hidden; 
 }
 
-/* Sidebar Header - User Info */
+
 .sidebar-header {
     text-align: center;
     padding-bottom: 25px;
     border-bottom: 2px solid #f5f1e6;
     margin-bottom: 25px;
-    /* 3. Đảm bảo header không bị co lại */
+    
     flex-shrink: 0;
 }
 
@@ -132,18 +132,18 @@ main{
     color: #777;
 }
 
-/* Sidebar Menu */
+
 .sidebar-menu {
     display: flex;
     flex-direction: column;
     gap: 8px;
 
-    /* === THAY ĐỔI === */
-    /* 4. Cho phép menu co giãn để lấp đầy không gian còn lại */
+    
+    
     flex: 1;
-    /* 5. Thêm cuộn dọc tự động CHỈ cho menu */
+    
     overflow-y: auto;
-    /* 6. Thêm một chút đệm bên phải để thanh cuộn không che nội dung */
+    
     padding-right: 5px;
     margin-right: -5px;
 }
@@ -216,7 +216,7 @@ main{
     background: rgba(192, 57, 43, 0.1);
 }
 
-/* Sidebar Decoration */
+
 .sidebar-decoration {
     position: absolute;
     bottom: 0;
@@ -266,9 +266,9 @@ main{
     }
 }
 
-/* ============================================
-   MAIN CONTENT
-   ============================================ */
+
+
+
 .dashboard-content {
     flex: 1;
     display: flex;
@@ -277,7 +277,7 @@ main{
     min-width: 0; 
 }
 
-/* Welcome Section */
+
 .welcome-section {
     background: white;
     border-radius: 20px;
@@ -335,7 +335,7 @@ main{
     }
 }
 
-/* Statistics Cards */
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -409,7 +409,7 @@ main{
     opacity: 0.05;
 }
 
-/* Section Container */
+
 .section-container {
     background: white;
     border-radius: 20px;
@@ -455,7 +455,7 @@ main{
     gap: 12px;
 }
 
-/* Orders List */
+
 .orders-list {
     display: flex;
     flex-direction: column;
@@ -574,7 +574,7 @@ main{
     box-shadow: 0 6px 15px rgba(192, 57, 43, 0.3);
 }
 
-/* Wishlist Grid */
+
 .wishlist-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -674,7 +674,7 @@ main{
     box-shadow: 0 6px 15px rgba(192, 57, 43, 0.3);
 }
 
-/* Account Info Grid */
+
 .account-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -727,16 +727,16 @@ main{
     font-weight: 600;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+
+
+
 @media (max-width: 1200px) {
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 968px) { /* Thêm breakpoint mới cho tablet nhỏ hơn */
+@media (max-width: 968px) { 
     .dashboard-container {
         flex-direction: column;
     }
@@ -764,7 +764,7 @@ main{
     }
 
     .menu-item span {
-        display: none; /* Ẩn chữ, chỉ hiện icon */
+        display: none; 
     }
 
     .menu-item.logout {
@@ -772,7 +772,7 @@ main{
         justify-content: center;
     }
      .menu-item.logout span {
-        display: inline-block; /* Hiện lại chữ cho logout */
+        display: inline-block; 
     }
 }
 
@@ -828,7 +828,7 @@ main{
     }
 
     .menu-item {
-        flex: 1 1 calc(50% - 4px); /* 2 cột trên mobile */
+        flex: 1 1 calc(50% - 4px); 
         font-size: 12px;
     }
 
@@ -865,15 +865,15 @@ main{
     }
 
     .menu-item {
-        flex: 1 1 100%; /* 1 cột trên mobile nhỏ */
+        flex: 1 1 100%; 
     }
 
     .menu-item span {
-        display: inline-block; /* Hiện lại chữ trên mobile nhỏ */
+        display: inline-block; 
     }
 }
 
-/* Custom scrollbar */
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -885,7 +885,7 @@ main{
 }
 
 ::-webkit-scrollbar-thumb {
-    /* background: linear-gradient(180deg, #c0392b 0%, #c97a3a 100%); */
+    
     border-radius: 4px;
 }
 
@@ -901,7 +901,7 @@ main{
     background: transparent; 
 }
 
-/* Focus styles for accessibility */
+
 .menu-item:focus-visible,
 .btn-detail:focus-visible,
 .btn-add-cart:focus-visible,

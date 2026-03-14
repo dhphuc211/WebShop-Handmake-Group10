@@ -2,30 +2,30 @@ package com.example.backend.model;
 
 import java.sql.Timestamp;
 
-/**
- * Model User - Đại diện cho một người dùng trong hệ thống
- * Chứa các thông tin cơ bản của user như: id, tên, email, password, phone, role...
- */
+
+
+
+
 public class User {
-    private int id;                    // ID tự tăng trong database
-    private String fullName;           // Họ và tên đầy đủ
-    private String email;              // Email (dùng để đăng nhập)
-    private String phone;              // Số điện thoại (cũng có thể dùng để đăng nhập)
-    private String password;           // Mật khẩu (đã được mã hóa)
-    private String googleId;           // ID Google (nếu đăng nhập Google)
-    private String avatarUrl;          // Ảnh đại diện
-    private String role;               // Vai trò: "user" hoặc "admin"
-    private int roleId;                // ID vai trò từ bảng role
-    private boolean isActive;          // Trạng thái: true = hoạt động, false = bị khóa
-    private Timestamp createdAt;       // Thời gian tạo tài khoản
-    private Timestamp updatedAt;       // Thời gian cập nhật gần nhất
+    private int id;                    
+    private String fullName;           
+    private String email;              
+    private String phone;              
+    private String password;           
+    private String googleId;           
+    private String avatarUrl;          
+    private String role;               
+    private int roleId;                
+    private boolean isActive;          
+    private Timestamp createdAt;       
+    private Timestamp updatedAt;       
     private static final int ADMIN_ROLE_ID = 1;
 
-    //Constructor mặc định - cần thiết cho việc tạo object rỗng
+    
     public User() {
     }
 
-    //Constructor đầy đủ - dùng khi lấy dữ liệu từ database
+    
     public User(int id, String fullName, String email, String phone,
                 String password, String role, boolean isActive,
                 Timestamp createdAt, Timestamp updatedAt) {
@@ -40,19 +40,19 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    /**
-     * Constructor cho đăng ký - chỉ cần thông tin cơ bản
-     */
+    
+
+
     public User(String fullName, String email, String phone, String password) {
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.role = "user";        // Mặc định là user thường
-        this.isActive = true;      // Mặc định là active
+        this.role = "user";        
+        this.isActive = true;      
     }
 
-    // geter/seter
+    
 
     public int getId() {
         return id;
@@ -150,7 +150,7 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    //Hiển thị thông tin user
+    
     @Override
     public String toString() {
         return "User{" +
@@ -166,10 +166,10 @@ public class User {
                 '}';
     }
 
-    /**
-     * Kiểm tra user có phải admin không
-     * @return true nếu là admin
-     */
+    
+
+
+
     public boolean isAdmin() {
         return roleId == ADMIN_ROLE_ID && "admin".equalsIgnoreCase(this.role);
     }

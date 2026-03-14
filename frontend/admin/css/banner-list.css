@@ -1,8 +1,8 @@
-/* ============================================
-   BANNER MANAGEMENT - ADMIN PANEL
-   ============================================ */
 
-/* Page Header styles are now in admin-dashboard.css */
+
+
+
+
 
 .btn-add-banner {
     background: var(--admin-accent);
@@ -23,7 +23,7 @@
     box-shadow: var(--admin-shadow-md);
 }
 
-/* Banner Form Section */
+
 .banner-form-section {
     display: none;
     margin-bottom: 24px;
@@ -83,7 +83,7 @@
     color: white;
 }
 
-/* Form Sections */
+
 .form-section {
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
@@ -169,7 +169,7 @@
     color: var(--admin-text-muted);
 }
 
-/* Form Actions */
+
 .form-actions {
     display: flex;
     gap: 1rem;
@@ -237,7 +237,7 @@
     color: var(--admin-accent);
 }
 
-/* Filter Section */
+
 .filter-section {
     background: var(--admin-surface);
     padding: 1.25rem;
@@ -335,14 +335,14 @@
     background: var(--admin-border-subtle);
 }
 
-/* Banners List Section */
+
 .banners-list-section {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-/* Banner Category Section */
+
 .banner-category-section {
     background: var(--admin-surface);
     border-radius: var(--admin-radius-md);
@@ -382,7 +382,7 @@
     font-weight: 600;
 }
 
-/* Banner Item */
+
 .banner-item {
     background: var(--admin-surface-alt);
     border: 1px solid var(--admin-border-subtle);
@@ -462,7 +462,7 @@
     width: 14px;
 }
 
-/* Season Badges - Giữ màu mùa */
+
 .season-badge {
     display: inline-flex;
     align-items: center;
@@ -500,7 +500,7 @@
     align-items: center;
 }
 
-/* Status Badges */
+
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -535,7 +535,7 @@
     font-weight: 600;
 }
 
-/* Banner Actions */
+
 .banner-actions {
     display: flex;
     flex-direction: row;
@@ -624,7 +624,7 @@
     border-color: var(--admin-danger);
 }
 
-/* Responsive Design */
+
 @media (max-width: 1024px) {
     .form-grid {
         grid-template-columns: 1fr;
@@ -679,7 +679,7 @@
     }
 }
 
-/* Focus Styles for Accessibility */
+
 .btn-add-banner:focus-visible,
 .btn-close-form:focus-visible,
 .form-group input:focus-visible,

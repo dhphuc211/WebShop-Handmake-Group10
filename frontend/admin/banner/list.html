@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../css/admin-dashboard.css">
-    <!-- Cập nhật liên kết đến tệp CSS đã chỉnh sửa -->
+    
     <link rel="stylesheet" href="../css/banner-list.css">
 </head>
 <body>
     <main class="admin-dashboard-main">
         <div class="admin-dashboard-container">
-            <!-- Admin Sidebar -->
+            
             <aside class="admin-sidebar">
                 <div class="sidebar-header">
                     <div class="admin-logo">
@@ -71,16 +71,16 @@
                 </nav>
             </aside>
 
-            <!-- Main Content -->
+            
             <div class="admin-content">
-                <!-- Page Header: Cập nhật màu sắc nút và giao diện -->
+                
                 <div class="page-header">
                     <div class="header-left">
                         <h1>Quản lý Banner & Slider</h1>
                         <p>Tổng cộng <strong>12 banner</strong></p>
                     </div>
                     <div class="header-right">
-                        <!-- Cập nhật class nút để đồng bộ -->
+                        
                         <a href="#add-banner-form" class="btn-add-banner">
                             <i class="fa-solid fa-plus"></i>
                             Thêm banner mới
@@ -88,12 +88,12 @@
                     </div>
                 </div>
 
-                <!-- Add/Edit Banner Form: Cập nhật màu sắc và icon -->
+                
                 <div class="banner-form-section" id="add-banner-form">
                     <div class="form-card">
                         <div class="form-header">
                             <h3>
-                                <!-- Cập nhật icon -->
+                                
                                 <i class="fa-solid fa-plus-circle"></i>
                                 Thêm banner mới
                             </h3>
@@ -102,10 +102,10 @@
                             </a>
                         </div>
                         <form action="#" method="post" enctype="multipart/form-data" class="banner-form">
-                            <!-- Basic Information -->
+                            
                             <div class="form-section">
                                 <h4 class="section-title">
-                                    <!-- Cập nhật icon -->
+                                    
                                     <i class="fa-solid fa-image"></i>
                                     Hình ảnh & Thông tin
                                 </h4>
@@ -182,10 +182,10 @@
                                 </div>
                             </div>
 
-                            <!-- Schedule Settings -->
+                            
                             <div class="form-section">
                                 <h4 class="section-title">
-                                    <!-- Cập nhật icon -->
+                                    
                                     <i class="fa-solid fa-clock"></i>
                                     Lên lịch hiển thị (tùy chọn)
                                 </h4>
@@ -207,7 +207,7 @@
                                 <small class="form-hint">Banner sẽ tự động kích hoạt/vô hiệu hóa theo thời gian đã đặt</small>
                             </div>
 
-                            <!-- Form Actions: Cập nhật class nút -->
+                            
                             <div class="form-actions">
                                 <button type="submit" class="btn-submit">
                                     <i class="fa-solid fa-check"></i>
@@ -226,15 +226,15 @@
                     </div>
                 </div>
 
-                <!-- Filter Section: Cập nhật màu sắc và icon -->
+                
                 <div class="filter-section">
                     <form action="#" method="get" class="filter-form">
-                        <!-- Filter Options -->
+                        
                         <div class="filter-options">
-                            <!-- Position Filter -->
+                            
                             <div class="filter-group">
                                 <label for="filter-position">
-                                    <!-- Cập nhật icon -->
+                                    
                                     <i class="fa-solid fa-location-dot"></i>
                                     Vị trí hiển thị
                                 </label>
@@ -247,10 +247,10 @@
                                 </select>
                             </div>
 
-                            <!-- Status Filter -->
+                            
                             <div class="filter-group">
                                 <label for="filter-status">
-                                    <!-- Cập nhật icon -->
+                                    
                                     <i class="fa-solid fa-toggle-on"></i>
                                     Trạng thái
                                 </label>
@@ -262,10 +262,10 @@
                                 </select>
                             </div>
 
-                            <!-- Season Filter -->
+                            
                             <div class="filter-group">
                                 <label for="filter-season">
-                                    <!-- Cập nhật icon -->
+                                    
                                     <i class="fa-solid fa-calendar"></i>
                                     Mùa
                                 </label>
@@ -280,7 +280,7 @@
                             </div>
                         </div>
 
-                        <!-- Filter Actions: Cập nhật class nút -->
+                        
                         <div class="filter-actions">
                             <button type="submit" class="btn-apply-filter">
                                 <i class="fa-solid fa-filter"></i>
@@ -294,20 +294,20 @@
                     </form>
                 </div>
 
-                <!-- Banners List Section -->
+                
                 <div class="banners-list-section">
-                    <!-- Home Slider Section -->
+                    
                     <div class="banner-category-section">
                         <div class="category-header">
                             <h2>
-                                <!-- Cập nhật icon -->
+                                
                                 <i class="fa-solid fa-sliders"></i>
                                 Slider trang chủ
                             </h2>
                             <span class="banner-count">4 banner</span>
                         </div>
 
-                        <!-- Banner Item 1 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image">
                                 <img src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?w=800" alt="Banner Tết">
@@ -330,7 +330,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-scheduled">Đã lên lịch</span>
                                         <span class="order-badge">Thứ tự: 1</span>
                                     </div>
@@ -348,7 +348,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="1">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle active" title="Vô hiệu hóa">
                                             <i class="fa-solid fa-toggle-on"></i>
                                         </button>
@@ -360,7 +360,7 @@
                             </div>
                         </div>
 
-                        <!-- Banner Item 2 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image">
                                 <img src="https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?w=800" alt="Banner Xuân">
@@ -383,7 +383,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-active">Đang kích hoạt</span>
                                         <span class="order-badge">Thứ tự: 2</span>
                                     </div>
@@ -401,7 +401,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="2">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle active" title="Vô hiệu hóa">
                                             <i class="fa-solid fa-toggle-on"></i>
                                         </button>
@@ -413,7 +413,7 @@
                             </div>
                         </div>
 
-                        <!-- Banner Item 3 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image">
                                 <img src="https://images.unsplash.com/photo-1529310399831-ed472b81d589?w=800" alt="Banner Hè">
@@ -436,7 +436,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-inactive">Vô hiệu hóa</span>
                                         <span class="order-badge">Thứ tự: 3</span>
                                     </div>
@@ -454,7 +454,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="3">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle" title="Kích hoạt">
                                             <i class="fa-solid fa-toggle-off"></i>
                                         </button>
@@ -466,7 +466,7 @@
                             </div>
                         </div>
 
-                        <!-- Banner Item 4 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image">
                                 <img src="https://images.unsplash.com/photo-1542973748-658653fb3d12?w=800" alt="Banner Thu">
@@ -489,7 +489,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-inactive">Vô hiệu hóa</span>
                                         <span class="order-badge">Thứ tự: 4</span>
                                     </div>
@@ -507,7 +507,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="4">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle" title="Kích hoạt">
                                             <i class="fa-solid fa-toggle-off"></i>
                                         </button>
@@ -520,18 +520,18 @@
                         </div>
                     </div>
 
-                    <!-- Home Banner Section -->
+                    
                     <div class="banner-category-section">
                         <div class="category-header">
                             <h2>
-                                <!-- Cập nhật icon -->
+                                
                                 <i class="fa-solid fa-rectangle-ad"></i>
                                 Banner trang chủ
                             </h2>
                             <span class="banner-count">3 banner</span>
                         </div>
 
-                        <!-- Banner Item 5 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image">
                                 <img src="https://i.pinimg.com/originals/4a/c1/95/4ac195db7fe748fdd2b78f31cb7e4e8e.jpg" alt="Banner Gốm sứ">
@@ -550,7 +550,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-active">Đang kích hoạt</span>
                                         <span class="order-badge">Thứ tự: 1</span>
                                     </div>
@@ -568,7 +568,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="5">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle active" title="Vô hiệu hóa">
                                             <i class="fa-solid fa-toggle-on"></i>
                                         </button>
@@ -580,7 +580,7 @@
                             </div>
                         </div>
 
-                        <!-- Banner Item 6 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image">
                                 <img src="https://i.pinimg.com/originals/4a/c1/95/4ac195db7fe748fdd2b78f31cb7e4e8e.jpg" alt="Banner Gỗ">
@@ -599,7 +599,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-active">Đang kích hoạt</span>
                                         <span class="order-badge">Thứ tự: 2</span>
                                     </div>
@@ -617,7 +617,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="6">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle active" title="Vô hiệu hóa">
                                             <i class="fa-solid fa-toggle-on"></i>
                                         </button>
@@ -629,7 +629,7 @@
                             </div>
                         </div>
 
-                        <!-- Banner Item 7 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image">
                                 <img src="https://i.pinimg.com/originals/4a/c1/95/4ac195db7fe748fdd2b78f31cb7e4e8e.jpg" alt="Banner Tranh thêu">
@@ -648,7 +648,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-active">Đang kích hoạt</span>
                                         <span class="order-badge">Thứ tự: 3</span>
                                     </div>
@@ -666,7 +666,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="7">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle active" title="Vô hiệu hóa">
                                             <i class="fa-solid fa-toggle-on"></i>
                                         </button>
@@ -679,18 +679,18 @@
                         </div>
                     </div>
 
-                    <!-- Sidebar Banner Section -->
+                    
                     <div class="banner-category-section">
                         <div class="category-header">
                             <h2>
-                                <!-- Cập nhật icon -->
+                                
                                 <i class="fa-solid fa-columns"></i>
                                 Banner Sidebar
                             </h2>
                             <span class="banner-count">2 banner</span>
                         </div>
 
-                        <!-- Banner Item 8 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image banner-image-sidebar">
                                 <img src="https://i.pinimg.com/originals/4a/c1/95/4ac195db7fe748fdd2b78f31cb7e4e8e.jpg" alt="Banner Flash Sale">
@@ -709,7 +709,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-active">Đang kích hoạt</span>
                                         <span class="order-badge">Thứ tự: 1</span>
                                     </div>
@@ -727,7 +727,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="8">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle active" title="Vô hiệu hóa">
                                             <i class="fa-solid fa-toggle-on"></i>
                                         </button>
@@ -739,7 +739,7 @@
                             </div>
                         </div>
 
-                        <!-- Banner Item 9 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image banner-image-sidebar">
                                 <img src="https://i.pinimg.com/originals/4a/c1/95/4ac195db7fe748fdd2b78f31cb7e4e8e.jpg" alt="Banner Free Ship">
@@ -758,7 +758,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-active">Đang kích hoạt</span>
                                         <span class="order-badge">Thứ tự: 2</span>
                                     </div>
@@ -776,7 +776,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="9">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle active" title="Vô hiệu hóa">
                                             <i class="fa-solid fa-toggle-on"></i>
                                         </button>
@@ -789,18 +789,18 @@
                         </div>
                     </div>
 
-                    <!-- Category Banner Section -->
+                    
                     <div class="banner-category-section">
                         <div class="category-header">
                             <h2>
-                                <!-- Cập nhật icon -->
+                                
                                 <i class="fa-solid fa-table-cells-large"></i>
                                 Banner danh mục
                             </h2>
                             <span class="banner-count">3 banner</span>
                         </div>
 
-                        <!-- Banner Item 10 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image">
                                 <img src="https://i.pinimg.com/originals/4a/c1/95/4ac195db7fe748fdd2b78f31cb7e4e8e.jpg" alt="Banner Đồ gốm">
@@ -819,7 +819,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-active">Đang kích hoạt</span>
                                         <span class="order-badge">Thứ tự: 1</span>
                                     </div>
@@ -837,7 +837,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="10">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle active" title="Vô hiệu hóa">
                                             <i class="fa-solid fa-toggle-on"></i>
                                         </button>
@@ -849,7 +849,7 @@
                             </div>
                         </div>
 
-                        <!-- Banner Item 11 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image">
                                 <img src="https://images.unsplash.com/photo-1600166898405-da9535204843?w=800" alt="Banner Sứ">
@@ -868,7 +868,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-active">Đang kích hoạt</span>
                                         <span class="order-badge">Thứ tự: 2</span>
                                     </div>
@@ -886,7 +886,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="11">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle active" title="Vô hiệu hóa">
                                             <i class="fa-solid fa-toggle-on"></i>
                                         </button>
@@ -898,7 +898,7 @@
                             </div>
                         </div>
 
-                        <!-- Banner Item 12 -->
+                        
                         <div class="banner-item">
                             <div class="banner-image">
                                 <img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=800" alt="Banner Đông">
@@ -921,7 +921,7 @@
                                         </span>
                                     </div>
                                     <div class="banner-status-info">
-                                        <!-- Cập nhật class badge -->
+                                        
                                         <span class="status-badge status-inactive">Vô hiệu hóa</span>
                                         <span class="order-badge">Thứ tự: 3</span>
                                     </div>
@@ -939,7 +939,7 @@
                                     <form action="#" method="post" style="display: inline;">
                                         <input type="hidden" name="banner_id" value="12">
                                         <input type="hidden" name="action" value="toggle_status">
-                                        <!-- Cập nhật class nút -->
+                                        
                                         <button type="submit" class="btn-action btn-toggle" title="Kích hoạt">
                                             <i class="fa-solid fa-toggle-off"></i>
                                         </button>

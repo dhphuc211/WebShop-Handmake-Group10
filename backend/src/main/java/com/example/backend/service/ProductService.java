@@ -27,13 +27,13 @@ public class ProductService {
 
 
     public void updateProduct(Product product, ProductAttribute attribute, ProductImage image) {
-        // Cập nhật bảng product
+        
         productDAO.updateProduct(product);
 
-        // Cập nhật bảng attribute và image dựa trên ID đã có của product
+        
         productDAO.updateProductAttribute(product.getId(), attribute);
 
-        // Chỉ cập nhật ảnh nếu có đường dẫn ảnh mới
+        
         if (image.getImageUrl() != null && !image.getImageUrl().isEmpty()) {
             productDAO.updateProductImage(product.getId(), image);
         }
@@ -89,16 +89,16 @@ public class ProductService {
     }
 
     public void insertFullProduct(Product p, ProductAttribute pa) {
-        // 1. Insert bảng products và lấy ID
+        
         int productId = productDAO.insertProduct(p);
 
         if (productId > 0) {
-            // 2. Insert ảnh
+            
             if (p.getImage() != null && p.getImage().getImageUrl() != null) {
                 productDAO.insertProductImage(productId, p.getImage().getImageUrl());
             }
 
-            // 3. Insert thuộc tính
+            
             productDAO.insertProductAttributes(productId, pa);
         }
     }

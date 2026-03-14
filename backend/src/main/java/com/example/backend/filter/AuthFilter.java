@@ -13,16 +13,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * AuthFilter - Bộ lọc bảo vệ trang Admin
- * Chỉ cho phép Admin truy cập vào các link bắt đầu bằng /admin/
- */
+
+
+
+
 @WebFilter("/admin/*")
 public class AuthFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        // Khởi tạo filter
+        
     }
 
     @Override
@@ -54,6 +54,6 @@ public class AuthFilter implements Filter {
 
     @Override
     public void destroy() {
-        // Hủy filter
+        
     }
 }

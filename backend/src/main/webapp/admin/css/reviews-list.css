@@ -1,12 +1,12 @@
-/* ============================================
-   REVIEWS LIST - ADMIN PANEL
-   ============================================ */
 
-/* Page Header styles are now in admin-dashboard.css */
 
-/* ============================================
-   STATISTICS SECTION
-   ============================================ */
+
+
+
+
+
+
+
 .statistics-section {
     margin-bottom: 24px;
 }
@@ -88,7 +88,7 @@
     color: var(--admin-warning);
 }
 
-/* Rating Distribution */
+
 .stat-card.distribution {
     grid-column: span 1;
 }
@@ -147,9 +147,9 @@
     text-align: right;
 }
 
-/* ============================================
-   STATUS TABS
-   ============================================ */
+
+
+
 .status-tabs {
     display: flex;
     gap: 8px;
@@ -207,9 +207,9 @@
     color: var(--admin-accent);
 }
 
-/* ============================================
-   FILTER SECTION
-   ============================================ */
+
+
+
 .filter-section {
     background: var(--admin-surface);
     border-radius: var(--admin-radius-md);
@@ -341,9 +341,9 @@
     background: var(--admin-surface);
 }
 
-/* ============================================
-   REVIEWS LIST
-   ============================================ */
+
+
+
 .reviews-list-section {
     display: flex;
     flex-direction: column;
@@ -377,7 +377,7 @@
     border-left-color: var(--admin-danger);
 }
 
-/* Review Header */
+
 .review-header {
     display: flex;
     justify-content: space-between;
@@ -448,7 +448,7 @@
     color: var(--admin-text-muted);
 }
 
-/* Status Badges */
+
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -475,7 +475,7 @@
     color: var(--admin-danger);
 }
 
-/* Review Product */
+
 .review-product {
     display: flex;
     align-items: center;
@@ -514,7 +514,7 @@
     margin: 0;
 }
 
-/* Review Content */
+
 .review-content {
     margin-bottom: 14px;
 }
@@ -541,7 +541,7 @@
     margin-bottom: 5px;
 }
 
-/* Admin Reply */
+
 .admin-reply {
     margin: 14px 0;
     padding: 14px;
@@ -588,7 +588,7 @@
     margin: 0;
 }
 
-/* Review Actions */
+
 .review-actions {
     display: flex;
     gap: 8px;
@@ -653,7 +653,7 @@
     box-shadow: var(--admin-shadow-md);
 }
 
-/* Reply Form */
+
 .reply-form-section {
     display: none;
     margin-top: 14px;
@@ -735,9 +735,9 @@
     background: var(--admin-surface);
 }
 
-/* ============================================
-   PAGINATION
-   ============================================ */
+
+
+
 .pagination-section {
     display: flex;
     align-items: center;
@@ -835,9 +835,9 @@
     box-shadow: 0 0 0 1px var(--admin-accent-soft);
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+
+
+
 @media (max-width: 1400px) {
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -933,7 +933,7 @@
     }
 }
 
-/* Focus Styles for Accessibility */
+
 .search-input:focus-visible,
 .filter-group select:focus-visible,
 .btn-apply-filter:focus-visible,

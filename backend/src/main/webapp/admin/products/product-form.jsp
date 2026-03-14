@@ -43,7 +43,7 @@
         <div class="form-layout">
           <div class="form-main-column">
 
-            <%-- Phần 1: Thông tin cơ bản --%>
+            
             <div class="form-section">
               <div class="section-header"><h2>Thông tin cơ bản</h2></div>
               <div class="section-content">
@@ -68,7 +68,7 @@
               </div>
             </div>
 
-            <%-- Phần 2: Thuộc tính sản phẩm --%>
+            
             <div class="form-section">
               <div class="section-header">
                 <h2><i class="fa-solid fa-list-check"></i> Thuộc tính sản phẩm</h2>
@@ -101,7 +101,7 @@
               </div>
             </div>
 
-            <%-- Phần 3: Mô tả --%>
+            
             <div class="form-section">
               <div class="section-header"><h2>Mô tả chi tiết</h2></div>
               <div class="section-content">
@@ -111,7 +111,7 @@
               </div>
             </div>
 
-            <%-- Phần 4: Hình ảnh --%>
+            
             <div class="form-section">
               <div class="section-header"><h2>Hình ảnh sản phẩm</h2></div>
               <div class="section-content">

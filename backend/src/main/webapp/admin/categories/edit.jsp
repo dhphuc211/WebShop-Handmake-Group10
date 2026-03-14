@@ -12,7 +12,7 @@
 <body>
 <main class="admin-dashboard-main">
   <div class="admin-dashboard-container">
-    <%-- Sidebar --%>
+    
     <jsp:include page="/admin/components/sidebar.jsp">
       <jsp:param name="activePage" value="categories" />
     </jsp:include>
@@ -27,7 +27,7 @@
 
       <div class="form-card">
         <form action="${pageContext.request.contextPath}/admin/categories" method="post" enctype="multipart/form-data" class="category-form">
-          <%-- Dùng hidden input để gửi ID và hành động update --%>
+          
           <input type="hidden" name="action" value="update">
           <input type="hidden" name="id" value="${category.id}">
 

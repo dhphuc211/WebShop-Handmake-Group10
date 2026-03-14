@@ -1,15 +1,15 @@
-/* --- CSS CHO TRANG TÌM KIẾM --- */
 
-/* 1. Container chính */
+
+
 .search-page-container {
-    /* Căn theo container của header (150px padding) */
-    /* calc(100% - 300px) */
-    max-width: 1440px; /* Điều chỉnh độ rộng tối đa */
-    margin: 30px auto; /* Tự động căn giữa và tạo khoảng cách */
-    padding: 0 150px; /* Đồng bộ padding với header */
+    
+    
+    max-width: 1440px; 
+    margin: 30px auto; 
+    padding: 0 150px; 
 }
 
-/* 2. Tiêu đề kết quả */
+
 .search-results-header {
     margin-bottom: 25px;
     border-bottom: 1px solid #f0f0f0;
@@ -18,36 +18,36 @@
 
 .search-results-header h3 {
     font-size: 17px;
-    font-weight: 600; /* Đậm vừa */
+    font-weight: 600; 
     color: #333;
 }
 
-/* Thêm vạch màu cam bên trái tiêu đề */
+
 .search-results-header h3::before {
     content: '';
     display: inline-block;
     width: 4px;
     height: 18px;
-    /* Lấy màu cam từ logo của bạn */
+    
     background-color: #c0392b; 
     margin-right: 12px;
     vertical-align: middle;
     transform: translateY(-2px);
 }
 
-/* 3. Lưới sản phẩm */
+
 .product-grid-container {
     display: grid;
-    /* 5 cột trên desktop, giống như hình ảnh */
+    
     grid-template-columns: repeat(5, 1fr); 
     gap: 20px;
     margin-bottom: 40px;
 }
 
-/* 4. Thẻ sản phẩm */
+
 .product-card {
     background: #fff;
-    /* Thêm border nhẹ */
+    
     border: 1px solid #f0f0f0;
     border-radius: 8px;
     overflow: hidden;
@@ -68,17 +68,17 @@
 
 .product-image-wrapper {
     position: relative;
-    /* Nền xám nhạt cho ảnh */
+    
     background: #f9f9f9; 
-    aspect-ratio: 1 / 1; /* Giữ ảnh vuông */
+    aspect-ratio: 1 / 1; 
     overflow: hidden;
-    padding: 10px; /* Thêm padding để sản phẩm không bị sát viền */
+    padding: 10px; 
 }
 
 .product-image-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 'contain' để thấy rõ sản phẩm, không bị cắt */
+    object-fit: contain; 
     transition: transform 0.3s ease;
 }
 
@@ -86,25 +86,25 @@
     transform: scale(1.05);
 }
 
-/* 5. Badge giảm giá */
+
 .discount-badge {
     position: absolute;
     top: 0;
     left: auto;
     right: 0;
-    background: #e74c3c; /* Màu đỏ */
+    background: #e74c3c; 
     color: #fff;
     padding: 5px 10px;
     font-size: 13px;
     font-weight: 600;
-    border-top-right-radius: 7px; /* Bo góc trên phải (do thẻ cha đã bo 8px) */
+    border-top-right-radius: 7px; 
     border-bottom-left-radius: 8px;
     z-index: 2;
-    /* Thêm hiệu ứng góc chéo */
+    
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 8% 100%);
 }
 
-/* Biến thể cho badge Giảm 44% (góc trái) */
+
 .discount-badge.left {
     left: 0;
     right: auto;
@@ -116,7 +116,7 @@
 }
 
 
-/* 6. Thông tin sản phẩm */
+
 .product-info {
     padding: 15px;
     border-top: 1px solid #f0f0f0;
@@ -126,8 +126,8 @@
     font-size: 14px;
     color: #333;
     line-height: 1.4;
-    /* Giới hạn 2 dòng */
-    height: 39px; /* 1.4 * 14px * 2 dòng = 39.2px */
+    
+    height: 39px; 
     margin: 0 0 8px 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -139,7 +139,7 @@
 .product-price {
     font-size: 16px;
     font-weight: 600;
-    color: #c90000; /* Màu đỏ cho giá */
+    color: #c90000; 
 }
 
 .original-price {
@@ -149,7 +149,7 @@
     margin-left: 8px;
 }
 
-/* 7. Phân trang */
+
 .pagination-container {
     display: flex;
     justify-content: center;
@@ -169,7 +169,7 @@
     display: block;
     width: 36px;
     height: 36px;
-    line-height: 34px; /* Căn giữa text */
+    line-height: 34px; 
     text-align: center;
     text-decoration: none;
     color: #555;
@@ -186,15 +186,15 @@
 }
 
 .page-item.active .page-link {
-    background-color: #c0392b; /* Màu đỏ chủ đạo */
+    background-color: #c0392b; 
     border-color: #c0392b;
     color: #fff;
 }
 
-/* 8. Responsive (Điều chỉnh cho thiết bị di động) */
+
 @media (max-width: 1500px) {
     .search-page-container {
-        padding: 0 40px; /* Giảm padding */
+        padding: 0 40px; 
     }
 }
 
@@ -203,14 +203,14 @@
         padding: 0 20px; 
     }
     .product-grid-container {
-        grid-template-columns: repeat(4, 1fr); /* 4 cột */
+        grid-template-columns: repeat(4, 1fr); 
     }
 }
 
 
 @media (max-width: 992px) {
     .product-grid-container {
-        grid-template-columns: repeat(3, 1fr); /* 3 cột */
+        grid-template-columns: repeat(3, 1fr); 
     }
 }
 
@@ -219,12 +219,12 @@
         margin-top: 20px;
     }
     .product-grid-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 cột */
+        grid-template-columns: repeat(2, 1fr); 
         gap: 15px;
     }
     .product-name {
         font-size: 13px;
-        height: 36px; /* 2 dòng */
+        height: 36px; 
     }
     .product-price {
         font-size: 15px;

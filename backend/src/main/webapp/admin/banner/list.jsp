@@ -16,7 +16,7 @@
 <main class="admin-dashboard-main">
   <div class="admin-dashboard-container">
 
-    <%-- Import Sidebar --%>
+    
     <jsp:include page="/admin/components/sidebar.jsp">
       <jsp:param name="activePage" value="banner" />
     </jsp:include>
@@ -79,13 +79,13 @@
       </div>
 
       <div class="banners-list-section">
-        <%-- Ví dụ: Lặp qua danh sách các nhóm Banner (Slider, Sidebar...) --%>
+        
         <div class="banner-category-section">
           <div class="category-header">
             <h2><i class="fa-solid fa-sliders"></i> Slider trang chủ</h2>
           </div>
 
-          <%-- Lặp qua các Item banner thực tế --%>
+          
           <c:forEach var="banner" items="${bannerList}">
             <div class="banner-item">
               <div class="banner-image">
@@ -102,7 +102,7 @@
                                             </span>
                   </div>
                   <div class="banner-status-info">
-                      <%-- CSS Class động dựa trên trạng thái --%>
+                      
                     <span class="status-badge status-${banner.status}">
                         ${banner.status == 'active' ? 'Đang kích hoạt' : 'Vô hiệu hóa'}
                     </span>

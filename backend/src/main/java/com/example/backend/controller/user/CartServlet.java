@@ -16,7 +16,7 @@ public class CartServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if(action == null){
-            action = "view"; // nếu người dùng không làm gì thì cho nó xem thôi
+            action = "view"; 
         }
 
         try {
@@ -51,7 +51,7 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Cart cart=(Cart) session.getAttribute("cart");
 
-        // cart phải có sản phẩm mới thực hiện việc xóa được
+        
         if(cart != null){
             cart.remove(productId);
             session.setAttribute("cart",cart);
@@ -68,7 +68,7 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
 
-        // cart đã có sản phẩm thì chúng ta mới thực hiện được việc tăng số lượng
+        
         if(cart!=null){
             cart.update(productId,quantity);
             session.setAttribute("cart",cart);
@@ -78,7 +78,7 @@ public class CartServlet extends HttpServlet {
 
     }
 
-//     Chưa có class ProductService của đồng đội đợi chừng nào gửi lên pull về test thử
+
     private void addToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int productId = Integer.parseInt(request.getParameter("productId"));
@@ -87,7 +87,7 @@ public class CartServlet extends HttpServlet {
             HttpSession session = request.getSession();
             Cart cart = (Cart) session.getAttribute("cart");
 
-            // Nếu cart chưa có gì thì thực hiện việc thêm vào
+            
             if (cart == null) {
                 cart = new Cart();
             }
@@ -106,7 +106,7 @@ public class CartServlet extends HttpServlet {
             request.getRequestDispatcher("shopping-cart.jsp").forward(request, response);
 
         } catch (NumberFormatException e) {
-            // Xử lý lỗi nếu ID hoặc quantity không phải số
+            
             e.printStackTrace();
             response.sendRedirect("products.jsp");
         } catch (Exception e) {

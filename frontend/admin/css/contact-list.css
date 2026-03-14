@@ -1,8 +1,8 @@
-/* ============================================
-   CONTACT LIST PAGE STYLES
-   ============================================ */
 
-/* --- Status Tabs --- */
+
+
+
+
 .status-tabs {
     display: flex;
     gap: 20px;
@@ -10,7 +10,7 @@
     margin-bottom: 24px;
     overflow-x: auto;
     padding-bottom: 2px;
-    /* Prevent scrollbar overlap with border */
+    
 }
 
 .tab-item {
@@ -26,7 +26,7 @@
     transition: all 0.3s ease;
     white-space: nowrap;
     margin-bottom: -3px;
-    /* Align with border-bottom */
+    
 }
 
 .tab-item:hover {
@@ -52,7 +52,7 @@
     color: var(--admin-accent);
 }
 
-/* --- Filter Toolbar --- */
+
 .filter-toolbar {
     background: var(--admin-surface);
     padding: 20px;
@@ -183,7 +183,7 @@
     background: var(--admin-border-subtle);
 }
 
-/* --- Table Styles --- */
+
 .table-container {
     background: var(--admin-surface);
     border-radius: var(--admin-radius-md);
@@ -227,7 +227,7 @@
     background: var(--admin-surface-alt);
 }
 
-/* Unread Row Highlight */
+
 .data-table tr.unread {
     background: var(--admin-accent-soft);
 }
@@ -236,7 +236,7 @@
     background: #DBEAFE;
 }
 
-/* Customer Info */
+
 .customer-info {
     display: flex;
     align-items: center;
@@ -277,7 +277,7 @@
     color: var(--admin-text-muted);
 }
 
-/* Contact Details */
+
 .contact-details {
     display: flex;
     flex-direction: column;
@@ -299,7 +299,7 @@
     color: var(--admin-text-soft);
 }
 
-/* Message Preview */
+
 .message-preview {
     font-size: 14px;
     color: var(--admin-text-main);
@@ -311,7 +311,7 @@
     max-width: 400px;
 }
 
-/* Badges (Matching admin-dashboard status-badge style) */
+
 .badge {
     padding: 4px 10px;
     border-radius: 99px;
@@ -336,7 +336,7 @@
     color: var(--admin-danger);
 }
 
-/* Action Buttons */
+
 .action-buttons {
     display: flex;
     gap: 8px;
@@ -369,7 +369,7 @@
     background: var(--admin-danger-soft);
 }
 
-/* --- Pagination --- */
+
 .pagination-section {
     display: flex;
     justify-content: space-between;
@@ -420,7 +420,7 @@
     background: var(--admin-bg);
 }
 
-/* --- Export Button (Header) --- */
+
 .btn-export {
     padding: 10px 20px;
     background: var(--admin-accent);
@@ -454,7 +454,7 @@
     border-color: var(--admin-danger);
 }
 
-/* Responsive Adjustments */
+
 @media (max-width: 768px) {
     .filters-row {
         flex-direction: column;

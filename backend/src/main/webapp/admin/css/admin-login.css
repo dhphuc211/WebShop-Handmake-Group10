@@ -1,35 +1,35 @@
-/* Admin Login Minimalist Theme */
+
 :root {
-    /* Background Colors */
+    
     --admin-bg: #F3F4F6;
     --admin-surface: #FFFFFF;
     --admin-surface-alt: #F9FAFB;
 
-    /* Border Colors */
+    
     --admin-border-subtle: #E5E7EB;
     --admin-border-strong: #D1D5DB;
 
-    /* Typography Colors */
+    
     --admin-text-main: #111827;
     --admin-text-muted: #6B7280;
     --admin-text-soft: #9CA3AF;
 
-    /* Accent Colors */
+    
     --admin-accent: #2563EB;
     --admin-accent-hover: #1D4ED8;
     --admin-accent-soft: #EFF6FF;
 
-    /* Border Radius */
+    
     --admin-radius-sm: 4px;
     --admin-radius-md: 8px;
     --admin-radius-lg: 12px;
 
-    /* Shadows */
+    
     --admin-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
     --admin-shadow-md: 0 4px 10px rgba(15, 23, 42, 0.08);
     --admin-shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.1);
 
-    /* Font Family */
+    
     --admin-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -64,7 +64,7 @@ body {
     text-align: center;
 }
 
-/* Header Section */
+
 .login-header {
     margin-bottom: 32px;
 }
@@ -95,7 +95,7 @@ body {
     color: var(--admin-text-muted);
 }
 
-/* Form Section */
+
 .login-form {
     text-align: left;
 }
@@ -149,7 +149,7 @@ body {
     color: var(--admin-accent);
 }
 
-/* Options */
+
 .form-options {
     display: flex;
     justify-content: space-between;
@@ -183,7 +183,7 @@ body {
     color: var(--admin-accent-hover);
 }
 
-/* Button */
+
 .btn-login {
     width: 100%;
     padding: 12px;
@@ -208,7 +208,7 @@ body {
     transform: translateY(0);
 }
 
-/* Footer */
+
 .login-footer {
     margin-top: 24px;
     border-top: 1px solid var(--admin-border-subtle);

@@ -1,10 +1,10 @@
-/**
- * HERO-SECTION.JS
- * Xử lý carousel danh mục: Hiển thị 4 item, trượt 1 item mỗi lần bấm.
- */
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Lấy các phần tử DOM
+    
     const container = document.getElementById('categoriesContainer');
     const prevBtn = document.getElementById('prevButton');
     const nextBtn = document.getElementById('nextButton');
@@ -12,18 +12,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!container || !prevBtn || !nextBtn || items.length === 0) return;
 
-    // 2. Cấu hình
+    
     const GAP = 40;
 
-    /**
-     * Tính toán chiều rộng của 1 item để biết cần trượt bao nhiêu pixel
-     */
+    
+
+
     function getScrollStep() {
         const itemWidth = items[0].offsetWidth;
         return itemWidth + GAP;
     }
 
-    // 3. Xử lý sự kiện click Next
+    
     nextBtn.addEventListener('click', () => {
         const step = getScrollStep();
         container.scrollBy({
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 4. Xử lý sự kiện click Prev
+    
     prevBtn.addEventListener('click', () => {
         const step = getScrollStep();
         container.scrollBy({
@@ -41,13 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 5. Cập nhật trạng thái nút (Ẩn/Hiện/Disable)
+    
     function updateButtonState() {
         const tolerance = 5;
         const scrollLeft = container.scrollLeft;
         const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
-        // Nút Prev: Disable nếu đang ở đầu
+        
         if (scrollLeft <= tolerance) {
             prevBtn.disabled = true;
             prevBtn.style.opacity = '0.5';
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             prevBtn.style.opacity = '1';
         }
 
-        // Nút Next: Disable nếu đang ở cuối
+        
         if (scrollLeft >= maxScrollLeft - tolerance) {
             nextBtn.disabled = true;
             nextBtn.style.opacity = '0.5';
@@ -66,14 +66,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Lắng nghe sự kiện cuộn để cập nhật nút
+    
     container.addEventListener('scroll', updateButtonState);
     window.addEventListener('resize', updateButtonState);
 
-    // Khởi tạo trạng thái ban đầu
+    
     updateButtonState();
 
-    // 6. Xử lý click vào category-item để chuyển đến trang products
+    
     items.forEach(item => {
         item.addEventListener('click', function() {
             const category = this.getAttribute('data-category');

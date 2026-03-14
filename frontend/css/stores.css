@@ -1,4 +1,4 @@
- /* Main Container */
+ 
  main > .container {
      display: flex;
      height: 550px;
@@ -8,7 +8,7 @@
      gap: 20px;
  }
 
- /* Sidebar */
+ 
  .sidebar {
      width: 380px;
      background: #f5f1e6;
@@ -98,14 +98,14 @@
      border-color: #c0392b;
  }
 
- /* Store List */
+ 
  .store-list {
      padding: 15px;
      overflow-y: auto;
      max-height: 100vh;
  }
 
- /* Custom Scrollbar for Store List */
+ 
  .store-list::-webkit-scrollbar {
      width: 6px;
  }
@@ -125,7 +125,7 @@
      background: #c0392b;
  }
 
- /* Firefox scrollbar */
+ 
  .store-list {
      scrollbar-width: thin;
      scrollbar-color: #c0392b #f5f1e6;
@@ -190,7 +190,7 @@
      color: white;
  }
 
- /* Map Section */
+ 
  .map-section {
      flex: 1;
      position: relative;
@@ -212,7 +212,7 @@
      border: none;
  }
 
- /* Responsive */
+ 
  @media (max-width: 768px) {
      main > .container {
          flex-direction: column;

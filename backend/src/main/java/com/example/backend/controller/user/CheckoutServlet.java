@@ -21,7 +21,7 @@ public class CheckoutServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         if (user == null) {
-            // Lưu lại URL để sau khi login/register quay lại đây
+            
             session.setAttribute(POST_LOGIN_REDIRECT_KEY, request.getContextPath() + "/checkout");
             response.sendRedirect(request.getContextPath() + "/login");
             return;
@@ -48,7 +48,7 @@ public class CheckoutServlet extends HttpServlet {
             return;
         }
 
-        // Lấy thông tin người dùng từ form
+        
         String email = request.getParameter("email");
         String fullName = request.getParameter("fullname");
         String phone = request.getParameter("phone");
@@ -86,7 +86,7 @@ public class CheckoutServlet extends HttpServlet {
         try {
             int orderId = orderDao.saveOrder(order,cart);
 
-            // Nếu orderId lớn hơn 0 nghĩa là thực hiện thanh toán thành công và thực hiện xóa giỏ hàng
+            
             if(orderId>0){
                 List<OrderItem> orderItems = orderDao.getOrderItems(orderId);
                 session.removeAttribute("cart");
@@ -98,17 +98,17 @@ public class CheckoutServlet extends HttpServlet {
                 request.setAttribute("customerEmail",email);
 
                 url = "/order-success.jsp";
-                //request.getRequestDispatcher("/order-success.jsp").forward(request,response);
+                
             }
             else{
                 request.setAttribute("ERROR","Đặt hàng thất bại");
-                //request.getRequestDispatcher("checkout.jsp").forward(request,response);
+                
             }
 
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("ERROR","Lỗi hệ thống: "+e.getMessage());
-            //request.getRequestDispatcher("checkout.jsp").forward(request,response);
+            
         }
         request.getRequestDispatcher(url).forward(request,response);
 

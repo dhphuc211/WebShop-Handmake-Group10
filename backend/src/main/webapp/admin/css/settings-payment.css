@@ -1,13 +1,13 @@
-﻿/* ============================================
-   SETTINGS PAYMENT - ADMIN PANEL
-   ============================================ */
+﻿
 
-/* Import base settings styles */
+
+
+
 @import url('settings-general.css');
 
-/* ============================================
-   SETTINGS NAVIGATION
-   ============================================ */
+
+
+
 .settings-nav {
     display: flex;
     gap: 10px;
@@ -49,9 +49,9 @@
     font-size: 16px;
 }
 
-/* ============================================
-   PAYMENT METHOD SECTION
-   ============================================ */
+
+
+
 .payment-method-section .section-header {
     display: flex;
     justify-content: space-between;
@@ -72,9 +72,9 @@
     margin: 0;
 }
 
-/* ============================================
-   TOGGLE SWITCH
-   ============================================ */
+
+
+
 .toggle-switch {
     position: relative;
     display: inline-block;
@@ -125,9 +125,9 @@
     box-shadow: 0 0 8px var(--admin-accent-soft);
 }
 
-/* ============================================
-   CHECKBOX LABEL
-   ============================================ */
+
+
+
 .checkbox-label {
     display: flex;
     align-items: center;
@@ -148,9 +148,9 @@
     font-size: 14px;
 }
 
-/* ============================================
-   ALERT INFO BOX
-   ============================================ */
+
+
+
 .alert-info {
     display: flex;
     gap: 12px;
@@ -192,9 +192,9 @@
     text-decoration: underline;
 }
 
-/* ============================================
-   PASSWORD FIELD STYLING
-   ============================================ */
+
+
+
 input[type="password"] {
     font-family: 'Courier New', monospace;
     letter-spacing: 2px;
@@ -205,9 +205,9 @@ input[type="password"]::placeholder {
     letter-spacing: normal;
 }
 
-/* ============================================
-   DISABLED STATE
-   ============================================ */
+
+
+
 .payment-method-section.disabled {
     opacity: 0.6;
     pointer-events: none;
@@ -217,9 +217,9 @@ input[type="password"]::placeholder {
     background: var(--admin-surface-alt);
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
+
+
+
 @media (max-width: 768px) {
     .settings-nav {
         flex-direction: column;
@@ -246,9 +246,9 @@ input[type="password"]::placeholder {
     }
 }
 
-/* ============================================
-   ADDITIONAL FORM ENHANCEMENTS
-   ============================================ */
+
+
+
 .form-group label.required::after {
     content: "";
 }
@@ -257,7 +257,7 @@ input[type="password"]::placeholder {
     transition: all 0.3s ease;
 }
 
-/* Highlight enabled payment methods */
+
 .payment-method-section.enabled {
     border: 2px solid var(--admin-success);
 }

@@ -6,13 +6,13 @@
 <%@ page import="java.util.List" %>
 
 <%
-    // Kiểm tra nếu request chưa có 'categories' (từ Servlet đổ về)
+    
     if (request.getAttribute("categories") == null) {
         try {
             com.example.backend.service.CategoryService service = new com.example.backend.service.CategoryService();
             List<com.example.backend.model.Category> list = service.getAllCategories();
 
-            // In ra console để debug - kiểm tra log của Server (Tomcat) xem có dữ liệu không
+            
             System.out.println("DEBUG Category List Size: " + (list != null ? list.size() : "null"));
 
             request.setAttribute("categories", list);

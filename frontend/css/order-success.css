@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-/* Header chứa logo ở trên cùng */
+
 .order-header {
     display: flex;
     justify-content: center;
@@ -31,7 +31,7 @@
     gap: 30px;
 }
 
-/* Phần cảm ơn với icon checkmark */
+
 .order-info-thanks {
     display: flex;
     align-items: flex-start;

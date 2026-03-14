@@ -271,15 +271,15 @@
                 <div class="notice">
                     <span>Chúc mừng! Bạn được freeship 100%</span>
                 </div>
-                <!-- Thông tin chi tiết dựa trên product_attributes -->
+                
                 <div class="product-attributes-short">
                     <h3>Thông tin chi tiết</h3>
                     <ul>
-                        <li><strong>Xuất xứ:</strong> Việt Nam</li>           <!-- origin -->
-                        <li><strong>Chất liệu:</strong> Gốm sứ cao cấp</li>   <!-- material -->
-                        <li><strong>Kích thước:</strong> 31,5 cm</li>         <!-- size -->
-                        <li><strong>Trọng lượng:</strong> 1,2 kg</li>         <!-- weight -->
-                        <li><strong>Màu sắc:</strong> Trắng viền vàng</li>    <!-- color -->
+                        <li><strong>Xuất xứ:</strong> Việt Nam</li>           
+                        <li><strong>Chất liệu:</strong> Gốm sứ cao cấp</li>   
+                        <li><strong>Kích thước:</strong> 31,5 cm</li>         
+                        <li><strong>Trọng lượng:</strong> 1,2 kg</li>         
+                        <li><strong>Màu sắc:</strong> Trắng viền vàng</li>    
                     </ul>
                 </div>
             </div>
@@ -309,7 +309,7 @@
     <section class="product-relate">
         <div class="container">
             <span class="review-title" style="margin-bottom: 20px;">Đánh giá sản phẩm</span>
-            <!-- Tóm tắt đánh giá -->
+            
             <div class="review-summary">
                 <div class="review-average">
                     <span class="score">5.0</span>
@@ -367,7 +367,7 @@
             </div>
         </div>
 
-        <!-- Danh sách đánh giá -->
+        
         <div class="review-list">
             <div class="review-item">
                 <div class="review-item-header">
@@ -675,55 +675,55 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- 1. Lấy các phần tử ---
     
-    // Nút BẤM để MỞ pop-up
+    
+    
     const openButton = document.querySelector('.product-detail-info .cart button');
     
-    // Cái pop-up (lớp phủ)
+    
     const modal = document.getElementById('cart-modal-overlay');
     
-    // Các nút BẤM để ĐÓNG pop-up
+    
     const closeXBtn = document.getElementById('modal-close-x');
     const continueShoppingBtn = document.getElementById('modal-continue-shopping');
 
-    // --- 2. Hàm MỞ pop-up ---
+    
     function openModal() {
         if (modal) {
-            // Thêm class 'show' để CSS làm nó hiện ra
+            
             modal.classList.add('show');
         }
     }
 
-    // --- 3. Hàm ĐÓNG pop-up ---
+    
     function closeModal() {
         if (modal) {
-            // Xóa class 'show' để CSS ẩn nó đi
+            
             modal.classList.remove('show');
         }
     }
 
-    // --- 4. Gán sự kiện "Lắng Nghe" ---
     
-    // Bấm nút "Thêm vào giỏ hàng"
+    
+    
     if (openButton) {
         openButton.addEventListener('click', function(e) {
-            e.preventDefault(); // Ngăn hành vi mặc định
-            openModal(); // Gọi hàm MỞ
+            e.preventDefault(); 
+            openModal(); 
         });
     }
 
-    // Bấm nút 'X'
+    
     if (closeXBtn) {
-        closeXBtn.addEventListener('click', closeModal); // Gọi hàm ĐÓNG
+        closeXBtn.addEventListener('click', closeModal); 
     }
 
-    // Bấm nút "Tiếp tục mua hàng"
+    
     if (continueShoppingBtn) {
-        continueShoppingBtn.addEventListener('click', closeModal); // Gọi hàm ĐÓNG
+        continueShoppingBtn.addEventListener('click', closeModal); 
     }
 
-    // Bấm ra ngoài nền mờ cũng đóng
+    
     if (modal) {
         modal.addEventListener('click', function(e) {
             if (e.target === modal) {

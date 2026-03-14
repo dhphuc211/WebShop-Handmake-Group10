@@ -108,26 +108,26 @@ public class CategoryDAO {
     }
 
     public void insertSale(Sale sale) {
-        // Câu lệnh SQL khớp với các cột: id, discount_percent, start_sale, end_sale
+        
         String sql = "INSERT INTO sale (id, discount_percent, start_sale, end_sale) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            // 1. Set ID (kiểu int theo Navicat)
+            
             ps.setInt(1, sale.getId());
 
-            // 2. Set phần trăm giảm giá (kiểu decimal/double)
+            
             ps.setDouble(2, sale.getDiscountPercent());
 
-            // 3. Set ngày bắt đầu (kiểu Timestamp)
+            
             if (sale.getStartSale() != null) {
                 ps.setTimestamp(3, sale.getStartSale());
             } else {
                 ps.setNull(3, java.sql.Types.TIMESTAMP);
             }
 
-            // 4. Set ngày kết thúc (kiểu Timestamp)
+            
             if (sale.getEndSale() != null) {
                 ps.setTimestamp(4, sale.getEndSale());
             } else {
@@ -150,7 +150,7 @@ public class CategoryDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, name);
-            // Nếu saleId là 0 và DB cho phép null, bạn có thể xử lý setNull ở đây
+            
             if (saleId == 0) {
                 ps.setNull(2, java.sql.Types.INTEGER);
             } else {

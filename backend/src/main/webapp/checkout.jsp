@@ -146,9 +146,9 @@
                                     <a href="#" class="cart-item-name">${item.product.name}</a>
                                 </div>
                             </div>
-<%--                            <div class="price-total">--%>
-<%--                                <span><fmt:formatNumber value="${(item.product.salePrice > 0 ? item.product.salePrice : item.product.price) * item.quantity}" type="currency" currencySymbol="₫" maxFractionDigits="0"/></span>--%>
-<%--                            </div>--%>
+
+
+
                         </div>
                     </c:forEach>
 

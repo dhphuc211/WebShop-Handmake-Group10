@@ -278,12 +278,12 @@
             }
         }
 
-        // if (openButton) {
-        //     openButton.addEventListener('click', function (e) {
-        //         e.preventDefault();
-        //         openModal();
-        //     });
-        // }
+        
+        
+        
+        
+        
+        
 
         if (closeXBtn) {
             closeXBtn.addEventListener('click', closeModal);
@@ -304,20 +304,20 @@
 </script>
 <script>
     function openTab(evt, tabName) {
-        // 1. Lấy tất cả các phần tử có class "tab-content-item" và ẩn chúng đi
+        
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tab-content-item");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
 
-        // 2. Lấy tất cả các thẻ li có class "tab-link" và xóa class "active"
+        
         tablinks = document.getElementsByClassName("tab-link");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
 
-        // 3. Hiển thị tab hiện tại và thêm class "active" vào nút đã bấm
+        
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }

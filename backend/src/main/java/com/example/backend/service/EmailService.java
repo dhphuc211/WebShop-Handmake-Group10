@@ -61,7 +61,7 @@ public class EmailService {
                 + "</div>"
                 + "</div>";
 
-        // Tạo JSON payload thủ công, sử dụng biến from từ cấu hình
+        
         String jsonPayload = String.format("{\"from\":\"Sun Craft <%s>\",\"to\":\"%s\",\"subject\":\"%s\",\"html\":\"%s\"}",
                 from, toEmail, subject, htmlBody.replace("\"", "\\\""));
 

@@ -1,8 +1,8 @@
-﻿/* ============================================
-   PRODUCTS EDIT - ADMIN PANEL
-   ============================================ */
+﻿
 
-/* Page Header Edit */
+
+
+
 .page-header-edit {
     display: flex;
     justify-content: space-between;
@@ -90,9 +90,9 @@
     box-shadow: var(--admin-shadow-md);
 }
 
-/* ============================================
-   FORM LAYOUT
-   ============================================ */
+
+
+
 .form-layout {
     display: grid;
     grid-template-columns: 1fr 350px;
@@ -107,9 +107,9 @@
     gap: 25px;
 }
 
-/* ============================================
-   FORM SECTION
-   ============================================ */
+
+
+
 .form-section {
     background: white;
     border-radius: 16px;
@@ -144,9 +144,9 @@
     padding: 25px;
 }
 
-/* ============================================
-   FORM ELEMENTS
-   ============================================ */
+
+
+
 .form-row {
     display: grid;
     gap: 20px;
@@ -228,9 +228,9 @@
     font-style: italic;
 }
 
-/* ============================================
-   EDITOR TOOLBAR
-   ============================================ */
+
+
+
 .editor-toolbar {
     display: flex;
     gap: 8px;
@@ -276,9 +276,9 @@
     border-top-right-radius: 0;
 }
 
-/* ============================================
-   UPLOAD AREA
-   ============================================ */
+
+
+
 .upload-area {
     position: relative;
     margin-bottom: 20px;
@@ -324,7 +324,7 @@
     color: var(--admin-text-muted);
 }
 
-/* Images Preview */
+
 .images-preview {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -399,9 +399,9 @@
     text-transform: uppercase;
 }
 
-/* ============================================
-   VARIANTS
-   ============================================ */
+
+
+
 .btn-add-variant {
     padding: 8px 16px;
     background: var(--admin-info);
@@ -474,9 +474,9 @@
     gap: 15px;
 }
 
-/* ============================================
-   CHECKBOXES
-   ============================================ */
+
+
+
 .checkbox-group {
     display: flex;
     flex-direction: column;
@@ -545,9 +545,9 @@
     color: var(--admin-accent);
 }
 
-/* ============================================
-   CATEGORY TREE
-   ============================================ */
+
+
+
 .category-tree {
     display: flex;
     flex-direction: column;
@@ -569,9 +569,9 @@
     border-left: 2px solid var(--admin-border-subtle);
 }
 
-/* ============================================
-   TAGS
-   ============================================ */
+
+
+
 .tags-list {
     display: flex;
     flex-wrap: wrap;
@@ -612,9 +612,9 @@
     color: white;
 }
 
-/* ============================================
-   RELATED PRODUCTS
-   ============================================ */
+
+
+
 .related-products-list {
     display: flex;
     flex-direction: column;
@@ -684,9 +684,9 @@
     color: white;
 }
 
-/* ============================================
-   FORM ACTIONS
-   ============================================ */
+
+
+
 .form-actions {
     display: flex;
     justify-content: space-between;
@@ -741,9 +741,9 @@
     box-shadow: var(--admin-shadow-md);
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+
+
+
 @media (max-width: 1200px) {
     .form-layout {
         grid-template-columns: 1fr;
@@ -821,7 +821,7 @@
     }
 }
 
-/* Focus Styles for Accessibility */
+
 .btn-preview:focus-visible,
 .btn-save:focus-visible,
 .btn-cancel:focus-visible,
