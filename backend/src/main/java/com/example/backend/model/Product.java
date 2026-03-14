@@ -16,10 +16,8 @@ public class Product {
 
     private boolean isFeatured;
 
-    // 5. Khóa ngoại (Foreign Keys)
     private int categoryId;
 
-    // 6. Thời gian (Timestamps)
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
@@ -46,7 +44,6 @@ public class Product {
     public double getDiscountPercent() { return discountPercent; }
     public void setDiscountPercent(double discountPercent) { this.discountPercent = discountPercent; }
 
-    // Hàm tiện ích để lấy giá đã giảm
     public double getSalePrice() {
         return this.price * (1 - this.discountPercent);
     }
@@ -152,8 +149,6 @@ public class Product {
         this.attribute = attribute;
     }
 
-
-    // toString() để debug in ra console xem dữ liệu
     @Override
     public String toString() {
         return "Product{" +

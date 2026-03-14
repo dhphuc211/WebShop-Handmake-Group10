@@ -4,13 +4,12 @@ import java.sql.Timestamp;
 
 public class Sale {
     private int id;
-    private double discountPercent; // Ánh xạ từ decimal(5,2)
+    private double discountPercent;
     private Timestamp startSale;
     private Timestamp endSale;
 
     public Sale() {}
 
-    // Getters và Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

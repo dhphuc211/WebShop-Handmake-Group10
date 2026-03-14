@@ -22,30 +22,25 @@ public class ReviewServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Lấy thông tin user từ Session (giả sử bạn đã lưu user khi đăng nhập)
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
             response.sendRedirect("login.jsp");
             return;
         }
 
-        // Lấy dữ liệu từ form
         int productId = Integer.parseInt(request.getParameter("productId"));
         int rating = Integer.parseInt(request.getParameter("rating"));
         String comment = request.getParameter("comment");
 
-        // Tạo đối tượng Review
         Review review = new Review();
         review.setUserId(user.getId());
         review.setProductId(productId);
         review.setRating(rating);
         review.setComment(comment);
 
-        // Lưu xuống DB
         boolean success = reviewDAO.insertReview(review);
 
         if (success) {
-            // Chuyển hướng đến trang thành công hoặc quay lại đơn hàng
             response.sendRedirect("review-success.jsp");
         } else {
             request.setAttribute("error", "Không thể gửi đánh giá, vui lòng thử lại!");
@@ -56,7 +51,6 @@ public class ReviewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Mặc định luôn hiển thị form đánh giá nếu gọi vào servlet này bằng GET
         showReviewForm(request, response);
     }
 
@@ -74,8 +68,6 @@ public class ReviewServlet extends HttpServlet {
         if (orderIdStr != null && !orderIdStr.isEmpty()) {
             order = orderDAO.getOrderById(Integer.parseInt(orderIdStr));
         } else {
-            // TỰ ĐỘNG LẤY ĐƠN HÀNG MỚI NHẤT CỦA USER VỪA MUA
-            // Bạn cần thêm hàm getLatestOrderByUserId vào OrderDao
             order = orderDAO.getLatestOrderByUserId(user.getId());
         }
 

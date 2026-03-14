@@ -46,10 +46,8 @@ public class ProductListServlet extends HttpServlet {
             } else if (categoryIdStr != null && !categoryIdStr.trim().isEmpty()) {
                 try {
                     int cid = Integer.parseInt(categoryIdStr);
-                    // Lấy sản phẩm theo danh mục có offset và limit
                     productList = productService.getProductsByCategory(cid, offset, pageSize);
 
-                    // Tính tổng trang cho riêng danh mục này
                     int totalProducts = productService.getTotalProductsCountByCategory(cid);
                     totalPages = (int) Math.ceil((double) totalProducts / pageSize);
 
@@ -63,7 +61,6 @@ public class ProductListServlet extends HttpServlet {
                 request.setAttribute("title", "Sắp xếp theo giá");
 
             } else {
-                // Mặc định: Lấy tất cả sản phẩm
                 productList = productService.getAllProducts(page, pageSize);
                 totalPages = productService.getTotalPages(pageSize);
                 request.setAttribute("title", "Tất cả sản phẩm");

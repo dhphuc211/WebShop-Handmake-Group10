@@ -17,13 +17,7 @@ public class HomeServlet extends HttpServlet {
 
         BlogDAO blogDAO = new BlogDAO();
 
-        // Lấy tin nổi bật cho trang chủ
         request.setAttribute("featuredPosts", blogDAO.getFeaturedPosts(3));
-
-        // Có thể lấy thêm banner, sản phẩm...
-        // request.setAttribute("banners", bannerService.getAll());
-
-        // Sau khi có đủ dữ liệu mới mở trang index.jsp
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }
