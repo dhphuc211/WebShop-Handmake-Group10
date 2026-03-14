@@ -97,7 +97,7 @@ public class RegisterServlet extends HttpServlet {
             HttpSession session = request.getSession();
             String redirectUrl = (String) session.getAttribute("postLoginRedirect");
             
-            // Lấy lại user vừa tạo để đăng nhập luôn
+            
             User user = userDAO.findByEmailOrPhone(email.trim().toLowerCase());
             
             if (user != null) {

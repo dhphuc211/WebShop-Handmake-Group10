@@ -18,7 +18,7 @@
     <title>Tài Khoản - Bảng điều khiển</title>
 </head>
 <body>
-<!-- Header -->
+
 <jsp:include page="/compenents/header.jsp" />
 
 <%
@@ -39,7 +39,7 @@
 %>
 <main class="dashboard-main">
     <div class="dashboard-container">
-        <!-- Sidebar Menu -->
+        
         <aside class="dashboard-sidebar">
             <div class="sidebar-header">
                 <div class="user-avatar">
@@ -80,9 +80,9 @@
         </aside>
 
 
-        <!-- Main Content -->
+        
         <div class="dashboard-content">
-            <!-- Welcome Section -->
+            
             <div class="welcome-section">
                 <div class="welcome-text">
                     <h1>Xin chào, ${sessionScope.user.fullName}!</h1>
@@ -93,7 +93,7 @@
                 </div>
             </div>
 
-            <!-- Statistics Cards -->
+            
             <div class="stats-grid">
                 <div class="stat-card card-orders">
                     <div class="stat-icon">
@@ -109,7 +109,7 @@
                 </div>
             </div>
 
-            <!-- Recent Orders -->
+            
             <div class="section-container">
                 <div class="section-header">
                     <h2>
@@ -167,7 +167,7 @@
     </div>
 </main>
 
-<!-- Footer -->
+
 <jsp:include page="/compenents/footer.jsp" />
 </body>
 </html>

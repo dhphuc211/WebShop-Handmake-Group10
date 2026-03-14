@@ -12,7 +12,7 @@
 <body>
 <main class="login-main">
     <div class="login-container">
-        <!-- Left side - Decorative -->
+        
         <div class="login-decoration">
             <div class="decoration-content">
                 <h2>Đồ thủ công mỹ nghệ Việt</h2>
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <!-- Right side - Login Form -->
+        
         <div class="login-form-wrapper">
             <div class="login-form-container">
                 <div class="login-header">
@@ -33,7 +33,7 @@
                     <p>Chào mừng bạn quay trở lại</p>
                 </div>
 
-                <!-- Hiển thị thông báo -->
+                
                 <c:if test="${not empty successMessage}">
                     <div class="alert alert-success">
                         <i class="fa-solid fa-check-circle"></i> ${successMessage}
@@ -108,7 +108,7 @@
 </main>
 
 <script>
-    // Toggle password visibility
+    
     document.querySelector('.toggle-password').addEventListener('click', function() {
         const passwordInput = document.getElementById('password');
         const toggleIcon = document.getElementById('toggleIcon');

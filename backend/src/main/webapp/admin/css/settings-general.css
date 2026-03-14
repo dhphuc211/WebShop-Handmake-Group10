@@ -1,8 +1,8 @@
-﻿/* ============================================
-   SETTINGS GENERAL - ADMIN PANEL
-   ============================================ */
+﻿
 
-/* Page Header Settings */
+
+
+
 .page-header-settings {
     display: flex;
     justify-content: space-between;
@@ -56,18 +56,18 @@
     box-shadow: var(--admin-shadow-md);
 }
 
-/* ============================================
-   SETTINGS CONTAINER
-   ============================================ */
+
+
+
 .settings-container {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-/* ============================================
-   SETTINGS SECTION
-   ============================================ */
+
+
+
 .settings-section {
     background: white;
     border-radius: 16px;
@@ -111,9 +111,9 @@
     padding: 30px;
 }
 
-/* ============================================
-   FORM GROUPS
-   ============================================ */
+
+
+
 .form-group {
     margin-bottom: 25px;
 }
@@ -195,7 +195,7 @@
     line-height: 1.4;
 }
 
-/* Form Row - Two columns */
+
 .form-row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -207,9 +207,9 @@
     margin-bottom: 0;
 }
 
-/* ============================================
-   FORM ACTIONS
-   ============================================ */
+
+
+
 .form-actions {
     background: white;
     border-radius: 16px;
@@ -258,9 +258,9 @@
     color: var(--admin-text-main);
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
+
+
+
 @media (max-width: 768px) {
     .page-header-settings {
         flex-direction: column;

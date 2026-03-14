@@ -1,22 +1,22 @@
-/**
- * CART.JS - XỬ LÝ CHO TRANG CART.HTML
- * Tạo các hiệu ứng tương tác, animation và xử lý logic cho trang Cửa hàng
- *
- * Màu sắc chủ đạo:
- * - Primary: #ff8c00 (cam)
- * - Hover: #e67e00 (cam đậm)
- * - Border: #daa520 (vàng đồng)
- * - Background: #f9f9f9
- */
 
-// ============================================================
-// A. CATEGORIES CAROUSEL (Băng chuyền danh mục)
-// ============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (function() {
     'use strict';
 
-    // Đảm bảo DOM đã load xong
+    
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initCategoriesCarousel);
     } else {
@@ -24,35 +24,35 @@
     }
 
     function initCategoriesCarousel() {
-        // Lấy các elements
+        
         const categoriesContainer = document.getElementById('categoriesContainer');
         const prevButton = document.getElementById('prevButton');
         const nextButton = document.getElementById('nextButton');
         const categoryItems = document.querySelectorAll('.category-item');
 
-        // Kiểm tra các elements có tồn tại không
+        
         if (!categoriesContainer || !prevButton || !nextButton) {
             console.warn('Categories carousel elements not found');
             return;
         }
 
-        // ============================================================
-        // 2. AUTO-HIDE BUTTONS
-        // ============================================================
+        
+        
+        
 
-        /**
-         * Cập nhật trạng thái hiển thị của các nút điều hướng
-         * - Ẩn nút Previous khi ở đầu (scrollLeft = 0)
-         * - Ẩn nút Next khi ở cuối (scrollLeft + width >= scrollWidth)
-         * - Hiển thị cả hai nút trong các trường hợp còn lại
-         * - Transition: opacity 300ms ease
-         */
+        
+
+
+
+
+
+
         function updateNavigationButtons() {
             const scrollLeft = categoriesContainer.scrollLeft;
             const scrollWidth = categoriesContainer.scrollWidth;
             const clientWidth = categoriesContainer.clientWidth;
 
-            // Kiểm tra vị trí ở đầu
+            
             if (scrollLeft <= 0) {
                 prevButton.style.opacity = '0';
                 prevButton.style.pointerEvents = 'none';
@@ -61,8 +61,8 @@
                 prevButton.style.pointerEvents = 'auto';
             }
 
-            // Kiểm tra vị trí ở cuối
-            // Thêm threshold 1px để tránh lỗi làm tròn
+            
+            
             if (scrollLeft + clientWidth >= scrollWidth - 1) {
                 nextButton.style.opacity = '0';
                 nextButton.style.pointerEvents = 'none';
@@ -72,22 +72,22 @@
             }
         }
 
-        // Thêm CSS transition cho buttons
+        
         prevButton.style.transition = 'opacity 300ms ease';
         nextButton.style.transition = 'opacity 300ms ease';
 
-        // Lắng nghe sự kiện scroll
+        
         categoriesContainer.addEventListener('scroll', updateNavigationButtons);
 
-        // Lắng nghe sự kiện resize để cập nhật buttons khi thay đổi kích thước
+        
         window.addEventListener('resize', updateNavigationButtons);
 
-        // Gọi lần đầu để thiết lập trạng thái ban đầu
+        
         updateNavigationButtons();
 
-        // ============================================================
-        // 4. TOUCH/SWIPE SUPPORT (Bonus for mobile)
-        // ============================================================
+        
+        
+        
 
         let touchStartX = 0;
         let touchEndX = 0;
@@ -102,18 +102,18 @@
         }, { passive: true });
 
         function handleSwipe() {
-            const swipeThreshold = 50; // Minimum distance for a swipe
+            const swipeThreshold = 50; 
             const difference = touchStartX - touchEndX;
 
             if (Math.abs(difference) > swipeThreshold) {
                 if (difference > 0) {
-                    // Swipe left - scroll right
+                    
                     categoriesContainer.scrollBy({
                         left: 300,
                         behavior: 'smooth'
                     });
                 } else {
-                    // Swipe right - scroll left
+                    
                     categoriesContainer.scrollBy({
                         left: -300,
                         behavior: 'smooth'
@@ -126,14 +126,14 @@
     }
 })();
 
-// ============================================================
-// B. SEARCH & FILTER SYSTEM (Hệ thống tìm kiếm và lọc)
-// ============================================================
+
+
+
 
 (function() {
     'use strict';
 
-    // Đảm bảo DOM đã load xong
+    
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initSearchAndFilter);
     } else {
@@ -141,22 +141,22 @@
     }
 
     function initSearchAndFilter() {
-        // Lấy các elements
+        
         const searchInput = document.querySelector('.search-input');
         const provinceDropdown = document.querySelector('.filter-dropdown');
         const districtDropdown = document.querySelector('.district-dropdown');
         const storeCards = document.querySelectorAll('.store-card');
         const storeList = document.querySelector('.store-list');
 
-        // Kiểm tra các elements có tồn tại không
+        
         if (!searchInput || !provinceDropdown || !districtDropdown || !storeList) {
             console.warn('Search & Filter elements not found');
             return;
         }
 
-        // ============================================================
-        // DISTRICT DATA - Mapping provinces to districts
-        // ============================================================
+        
+        
+        
         const districtData = {
             'Hồ Chí Minh': ['Quận 1', 'Quận 3', 'Quận 5', 'Quận 10', 'Quận 11'],
             'Hà Nội': ['Quận Ba Đình', 'Quận Cầu Giấy', 'Quận Hà Đông', 'Quận Hoàn Kiếm'],
@@ -165,16 +165,16 @@
             'Cần Thơ': ['Quận Ninh Kiều', 'Quận Cái Răng', 'Quận Bình Thủy']
         };
 
-        // ============================================================
-        // 1. LIVE SEARCH (Tìm kiếm thời gian thực)
-        // ============================================================
+        
+        
+        
 
         let searchDebounceTimer;
-        const DEBOUNCE_DELAY = 300; // ms
+        const DEBOUNCE_DELAY = 300; 
 
-        /**
-         * Debounce function để tránh search quá nhiều lần
-         */
+        
+
+
         function debounce(func, delay) {
             return function(...args) {
                 clearTimeout(searchDebounceTimer);
@@ -182,9 +182,9 @@
             };
         }
 
-        /**
-         * Hàm tìm kiếm chính
-         */
+        
+
+
         function performSearch() {
             const searchValue = searchInput.value.toLowerCase().trim();
             const selectedProvince = provinceDropdown.value;
@@ -196,22 +196,22 @@
                 const storeName = card.querySelector('.store-header').textContent.toLowerCase();
                 const storeAddress = card.querySelector('.store-address').textContent.toLowerCase();
 
-                // Check search match
+                
                 const matchesSearch = searchValue === '' || storeName.includes(searchValue);
 
-                // Check province match
+                
                 const matchesProvince = selectedProvince === 'Chọn tỉnh thành' ||
                                        storeAddress.includes(selectedProvince.toLowerCase());
 
-                // Check district match
+                
                 const matchesDistrict = selectedDistrict === 'Chọn quận/huyện' ||
                                        storeAddress.includes(selectedDistrict.toLowerCase());
 
-                // Combine all filters
+                
                 const shouldShow = matchesSearch && matchesProvince && matchesDistrict;
 
                 if (shouldShow) {
-                    // Fade in
+                    
                     card.style.opacity = '0';
                     card.style.display = 'block';
                     setTimeout(() => {
@@ -220,7 +220,7 @@
                     }, 10);
                     visibleCount++;
                 } else {
-                    // Fade out
+                    
                     card.style.transition = 'opacity 200ms ease';
                     card.style.opacity = '0';
                     setTimeout(() => {
@@ -229,13 +229,13 @@
                 }
             });
 
-            // Hiển thị thông báo nếu không tìm thấy
+            
             showNoResultsMessage(visibleCount);
         }
 
-        /**
-         * Hiển thị thông báo không tìm thấy kết quả
-         */
+        
+
+
         function showNoResultsMessage(visibleCount) {
             let noResultsMsg = storeList.querySelector('.no-results-message');
 
@@ -267,22 +267,22 @@
             }
         }
 
-        // Event listener cho search input với debounce
+        
         searchInput.addEventListener('input', debounce(performSearch, DEBOUNCE_DELAY));
 
-        // ============================================================
-        // 2. PROVINCE FILTER (Lọc theo tỉnh)
-        // ============================================================
+        
+        
+        
 
-        /**
-         * Cập nhật district dropdown dựa trên province được chọn
-         */
+        
+
+
         function updateDistrictDropdown(province) {
-            // Clear current options (keep first default option)
+            
             districtDropdown.innerHTML = '<option selected>Chọn quận/huyện</option>';
 
             if (province && province !== 'Chọn tỉnh thành' && districtData[province]) {
-                // Add districts for selected province
+                
                 districtData[province].forEach(district => {
                     const option = document.createElement('option');
                     option.value = district;
@@ -291,7 +291,7 @@
                 });
                 districtDropdown.disabled = false;
             } else {
-                // Disable district dropdown if no province selected
+                
                 districtDropdown.disabled = true;
             }
         }
@@ -299,29 +299,29 @@
         provinceDropdown.addEventListener('change', function() {
             const selectedProvince = this.value;
 
-            // Update district dropdown
+            
             updateDistrictDropdown(selectedProvince);
 
-            // Perform filter with animation
+            
             performSearch();
         });
 
-        // ============================================================
-        // 3. DISTRICT FILTER (Lọc theo quận)
-        // ============================================================
+        
+        
+        
 
         districtDropdown.addEventListener('change', function() {
             performSearch();
         });
 
-        // ============================================================
-        // 4. INITIAL SETUP
-        // ============================================================
+        
+        
+        
 
-        // Disable district dropdown initially
+        
         districtDropdown.disabled = true;
 
-        // Set initial transition for all cards
+        
         storeCards.forEach(card => {
             card.style.transition = 'opacity 300ms ease';
         });
@@ -330,14 +330,14 @@
     }
 })();
 
-// ============================================================
-// C. STORE CARD INTERACTIONS (Tương tác với thẻ cửa hàng)
-// ============================================================
+
+
+
 
 (function() {
     'use strict';
 
-    // Đảm bảo DOM đã load xong
+    
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initStoreCardInteractions);
     } else {
@@ -345,20 +345,20 @@
     }
 
     function initStoreCardInteractions() {
-        // Lấy các elements
+        
         const storeCards = document.querySelectorAll('.store-card');
         const mapIframe = document.querySelector('#map iframe');
         const mapContainer = document.querySelector('#map');
 
-        // Kiểm tra các elements có tồn tại không
+        
         if (storeCards.length === 0) {
             console.warn('Store cards not found');
             return;
         }
 
-        // ============================================================
-        // STORE DATA - Coordinates for each store
-        // ============================================================
+        
+        
+        
         const storeData = {
             'Sudes Sài Gòn': {
                 lat: 10.7626,
@@ -402,23 +402,23 @@
             }
         };
 
-        // ============================================================
-        // 1. CLICK TO SELECT STORE
-        // ============================================================
+        
+        
+        
 
         storeCards.forEach(card => {
-            // Set initial transition
+            
             card.style.transition = 'all 300ms ease';
 
             card.addEventListener('click', function() {
-                // Remove active class from all cards and reset their styles
+                
                 storeCards.forEach(c => {
                     c.classList.remove('active');
                     c.style.borderColor = '#ff8c00';
                     c.style.backgroundColor = 'white';
                     c.style.color = '#333';
 
-                    // Reset text colors for inactive state
+                    
                     const header = c.querySelector('.store-header');
                     const address = c.querySelector('.store-address');
                     const hotline = c.querySelector('.store-hotline');
@@ -430,15 +430,15 @@
                     if (hotlineSpan) hotlineSpan.style.color = '';
                 });
 
-                // Add active class to clicked card
+                
                 this.classList.add('active');
 
-                // Animate selection
+                
                 this.style.borderColor = '#ff5500';
                 this.style.backgroundColor = '#ff8c00';
                 this.style.color = 'white';
 
-                // Update text colors for active state
+                
                 const header = this.querySelector('.store-header');
                 const address = this.querySelector('.store-address');
                 const hotline = this.querySelector('.store-hotline');
@@ -449,24 +449,24 @@
                 if (hotline) hotline.style.color = 'white';
                 if (hotlineSpan) hotlineSpan.style.color = 'white';
 
-                // Scroll card into view if needed
+                
                 this.scrollIntoView({
                     behavior: 'smooth',
                     block: 'nearest'
                 });
 
-                // Update map
+                
                 const storeName = this.querySelector('.store-header').textContent.trim();
                 updateMap(storeName);
             });
         });
-        // ============================================================
-        // 3. UPDATE MAP ON SELECTION
-        // ============================================================
+        
+        
+        
 
-        /**
-         * Cập nhật bản đồ khi chọn cửa hàng
-         */
+        
+
+
         function updateMap(storeName) {
             if (!mapIframe || !storeData[storeName]) {
                 console.warn('Map iframe or store data not found');
@@ -475,21 +475,21 @@
 
             const store = storeData[storeName];
 
-            // Show loading overlay
+            
             showLoadingOverlay();
 
-            // Create new Google Maps URL
+            
             const mapUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6456!2d${store.lng}!3d${store.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM!5e0!3m2!1svi!2s!4v1234567890`;
 
-            // Fade out current map
+            
             mapContainer.style.transition = 'opacity 300ms ease';
             mapContainer.style.opacity = '0.3';
 
-            // Update iframe src after short delay
+            
             setTimeout(() => {
                 mapIframe.src = mapUrl;
 
-                // Fade in new map
+                
                 setTimeout(() => {
                     mapContainer.style.opacity = '1';
                     hideLoadingOverlay();
@@ -497,9 +497,9 @@
             }, 300);
         }
 
-        /**
-         * Hiển thị loading overlay
-         */
+        
+
+
         function showLoadingOverlay() {
             let overlay = document.querySelector('.map-loading-overlay');
 
@@ -546,9 +546,9 @@
             overlay.style.display = 'block';
         }
 
-        /**
-         * Ẩn loading overlay
-         */
+        
+
+
         function hideLoadingOverlay() {
             const overlay = document.querySelector('.map-loading-overlay');
             if (overlay) {
@@ -560,14 +560,14 @@
     }
 })();
 
-// ============================================================
-// D. FLOATING BUTTONS (Nút nổi)
-// ============================================================
+
+
+
 
 (function() {
     'use strict';
 
-    // Đảm bảo DOM đã load xong
+    
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initFloatingButtons);
     } else {
@@ -575,13 +575,13 @@
     }
 
     function initFloatingButtons() {
-        // Lấy các elements
+        
         const btnTop = document.querySelector('.btn-top');
         const btnLocation = document.querySelector('.btn-location');
         const btnMessenger = document.querySelector('.btn-messenger');
         const storeList = document.querySelector('.store-list');
 
-        // Kiểm tra các elements có tồn tại không
+        
         if (!btnTop || !btnLocation || !btnMessenger || !storeList) {
             console.warn('Floating buttons elements not found');
             return;
@@ -589,14 +589,14 @@
     }
 })();
 
-// ============================================================
-// E. MAP INTERACTIONS (Tương tác với bản đồ)
-// ============================================================
+
+
+
 
 (function() {
     'use strict';
 
-    // Đảm bảo DOM đã load xong
+    
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initMapInteractions);
     } else {
@@ -604,23 +604,23 @@
     }
 
     function initMapInteractions() {
-        // Lấy các elements
+        
         const playBtn = document.querySelector('.play-btn');
         const mapContainer = document.querySelector('#map');
         const mapIframe = document.querySelector('#map iframe');
 
-        // Kiểm tra các elements có tồn tại không
+        
         if (!playBtn || !mapContainer || !mapIframe) {
             console.warn('Map interaction elements not found');
             return;
         }
-        // ============================================================
-        // 2. MAP LOADING STATE
-        // ============================================================
+        
+        
+        
 
-        /**
-         * Show skeleton loader
-         */
+        
+
+
         function showMapLoader() {
             let loader = mapContainer.querySelector('.map-skeleton-loader');
 
@@ -646,9 +646,9 @@
             loader.style.opacity = '1';
         }
 
-        /**
-         * Hide skeleton loader
-         */
+        
+
+
         function hideMapLoader() {
             const loader = mapContainer.querySelector('.map-skeleton-loader');
             if (loader) {
@@ -660,14 +660,14 @@
             }
         }
 
-        // Listen to iframe load event
+        
         mapIframe.addEventListener('load', function() {
             setTimeout(hideMapLoader, 1000);
         });
 
-        // ============================================================
-        // 3. FULLSCREEN TOGGLE
-        // ============================================================
+        
+        
+        
 
         let isFullscreen = false;
         let originalStyles = {};
@@ -683,21 +683,21 @@
 })();
 
 
-// ============================================================
-// G. NOTIFICATIONS & TOASTS (Thông báo)
-// ============================================================
+
+
+
 
 (function() {
     'use strict';
 
-    // Toast container
+    
     let toastContainer = null;
     const MAX_TOASTS = 3;
     const TOAST_DURATION = 3000;
 
-    /**
-     * Initialize toast system
-     */
+    
+
+
     function initToastSystem() {
         if (!toastContainer) {
             toastContainer = document.createElement('div');
@@ -715,25 +715,25 @@
         }
     }
 
-    /**
-     * Show toast notification
-     * @param {string} message - Toast message
-     * @param {string} type - Toast type: 'success', 'error', 'info'
-     */
+    
+
+
+
+
     window.showToast = function(message, type = 'info') {
         initToastSystem();
 
-        // Remove oldest toast if max reached
+        
         const existingToasts = toastContainer.querySelectorAll('.toast');
         if (existingToasts.length >= MAX_TOASTS) {
             existingToasts[0].remove();
         }
 
-        // Create toast element
+        
         const toast = document.createElement('div');
         toast.className = `toast toast-${type}`;
 
-        // Toast colors based on type
+        
         const colors = {
             success: { bg: '#4caf50', icon: 'fa-check-circle' },
             error: { bg: '#f44336', icon: 'fa-exclamation-circle' },
@@ -767,26 +767,26 @@
 
         toastContainer.appendChild(toast);
 
-        // Slide in animation
+        
         setTimeout(() => {
             toast.style.transform = 'translateX(0)';
         }, 10);
 
-        // Auto dismiss after duration
+        
         const dismissTimeout = setTimeout(() => {
             dismissToast(toast);
         }, TOAST_DURATION);
 
-        // Click to dismiss
+        
         toast.addEventListener('click', function() {
             clearTimeout(dismissTimeout);
             dismissToast(toast);
         });
     };
 
-    /**
-     * Dismiss toast
-     */
+    
+
+
     function dismissToast(toast) {
         toast.style.transform = 'translateX(400px)';
         setTimeout(() => {
@@ -797,9 +797,9 @@
     console.log('Toast notification system initialized successfully');
 })();
 
-// ============================================================
-// ADD GLOBAL CSS ANIMATIONS
-// ============================================================
+
+
+
 
 (function() {
     const style = document.createElement('style');

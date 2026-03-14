@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @WebServlet("/admin/categories")
 @MultipartConfig
-public class AdminCategoryServlet extends HttpServlet { // Sửa từ WebServlet thành HttpServlet
+public class AdminCategoryServlet extends HttpServlet { 
     private CategoryDAO categoryDAO = new CategoryDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

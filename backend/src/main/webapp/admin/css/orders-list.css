@@ -1,8 +1,8 @@
-/* ============================================
-   ORDERS LIST - ADMIN PANEL
-   ============================================ */
 
-/* Page Header styles are now in admin-dashboard.css */
+
+
+
+
 
 .btn-export-excel,
 .btn-export-pdf {
@@ -29,9 +29,9 @@
     color: var(--admin-accent);
 }
 
-/* ============================================
-   STATUS TABS
-   ============================================ */
+
+
+
 .status-tabs {
     display: flex;
     gap: 8px;
@@ -89,9 +89,9 @@
     color: var(--admin-accent);
 }
 
-/* ============================================
-   FILTER SECTION
-   ============================================ */
+
+
+
 .filter-section {
     background: var(--admin-surface);
     border-radius: var(--admin-radius-md);
@@ -107,7 +107,7 @@
     gap: 16px;
 }
 
-/* Search Bar */
+
 .search-wrapper {
     position: relative;
     width: 100%;
@@ -139,7 +139,7 @@
     box-shadow: 0 0 0 1px var(--admin-accent-soft);
 }
 
-/* Filter Options */
+
 .filter-options {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -185,7 +185,7 @@
     box-shadow: 0 0 0 1px var(--admin-accent-soft);
 }
 
-/* Filter Actions */
+
 .filter-actions {
     display: flex;
     gap: 12px;
@@ -226,9 +226,9 @@
     background: var(--admin-surface);
 }
 
-/* ============================================
-   ORDERS TABLE
-   ============================================ */
+
+
+
 .orders-table-container {
     background: var(--admin-surface);
     border-radius: var(--admin-radius-md);
@@ -275,7 +275,7 @@
     background: var(--admin-surface-alt);
 }
 
-/* Column Widths */
+
 .col-order-id {
     width: 120px;
 }
@@ -312,7 +312,7 @@
     width: 140px;
 }
 
-/* Order ID Link */
+
 .order-id-link {
     color: var(--admin-accent);
     text-decoration: none;
@@ -326,7 +326,7 @@
     text-decoration: underline;
 }
 
-/* Customer Info */
+
 .customer-info {
     display: flex;
     align-items: center;
@@ -358,7 +358,7 @@
     color: var(--admin-text-muted);
 }
 
-/* Contact Info */
+
 .contact-info p {
     display: flex;
     align-items: center;
@@ -377,14 +377,14 @@
     font-size: 12px;
 }
 
-/* Total Amount */
+
 .total-amount {
     font-size: 15px;
     font-weight: 700;
     color: var(--admin-accent);
 }
 
-/* Payment Badge */
+
 .payment-badge {
     display: inline-block;
     padding: 5px 10px;
@@ -407,7 +407,7 @@
     color: var(--admin-info);
 }
 
-/* Payment Status */
+
 .payment-status {
     display: inline-block;
     padding: 4px 10px;
@@ -432,7 +432,7 @@
     color: var(--admin-text-soft);
 }
 
-/* Date Info */
+
 .date-info p {
     font-size: 14px;
     color: var(--admin-text-main);
@@ -445,7 +445,7 @@
     color: var(--admin-text-muted);
 }
 
-/* Status Badges */
+
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -479,7 +479,7 @@
     color: var(--admin-danger);
 }
 
-/* Action Buttons */
+
 .action-buttons {
     display: flex;
     gap: 8px;
@@ -532,9 +532,9 @@
     box-shadow: var(--admin-shadow-md);
 }
 
-/* ============================================
-   PAGINATION
-   ============================================ */
+
+
+
 .pagination-section {
     display: flex;
     align-items: center;
@@ -632,9 +632,9 @@
     box-shadow: 0 0 0 1px var(--admin-accent-soft);
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+
+
+
 @media (max-width: 1400px) {
     .status-tabs {
         overflow-x: auto;
@@ -735,7 +735,7 @@
     }
 }
 
-/* Focus Styles for Accessibility */
+
 .search-input:focus-visible,
 .filter-group select:focus-visible,
 .btn-apply-filter:focus-visible,

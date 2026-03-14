@@ -19,9 +19,9 @@
                 <jsp:param name="active" value="orders" />
             </jsp:include>
 
-            <!-- Main Content -->
+            
             <div class="admin-content">
-                <!-- Page Header -->
+                
                 <div class="page-header">
                     <div class="header-left">
                         <h1>Quản lý đơn hàng</h1>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                <!-- Status Tabs -->
+                
                 <div class="status-tabs">
                     <a href="#" class="tab-item active">
                         <span class="tab-label">Tất cả</span>
@@ -64,18 +64,18 @@
                     </a>
                 </div>
 
-                <!-- Search and Filter Section -->
+                
                 <div class="filter-section">
                     <form action="${pageContext.request.contextPath}/admin/orders" method="get" class="filter-form">
-                        <!-- Search Bar -->
+                        
                         <div class="search-wrapper">
                             <i class="fa-solid fa-search"></i>
                             <input type="text" name="search" value="${param.search}" placeholder="Tìm kiếm theo mã đơn hàng, tên khách hàng, SĐT, email..." class="search-input">
                         </div>
 
-                        <!-- Filter Options -->
+                        
                         <div class="filter-options">
-                            <!-- Date Range Filter -->
+                            
                             <div class="filter-group">
                                 <label for="date-from">
                                     <i class="fa-solid fa-calendar"></i>
@@ -92,7 +92,7 @@
                                 <input type="date" id="date-to" name="date_to">
                             </div>
 
-                            <!-- Order Value Filter -->
+                            
                             <div class="filter-group">
                                 <label for="order-value">
                                     <i class="fa-solid fa-dollar-sign"></i>
@@ -108,7 +108,7 @@
                                 </select>
                             </div>
 
-                            <!-- Payment Method Filter -->
+                            
                             <div class="filter-group">
                                 <label for="payment-method">
                                     <i class="fa-solid fa-credit-card"></i>
@@ -122,7 +122,7 @@
                                 </select>
                             </div>
 
-                            <!-- Payment Status Filter -->
+                            
                             <div class="filter-group">
                                 <label for="payment-status">
                                     <i class="fa-solid fa-money-check"></i>
@@ -137,7 +137,7 @@
                             </div>
                         </div>
 
-                        <!-- Filter Actions -->
+                        
                         <div class="filter-actions">
                             <button type="submit" class="btn-apply-filter">
                                 <i class="fa-solid fa-filter"></i>
@@ -231,22 +231,22 @@
 
                 <div class="pagination-section">
                     <div class="pagination-info">
-                        <%-- Tính toán hiển thị: ví dụ 1-8 trong 456 --%>
+                        
                         Hiển thị <strong>1 - ${orders.size()}</strong> trong tổng số <strong>${totalOrders != null ? totalOrders : orders.size()}</strong> đơn hàng
                     </div>
 
                     <div class="pagination">
-                        <%-- Nút Previous --%>
+                        
                         <a href="orders?action=list&page=${currentPage - 1}" class="page-link ${currentPage <= 1 ? 'disabled' : ''}">
                             <i class="fa-solid fa-chevron-left"></i>
                         </a>
 
-                        <%-- Vòng lặp hiển thị số trang --%>
+                        
                         <c:forEach begin="1" end="${totalPages}" var="i">
                             <a href="orders?action=list&page=${i}" class="page-link ${i == currentPage ? 'active' : ''}">${i}</a>
                         </c:forEach>
 
-                        <%-- Nút Next --%>
+                        
                         <a href="orders?action=list&page=${currentPage + 1}" class="page-link ${currentPage >= totalPages ? 'disabled' : ''}">
                             <i class="fa-solid fa-chevron-right"></i>
                         </a>

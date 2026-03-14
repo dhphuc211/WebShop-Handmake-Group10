@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Order {
     private int id;
-    //Khóa ngoại
+    
     private int user_id;
     private String shipping_name;
     private String shipping_phone;

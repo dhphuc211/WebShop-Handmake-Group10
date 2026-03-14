@@ -28,7 +28,7 @@
   </div>
 
   <div class="product-grid-container">
-    <%-- Vòng lặp hiển thị sản phẩm động --%>
+    
     <c:forEach var="product" items="${productList}">
       <div class="product-card">
         <a href="${pageContext.request.contextPath}/productDetail?id=${product.id}" class="product-link">
@@ -51,7 +51,7 @@
       </div>
     </c:forEach>
 
-    <%-- Hiển thị tĩnh nếu chưa có dữ liệu từ Controller --%>
+    
     <c:if test="${empty productList}">
       <div class="product-card">
         <a href="${pageContext.request.contextPath}/productdetail" class="product-link">
@@ -64,11 +64,11 @@
           </div>
         </a>
       </div>
-      <%-- Copy các product-card khác vào đây làm placeholder --%>
+      
     </c:if>
   </div>
 
-  <%-- Phân trang --%>
+  
   <nav class="pagination-container" aria-label="Pagination">
     <ul class="pagination">
       <li class="page-item active"><a class="page-link" href="?page=1">1</a></li>

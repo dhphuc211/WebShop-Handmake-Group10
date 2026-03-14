@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    /**
-     * Đăng ký tài khoản mới
-     *
-     * @param user Đối tượng User chứa thông tin đăng ký
-     * @return true nếu đăng ký thành công, false nếu thất bại
-     */
+    
+
+
+
+
+
     public boolean register(User user) {
         String sql = "INSERT INTO users (full_name, email, phone, password, role_id, status, created_at) " +
                 "VALUES (?, ?, ?, ?, COALESCE((SELECT id FROM role WHERE name = ?), 1), ?, NOW())";
@@ -44,12 +44,12 @@ public class UserDAO {
         }
     }
 
-    /**
-     * Kiểm tra đăng nhập
-     * @param emailOrPhone Email hoặc số điện thoại
-     * @param password Mật khẩu
-     * @return User object nếu đăng nhập đúng, null nếu sai
-     */
+    
+
+
+
+
+
     public User checkLogin(String emailOrPhone, String password) {
         String sql = "SELECT u.*, r.name AS role " +
                 "FROM users u " +
@@ -64,7 +64,7 @@ public class UserDAO {
             conn = DBConnection.getConnection();
             pstmt = conn.prepareStatement(sql);
             
-            // Set tham số
+            
             pstmt.setString(1, emailOrPhone);
             pstmt.setString(2, emailOrPhone);
             pstmt.setString(3, password);
@@ -109,7 +109,7 @@ public class UserDAO {
         return createGoogleUser(googleId, normalizedEmail, fullName, avatarUrl);
     }
 
-    //Tìm user theo email hoặc số điện thoại (dùng cho quên mật khẩu)
+    
     public User findByEmailOrPhone(String emailOrPhone) {
         String sql = "SELECT u.*, r.name AS role " +
                 "FROM users u " +
@@ -313,7 +313,7 @@ public class UserDAO {
         return value == null || value.trim().isEmpty();
     }
 
-    //Cập nhật mật khẩu theo user id
+    
     public boolean updatePassword(int userId, String hashedPassword) {
         String sql = "UPDATE users SET password = ? WHERE id = ?";
         Connection conn = null;
@@ -335,9 +335,9 @@ public class UserDAO {
         }
     }
 
-    /**
-     * Kiểm tra email đã tồn tại chưa
-     */
+    
+
+
     public boolean isEmailExists(String email) {
         return findByEmail(email) != null;
     }
@@ -372,9 +372,9 @@ public class UserDAO {
         }
     }
 
-    /**
-     * Kiểm tra phone đã tồn tại chưa
-     */
+    
+
+
     public boolean isPhoneExists(String phone) {
         return findByPhone(phone) != null;
     }
@@ -409,7 +409,7 @@ public class UserDAO {
         }
     }
 
-    //Lấy thông tin user theo ID
+    
     public User getUserById(int id) {
         String sql = "SELECT u.*, r.name AS role " +
                 "FROM users u " +
@@ -436,7 +436,7 @@ public class UserDAO {
         return null;
     }
 
-    //Cập nhật thông tin cá nhân (Họ tên, SĐT)
+    
     public boolean updateProfile(User user) {
         String sql = "UPDATE users SET full_name = ?, phone = ? WHERE id = ?";
         Connection conn = null;
@@ -461,7 +461,7 @@ public class UserDAO {
         }
     }
 
-    //Lấy danh sách user (có phân trang, tìm kiếm)
+    
     public List<User> getUsers(String keyword, int offset, int limit) {
         List<User> users = new ArrayList<>();
         String trimmedKeyword = keyword == null ? "" : keyword.trim();
@@ -509,7 +509,7 @@ public class UserDAO {
         return users;
     }
 
-    //Đếm tổng user (phục vụ phân trang)
+    
     public int countUsers(String keyword) {
         String trimmedKeyword = keyword == null ? "" : keyword.trim();
         boolean hasKeyword = !trimmedKeyword.isEmpty();
@@ -548,7 +548,7 @@ public class UserDAO {
         return 0;
     }
 
-    //Cập nhật trạng thái user (khóa/mở khóa). Không áp dụng cho admin.
+    
     public boolean updateUserStatus(int userId, boolean isActive) {
         String status = isActive ? "active" : "inactive";
         String sql = "UPDATE users u " +
@@ -576,7 +576,7 @@ public class UserDAO {
     }
 
     private void closeResources(Connection conn, Statement stmt, ResultSet rs) {
-        // Đóng ResultSet trước
+        
         if (rs != null) {
             try {
                 rs.close();
@@ -585,7 +585,7 @@ public class UserDAO {
             }
         }
 
-        // Đóng Statement
+        
         if (stmt != null) {
             try {
                 stmt.close();
@@ -594,15 +594,15 @@ public class UserDAO {
             }
         }
 
-        // Đóng Connection cuối cùng
-//        DBConnection.closeConnection(conn);
+        
+
     }
 
     private User extractUserFromResultSet(ResultSet rs) throws SQLException {
         User user = new User();
-        // Mapping tạm thời, cần kiểm tra lại tên cột trong database
+        
         try {
-            // Giả định tên cột, nếu khác bạn cần sửa lại cho đúng với DB
+            
             if (hasColumn(rs, "id")) user.setId(rs.getInt("id"));
             if (hasColumn(rs, "full_name")) user.setFullName(rs.getString("full_name"));
             if (hasColumn(rs, "email")) user.setEmail(rs.getString("email"));

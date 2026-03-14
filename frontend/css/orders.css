@@ -1,6 +1,6 @@
-/* ============================================
-   ORDERS PAGE - ĐỒ THỦ CÔNG MỸ NGHỆ VIỆT NAM
-   ============================================ */
+
+
+
 @keyframes float {
     0%, 100% {
         transform: translateY(0) translateX(0) scale(1);
@@ -18,11 +18,11 @@
         transform: translateY(30px) translateX(-15px) scale(1.03);
     }
 }
-/* ============================================
-   MAIN CONTENT
-   ============================================ */
 
-/* Page Header */
+
+
+
+
 .page-header {
     background: white;
     border-radius: 20px;
@@ -66,7 +66,7 @@
     z-index: 1;
 }
 
-/* Filter Section */
+
 .filter-section {
     background: white;
     border-radius: 20px;
@@ -80,7 +80,7 @@
     flex-wrap: wrap;
 }
 
-/* Hide radio buttons */
+
 .filter-tabs input[type="radio"] {
     display: none;
 }
@@ -126,7 +126,7 @@
     box-shadow: 0 4px 12px rgba(192, 57, 43, 0.15);
 }
 
-/* Styles when filter is selected */
+
 #filter-all:checked ~ .filter-section .filter-label[for="filter-all"],
 #filter-pending:checked ~ .filter-section .filter-label[for="filter-pending"],
 #filter-shipping:checked ~ .filter-section .filter-label[for="filter-shipping"],
@@ -151,7 +151,7 @@
     font-size: 16px;
 }
 
-/* Orders Container */
+
 .orders-container {
     background: white;
     border-radius: 20px;
@@ -184,7 +184,7 @@
     font-weight: 700;
 }
 
-/* Orders List */
+
 .orders-list {
     display: flex;
     flex-direction: column;
@@ -224,7 +224,7 @@
     transform: scaleY(1);
 }
 
-/* Order Header */
+
 .order-header {
     display: flex;
     align-items: center;
@@ -294,7 +294,7 @@
     color: white;
 }
 
-/* Order Products */
+
 .order-products {
     display: flex;
     flex-direction: column;
@@ -346,7 +346,7 @@
     white-space: nowrap;
 }
 
-/* Order Footer */
+
 .order-footer {
     display: flex;
     align-items: center;
@@ -372,7 +372,7 @@
     font-weight: 700;
 }
 
-/* Order Actions */
+
 .order-actions {
     display: flex;
     gap: 10px;
@@ -425,7 +425,7 @@
     box-shadow: 0 6px 15px rgba(231, 76, 60, 0.3);
 }
 
-/* Empty State */
+
 .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -469,13 +469,13 @@
     box-shadow: 0 8px 20px rgba(192, 57, 43, 0.3);
 }
 
-/* Filter logic - Show/Hide orders based on status */
-/* Hide the radio inputs */
+
+
 .dashboard-content > input[type="radio"] {
     display: none;
 }
 
-/* Show only pending orders when pending filter is selected */
+
 #filter-pending:checked ~ .orders-container .order-card {
     display: none;
 }
@@ -484,7 +484,7 @@
     display: block;
 }
 
-/* Show only shipping orders when shipping filter is selected */
+
 #filter-shipping:checked ~ .orders-container .order-card {
     display: none;
 }
@@ -493,7 +493,7 @@
     display: block;
 }
 
-/* Show only completed orders when completed filter is selected */
+
 #filter-completed:checked ~ .orders-container .order-card {
     display: none;
 }
@@ -502,7 +502,7 @@
     display: block;
 }
 
-/* Show only cancelled orders when cancelled filter is selected */
+
 #filter-cancelled:checked ~ .orders-container .order-card {
     display: none;
 }
@@ -511,11 +511,11 @@
     display: block;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
 
-@media (max-width: 968px) { /* Thêm breakpoint mới cho tablet nhỏ hơn */
+
+
+
+@media (max-width: 968px) { 
     .dashboard-container {
         flex-direction: column;
     }
@@ -524,8 +524,8 @@
         width: 100%;
         position: sticky;
         top: 20px;
-        max-height: none; /* Bỏ max-height ở chế độ này */
-        overflow-y: visible; /* Bỏ cuộn nội bộ */
+        max-height: none; 
+        overflow-y: visible; 
     }
 
     .sidebar-menu {
@@ -540,14 +540,14 @@
     }
 
     .menu-item span {
-        display: none; /* Ẩn chữ, chỉ hiện icon */
+        display: none; 
     }
      .menu-item.logout {
         width: 100%;
         justify-content: center;
     }
      .menu-item.logout span {
-        display: inline-block; /* Hiện lại chữ cho logout */
+        display: inline-block; 
     }
 }
 
@@ -607,7 +607,7 @@
     }
 
     .menu-item {
-        flex: 1 1 calc(50% - 4px); /* 2 cột trên mobile */
+        flex: 1 1 calc(50% - 4px); 
         font-size: 12px;
     }
 
@@ -639,15 +639,15 @@
     }
 
      .menu-item {
-        flex: 1 1 100%; /* 1 cột trên mobile nhỏ */
+        flex: 1 1 100%; 
     }
 
     .menu-item span {
-        display: inline-block; /* Hiện lại chữ trên mobile nhỏ */
+        display: inline-block; 
     }
 }
 
-/* Custom scrollbar */
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -667,7 +667,7 @@
     background: linear-gradient(180deg, #e74c3c 0%, #d4925f 100%);
 }
 
-/* Focus styles for accessibility */
+
 .menu-item:focus-visible,
 .btn-action:focus-visible,
 .filter-label:focus-visible {

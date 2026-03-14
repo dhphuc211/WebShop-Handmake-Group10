@@ -277,7 +277,7 @@
                 if (data && data.success) {
                     document.getElementById('googleVerifySuccess').style.display = 'flex';
                     document.getElementById('googleVerifyButton').style.display = 'none';
-                    // Lock selection
+                    
                     document.querySelectorAll('input[name="verifyMethod"]').forEach(el => el.disabled = true);
                 } else {
                     errorEl.textContent = (data && data.message) ? data.message : 'Xác thực thất bại.';

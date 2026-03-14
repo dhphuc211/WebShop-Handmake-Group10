@@ -95,7 +95,7 @@
 </div>
 
 <script>
-  // Script Slider của bạn
+  
   document.addEventListener("DOMContentLoaded", function() {
     const sliderSection = document.querySelector('.section_intro');
     if(sliderSection){

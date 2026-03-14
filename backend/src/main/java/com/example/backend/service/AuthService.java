@@ -14,10 +14,10 @@ public class AuthService {
 
         if (user == null) {
             System.out.println("Forgot password request for non-existent email: " + email);
-            return false; // Không tìm thấy user
+            return false; 
         }
 
-        String newPassword = PasswordUtil.generateRandomPassword(10); // Tạo mật khẩu 10 ký tự
+        String newPassword = PasswordUtil.generateRandomPassword(10); 
         String hashedPassword = PasswordUtil.encrypt(newPassword);
 
         if (hashedPassword == null) {

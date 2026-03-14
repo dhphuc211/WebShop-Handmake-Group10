@@ -28,7 +28,7 @@ body {
     font-size: 11px;
 }
 
-/* Main Content */
+
 .main-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -168,7 +168,7 @@ body {
     border: 0;
 }
 
-/* Floating Buttons */
+
 .floating-buttons {
     position: fixed;
     right: 20px;

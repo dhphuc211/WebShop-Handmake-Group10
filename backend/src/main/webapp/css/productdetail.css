@@ -1,4 +1,4 @@
-/* TỔNG THỂ TRANG */
+
 a{
     text-decoration: none;
 }
@@ -9,7 +9,7 @@ body {
     padding: 0;
 }
 
-/* Container chính giới hạn chiều rộng thay vì margin-left/right cứng */
+
 .product-page {
     max-width: 1200px;
     margin: 40px auto;
@@ -19,7 +19,7 @@ body {
     gap: 50px;
 }
 
-/* PHẦN CHI TIẾT SẢN PHẨM CHÍNH */
+
 .product-details .container {
     display: flex;
     flex-direction: row;
@@ -28,14 +28,14 @@ body {
 }
 
 .product-gallery {
-    flex: 1; /* Chiếm 50% bên trái */
+    flex: 1; 
 }
 
 .product-gallery .product-img {
     background-color: #fffaf0;
     border: 1px solid #eeeeee;
     width: 100%;
-    aspect-ratio: 1 / 1; /* Ép khung ảnh chính luôn vuông */
+    aspect-ratio: 1 / 1; 
     border-radius: 10px;
     overflow: hidden;
     display: flex;
@@ -46,11 +46,11 @@ body {
 .product-gallery .product-img img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Ảnh không bị méo */
+    object-fit: contain; 
 }
 
 .product-detail-info {
-    flex: 1; /* Chiếm 50% bên phải */
+    flex: 1; 
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -69,7 +69,7 @@ body {
     color: #c0392b;
 }
 
-/* FORM VÀ NÚT MUA HÀNG */
+
 .product-amount-cart {
     display: flex;
     align-items: center;
@@ -86,7 +86,7 @@ body {
 }
 
 .cart button {
-    background-color: #c97a3a; /* Đổi màu cho đồng bộ logo */
+    background-color: #c97a3a; 
     color: #fff;
     border: none;
     padding: 10px 30px;
@@ -100,7 +100,7 @@ body {
     background-color: #af6a30;
 }
 
-/* THÔNG TIN CHI TIẾT (ATTRIBUTES) */
+
 .product-attributes-short {
     background: #fdfdfd;
     padding: 20px;
@@ -122,7 +122,7 @@ body {
     font-size: 14px;
 }
 
-/* Đảm bảo tab nằm ngang */
+
 .product-tab ul {
     display: flex;
     list-style: none;
@@ -135,12 +135,12 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     transition: 0.3s;
-    border-bottom: 3px solid transparent; /* Tạo viền dưới ẩn */
+    border-bottom: 3px solid transparent; 
 }
 
-/* Khi tab được chọn sẽ có màu nhấn */
+
 .tab-link.active {
-    border-bottom: 3px solid #c97a3a; /* Màu cam giống giao diện của bạn */
+    border-bottom: 3px solid #c97a3a; 
     color: #c97a3a;
 }
 
@@ -149,9 +149,9 @@ body {
     font-size: 18px;
 }
 
-/* Ẩn các khối nội dung không được chọn */
+
 .tab-content-item {
-    animation: fadeEffect 0.5s; /* Thêm hiệu ứng hiện mờ dần cho đẹp */
+    animation: fadeEffect 0.5s; 
 }
 
 @keyframes fadeEffect {
@@ -165,7 +165,7 @@ body {
     gap: 10px;
 }
 
-/* SẢN PHẨM LIÊN QUAN - FIX KÍCH THƯỚC ĐỀU NHAU */
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -190,7 +190,7 @@ body {
 
 .product-card .product-imgs {
     width: 100%;
-    aspect-ratio: 1 / 1; /* QUAN TRỌNG: Ép khung ảnh liên quan luôn vuông */
+    aspect-ratio: 1 / 1; 
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -201,7 +201,7 @@ body {
 .product-card .product-imgs img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Giữ toàn bộ ảnh trong khung vuông, không bị mất hình */
+    object-fit: contain; 
     padding: 10px;
 }
 
@@ -213,7 +213,7 @@ body {
 .product-info h3 {
     font-size: 14px;
     margin: 0 0 10px;
-    height: 40px; /* Giới hạn chiều cao tên cho đều hàng */
+    height: 40px; 
     overflow: hidden;
     color: #333;
     display: flex;
@@ -224,7 +224,7 @@ body {
     color: black;
 }
 
-/* MODAL GIỎ HÀNG */
+
 #cart-modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -252,7 +252,7 @@ body {
     justify-content: space-between;
 }
 
-/* Responsive cho Mobile */
+
 @media (max-width: 768px) {
     .product-details .container { flex-direction: column; }
     .product-grid { grid-template-columns: repeat(2, 1fr); }

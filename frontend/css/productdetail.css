@@ -409,45 +409,45 @@ a {
     margin-bottom: 20px;
 }
 
-/* =============================================== */
-/* == CSS CHO MODAL THÊM VÀO GIỎ HÀNG == */
-/* =============================================== */
 
-/* Lớp phủ nền mờ sau lưng modal */
+
+
+
+
 #cart-modal-overlay {
-    position: fixed; /* Che toàn bộ màn hình */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Nền đen mờ 60% */
-    z-index: 999; /* Đảm bảo luôn ở trên cùng */
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 999; 
     
-    /* Ẩn theo mặc định */
+    
     display: none; 
     opacity: 0;
     
-    /* Dùng flex để căn giữa modal */
+    
     align-items: center;
     justify-content: center;
     transition: opacity 0.3s ease-in-out;
 }
 
-/* Lớp này sẽ được JS thêm vào để hiện modal */
+
 #cart-modal-overlay.show {
     display: flex;
     opacity: 1;
 }
 
-/* Thùng chứa modal chính */
+
 .cart-modal-container {
     background-color: #fff;
-    width: 480px; /* Chiều rộng của modal */
+    width: 480px; 
     border-radius: 8px;
-    overflow: hidden; /* Để bo góc header */
+    overflow: hidden; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     
-    /* Hiệu ứng xuất hiện */
+    
     transform: scale(0.95);
     opacity: 0;
     transition: all 0.2s ease-in-out 0.1s;
@@ -458,9 +458,9 @@ a {
     opacity: 1;
 }
 
-/* Header modal (màu cam) */
+
 .cart-modal-header {
-    /* Sử dụng màu cam #c97a3a từ file CSS của bạn */
+    
     background-color: #c97a3a; 
     color: #fff;
     padding: 12px 20px;
@@ -473,7 +473,7 @@ a {
 .cart-modal-header span {
     display: flex;
     align-items: center;
-    gap: 8px; /* Khoảng cách giữa icon và chữ */
+    gap: 8px; 
     font-size: 16px;
 }
 
@@ -491,7 +491,7 @@ a {
     opacity: 0.8;
 }
 
-/* Thân modal (nội dung) */
+
 .cart-modal-body {
     padding: 20px;
 }
@@ -520,7 +520,7 @@ a {
 }
 
 .modal-product-info strong {
-    color: #c97a3a; /* Màu cam */
+    color: #c97a3a; 
     font-size: 16px;
 }
 
@@ -533,7 +533,7 @@ a {
     padding-bottom: 15px;
 }
 
-/* Các nút hành động */
+
 .modal-actions {
     display: flex;
     justify-content: space-between;
@@ -548,10 +548,10 @@ a {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase; /* Viết hoa chữ */
+    text-transform: uppercase; 
 }
 
-/* Nút "Tiếp tục mua hàng" (màu đen) */
+
 .btn-continue {
     background-color: #333; 
     color: #fff;
@@ -561,18 +561,18 @@ a {
     background-color: #000;
 }
 
-/* Nút "Thanh toán ngay" (màu cam) */
+
 .btn-checkout {
     background-color: #c97a3a; 
     color: #fff;
     border: 1px solid #c97a3a;
 }
 .btn-checkout:hover {
-    background-color: #af6a30; /* Sậm hơn khi hover */
+    background-color: #af6a30; 
 }
 
 
-/* Thông tin chi tiết từ product_attributes */
+
 .product-attributes-short {
     margin-top: 16px;
     padding: 16px;
@@ -598,7 +598,7 @@ a {
     margin-bottom: 6px;
 }
 
-/* Đánh giá sản phẩm */
+
 .product-review {
     margin-top: 40px;
     padding: 32px 0;
@@ -720,7 +720,7 @@ a {
     color: #888;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .review-summary {
         flex-direction: column;

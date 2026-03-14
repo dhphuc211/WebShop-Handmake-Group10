@@ -63,7 +63,7 @@
                     </thead>
                     <tbody>
 
-                    <%-- BẮT ĐẦU VÒNG LẶP JSTL --%>
+                    
                     <c:forEach items="${listProducts}" var="p">
                         <tr class="product-row">
                             <td class="col-checkbox">
@@ -71,11 +71,11 @@
                             </td>
                             <td class="col-image">
                                 <div class="product-thumbnail">
-                                        <%-- Xử lý hiển thị ảnh: Nếu có link thì hiện, không thì hiện ảnh lỗi --%>
+                                        
                                     <img src="${p.imageUrl}" alt="${p.name}"
                                          >
 
-                                        <%-- Nếu là sản phẩm nổi bật thì hiện ngôi sao --%>
+                                        
                                     <c:if test="${p.featured}">
                                         <span class="featured-badge"><i class="fa-solid fa-star"></i></span>
                                     </c:if>
@@ -111,7 +111,7 @@
                                 </div>
                             </td>
 
-                                <%-- Cột Sale --%>
+                                
                             <td class="col-sale">
                                 <c:choose>
                                     <c:when test="${p.discountPercent > 0}">
@@ -126,14 +126,14 @@
                             </td>
                             <td class="col-stock">
                                 <div class="stock-wrapper">
-                                        <%-- Logic màu sắc tồn kho --%>
+                                        
                                     <span class="stock-number ${p.stock < 10 ? 'stock-critical' : 'stock-normal'}">
                                             ${p.stock}
                                     </span>
                                 </div>
                             </td>
                             <td class="col-status">
-                                    <%-- Logic hiển thị trạng thái --%>
+                                    
                                 <c:choose>
                                     <c:when test="${p.status == 'active'}">
                                         <span class="status-badge status-active">Đang bán</span>
@@ -159,7 +159,7 @@
                             </td>
                         </tr>
                     </c:forEach>
-                    <%-- KẾT THÚC VÒNG LẶP --%>
+                    
 
                     </tbody>
                 </table>
@@ -170,7 +170,7 @@
 </main>
 <script>
     $(document).ready(function() {
-        // Khai báo đối tượng ngôn ngữ trực tiếp để tránh lỗi CORS
+        
         const vietnameseLanguage = {
             "sProcessing":   "Đang xử lý...",
             "sLengthMenu":   "Xem _MENU_ mục",
@@ -188,7 +188,7 @@
         };
 
         $('#productTable').DataTable({
-            "language": vietnameseLanguage, // Sử dụng biến local thay vì link URL
+            "language": vietnameseLanguage, 
             "columnDefs": [
                 { "orderable": false, "targets": [0, 1, 7] }
             ],

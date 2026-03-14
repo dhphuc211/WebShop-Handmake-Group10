@@ -1,8 +1,8 @@
-/* ============================================
-   ADDRESS PAGE - ĐỒ THỦ CÔNG MỸ NGHỆ VIỆT NAM
-   ============================================ */
 
-/* Page Header with Add Button */
+
+
+
+
 .page-header {
     background: white;
     border-radius: 20px;
@@ -66,7 +66,7 @@
     box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
 }
 
-/* Success Message */
+
 .success-message {
     display: none;
     align-items: center;
@@ -97,14 +97,14 @@
     }
 }
 
-/* Address List */
+
 .address-list {
     display: grid;
     gap: 20px;
     margin-bottom: 25px;
 }
 
-/* Address Card */
+
 .address-card {
     background: white;
     border-radius: 16px;
@@ -124,7 +124,7 @@
     transform: translateY(-3px);
 }
 
-/* Default Address Badge */
+
 .address-badge {
     display: inline-flex;
     align-items: center;
@@ -144,7 +144,7 @@
     font-size: 14px;
 }
 
-/* Default Address Styling */
+
 .default-address {
     border-color: #c0392b;
     background: linear-gradient(135deg, #fff9f0 0%, white 100%);
@@ -161,7 +161,7 @@
     border-radius: 16px 0 0 16px;
 }
 
-/* Address Content */
+
 .address-content {
     flex: 1;
 }
@@ -193,7 +193,7 @@
     color: #c0392b;
 }
 
-/* Address Details */
+
 .address-details {
     display: flex;
     flex-direction: column;
@@ -249,7 +249,7 @@
     color: #c0392b;
 }
 
-/* Address Actions */
+
 .address-actions {
     display: flex;
     gap: 10px;
@@ -318,7 +318,7 @@
     pointer-events: none;
 }
 
-/* Empty State */
+
 .empty-state {
     background: white;
     border-radius: 20px;
@@ -377,7 +377,7 @@
     box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
 }
 
-/* Address Tips */
+
 .address-tips {
     background: white;
     border-radius: 20px;
@@ -427,11 +427,11 @@
     flex-shrink: 0;
 }
 
-/* ============================================
-   MODAL STYLES
-   ============================================ */
 
-/* Modal */
+
+
+
+
 .modal {
     position: fixed;
     top: 0;
@@ -531,7 +531,7 @@
     font-size: 20px;
 }
 
-/* Address Form */
+
 .address-form {
     display: flex;
     flex-direction: column;
@@ -601,7 +601,7 @@
     min-height: 80px;
 }
 
-/* Radio Group */
+
 .radio-group {
     display: flex;
     gap: 15px;
@@ -675,7 +675,7 @@
     font-size: 16px;
 }
 
-/* Checkbox */
+
 .checkbox-label {
     display: flex;
     align-items: center;
@@ -723,7 +723,7 @@
     font-size: 12px;
 }
 
-/* Form Actions */
+
 .form-actions {
     display: flex;
     gap: 15px;
@@ -772,9 +772,9 @@
     box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+
+
+
 @media (max-width: 968px) {
     .page-header {
         flex-direction: column;
@@ -876,7 +876,7 @@
     }
 }
 
-/* Custom scrollbar for modal */
+
 .modal-content::-webkit-scrollbar {
     width: 6px;
 }
@@ -894,7 +894,7 @@
     background: linear-gradient(180deg, #e74c3c 0%, #d4925f 100%);
 }
 
-/* Focus styles for accessibility */
+
 .btn-add-address:focus-visible,
 .btn-action:focus-visible,
 .btn-submit:focus-visible,

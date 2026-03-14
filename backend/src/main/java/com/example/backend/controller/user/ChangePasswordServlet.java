@@ -107,7 +107,7 @@ public class ChangePasswordServlet extends HttpServlet {
         }
 
         String hashedNew = PasswordUtil.encrypt(newPassword);
-        // If user has a password, check if new is same as old
+        
         if (userFromDb.getPassword() != null && hashedNew.equals(userFromDb.getPassword())) {
             request.setAttribute("errorMessage", "Mật khẩu mới phải khác mật khẩu hiện tại.");
             request.getRequestDispatcher("/account/account-change-password.jsp").forward(request, response);
@@ -118,7 +118,7 @@ public class ChangePasswordServlet extends HttpServlet {
         if (updated) {
             userFromDb.setPassword(hashedNew);
             session.setAttribute("user", userFromDb);
-            session.removeAttribute("passwordChangeVerified"); // Clear verification flag
+            session.removeAttribute("passwordChangeVerified"); 
             request.setAttribute("successMessage", "Đổi mật khẩu thành công.");
         } else {
             request.setAttribute("errorMessage", "Không thể đổi mật khẩu. Vui lòng thử lại.");

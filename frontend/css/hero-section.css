@@ -12,7 +12,7 @@
     background-position: center;
     background-size: cover;
     position: relative;
-    padding-bottom: 50px; /* Tạo khoảng trống cho phần categories đè lên */
+    padding-bottom: 50px; 
 }
 
 .hero {
@@ -45,34 +45,34 @@
     text-decoration: none;
 }
 
-/* --- CAROUSEL WRAPPER --- */
+
 .categories-wrapper {
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 50px; /* Padding 2 bên để chừa chỗ cho nút bấm */
+    padding: 0 50px; 
     position: relative;
-    top: 10px; /* Đẩy xuống một chút để tạo hiệu ứng nổi */
+    top: 10px; 
 }
 
 .categories {
     display: flex;
-    gap: 30px; /* Khoảng cách giữa các item */
-    overflow-x: hidden; /* Ẩn thanh cuộn */
-    scroll-behavior: smooth; /* Cuộn mượt */
-    justify-content: flex-start; /* Căn trái để tính toán scroll dễ hơn */
-    padding: 10px 5px; /* Padding để bóng đổ không bị cắt */
+    gap: 30px; 
+    overflow-x: hidden; 
+    scroll-behavior: smooth; 
+    justify-content: flex-start; 
+    padding: 10px 5px; 
 }
 
 .category-item {
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s ease-out;
-    /* TÍNH TOÁN CHIỀU RỘNG:
-       Muốn hiện 4 item. 
-       Khoảng cách (gap) là 20px. Có 3 khoảng trống giữa 4 item.
-       Tổng gap = 20px * 3 = 60px.
-       Chiều rộng mỗi item = (100% - 60px) / 4
-    */
+    
+
+
+
+
+
     flex: 0 0 calc((100% - 90px) / 4);
     max-width: calc((100% - 90px) / 4);
 }
@@ -83,10 +83,10 @@
 
 .category-circle {
     width: 100%;
-    /* Giữ tỷ lệ khung hình vuông hoặc hình tròn đẹp mắt */
+    
     aspect-ratio: 1 / 1; 
-    max-width: 160px; /* Giới hạn kích thước tối đa */
-    margin: 0 auto 15px; /* Canh giữa */
+    max-width: 160px; 
+    margin: 0 auto 15px; 
     border-radius: 50%;
     background: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -125,7 +125,7 @@
     color: #d84315; 
 }
 
-/* --- NAVIGATION BUTTONS --- */
+
 .nav-button {
     position: absolute;
     top: 40%;
@@ -144,7 +144,7 @@
     font-weight: bold;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: all 0.3s;
-    z-index: 9; /* Hiển thị trên cùng */
+    z-index: 9; 
     outline: none;
 }
 
@@ -160,11 +160,11 @@
 }
 
 .prev-button {
-    left: 0; /* Căn sát mép trái wrapper */
+    left: 0; 
 }
 
 .next-button {
-    right: 0; /* Căn sát mép phải wrapper */
+    right: 0; 
 }
 
 .nav-button:disabled {
@@ -177,10 +177,10 @@
     box-shadow: none;
 }
 
-/* Responsive */
+
 @media (max-width: 992px) {
     .category-item {
-        /* Tablet: Hiện 3 item */
+        
         flex: 0 0 calc((100% - 40px) / 3);
         max-width: calc((100% - 40px) / 3);
     }
@@ -191,7 +191,7 @@
         padding: 0 40px;
     }
     .category-item {
-        /* Mobile: Hiện 2 item */
+        
         flex: 0 0 calc((100% - 20px) / 2);
         max-width: calc((100% - 20px) / 2);
     }

@@ -86,7 +86,7 @@ body {
   border-radius: 12px;
   margin-bottom: 15px;
   transition: all 0.3s;
-  align-items: center; /* Căn giữa theo chiều dọc */
+  align-items: center; 
 }
 
 .product-action-btn {
@@ -101,7 +101,7 @@ body {
   flex-shrink: 0;
 }
 
-/* Nút đánh giá - Màu vàng */
+
 .review-btn {
   background: #c0392b;
   color: white;

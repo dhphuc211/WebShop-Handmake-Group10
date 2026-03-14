@@ -12,7 +12,7 @@
 <body>
 <main class="register-main">
     <div class="register-container">
-        <!-- Left side - Decorative -->
+        
         <div class="register-decoration">
             <div class="star-container">
                 <div class="star-shape">
@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <!-- Right side - Registration Form -->
+        
         <div class="register-form-wrapper">
             <div class="register-form-container">
                 <div class="register-header">
@@ -49,7 +49,7 @@
                     <p>Tạo tài khoản để trải nghiệm mua sắm tuyệt vời</p>
                 </div>
 
-                <!-- Hiển thị thông báo -->
+                
                 <c:if test="${not empty successMessage}">
                     <div class="alert alert-success">
                         <i class="fa-solid fa-check-circle"></i> ${successMessage}
@@ -155,7 +155,7 @@
 </main>
 
 <script>
-    // Toggle password visibility
+    
     document.querySelectorAll('.toggle-password').forEach(button => {
         button.addEventListener('click', function() {
             const targetId = this.getAttribute('data-target');
@@ -174,7 +174,7 @@
         });
     });
 
-    // Validate password match
+    
     document.getElementById('registerForm').addEventListener('submit', function(e) {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;

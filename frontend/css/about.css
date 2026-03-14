@@ -22,18 +22,18 @@
 
 #about-us-page .section-title-center h2 {
     font-size: 32px;
-    color: #A92C2C; /* Màu đỏ sậm */
+    color: #A92C2C; 
     font-weight: 600;
     margin: 0 0 10px 0;
 }
 
-/* Gạch chân màu vàng đồng */
+
 #about-us-page .section-title-center h2::after {
     content: '';
     display: block;
     width: 60px;
     height: 3px;
-    background-color: #c5a47e; /* Màu vàng đồng */
+    background-color: #c5a47e; 
     margin: 10px auto 0;
 }
 
@@ -205,11 +205,11 @@
     background-color: #fcfaf8;
 }
 
-/* Tiêu đề riêng cho phần này để dùng font có chân */
+
 #about-us-page .serif-title {
-    font-family: 'Playfair Display', serif; /* Font chữ giống hình */
+    font-family: 'Playfair Display', serif; 
     font-size: 36px !important;
-    color: #8B2323 !important; /* Màu đỏ đất */
+    color: #8B2323 !important; 
     font-weight: 700 !important;
 }
 
@@ -226,9 +226,9 @@
     border-radius: 15px;
     padding: 30px;
     flex: 1;
-    min-width: 300px; /* Đảm bảo không bị co quá nhỏ */
+    min-width: 300px; 
     max-width: 380px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Đổ bóng mềm tạo hiệu ứng nổi */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
     text-align: left;
     transition: transform 0.3s ease;
     display: flex;
@@ -238,18 +238,18 @@
 }
 
 #about-us-page .testimonial-card:hover {
-    transform: translateY(-5px); /* Hiệu ứng bay lên nhẹ khi di chuột */
+    transform: translateY(-5px); 
 }
 
-/* Ngôi sao đánh giá */
+
 #about-us-page .testimonial-card .stars {
-    color: #FFC107; /* Màu vàng */
+    color: #FFC107; 
     font-size: 14px;
     margin-bottom: 20px;
     letter-spacing: 2px;
 }
 
-/* Nội dung review */
+
 #about-us-page .testimonial-card .review-text {
     font-size: 15px;
     color: #555;
@@ -257,12 +257,12 @@
     line-height: 1.6;
 }
 
-/* Thông tin người dùng ở dưới cùng */
+
 #about-us-page .testimonial-card .user-info {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-top: auto; /* Đẩy xuống đáy card */
+    margin-top: auto; 
 }
 
 #about-us-page .testimonial-card .user-avatar {
@@ -274,14 +274,14 @@
 
 #about-us-page .testimonial-card .user-details h4 {
     font-size: 16px;
-    color: #004085; /* Màu xanh đậm cho tên */
+    color: #004085; 
     font-weight: 700;
     margin: 0 0 2px 0;
 }
 
 #about-us-page .testimonial-card .user-details span {
     font-size: 14px;
-    color: #888; /* Màu xám cho địa điểm */
+    color: #888; 
 }
 
 @media (max-width: 992px) {
@@ -302,10 +302,10 @@
     }
     
     #about-us-page .orientation-grid {
-        grid-template-columns: 1fr; /* Xếp dọc phần định hướng trên tablet */
+        grid-template-columns: 1fr; 
     }
 
-    /* Responsive cho phần Testimonials */
+    
     #about-us-page .testimonials-grid {
         flex-wrap: wrap;
     }
@@ -315,7 +315,7 @@
     }
 }
 
-/* Điện thoại */
+
 @media (max-width: 600px) {
     #about-us-page .section-title-center h2,
     #about-us-page .serif-title {
@@ -339,7 +339,7 @@
         margin-right: auto;
     }
     
-    /* Mobile: Card đánh giá xếp chồng dọc */
+    
     #about-us-page .testimonial-card {
         flex-basis: 100%;
         min-width: 100%;

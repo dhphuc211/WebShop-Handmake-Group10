@@ -14,7 +14,7 @@
 <main class="admin-dashboard-main">
   <div class="admin-dashboard-container">
 
-    <%-- Import Sidebar --%>
+    
     <jsp:include page="/admin/components/sidebar.jsp">
       <jsp:param name="activePage" value="categories" />
     </jsp:include>
@@ -57,7 +57,7 @@
                   <label for="parent-category">Danh mục cha</label>
                   <select id="parent-category" name="parent_id">
                     <option value="0">-- Không có (Danh mục gốc) --</option>
-                    <%-- Giả sử bạn gửi list categories từ Servlet --%>
+                    
                     <c:forEach var="cat" items="${parentCategories}">
                       <option value="${cat.id}">${cat.name}</option>
                     </c:forEach>
@@ -115,7 +115,7 @@
             <div class="tree-body">
                 <div class="category-tree">
                     <c:forEach var="root" items="${categories}">
-                        <%-- Level 1: Danh mục gốc --%>
+                        
                         <div class="category-item level-1">
                             <div class="category-row">
                                 <div class="category-info">
@@ -145,7 +145,7 @@
                                 </div>
                             </div>
 
-                                <%-- Sub-tree: Danh mục con --%>
+                                
                             <div class="category-children">
                                 <c:forEach var="sub" items="${allCategories}">
                                     <c:if test="${sub.parentId == root.id}">

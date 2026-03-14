@@ -1,8 +1,8 @@
-﻿/* ============================================
-   CUSTOMER DETAIL - ADMIN PANEL
-   ============================================ */
+﻿
 
-/* Page Header Detail */
+
+
+
 .page-header-detail {
     display: flex;
     justify-content: space-between;
@@ -90,7 +90,7 @@
     box-shadow: var(--admin-shadow-md);
 }
 
-/* Customer Detail Layout */
+
 .customer-detail-layout {
     display: grid;
     grid-template-columns: 1fr 380px;
@@ -109,7 +109,7 @@
     gap: 20px;
 }
 
-/* Detail Card */
+
 .detail-card {
     background: white;
     border-radius: 16px;
@@ -175,9 +175,9 @@
     gap: 12px;
 }
 
-/* ============================================
-   PERSONAL INFORMATION
-   ============================================ */
+
+
+
 .info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -222,9 +222,9 @@
     text-decoration: underline;
 }
 
-/* ============================================
-   ORDER HISTORY
-   ============================================ */
+
+
+
 .orders-list {
     display: flex;
     flex-direction: column;
@@ -305,7 +305,7 @@
     color: var(--admin-accent);
 }
 
-/* Status Badges */
+
 .status-badge {
     display: inline-block;
     padding: 7px 14px;
@@ -355,7 +355,7 @@
     color: white;
 }
 
-/* Customer Type Badge */
+
 .customer-badge {
     display: inline-flex;
     align-items: center;
@@ -386,9 +386,9 @@
     color: var(--admin-success);
 }
 
-/* ============================================
-   SAVED ADDRESSES
-   ============================================ */
+
+
+
 .addresses-list {
     display: flex;
     flex-direction: column;
@@ -468,9 +468,9 @@
     margin: 0;
 }
 
-/* ============================================
-   WISHLIST
-   ============================================ */
+
+
+
 .wishlist-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -535,9 +535,9 @@
     color: var(--admin-text-muted);
 }
 
-/* ============================================
-   STATISTICS CARD
-   ============================================ */
+
+
+
 .stats-card .card-body {
     display: flex;
     flex-direction: column;
@@ -607,9 +607,9 @@
     margin: 0;
 }
 
-/* ============================================
-   NOTES CARD
-   ============================================ */
+
+
+
 .note-form {
     display: flex;
     flex-direction: column;
@@ -702,9 +702,9 @@
     margin: 0;
 }
 
-/* ============================================
-   ACTIONS CARD
-   ============================================ */
+
+
+
 .action-buttons-list {
     display: flex;
     flex-direction: column;
@@ -778,9 +778,9 @@
     box-shadow: var(--admin-shadow-sm);
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+
+
+
 @media (max-width: 1400px) {
     .customer-detail-layout {
         grid-template-columns: 1fr 350px;
@@ -873,7 +873,7 @@
     }
 }
 
-/* Focus Styles for Accessibility */
+
 .back-link:focus-visible,
 .btn-action-header:focus-visible,
 .btn-add-note:focus-visible,

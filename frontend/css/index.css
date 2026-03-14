@@ -186,7 +186,7 @@ main {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-    /* Dùng flex-wrap để trên mobile tự xuống hàng */
+    
     flex-wrap: wrap; 
     gap: 15px;
 }
@@ -196,17 +196,17 @@ main {
     color: #333;
     margin: 0;
     position: relative;
-    padding-left: 16px; /* Chừa chỗ cho dấu chấm đỏ */
+    padding-left: 16px; 
 }
 
-/* Tạo dấu chấm đỏ giống trong ảnh */
+
 .section-header h2::before {
     content: "•";
-    color: #c0392b; /* Màu đỏ khuyến mãi */
+    color: #c0392b; 
     font-size: 30px;
     position: absolute;
     left: 0;
-    /* Căn chỉnh dấu chấm cho đẹp */
+    
     top: 50%;
     transform: translateY(-50%);
     line-height: 1;
@@ -223,13 +223,13 @@ main {
     color: #c0392b;
 }
 
-/* --- XỬ LÝ RIÊNG CHO HEADER CÓ TABS (Khối 2) --- */
+
 .filter-tabs ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-wrap: wrap; /* Cho tabs tự xuống hàng trên mobile */
+    flex-wrap: wrap; 
     gap: 10px;
 }
 
@@ -238,7 +238,7 @@ main {
     color: #333;
     font-size: 14px;
     padding: 6px 14px;
-    border-radius: 20px; /* Bo tròn */
+    border-radius: 20px; 
     transition: all 0.3s ease;
 }
 
@@ -252,10 +252,10 @@ main {
 }
 
 
-/* --- LƯỚI SẢN PHẨM (Grid) --- */
+
 .product-grid {
     display: grid;
-    /* Chia 4 cột */
+    
     grid-template-columns: repeat(4, 1fr); 
     gap: 20px;
 }
@@ -266,7 +266,7 @@ main {
     border-radius: 10px;
     overflow: hidden;
     transition: box-shadow 0.4s ease;
-    height: 100%; /* Để các thẻ cao bằng nhau */
+    height: 100%; 
     display: flex;
     flex-direction: column;
 }
@@ -276,7 +276,7 @@ main {
     transform: translateY(-5px);
 }
 
-/* Link bao trọn thẻ để bấm vào đâu cũng được */
+
 .product-link {
     text-decoration: none;
     color: #333333;
@@ -285,31 +285,31 @@ main {
     height: 100%;
 }
 
-/* Phần ảnh sản phẩm */
+
 .product-img {
     position: relative;
     padding: 10px;
     width: 100%;
-    aspect-ratio: 1/1; /* Giữ khung ảnh vuông */
+    aspect-ratio: 1/1; 
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff; /* Nền trắng cho ảnh nổi bật */
+    background-color: #fff; 
 }
 
 .product-img img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Đảm bảo ảnh không bị méo */
+    object-fit: contain; 
     transition: transform 0.4s ease;
 }
 
-/* Hiệu ứng zoom nhẹ khi hover */
+
 .product-card:hover .product-img img {
     transform: scale(1.05);
 }
 
-/* Nhãn giảm giá (thay cho .discount-badge cũ) */
+
 .sale {
     position: absolute;
     top: 10px;
@@ -323,17 +323,17 @@ main {
     z-index: 2;
 }
 
-/* Phần thông tin bên dưới */
+
 .product-info {
     padding: 15px;
-    background-color: rgb(255, 250, 240); /* Màu kem nhạt */
-    flex-grow: 1; /* Đẩy phần này chiếm hết khoảng trống còn lại */
+    background-color: rgb(255, 250, 240); 
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Căn đều tên và giá */
+    justify-content: space-between; 
 }
 
-/* Tên sản phẩm */
+
 .product-info h3 {
     font-size: 15px;
     font-weight: 500;
@@ -341,7 +341,7 @@ main {
     line-height: 1.4;
     color: #333;
     
-    /* Giới hạn tên sản phẩm 2 dòng rồi hiện dấu ... */
+    
     height: 42px; 
     overflow: hidden;
     display: -webkit-box;
@@ -349,7 +349,7 @@ main {
     -webkit-box-orient: vertical;
 }
 
-/* Giá hiện tại */
+
 .price {
     font-size: 16px;
     font-weight: bold;
@@ -357,7 +357,7 @@ main {
     margin-right: 10px;
 }
 
-/* Giá gốc (gạch ngang) */
+
 .compare-price {
     font-size: 14px;
     color: #999;
@@ -392,26 +392,26 @@ main {
     margin: 0;
 }
 
-/* Lưới tin tức */
+
 .news-grid {
     display: grid;
-    /* 3 cột trên desktop */
+    
     grid-template-columns: repeat(3, 1fr); 
     gap: 30px;
-    margin-bottom: 40px; /* Khoảng cách tới nút "Xem Tất Cả" */
+    margin-bottom: 40px; 
 }
 
-/* Thẻ tin tức (mỗi bài viết) */
+
 .news-card {
-    /* text-align: center; */ /* Đã set ở .news-section */
+     
 }
 
-/* Khung chứa ảnh */
+
 .card-image-container {
-    position: relative; /* Làm gốc cho nhãn ngày tháng */
+    position: relative; 
     display: block;
     border-radius: 10px;
-    overflow: hidden; /* Bắt buộc để bo góc ảnh */
+    overflow: hidden; 
     margin-bottom: 20px;
 }
 
@@ -422,28 +422,28 @@ main {
     transition: transform 0.4s ease;
 }
 
-/* Hiệu ứng zoom ảnh khi hover */
+
 .card-image-container:hover img {
     transform: scale(1.05);
 }
 
-/* Nhãn ngày tháng */
+
 .date-badge {
     position: absolute;
     top: 15px;
     left: 15px;
-    background-color: #c0392b; /* Màu cam/nâu */
+    background-color: #c0392b; 
     color: #ffffff;
     padding: 6px 12px;
-    border-radius: 20px; /* Bo tròn (pill shape) */
+    border-radius: 20px; 
     font-size: 13px;
     display: inline-flex;
     align-items: center;
-    gap: 6px; /* Khoảng cách giữa icon và chữ */
+    gap: 6px; 
     z-index: 2;
 }
 
-/* Nội dung (Tiêu đề và link "Xem thêm") */
+
 .card-content h3 {
     font-size: 18px;
     font-weight: 600;
@@ -457,10 +457,10 @@ main {
 }
 
 .card-content h3 a:hover {
-    color: #c0392b; /* Đổi màu khi hover */
+    color: #c0392b; 
 }
 
-/* Link "Xem thêm" */
+
 .read-more {
     color: #c0392b;
     text-decoration: none;
@@ -491,19 +491,19 @@ main {
 }
 
 
-/* =========================================
-   RESPONSIVE (DÁN XUỐNG CUỐI FILE CSS)
-   ========================================= */
 
-/* --- 1. Tablet & Laptop nhỏ (Màn hình dưới 1200px) --- */
+
+
+
+
 @media (max-width: 1200px) {
-    /* Giảm lề 2 bên container, 150px là quá lớn cho laptop nhỏ */
+    
     .section_danhmuc .container, 
     .news-section .container {
         padding: 0 60px;
     }
 
-    /* Cập nhật lại margin âm cho phần khuyến mãi để khớp với padding mới */
+    
     .promotions-container {
         margin-left: -60px;
         margin-right: -60px;
@@ -511,27 +511,27 @@ main {
     }
 }
 
-/* --- 2. Tablet & iPad (Màn hình dưới 992px) --- */
+
 @media (max-width: 992px) {
-    /* Intro: Giảm cỡ chữ tiêu đề lớn */
+    
     .section_intro-content h1 {
         font-size: 48px;
     }
 
-    /* Lưới sản phẩm: Chuyển thành 3 cột (nếu muốn) hoặc 2 cột */
+    
     .product-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    /* Tin tức: Chuyển thành 2 cột */
+    
     .news-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* --- 3. Mobile lớn & Tablet nhỏ (Màn hình dưới 768px) --- */
+
 @media (max-width: 768px) {
-    /* Giảm lề container xuống mức tối thiểu để có không gian cho nội dung */
+    
     .section_danhmuc .container, 
     .news-section .container {
         padding: 0 20px;
@@ -543,16 +543,16 @@ main {
         padding: 20px 20px;
     }
 
-    /* Intro */
+    
     .section_intro-content h1 {
         font-size: 36px;
     }
     .section_intro-content p {
         font-size: 13px;
-        padding: 0 20px; /* Tránh chữ dính sát mép màn hình */
+        padding: 0 20px; 
     }
 
-    /* Danh mục: Icon nhỏ lại một chút */
+    
     .category-image-wrapper {
         width: 100px;
         height: 100px;
@@ -561,41 +561,41 @@ main {
         font-size: 1rem;
     }
 
-    /* Featured Images: Chuyển về 1 cột (full width) */
+    
     .featured-item {
         flex-basis: 100%;
     }
 
-    /* Lưới sản phẩm: Chuyển thành 2 cột */
+    
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px; /* Giảm khoảng cách giữa các thẻ cho đỡ tốn diện tích */
+        gap: 15px; 
     }
     
-    /* Ẩn bớt text mô tả nếu cần, hoặc giữ nguyên */
+    
     .section-header h2 {
         font-size: 20px;
     }
 }
 
-/* --- 4. Mobile nhỏ (Màn hình dưới 576px) --- */
+
 @media (max-width: 576px) {
-    /* Intro */
+    
     .section_intro {
-        height: 70vh; /* Giảm chiều cao banner trên điện thoại */
+        height: 70vh; 
     }
     .section_intro-content h1 {
         font-size: 28px;
     }
 
-    /* Header của các section: Căn giữa hoặc căn trái tùy ý */
+    
     .section-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
     
-    /* Tabs lọc sản phẩm: Cho scroll ngang hoặc wrap */
+    
     .filter-tabs ul {
         gap: 5px;
     }
@@ -604,18 +604,18 @@ main {
         padding: 5px 10px;
     }
 
-    /* Lưới sản phẩm: 1 cột (để ảnh to rõ) hoặc giữ 2 cột tùy ý thích */
-    /* Ở đây tôi để 1 cột cho giống các app thương mại điện tử */
+    
+    
     .product-grid {
-        grid-template-columns: 1fr; /* Hoặc để repeat(2, 1fr) nếu muốn 2 cột nhỏ */
+        grid-template-columns: 1fr; 
     }
 
-    /* Tin tức: 1 cột */
+    
     .news-grid {
         grid-template-columns: 1fr;
     }
 
-    /* Nút xem tất cả tin tức: Full width cho dễ bấm */
+    
     .btn-view-all {
         width: 100%;
         text-align: center;

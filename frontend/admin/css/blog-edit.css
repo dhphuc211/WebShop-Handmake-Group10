@@ -1,8 +1,8 @@
-﻿/* ============================================
-   BLOG EDIT - ADMIN PANEL
-   ============================================ */
+﻿
 
-/* Page Header Edit */
+
+
+
 .page-header-edit {
     display: flex;
     justify-content: space-between;
@@ -86,9 +86,9 @@
     box-shadow: var(--admin-shadow-md);
 }
 
-/* ============================================
-   FORM LAYOUT
-   ============================================ */
+
+
+
 .form-layout {
     display: grid;
     grid-template-columns: 1fr 380px;
@@ -103,9 +103,9 @@
     gap: 25px;
 }
 
-/* ============================================
-   FORM SECTION
-   ============================================ */
+
+
+
 .form-section {
     background: white;
     border-radius: 16px;
@@ -158,9 +158,9 @@
     padding: 25px;
 }
 
-/* ============================================
-   FORM ELEMENTS
-   ============================================ */
+
+
+
 .form-row {
     display: grid;
     gap: 20px;
@@ -243,9 +243,9 @@
     font-style: italic;
 }
 
-/* ============================================
-   EDITOR TOOLBAR
-   ============================================ */
+
+
+
 .editor-toolbar {
     display: flex;
     flex-wrap: wrap;
@@ -292,9 +292,9 @@
     border-top-right-radius: 0;
 }
 
-/* ============================================
-   UPLOAD AREA
-   ============================================ */
+
+
+
 .upload-area {
     position: relative;
     margin-bottom: 20px;
@@ -340,7 +340,7 @@
     color: var(--admin-text-muted);
 }
 
-/* Featured Image Preview */
+
 .featured-image-preview {
     position: relative;
     max-width: 100%;
@@ -396,9 +396,9 @@
     transform: scale(1.1);
 }
 
-/* ============================================
-   PUBLISHING OPTIONS
-   ============================================ */
+
+
+
 .publish-info {
     margin-top: 20px;
     padding-top: 20px;
@@ -422,9 +422,9 @@
     width: 16px;
 }
 
-/* ============================================
-   RADIO BUTTONS
-   ============================================ */
+
+
+
 .radio-label {
     display: flex;
     align-items: center;
@@ -479,9 +479,9 @@
     font-weight: 500;
 }
 
-/* ============================================
-   CHECKBOXES
-   ============================================ */
+
+
+
 .checkbox-group {
     display: flex;
     flex-direction: column;
@@ -550,9 +550,9 @@
     color: var(--admin-accent);
 }
 
-/* ============================================
-   CATEGORY TREE
-   ============================================ */
+
+
+
 .category-tree {
     display: flex;
     flex-direction: column;
@@ -565,9 +565,9 @@
     gap: 8px;
 }
 
-/* ============================================
-   TAGS
-   ============================================ */
+
+
+
 .tags-list {
     display: flex;
     flex-wrap: wrap;
@@ -608,9 +608,9 @@
     color: white;
 }
 
-/* ============================================
-   RELATED POSTS
-   ============================================ */
+
+
+
 .related-posts-list {
     display: flex;
     flex-direction: column;
@@ -687,9 +687,9 @@
     color: white;
 }
 
-/* ============================================
-   STATISTICS SECTION
-   ============================================ */
+
+
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -746,9 +746,9 @@
     color: var(--admin-text-muted);
 }
 
-/* ============================================
-   FORM ACTIONS
-   ============================================ */
+
+
+
 .form-actions {
     display: flex;
     justify-content: space-between;
@@ -824,9 +824,9 @@
     box-shadow: var(--admin-shadow-md);
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+
+
+
 @media (max-width: 1200px) {
     .form-layout {
         grid-template-columns: 1fr;
@@ -905,7 +905,7 @@
     }
 }
 
-/* Focus Styles for Accessibility */
+
 .btn-preview:focus-visible,
 .btn-save:focus-visible,
 .btn-cancel:focus-visible,

@@ -1,4 +1,4 @@
-/* --- Cấu trúc chung --- */
+
 body {
     font-family: "Poppins", "Segoe UI", sans-serif;
     margin: 0 auto;
@@ -60,7 +60,7 @@ body {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Giữ 4 cột mỗi hàng */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 20px;
 }
 
@@ -90,7 +90,7 @@ body {
     transform: translateY(-5px);
 }
 
-/* Khung chứa ảnh sản phẩm */
+
 .product-img {
     width: 100%;
     height: 250px;
@@ -119,7 +119,7 @@ body {
     font-size: 14px;
     margin: 0 0 10px 0;
     line-height: 1.4;
-    /* Giới hạn tên sản phẩm tối đa 2 dòng */
+    
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -134,7 +134,7 @@ body {
     font-size: 16px;
     font-weight: 700;
     color: #c0392b;
-    margin-top: auto; /* Luôn nằm ở dưới cùng của info */
+    margin-top: auto; 
 }
 .sale-price {
     text-decoration: line-through;
@@ -172,7 +172,7 @@ body {
 }
 
 .page-item.active .page-link {
-    background-color: #8b572a; /* Màu chủ đạo của bạn */
+    background-color: #8b572a; 
     color: white;
     border-color: #8b572a;
 }

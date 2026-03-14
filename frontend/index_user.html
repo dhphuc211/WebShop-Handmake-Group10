@@ -534,42 +534,42 @@
     </div>
 </div>
 <script>
-    // Chờ cho toàn bộ nội dung trang web được tải xong
+    
     document.addEventListener("DOMContentLoaded", function() {
         
-        // 1. Chọn phần tử section
+        
         const sliderSection = document.querySelector('.section_intro');
         
-        // 2. Tạo một danh sách (mảng) chứa các ảnh nền
-        // (Bạn hãy thay bằng link ảnh của bạn)
+        
+        
         const images = [
             'https://denmaytre.net/wp-content/uploads/2019/12/may-tre-dan-ninh-so-vuon-minh-ra-bien-lon.jpg',
             'https://madebymaries.com/wp-content/uploads/2021/09/ancient-2179091_1920.jpg',
             'https://madebymaries.com/wp-content/uploads/2021/09/clay-1139098_1920.jpg' 
         ];
         
-        let currentIndex = 0; // Bắt đầu từ ảnh đầu tiên (vị trí 0)
+        let currentIndex = 0; 
 
-        // Hàm để thay đổi ảnh
+        
         function changeBackground() {
-            // Tăng chỉ số (index) lên 1
+            
             currentIndex++;
             
-            // Nếu chỉ số vượt quá số lượng ảnh, quay lại ảnh đầu tiên
+            
             if (currentIndex >= images.length) {
                 currentIndex = 0;
             }
             
-            // Cập nhật thuộc tính background-image của section
-            // CSS transition ở trên sẽ lo phần hiệu ứng
+            
+            
             sliderSection.style.backgroundImage = `url('${images[currentIndex]}')`;
         }
 
-        // 3. Đặt ảnh nền đầu tiên khi tải trang
+        
         sliderSection.style.backgroundImage = `url('${images[0]}')`;
 
-        // 4. Tự động gọi hàm changeBackground() mỗi 5 giây
-        setInterval(changeBackground, 5000); // 5000ms = 5 giây
+        
+        setInterval(changeBackground, 5000); 
     });
 </script>
 </body>

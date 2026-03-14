@@ -15,7 +15,7 @@
 <body>
     <main>
         <div class="order">
-            <!-- Logo ở trên cùng và căn giữa -->
+            
             <div class="order-header">
                 <a href="${pageContext.request.contextPath}/index.jsp" class="logo">
                     <img src="https://suncraft.com.vn/suncraft/Suncraft_website_Inf/suncraft_logo/e6e59529-b1df-4676-a5b2-f3757e67957e.png"
@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="order-left">
                     <div class="order-image">
-                        <!-- Phần cảm ơn với icon checkmark -->
+                        
                         <div class="order-info-thanks">
                             <div class="success-icon">
                                 <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">

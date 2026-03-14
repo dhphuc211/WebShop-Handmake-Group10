@@ -16,7 +16,7 @@
 <main class="admin-dashboard-main">
   <div class="admin-dashboard-container">
 
-    <%-- Import Sidebar --%>
+    
     <jsp:include page="/admin/components/sidebar.jsp">
       <jsp:param name="activePage" value="review" />
     </jsp:include>
@@ -62,13 +62,13 @@
           <div class="stat-card distribution">
             <h4>Phân bố đánh giá</h4>
             <div class="rating-bars">
-              <%-- Dữ liệu này thường được xử lý ở Servlet và truyền qua Map --%>
+              
               <div class="rating-bar-item">
                 <span class="rating-label"><i class="fa-solid fa-star"></i> 5 sao</span>
                 <div class="rating-bar"><div class="rating-fill" style="width: 65%"></div></div>
                 <span class="rating-count">317 (65%)</span>
               </div>
-              <%-- Các sao khác tương tự... --%>
+              
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
         <a href="?status=pending" class="tab-item pending ${currentStatus == 'pending' ? 'active' : ''}">
           <span class="tab-label">Chờ duyệt</span>
         </a>
-        <%-- Thêm các tab khác... --%>
+        
       </div>
 
       <div class="filter-section">
@@ -98,7 +98,7 @@
       </div>
 
       <div class="reviews-list-section">
-        <%-- Vòng lặp hiển thị danh sách đánh giá thực tế --%>
+        
         <c:forEach var="review" items="${reviewList}">
           <div class="review-item ${review.status}">
             <div class="review-header">
@@ -146,7 +146,7 @@
           </div>
         </c:forEach>
 
-        <%-- Nếu không có dữ liệu thật (demo), hiển thị thông báo hoặc dữ liệu mẫu --%>
+        
         <c:if test="${empty reviewList}">
           <p style="text-align: center; padding: 20px;">Không có đánh giá nào phù hợp.</p>
         </c:if>
@@ -154,7 +154,7 @@
 
       <div class="pagination-section">
         <div class="pagination">
-          <%-- Logic phân trang tại đây --%>
+          
         </div>
       </div>
     </div>

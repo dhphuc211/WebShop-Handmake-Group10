@@ -1,8 +1,8 @@
-﻿/* ============================================
-   SETTINGS SHIPPING - ADMIN PANEL
-   ============================================ */
+﻿
 
-/* Shipping Zones */
+
+
+
 .shipping-zone {
     padding: 20px;
     background: var(--admin-accent-soft);
@@ -43,7 +43,7 @@
     padding-left: 28px;
 }
 
-/* Zone specific styling */
+
 .shipping-zone .form-row {
     margin-bottom: 0;
 }
@@ -52,16 +52,16 @@
     margin-bottom: 0;
 }
 
-/* Number inputs for shipping fees */
+
 input[type="number"].shipping-fee {
     font-size: 16px;
     font-weight: 600;
     color: var(--admin-success);
 }
 
-/* ============================================
-   RESPONSIVE ADJUSTMENTS
-   ============================================ */
+
+
+
 @media (max-width: 768px) {
     .shipping-zone {
         padding: 15px;
@@ -78,16 +78,16 @@ input[type="number"].shipping-fee {
     }
 }
 
-/* ============================================
-   ADDITIONAL STYLING
-   ============================================ */
 
-/* Highlight for enabled shipping methods */
+
+
+
+
 .settings-section.shipping-enabled {
     border-left: 4px solid var(--admin-success);
 }
 
-/* Info badge for shipping zones */
+
 .zone-badge {
     display: inline-block;
     padding: 4px 10px;
@@ -99,7 +99,7 @@ input[type="number"].shipping-fee {
     margin-left: 10px;
 }
 
-/* Shipping time indicator */
+
 input[name$="_time"] {
     text-align: center;
     font-weight: 600;

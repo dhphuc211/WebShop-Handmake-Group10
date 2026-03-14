@@ -17,7 +17,7 @@
 <body>
 <main class="admin-dashboard-main">
     <div class="admin-dashboard-container">
-        <!-- Admin Sidebar -->
+        
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <div class="admin-logo">
@@ -67,9 +67,9 @@
             </nav>
         </aside>
 
-        <!-- Main Content -->
+        
         <div class="admin-content">
-            <!-- Page Header -->
+            
             <div class="page-header-detail">
                 <div class="header-left">
                     <a href="${pageContext.request.contextPath}/admin/orders" class="back-link">
@@ -98,12 +98,12 @@
                 </div>
             </div>
 
-            <!-- Order Detail Layout -->
+            
             <div class="order-detail-layout">
-                <!-- Main Column -->
+                
                 <div class="order-main-column">
 
-                    <!-- Order Items -->
+                    
                     <div class="detail-section">
                         <div class="section-header">
                             <h2>
@@ -123,18 +123,18 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <%-- 1. VÒNG LẶP SẢN PHẨM --%>
+                                    
                                     <c:forEach var="item" items="${details}">
                                         <tr>
                                             <td>
                                                 <div class="product-info">
-                                                        <%-- Sử dụng item.product.imageUrl từ hàm getImageUrl() của class Product --%>
+                                                        
                                                     <img src="${item.product.imageUrl}" alt="${item.product.name}"
                                                          onerror="this.src='https://via.placeholder.com/60'">
                                                     <div class="product-details">
-                                                            <%-- Truy cập trực tiếp vào name của product --%>
+                                                            
                                                         <h4>${item.product.name}</h4>
-                                                            <%-- Truy cập trực tiếp vào id của product --%>
+                                                            
                                                         <p>Mã SP: #${item.product.id}</p>
                                                     </div>
                                                 </div>
@@ -181,7 +181,7 @@
                         </div>
                     </div>
 
-                    <!-- Customer Note -->
+                    
                     <div class="detail-section">
                         <div class="section-header">
                             <h2>
@@ -197,10 +197,10 @@
                     </div>
                 </div>
 
-                <!-- Sidebar Column -->
+                
                 <div class="order-sidebar-column">
 
-                    <!-- Order Actions -->
+                    
                     <div class="detail-section">
                         <div class="section-header">
                             <h2>
@@ -247,7 +247,7 @@
                         </div>
                     </div>
 
-                    <!-- Customer Info -->
+                    
                     <div class="detail-section">
                         <div class="section-header">
                             <h2>
@@ -275,7 +275,7 @@
                         </div>
                     </div>
 
-                    <!-- Shipping Info -->
+                    
                     <div class="detail-section">
                         <div class="section-header">
                             <h2>
@@ -292,7 +292,7 @@
                         </div>
                     </div>
 
-                    <!-- Payment Info -->
+                    
                     <div class="detail-section">
                         <div class="section-header">
                             <h2>

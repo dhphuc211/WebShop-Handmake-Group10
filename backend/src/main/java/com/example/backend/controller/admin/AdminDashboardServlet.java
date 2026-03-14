@@ -39,12 +39,12 @@ public class AdminDashboardServlet extends HttpServlet {
             monthlyRevenue += o.getTotal_amount();
         }
 
-        //dua du lieu vao request
+        
         request.setAttribute("totalProducts", totalProducts);
-        request.setAttribute("ordersToday", allOrders.size()); // Tổng số đơn hoặc đơn hôm nay
+        request.setAttribute("ordersToday", allOrders.size()); 
         request.setAttribute("pendingOrders", pendingOrders);
         request.setAttribute("monthlyRevenue", monthlyRevenue);
-        //5 don hang moi nhat
+        
         List<Order> recentOrders = allOrders.stream().limit(5).toList();
         request.setAttribute("recentOrders", recentOrders);
 

@@ -86,16 +86,16 @@ public class ProductService {
     }
 
     public void insertFullProduct(Product p, ProductAttribute pa) {
-        // 1. Insert bảng products và lấy ID
+        
         int productId = productDAO.insertProduct(p);
 
         if (productId > 0) {
-            // 2. Insert ảnh
+            
             if (p.getImage() != null && p.getImage().getImageUrl() != null) {
                 productDAO.insertProductImage(productId, p.getImage().getImageUrl());
             }
 
-            // 3. Insert thuộc tính
+            
             productDAO.insertProductAttributes(productId, pa);
         }
     }

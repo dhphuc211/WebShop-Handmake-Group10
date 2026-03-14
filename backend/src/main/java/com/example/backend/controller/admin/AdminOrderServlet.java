@@ -35,7 +35,7 @@ public class AdminOrderServlet extends HttpServlet {
         }
     }
 
-    // xem danh sách đơn hàng
+    
     private void viewOrderList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int page = 1;
         int pageSize = 8;
@@ -49,9 +49,9 @@ public class AdminOrderServlet extends HttpServlet {
         } catch (NumberFormatException e) {
             page = 1;
         }
-        List<Order> orders = orderDao.getAllOrders(); // Tạm thời lấy hết nếu chưa sửa DAO
+        List<Order> orders = orderDao.getAllOrders(); 
 
-        int totalOrders = orders.size(); // Thay bằng hàm count() trong DAO nếu dữ liệu lớn
+        int totalOrders = orders.size(); 
         int totalPages = (int) Math.ceil((double) totalOrders / pageSize);
 
         request.setAttribute("orders", orders);
@@ -62,17 +62,17 @@ public class AdminOrderServlet extends HttpServlet {
 
         request.getRequestDispatcher("/admin/orders/order-list.jsp").forward(request, response);    }
 
-    // xem chi tiết đơn hàng
+    
     private void viewOrderDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            Order order = orderDao.getOrderById(id); // Lấy thông tin đơn hàng
-            List<OrderItem> details = orderDao.getOrderItems(id); // Lấy danh sách sản phẩm trong đơn hàng
+            Order order = orderDao.getOrderById(id); 
+            List<OrderItem> details = orderDao.getOrderItems(id); 
 
             if (order != null) {
                 request.setAttribute("order", order);
                 request.setAttribute("details", details);
-                // Đảm bảo đường dẫn này đúng với vị trí file JSP của bạn
+                
                 request.getRequestDispatcher("/admin/orders/order-detail.jsp").forward(request, response);
             } else {
                 response.sendRedirect(request.getContextPath() + "/admin/orders");
@@ -90,7 +90,7 @@ public class AdminOrderServlet extends HttpServlet {
         if ("updateStatus".equals(action)) {
             updateOrderStatus(request, response);
         } else {
-            // Nếu có các action POST khác thì xử lý ở đây, không thì quay về danh sách
+            
             response.sendRedirect(request.getContextPath() + "/admin/orders");
         }
     }
@@ -100,11 +100,11 @@ public class AdminOrderServlet extends HttpServlet {
             int orderId = Integer.parseInt(request.getParameter("order_id"));
             String newStatus = request.getParameter("order_status");
 
-            // Gọi hàm update trong DAO (hàm đã hướng dẫn ở câu trả lời trước)
+            
             boolean success = orderDao.updateOrderStatus(orderId, newStatus);
 
             if (success) {
-                // Redirect về trang chi tiết kèm tham số thông báo thành công
+                
                 response.sendRedirect(request.getContextPath() + "/admin/orders?action=detail&id=" + orderId + "&status=updated");
             } else {
                 response.sendRedirect(request.getContextPath() + "/admin/orders?action=detail&id=" + orderId + "&status=error");

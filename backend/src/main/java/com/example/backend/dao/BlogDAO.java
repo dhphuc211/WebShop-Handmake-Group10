@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlogDAO {
-    //Lấy bài viết mới lên
+    
     public List<BlogPost> getAllPosts(){
         List<BlogPost> list = new ArrayList<>();
         String sql = "select * from blog_posts order by created_at desc";
@@ -24,7 +24,7 @@ public class BlogDAO {
                 p.setId(re.getInt("id"));
                 p.setTitle(re.getString("title"));
                 p.setContent(re.getString("content"));
-                p.setFeaturedImageUrl(re.getString("featured_image_url")); // Tên cột DB
+                p.setFeaturedImageUrl(re.getString("featured_image_url")); 
                 p.setCategoryId(re.getInt("category_id"));
                 p.setFeatured(re.getBoolean("is_featured"));
                 p.setCreatedAt(re.getTimestamp("created_at"));
@@ -38,7 +38,7 @@ public class BlogDAO {
         return list;
     }
 
-    // Lấy bài viết nổi bật
+    
     public List<BlogPost> getFeaturedPosts(int limit){
         List<BlogPost> list = new ArrayList<>();
         String sql = "SELECT * FROM blog_posts WHERE is_featured = 1 ORDER BY created_at DESC LIMIT ?";
@@ -52,7 +52,7 @@ public class BlogDAO {
                 p.setId(re.getInt("id"));
                 p.setTitle(re.getString("title"));
                 p.setContent(re.getString("content"));
-                p.setFeaturedImageUrl(re.getString("featured_image_url")); // Tên cột DB
+                p.setFeaturedImageUrl(re.getString("featured_image_url")); 
                 p.setCategoryId(re.getInt("category_id"));
                 p.setFeatured(re.getBoolean("is_featured"));
                 p.setCreatedAt(re.getTimestamp("created_at"));
@@ -66,7 +66,7 @@ public class BlogDAO {
         return list;
     }
 
-    // Lấy danh mục bài viết
+    
     public List<BlogCategory> getAllCategories() {
         List<BlogCategory> list = new ArrayList<>();
         String sql = "SELECT id, name, type FROM blog_categories";

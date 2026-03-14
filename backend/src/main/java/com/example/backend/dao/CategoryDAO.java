@@ -108,19 +108,26 @@ public class CategoryDAO {
     }
 
     public void insertSale(Sale sale) {
-        // Câu lệnh SQL khớp với các cột: id, discount_percent, start_sale, end_sale
+        
         String sql = "INSERT INTO sale (id, discount_percent, start_sale, end_sale) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
+            
             ps.setInt(1, sale.getId());
+
+            
             ps.setDouble(2, sale.getDiscountPercent());
+
+            
             if (sale.getStartSale() != null) {
                 ps.setTimestamp(3, sale.getStartSale());
             } else {
                 ps.setNull(3, java.sql.Types.TIMESTAMP);
             }
+
+            
             if (sale.getEndSale() != null) {
                 ps.setTimestamp(4, sale.getEndSale());
             } else {
@@ -143,6 +150,7 @@ public class CategoryDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, name);
+            
             if (saleId == 0) {
                 ps.setNull(2, java.sql.Types.INTEGER);
             } else {

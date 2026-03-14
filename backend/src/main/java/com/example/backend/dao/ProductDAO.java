@@ -30,6 +30,10 @@ public class ProductDAO {
         return list;
     }
 
+
+    
+
+
     public List<Product> getSaleProducts() {
         List<Product> list = new ArrayList<>();
 
@@ -360,7 +364,7 @@ public class ProductDAO {
             ps.setInt(1, productId);
             ps.setString(2, pa.getMaterial());
             ps.setString(3, pa.getOrigin());
-            ps.setString(4, pa.getSize()); // dimensions map vào cột size
+            ps.setString(4, pa.getSize()); 
             ps.setString(5, pa.getWeight());
             ps.setString(6, pa.getColor());
             ps.executeUpdate();

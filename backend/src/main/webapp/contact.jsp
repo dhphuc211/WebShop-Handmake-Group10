@@ -13,19 +13,19 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hero-section.css">
 </head>
 <body data-context-path="${pageContext.request.contextPath}">
-<!-- Header -->
+
 <c:set var="activeTab" value="contact" scope="request"/>
 <jsp:include page="/compenents/header.jsp" />
 
 <main>
-    <!-- Hero Section -->
+    
     <c:set var="pageTitle" value="Liên hệ" scope="request" />
     <c:set var="breadcrumbText" value="Liên hệ" scope="request" />
     <jsp:include page="/compenents/hero-section.jsp" />
 
-    <!-- Main Content -->
+    
     <div class="main-content">
-        <!-- Contact Info -->
+        
         <div class="contact-info">
             <h2>Cửa hàng đồ thủ công mỹ nghệ</h2>
 
@@ -71,14 +71,14 @@
             </div>
         </div>
 
-        <!-- Contact Form -->
+        
         <div class="contact-form">
             <h2>Liên hệ với chúng tôi</h2>
             <p style="color: #666; margin-bottom: 20px; font-size: 14px;">
                 Xin lưu ý rằng nhận xét cần được phê duyệt trước khi được xuất bản và hệ thống sẽ ghi lại địa chỉ IP của bạn
             </p>
 
-            <!-- Hiển thị thông báo -->
+            
             <c:if test="${not empty successMessage}">
                 <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
                         ${successMessage}
@@ -112,7 +112,7 @@
             </form>
         </div>
 
-        <!-- Map Section -->
+        
         <div class="map-section">
             <div class="map-container">
                 <iframe
@@ -123,10 +123,10 @@
     </div>
 </main>
 
-<!-- Footer -->
+
 <jsp:include page="/compenents/footer.jsp" />
 
-<!-- Floating Buttons -->
+
 <div class="floating-buttons">
     <div class="float-btn phone">
         <i class="fas fa-phone"></i>

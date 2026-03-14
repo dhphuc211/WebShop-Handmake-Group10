@@ -11,7 +11,7 @@ body {
 .mdl-js{
     overflow-x: hidden;
 }
-/* Main container */
+
 .register-main {
     min-height: calc(100vh - 140px);
     display: flex;
@@ -23,7 +23,7 @@ body {
     overflow: hidden;
 }
 
-/* Decorative background pattern */
+
 .register-main::before {
     content: '';
     position: absolute;
@@ -66,7 +66,7 @@ body {
     }
 }
 
-/* Register container */
+
 .register-container {
     display: flex;
     max-width: 1100px;
@@ -79,7 +79,7 @@ body {
     z-index: 1;
 }
 
-/* Left side - Form */
+
 .register-form-wrapper {
     flex: 1.2;
     padding: 50px 45px;
@@ -93,7 +93,7 @@ body {
     margin: 0 auto;
 }
 
-/* Register header */
+
 .register-header {
     text-align: center;
     margin-bottom: 35px;
@@ -112,7 +112,7 @@ body {
     font-size: 14px;
 }
 
-/* Form styles */
+
 .register-form {
     margin-bottom: 25px;
 }
@@ -158,7 +158,7 @@ body {
     color: #999;
 }
 
-/* Password input wrapper */
+
 .password-input-wrapper {
     position: relative;
 }
@@ -184,7 +184,7 @@ body {
     color: #c0392b;
 }
 
-/* Form options - Terms checkbox */
+
 .form-options {
     margin-bottom: 24px;
 }
@@ -220,7 +220,7 @@ body {
     text-decoration: underline;
 }
 
-/* Register button */
+
 .btn-register {
     width: 100%;
     padding: 16px;
@@ -248,7 +248,7 @@ body {
     transform: translateY(0);
 }
 
-/* Divider */
+
 .divider {
     display: flex;
     align-items: center;
@@ -269,7 +269,7 @@ body {
     padding: 0 16px;
 }
 
-/* Social login buttons */
+
 .social-login {
     display: flex;
     gap: 12px;
@@ -318,7 +318,7 @@ body {
     color: white;
 }
 
-/* Login link */
+
 .login-link {
     text-align: center;
     font-size: 14px;
@@ -337,7 +337,7 @@ body {
     text-decoration: underline;
 }
 
-/* Right side - Decoration */
+
 .register-decoration {
     flex: 1;
     background: linear-gradient(135deg, #c97a3a 0%, #d4925f 50%, #c0392b 100%);
@@ -353,7 +353,7 @@ body {
     overflow: hidden;
 }
 
-/* Vietnamese pattern decoration */
+
 .register-decoration::before {
     content: '';
     position: absolute;
@@ -391,7 +391,7 @@ body {
     }
 }
 
-/* Circular text animation */
+
 .circular-text {
     position: absolute;
     width: 100%;
@@ -432,7 +432,7 @@ body {
     }
 }
 
-/* Decorative shapes */
+
 .decoration-shapes {
     position: absolute;
     width: 100%;
@@ -484,7 +484,7 @@ body {
     }
 }
 
-/* Responsive design */
+
 @media (max-width: 968px) {
     .register-container {
         flex-direction: column-reverse;
@@ -565,7 +565,7 @@ body {
     }
 }
 
-/* Custom scrollbar for form wrapper */
+
 .register-form-wrapper::-webkit-scrollbar {
     width: 6px;
 }
@@ -575,7 +575,7 @@ body {
 }
 
 .register-form-wrapper::-webkit-scrollbar-thumb {
-    /* background: #c0392b; */
+    
     border-radius: 3px;
 }
 
@@ -583,7 +583,7 @@ body {
     background: #c97a3a;
 }
 
-/* Loading state */
+
 .btn-register.loading {
     pointer-events: none;
     opacity: 0.7;
@@ -606,7 +606,7 @@ body {
     }
 }
 
-/* Error message styles */
+
 .error-message {
     background: #fdecea;
     color: #c0392b;
@@ -634,7 +634,7 @@ body {
     }
 }
 
-/* Success message styles */
+
 .success-message {
     background: #d4edda;
     color: #155724;
@@ -651,7 +651,7 @@ body {
     animation: slideDown 0.3s ease;
 }
 
-/* Input validation styles */
+
 .form-group input:invalid:not(:placeholder-shown) {
     border-color: #e74c3c;
 }
@@ -660,7 +660,7 @@ body {
     border-color: #27ae60;
 }
 
-/* Focus visible for accessibility */
+
 .btn-register:focus-visible,
 .btn-social:focus-visible,
 .toggle-password:focus-visible {
@@ -668,11 +668,11 @@ body {
     outline-offset: 2px;
 }
 
-/* ============================================
-   HIỆU ỨNG NGÔI SAO 5 CÁNH
-   ============================================ */
 
-/* Container cho ảnh ngôi sao ở giữa */
+
+
+
+
 .star-container {
     position: absolute;
     top: 40%;
@@ -684,7 +684,7 @@ body {
     animation: starFloat 6s ease-in-out infinite;
 }
 
-/* Tạo hình ngôi sao 5 cánh */
+
 .star-shape {
     position: relative;
     width: 100%;
@@ -702,11 +702,11 @@ body {
         39% 35%
     );
     filter: blur(50px);
-    /* animation: starRotate 20s linear infinite, starPulse 3s ease-in-out infinite; */
+    
     filter: drop-shadow(0 10px 30px rgba(33, 31, 31, 0.4));
 }
 
-/* Ảnh bên trong ngôi sao */
+
 .star-image {
     width: 100%;
     height: 100%;
@@ -714,7 +714,7 @@ body {
     border-radius: 10px;
 }
 
-/* Animation xoay ngôi sao */
+
 @keyframes starRotate {
     0% {
         transform: rotate(0deg);
@@ -724,7 +724,7 @@ body {
     }
 }
 
-/* Animation nhấp nháy */
+
 @keyframes starPulse {
     0%, 100% {
         transform: scale(1);
@@ -736,7 +736,7 @@ body {
     }
 }
 
-/* Animation bay lơ lửng */
+
 @keyframes starFloat {
     0%, 100% {
         transform: translate(-50%, -50%) translateY(0);
@@ -746,7 +746,7 @@ body {
     }
 }
 
-/* Responsive cho ngôi sao */
+
 @media (max-width: 968px) {
     .star-container {
         width: 200px;

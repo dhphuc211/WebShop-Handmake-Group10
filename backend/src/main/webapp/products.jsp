@@ -29,7 +29,7 @@
                 <select name="category_id" id="category" onchange="this.form.submit()">
                     <option value="">Tất cả danh mục</option>
                     <c:forEach items="${categoryList}" var="cat">
-                        <%-- Kiểm tra param.category_id để giữ lại giá trị đã chọn sau khi load trang --%>
+                        
                         <option value="${cat.id}" ${param.category_id == cat.id ? 'selected' : ''}>
                                 ${cat.name}
                         </option>
@@ -71,7 +71,7 @@
                                     <fmt:setLocale value="vi_VN"/>
                                     <c:choose>
                                         <c:when test="${p.discountPercent > 0}">
-                                            <%-- Tính giá sau giảm nếu cần hoặc dùng salePrice từ DB --%>
+                                            
                                             <span class="price-sale" style="color:red;">
                                                 <fmt:formatNumber value="${p.price * (1 - p.discountPercent)}" type="currency" currencySymbol="đ" />
                                             </span>
@@ -94,7 +94,7 @@
         <div class="pagination-area">
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                    <%-- Nút trang trước --%>
+                    
                     <c:if test="${currentPage > 1}">
                         <li class="page-item">
                             <a class="page-link" href="products?page=${currentPage - 1}${not empty paramCid ? '&category_id='.concat(paramCid) : ''}">&laquo;</a>
@@ -103,21 +103,21 @@
 
                     <c:forEach begin="1" end="${totalPages}" var="i">
                         <c:choose>
-                            <%-- Hiển thị trang đầu, trang cuối và các trang xung quanh trang hiện tại (bán kính 2) --%>
+                            
                             <c:when test="${i == 1 || i == totalPages || (i >= currentPage - 2 && i <= currentPage + 2)}">
                                 <li class="page-item ${currentPage == i ? 'active' : ''}">
                                     <a class="page-link" href="products?page=${i}${not empty paramCid ? '&category_id='.concat(paramCid) : ''}">${i}</a>
                                 </li>
                             </c:when>
 
-                            <%-- Hiển thị dấu "..." nếu cách trang đầu hoặc trang cuối một khoảng --%>
+                            
                             <c:when test="${i == currentPage - 3 || i == currentPage + 3}">
                                 <li class="page-item disabled"><span class="page-link">...</span></li>
                             </c:when>
                         </c:choose>
                     </c:forEach>
 
-                    <%-- Nút trang sau --%>
+                    
                     <c:if test="${currentPage < totalPages}">
                         <li class="page-item">
                             <a class="page-link" href="products?page=${currentPage + 1}${not empty paramCid ? '&category_id='.concat(paramCid) : ''}">&raquo;</a>
@@ -168,10 +168,10 @@
         searchInput.addEventListener("input", function() {
             const keyword = this.value.trim();
 
-            if (keyword.length >= 1) { // Tìm kiếm khi nhập từ 1 ký tự
+            if (keyword.length >= 1) { 
                 searchTitle.innerText = "Kết quả gợi ý cho: '" + keyword + "'";
 
-                // Gọi AJAX lấy kết quả nhanh
+                
                 fetch("${pageContext.request.contextPath}/search-ajax?keyword=" + encodeURIComponent(keyword))
                     .then(response => response.text())
                     .then(data => {
